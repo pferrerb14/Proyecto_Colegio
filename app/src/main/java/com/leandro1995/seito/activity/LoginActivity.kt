@@ -7,7 +7,7 @@ import com.leandro1995.seito.activity.ambient.ActivityAmbient
 class LoginActivity : ActivityAmbient() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        super.onCreate(savedInstanceState)
     }
 }

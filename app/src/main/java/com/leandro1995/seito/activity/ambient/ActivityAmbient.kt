@@ -2,6 +2,7 @@ package com.leandro1995.seito.activity.ambient
 
 import android.os.Build
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,7 +18,10 @@ open class ActivityAmbient : AppCompatActivity() {
     private fun fullScreen() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA) {
             enableEdgeToEdge()
-            ViewCompat.setOnApplyWindowInsetsListener(window.decorView.findViewById(android.R.id.content)) { v, insets ->
+            ViewCompat.setOnApplyWindowInsetsListener(
+                findViewById<ViewGroup>(android.R.id.content).getChildAt(
+                    0
+                )) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
                 insets
