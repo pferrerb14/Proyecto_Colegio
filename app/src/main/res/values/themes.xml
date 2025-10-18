@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Seito" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="colorControlActivated">@color/blue_0066FF</item>
     </style>
 
     <style name="Theme.Seito" parent="Base.Theme.Seito" />
@@ -12,6 +13,44 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
         <item name="windowSplashScreenAnimationDuration">@integer/icon_animation_splash</item>
         <item name="postSplashScreenTheme">@style/Theme.Seito</item>
+    </style>
+
+    <!-- Style -->
+    <style name="TitleBody">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_25</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
+    </style>
+
+    <style name="SubTitleBody">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
+    </style>
+
+    <style name="TextBody">
+        <item name="android:fontFamily">@font/semi_bold</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <!-- Component -->
+    <style name="EditText">
+        <item name="android:textSize">@dimen/dimen_15</item>
+        <item name="android:paddingStart">@dimen/dimen_10</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/background_edit_text</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_height">@dimen/dimen_50</item>
+        <item name="android:backgroundTint">@color/blue_0066FF</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="cornerRadius">@dimen/dimen_10</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
     </style>
 
 </resources>

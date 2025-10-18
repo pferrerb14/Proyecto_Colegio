@@ -14,7 +14,9 @@
         android:layout_marginTop="@dimen/dimen_0"
         android:layout_marginEnd="@dimen/dimen_0"
         android:layout_marginBottom="@dimen/dimen_0"
+        android:gravity="center"
         android:orientation="vertical"
+        android:padding="@dimen/dimen_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,75 +29,108 @@
             tools:ignore="ContentDescription" />
 
         <TextView
+            style="@style/TitleBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_marginTop="@dimen/dimen_20"
+            android:text="@string/app_name" />
 
         <TextView
+            style="@style/SubTitleBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/school_text" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/dimen_20"
+            android:background="@drawable/background_content_user_type_login"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_20">
 
             <TextView
+                style="@style/TextBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/login_as_text" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/dimen_40"
+                android:layout_gravity="center"
+                android:background="@drawable/background_user_type"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextBody"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_2"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:background="@drawable/background_select_user_type"
+                    android:gravity="center"
+                    android:text="@string/student_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white_FFFFFF" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextBody"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:gravity="center"
+                    android:text="@string/teacher_text"
+                    android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextBody"
+                    android:layout_width="@dimen/dimen_0"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:gravity="center"
+                    android:text="@string/admin_text"
+                    android:textAlignment="center" />
+
             </LinearLayout>
 
             <TextView
+                style="@style/TextBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/email_text" />
 
             <EditText
+                style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                tools:ignore="Autofill,LabelFor" />
 
             <TextView
+                style="@style/TextBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="@dimen/dimen_10"
+                android:text="@string/password_text" />
 
             <EditText
+                style="@style/EditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                tools:ignore="Autofill,LabelFor" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
+                style="@style/Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginTop="@dimen/dimen_20"
+                android:text="@string/get_into_button" />
 
         </LinearLayout>
 
