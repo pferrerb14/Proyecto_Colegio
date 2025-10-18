@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
-import com.leandro1995.seito.background.coroutine.setting.TypeTimeCoroutine
+import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { true }
 
         BackGroundCoroutine(
-            time = TIME_SKIP, typeTimeCoroutine = TypeTimeCoroutine.SECONDS
+            time = TIME_SKIP, timeTypeCoroutine = TimeTypeCoroutine.SECONDS
         ).start {
 
         }

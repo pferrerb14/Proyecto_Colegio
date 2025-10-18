@@ -1,6 +1,6 @@
 package com.leandro1995.seito.background.coroutine
 
-import com.leandro1995.seito.background.coroutine.setting.TypeTimeCoroutine
+import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
 class BackGroundCoroutine(
-    private val context: CoroutineContext = Dispatchers.IO,
+    private val context: CoroutineContext = Dispatchers.Main,
     private val time: Long,
-    private val typeTimeCoroutine: TypeTimeCoroutine
+    private val timeTypeCoroutine: TimeTypeCoroutine
 ) {
 
     fun start(method: suspend () -> Unit) {
@@ -21,9 +21,9 @@ class BackGroundCoroutine(
         }
     }
 
-    private fun time() = when (typeTimeCoroutine) {
-        TypeTimeCoroutine.HOURS -> TimeUnit.HOURS.toMillis(time)
-        TypeTimeCoroutine.MINUTES -> TimeUnit.MINUTES.toMillis(time)
-        TypeTimeCoroutine.SECONDS -> TimeUnit.SECONDS.toMillis(time)
+    private fun time() = when (timeTypeCoroutine) {
+        TimeTypeCoroutine.HOURS -> TimeUnit.HOURS.toMillis(time)
+        TimeTypeCoroutine.MINUTES -> TimeUnit.MINUTES.toMillis(time)
+        TimeTypeCoroutine.SECONDS -> TimeUnit.SECONDS.toMillis(time)
     }
 }
