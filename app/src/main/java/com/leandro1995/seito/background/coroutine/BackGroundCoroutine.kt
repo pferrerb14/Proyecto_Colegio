@@ -1,6 +1,6 @@
 package com.leandro1995.seito.background.coroutine
 
-import com.leandro1995.seito.background.coroutine.Setting.TypeTimeCoroutine
+import com.leandro1995.seito.background.coroutine.setting.TypeTimeCoroutine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
