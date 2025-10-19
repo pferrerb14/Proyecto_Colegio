@@ -12,7 +12,7 @@ open class ViewModelAmbient<A, E> : ViewModel() {
         MutableStateFlow(null)
     }
 
-    private val uiEvent: MutableSharedFlow<E?> by lazy {
+    private val uiEvent: MutableSharedFlow<E> by lazy {
         MutableSharedFlow()
     }
 
