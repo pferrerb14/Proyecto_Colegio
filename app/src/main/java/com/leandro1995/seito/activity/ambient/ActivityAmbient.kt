@@ -32,11 +32,11 @@ open class ActivityAmbient : AppCompatActivity() {
         }
     }
 
-    fun isGestureNavigation(): Boolean {
+    private fun isGestureNavigation(): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return false
         }
-        
+
         return try {
             Settings.Secure.getInt(this.contentResolver, NAVIGATION_MODE) == 2
         } catch (_: Settings.SettingNotFoundException) {
