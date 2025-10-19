@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.runBlocking
 
 open class ViewModelAmbient<A, E> : ViewModel() {
     
@@ -20,14 +21,14 @@ open class ViewModelAmbient<A, E> : ViewModel() {
 
     val event = uiEvent.asSharedFlow()
 
-    protected val actionButton = fun(action: Int) { event(action = action) }
+    val actionButton = fun(action: Int) { event(action = action) }
 
     protected fun value(action: A) {
         uiAction.value = action
     }
 
     protected fun emit(event: E) {
-        uiEvent.tryEmit(event)
+        runBlocking { uiEvent.emit(event) }
     }
 
     protected open fun event(action: Int) {}

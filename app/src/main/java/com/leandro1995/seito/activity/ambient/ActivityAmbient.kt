@@ -20,6 +20,7 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentView()
+        initView()
         initEventToAction()
         fullScreen()
     }
