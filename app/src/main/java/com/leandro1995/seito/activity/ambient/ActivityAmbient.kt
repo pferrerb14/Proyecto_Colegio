@@ -11,15 +11,16 @@ import androidx.core.view.WindowInsetsCompat
 import com.leandro1995.seito.extension.binding
 
 
-open class ActivityAmbient<binding> : AppCompatActivity() {
+abstract class ActivityAmbient<binding> : AppCompatActivity() {
 
     protected var dataBinding: binding? = null
 
-    protected open var idLayout = -1
+    protected abstract var idLayout: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentView()
+        initEvent()
         fullScreen()
     }
 
@@ -59,6 +60,8 @@ open class ActivityAmbient<binding> : AppCompatActivity() {
     }
 
     open fun initView() {}
+
+    open fun initEvent() {}
 
     companion object {
         private const val NAVIGATION_MODE = "navigation_mode"
