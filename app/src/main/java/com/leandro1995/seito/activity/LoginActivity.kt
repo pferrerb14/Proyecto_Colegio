@@ -22,7 +22,7 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
         }
     }
 
-    override fun initEvent() {
+    override fun initEventToAction() {
         lifecycleScope {
             loginViewModel.event.collect { loginIntentEvent ->
                 loginIntentEventConfig.initConfig(event = loginIntentEvent)
