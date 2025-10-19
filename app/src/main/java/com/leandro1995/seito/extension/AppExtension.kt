@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 
-fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int) =
+fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
     DataBindingUtil.setContentView<T>(this, idLayout)
 
 fun Activity.lifecycleScope(method: suspend () -> Unit) {
