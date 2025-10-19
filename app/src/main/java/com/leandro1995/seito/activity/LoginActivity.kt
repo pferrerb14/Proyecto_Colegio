@@ -1,13 +1,14 @@
 package com.leandro1995.seito.activity
 
-import android.os.Bundle
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.databinding.ActivityLoginBinding
 
-class LoginActivity : ActivityAmbient() {
+class LoginActivity : ActivityAmbient<ActivityLoginBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_login)
-        super.onCreate(savedInstanceState)
+    override var idLayout: Int = R.layout.activity_login
+
+    override fun initView() {
+
     }
 }

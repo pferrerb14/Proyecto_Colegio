@@ -8,12 +8,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.leandro1995.seito.extension.binding
 
 
-open class ActivityAmbient : AppCompatActivity() {
+open class ActivityAmbient<binding> : AppCompatActivity() {
+
+    protected var dataBinding: binding? = null
+
+    protected open var idLayout = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        contentView()
         fullScreen()
     }
 
@@ -43,6 +49,16 @@ open class ActivityAmbient : AppCompatActivity() {
             false
         }
     }
+
+    private fun contentView() {
+        if (idLayout != -1) {
+            if (dataBinding == null) {
+                dataBinding = binding(idLayout = idLayout)
+            }
+        }
+    }
+
+    open fun initView() {}
 
     companion object {
         private const val NAVIGATION_MODE = "navigation_mode"

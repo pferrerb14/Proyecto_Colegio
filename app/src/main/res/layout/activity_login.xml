@@ -1,139 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/blue_0066FF"
     tools:context=".activity.LoginActivity">
 
-    <LinearLayout
-        android:layout_width="@dimen/dimen_0"
-        android:layout_height="@dimen/dimen_0"
-        android:layout_marginStart="@dimen/dimen_0"
-        android:layout_marginTop="@dimen/dimen_0"
-        android:layout_marginEnd="@dimen/dimen_0"
-        android:layout_marginBottom="@dimen/dimen_0"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/dimen_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_school_login"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            style="@style/TitleBody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:text="@string/app_name" />
-
-        <TextView
-            style="@style/SubTitleBody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/school_text" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_0066FF">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
-            android:background="@drawable/background_content_user_type_login"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_0"
+            android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/dimen_20">
+            android:padding="@dimen/dimen_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_school_login"
+                tools:ignore="ContentDescription" />
 
             <TextView
-                style="@style/TextBody"
-                android:layout_width="match_parent"
+                style="@style/TitleBody"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_as_text" />
+                android:layout_marginTop="@dimen/dimen_20"
+                android:text="@string/app_name" />
+
+            <TextView
+                style="@style/SubTitleBody"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/school_text" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_40"
-                android:layout_gravity="center"
-                android:background="@drawable/background_user_type"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:background="@drawable/background_content_user_type_login"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_20">
 
                 <TextView
                     style="@style/TextBody"
-                    android:layout_width="@dimen/dimen_0"
-                    android:layout_height="@dimen/dimen_30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_as_text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_40"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen_2"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_select_user_type"
+                    android:background="@drawable/background_user_type"
                     android:gravity="center"
-                    android:text="@string/student_text"
-                    android:textAlignment="center"
-                    android:textColor="@color/white_FFFFFF" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextBody"
+                        android:layout_width="@dimen/dimen_0"
+                        android:layout_height="@dimen/dimen_30"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_2"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_select_user_type"
+                        android:gravity="center"
+                        android:text="@string/student_text"
+                        android:textAlignment="center"
+                        android:textColor="@color/white_FFFFFF" />
+
+                    <TextView
+                        style="@style/TextBody"
+                        android:layout_width="@dimen/dimen_0"
+                        android:layout_height="@dimen/dimen_30"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/teacher_text"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        style="@style/TextBody"
+                        android:layout_width="@dimen/dimen_0"
+                        android:layout_height="@dimen/dimen_30"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/admin_text"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/TextBody"
-                    android:layout_width="@dimen/dimen_0"
-                    android:layout_height="@dimen/dimen_30"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/teacher_text"
-                    android:textAlignment="center" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/email_text" />
+
+                <EditText
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    tools:ignore="Autofill,LabelFor" />
 
                 <TextView
                     style="@style/TextBody"
-                    android:layout_width="@dimen/dimen_0"
-                    android:layout_height="@dimen/dimen_30"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/admin_text"
-                    android:textAlignment="center" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/password_text" />
+
+                <EditText
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:text="@string/get_into_button" />
 
             </LinearLayout>
 
-            <TextView
-                style="@style/TextBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="@string/email_text" />
-
-            <EditText
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                tools:ignore="Autofill,LabelFor" />
-
-            <TextView
-                style="@style/TextBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="@string/password_text" />
-
-            <EditText
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:ems="10"
-                android:inputType="textPassword"
-                tools:ignore="Autofill,LabelFor" />
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Button"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:text="@string/get_into_button" />
-
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
