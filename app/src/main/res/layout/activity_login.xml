@@ -125,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:ems="10"
                     android:inputType="textEmailAddress"
+                    android:text="@={loginViewModel.user.email}"
                     tools:ignore="Autofill,LabelFor" />
 
                 <TextView
@@ -139,12 +140,14 @@
                     android:layout_width="match_parent"
                     android:ems="10"
                     android:inputType="textPassword"
+                    android:text="@={loginViewModel.user.password}"
                     tools:ignore="Autofill,LabelFor" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/dimen_20"
+                    android:onClick="@{()-> loginViewModel.actionButton.invoke(loginViewModel.LOGIN_VALIDATION)}"
                     android:text="@string/get_into_button" />
 
             </LinearLayout>
