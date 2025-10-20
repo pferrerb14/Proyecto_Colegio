@@ -5,14 +5,18 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.databinding.ActivityLoginBinding
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.intent.callback.action.LoginIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.LoginIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.LoginIntentActionConfig
 import com.leandro1995.seito.intent.config.event.LoginIntentEventConfig
 import com.leandro1995.seito.util.design.LoginUtilDesign
 import com.leandro1995.seito.viewmodel.LoginViewModel
 
-class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventCallBack {
+class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventCallBack,
+    LoginIntentActionCallBack {
     private val loginViewModel by viewModels<LoginViewModel>()
     private val loginIntentEventConfig = LoginIntentEventConfig(loginIntentEventCallBack = this)
+    private val loginIntentActionConfig = LoginIntentActionConfig(loginIntentActionCallBack = this)
 
     override var idLayout: Int = R.layout.activity_login
 
@@ -26,6 +30,12 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
         lifecycleScope {
             loginViewModel.event.collect { loginIntentEvent ->
                 loginIntentEventConfig.initConfig(event = loginIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            loginViewModel.action.collect { loginIntentAction ->
+                loginIntentActionConfig.initConfig(event = loginIntentAction)
             }
         }
     }

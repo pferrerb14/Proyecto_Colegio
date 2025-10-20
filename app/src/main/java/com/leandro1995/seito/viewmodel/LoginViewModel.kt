@@ -1,10 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.intent.action.LoginIntentAction
 import com.leandro1995.seito.intent.event.LoginIntentEvent
 import com.leandro1995.seito.model.entity.ambient.User
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
-class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
+class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
 
     val user = User()
 
@@ -23,7 +24,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
             }
 
             LOGIN_VALIDATION -> {
-
+                loginValidation()
             }
         }
     }
@@ -44,7 +45,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         if (user.isLogin()) {
 
         } else {
-            
+
         }
     }
 
