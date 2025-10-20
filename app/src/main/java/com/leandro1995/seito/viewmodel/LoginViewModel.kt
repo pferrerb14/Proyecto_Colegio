@@ -1,7 +1,9 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.intent.action.LoginIntentAction
 import com.leandro1995.seito.intent.event.LoginIntentEvent
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.ambient.User
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -42,10 +44,10 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
     }
 
     private fun loginValidation() {
-        if (user.isLogin()) {
+        if (!user.isLogin()) {
 
         } else {
-
+            emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_empty_fields_message)))
         }
     }
 

@@ -12,4 +12,7 @@
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
+
+    <!-- Message -->
+    <string name="no_empty_fields_message">No ingreso datos en los campos</string>
 </resources>

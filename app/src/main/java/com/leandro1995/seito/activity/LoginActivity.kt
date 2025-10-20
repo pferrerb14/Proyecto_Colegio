@@ -9,6 +9,7 @@ import com.leandro1995.seito.intent.callback.action.LoginIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.LoginIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.LoginIntentActionConfig
 import com.leandro1995.seito.intent.config.event.LoginIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.util.design.LoginUtilDesign
 import com.leandro1995.seito.viewmodel.LoginViewModel
 
@@ -62,5 +63,9 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
                 context = this@LoginActivity, active = it.adminText, it.studentText, it.teacherText
             )
         }
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+
     }
 }
