@@ -10,6 +10,7 @@ espressoCore = "3.7.0"
 appcompat = "1.7.1"
 kotlinxCoroutinesCore = "1.10.2"
 lifecycleRuntimeKtx = "2.9.4"
+lottie = "6.6.10"
 material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
@@ -45,6 +46,8 @@ google-firebase-perf = { module = "com.google.firebase:firebase-perf" }
 google-firebase-crashlytics-ndk = { module = "com.google.firebase:firebase-crashlytics-ndk" }
 
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+
+github-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
