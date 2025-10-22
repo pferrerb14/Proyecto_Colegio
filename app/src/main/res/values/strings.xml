@@ -19,6 +19,7 @@
     <string name="no_email_message">No ingreso un correo electrónico</string>
     <string name="no_password_message">No ingreso un correo electronico</string>
     <string name="no_email_format_message">Ingrese un correo valido</string>
+    <string name="internet_connection_message">No tienes conexión a internet</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
