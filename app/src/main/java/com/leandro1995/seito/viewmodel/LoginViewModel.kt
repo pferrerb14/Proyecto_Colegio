@@ -79,6 +79,10 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
         })
     }
 
+    override fun loading(idService: Int) {
+
+    }
+
     companion object {
         const val STUDENT_TYPE = 0
         const val TEACHER_TYPE = 1

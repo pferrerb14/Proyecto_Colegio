@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.runBlocking
 
 open class ViewModelAmbient<A, E> : ViewModel() {
-    
+
     private val uiAction: MutableStateFlow<A?> by lazy {
         MutableStateFlow(null)
     }
@@ -32,4 +32,6 @@ open class ViewModelAmbient<A, E> : ViewModel() {
     }
 
     protected open fun event(action: Int) {}
+
+    protected open fun loading(idService: Int) {}
 }
