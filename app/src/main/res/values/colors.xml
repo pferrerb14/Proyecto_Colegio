@@ -14,4 +14,8 @@
     <color name="grey_F1F1F3">#F1F1F3</color>
     <color name="grey_E3E5E9">#E3E5E9</color>
 
+    <!-- Opacity -->
+    <!-- White -->
+    <color name="white_opacity_80">#CCFFFFFF</color>
+
 </resources>
