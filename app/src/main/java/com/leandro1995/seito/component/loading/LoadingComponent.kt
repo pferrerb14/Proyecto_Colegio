@@ -14,4 +14,8 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     init {
         onCreateView()
     }
+
+    override fun visibility(isVisible: Boolean) {
+        dataBinding?.loadingConstraint?.visibility = if (isVisible) VISIBLE else GONE
+    }
 }

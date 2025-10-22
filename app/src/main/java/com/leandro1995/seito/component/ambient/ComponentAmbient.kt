@@ -21,4 +21,6 @@ abstract class ComponentAmbient<binding : ViewDataBinding> @JvmOverloads constru
             }
         }
     }
+
+    open fun visibility(isVisible: Boolean) {}
 }
