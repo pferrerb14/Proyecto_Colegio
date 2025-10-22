@@ -1,6 +1,9 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -48,6 +51,8 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation (platform(libs.google.firebase.bom))
+    implementation (libs.google.firebase.analytics)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
