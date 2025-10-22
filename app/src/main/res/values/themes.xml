@@ -39,7 +39,7 @@
     <style name="EditText">
         <item name="android:textSize">@dimen/dimen_15</item>
         <item name="android:paddingStart">@dimen/dimen_10</item>
-        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_height">@dimen/dimen_35</item>
         <item name="android:background">@drawable/background_edit_text</item>
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textColor">@color/black_000000</item>
@@ -53,6 +53,13 @@
         <item name="cornerRadius">@dimen/dimen_10</item>
         <item name="android:textColor">@color/white_FFFFFF</item>
     </style>
+
+    <style name="LoadingComponentTextBody">
+        <item name="android:fontFamily">@font/semi_bold</item>
+        <item name="android:textSize">@dimen/text_25</item>
+        <item name="android:textColor">@color/blue_0066FF</item>
+    </style>
+
 
     <!-- Dialog -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
