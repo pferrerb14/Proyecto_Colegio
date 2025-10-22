@@ -11,6 +11,7 @@ import com.leandro1995.seito.intent.config.action.LoginIntentActionConfig
 import com.leandro1995.seito.intent.config.event.LoginIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.util.design.LoginUtilDesign
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.LoginViewModel
 
 class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventCallBack,
@@ -66,6 +67,8 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
-
+        AppUtilDialog.dialogMaterialDesign(
+            context = this@LoginActivity, alertMessage = alertMessage
+        )
     }
 }
