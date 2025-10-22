@@ -2,7 +2,6 @@ package com.leandro1995.seito.component.ambient
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import com.leandro1995.seito.extension.binding
@@ -11,11 +10,15 @@ abstract class ComponentAmbient<binding : ViewDataBinding> @JvmOverloads constru
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
-    protected abstract val idLayout: Int
+    protected var dataBinding: binding? = null
 
-    init {
-        onCreateView(dataBinding = (context as AppCompatActivity).binding(idLayout = idLayout))
+    protected abstract var idLayout: Int
+
+    protected fun onCreateView() {
+        if (idLayout != -1) {
+            if (dataBinding == null) {
+                dataBinding = binding(context = context, idLayout = idLayout)
+            }
+        }
     }
-
-    protected abstract fun onCreateView(dataBinding: binding?)
 }

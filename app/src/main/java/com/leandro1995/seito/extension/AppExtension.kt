@@ -1,6 +1,9 @@
 package com.leandro1995.seito.extension
 
 import android.app.Activity
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -14,6 +17,9 @@ import java.util.regex.Pattern
 
 fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
     DataBindingUtil.setContentView<T>(this, idLayout)
+
+fun <T : ViewDataBinding> ViewGroup.binding(context: Context, @LayoutRes idLayout: Int): T? =
+    DataBindingUtil.inflate<T>(LayoutInflater.from(context), idLayout, this, true)
 
 fun Activity.lifecycleScope(method: suspend () -> Unit) {
     (this as AppCompatActivity).lifecycleScope.launch {
