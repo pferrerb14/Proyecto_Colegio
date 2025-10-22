@@ -17,4 +17,5 @@
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
     <string name="no_email_message">No ingreso un correo electrónico</string>
     <string name="no_password_message">No ingreso un correo electronico</string>
+    <string name="no_email_format_message">Ingrese un correo valido</string>
 </resources>
