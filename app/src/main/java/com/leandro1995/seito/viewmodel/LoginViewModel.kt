@@ -44,10 +44,12 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
     }
 
     private fun loginValidation() {
-        if (!user.isLogin()) {
+        when {
+            user.isLogin() -> {
+                emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_empty_fields_message)))
+            }
 
-        } else {
-            emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_empty_fields_message)))
+            else -> {}
         }
     }
 
