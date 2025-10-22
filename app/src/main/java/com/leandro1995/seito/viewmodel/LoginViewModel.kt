@@ -28,6 +28,10 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             LOGIN_VALIDATION -> {
                 loginValidation()
             }
+
+            LOGIN_FIREBASE -> {
+                loginFirebase()
+            }
         }
     }
 
@@ -61,8 +65,18 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_email_format_message)))
             }
 
-            else -> {}
+            else -> {
+                actionButton.invoke(LOGIN_FIREBASE)
+            }
         }
+    }
+
+    private fun loginFirebase() {
+        user.loginFirebase(success = { email ->
+
+        }, error = {
+
+        })
     }
 
     companion object {
@@ -70,5 +84,6 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
         const val TEACHER_TYPE = 1
         const val ADMIN_TYPE = 2
         const val LOGIN_VALIDATION = 3
+        private const val LOGIN_FIREBASE = 4
     }
 }
