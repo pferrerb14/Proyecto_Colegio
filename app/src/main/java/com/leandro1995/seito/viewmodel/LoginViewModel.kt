@@ -49,6 +49,14 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_empty_fields_message)))
             }
 
+            user.isEmail() -> {
+                emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_email_message)))
+            }
+
+            user.isPassword() -> {
+                emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_password_message)))
+            }
+
             else -> {}
         }
     }

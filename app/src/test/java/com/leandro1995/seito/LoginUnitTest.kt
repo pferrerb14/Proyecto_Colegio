@@ -16,4 +16,18 @@ class LoginUnitTest : TestAmbient() {
             loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
         })
     }
+
+    @Test
+    fun isEmptyEmail() = runBlocking {
+        test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
+            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+        })
+    }
+
+    @Test
+    fun isEmptyPassword() = runBlocking {
+        test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
+            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+        })
+    }
 }

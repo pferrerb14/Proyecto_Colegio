@@ -4,7 +4,7 @@ class User(var email: String = "", var password: String = "") {
 
     fun isLogin() = isEmail() && isPassword()
 
-    private fun isEmail() = email.isEmpty()
+    fun isEmail() = email.isEmpty()
 
-    private fun isPassword() = password.isEmpty()
+    fun isPassword() = password.isEmpty()
 }
