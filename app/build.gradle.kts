@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
+    alias(libs.plugins.google.firebase.perf)
+    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 android {
@@ -53,6 +55,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation (platform(libs.google.firebase.bom))
     implementation (libs.google.firebase.analytics)
+    implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.messaging)
+    implementation(libs.google.firebase.perf)
+    implementation(libs.google.firebase.crashlytics.ndk)
+    implementation(libs.play.services.auth)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)

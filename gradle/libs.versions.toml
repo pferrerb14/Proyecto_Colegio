@@ -13,8 +13,11 @@ lifecycleRuntimeKtx = "2.9.4"
 material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
+playServicesAuth = "21.4.0"
 turbine = "1.2.1"
-gooleServices = "4.4.4"
+googleServices = "4.4.4"
+googFirebaselePerf = "2.0.1"
+googFirebaseCrashlytics = "3.0.6"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -36,8 +39,16 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 google-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomVersion" }
 google-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
+google-firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
+google-firebase-perf = { module = "com.google.firebase:firebase-perf" }
+google-firebase-crashlytics-ndk = { module = "com.google.firebase:firebase-crashlytics-ndk" }
+
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-google-services = { id = "com.google.gms.google-services", version.ref = "gooleServices" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+google-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "googFirebaselePerf" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googFirebaseCrashlytics" }
