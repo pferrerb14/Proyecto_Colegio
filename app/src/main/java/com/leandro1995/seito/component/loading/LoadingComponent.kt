@@ -6,6 +6,7 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
 import com.leandro1995.seito.component.ambient.ComponentAmbient
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.component.util.NetworkUtil
 import com.leandro1995.seito.databinding.ComponentLoadingBinding
 import com.leandro1995.seito.model.design.AlertMessage
@@ -24,11 +25,11 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
         onCreateView()
     }
 
-    fun start(method: suspend () -> Unit) {
+    fun startService(idService: Int, method: suspend (idService: Int) -> Unit) {
         if (!networkUtil.isInternetAvailable()) {
             visibility(isVisible = true)
             backGroundCoroutine.start {
-                method()
+                method(idService)
                 visibility(isVisible = false)
             }
         } else {
