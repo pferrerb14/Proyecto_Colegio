@@ -1,7 +1,6 @@
 package com.leandro1995.seito.viewmodel.ambient
 
 import androidx.lifecycle.ViewModel
-import com.leandro1995.seito.component.model.Loading
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
