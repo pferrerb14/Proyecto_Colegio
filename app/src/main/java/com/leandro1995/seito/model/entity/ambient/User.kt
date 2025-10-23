@@ -3,7 +3,15 @@ package com.leandro1995.seito.model.entity.ambient
 import com.leandro1995.seito.extension.isEmailFormat
 import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
 
-class User(var email: String = "", var password: String = "") {
+open class User(
+    val name: String = "",
+    val lastName: String = "",
+    var email: String = "",
+    val age: Int = -1,
+    val sex: String = "",
+    val code: String = "",
+    var password: String = ""
+) {
 
     fun loginFirebase(success: (email: String) -> Unit, error: () -> Unit) {
         AuthenticationFCM().signInWithEmailAndPassword(
