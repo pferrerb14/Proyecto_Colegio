@@ -87,9 +87,9 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
 
     private fun loginFirebase() {
         user.loginFirebase(success = { email ->
-            Log.e("ENTRAA","SIIIII")
+            Log.e("ENTRAA", "SIIIII")
         }, error = {
-            Log.e("ENTRAA","NOOOOO")
+            emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
         })
 
         loading()
