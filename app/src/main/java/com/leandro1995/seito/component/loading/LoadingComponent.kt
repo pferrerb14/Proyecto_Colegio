@@ -26,20 +26,20 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     }
 
     fun startService(loading: Loading, method: suspend () -> Unit) {
-        if (networkUtil.isInternetAvailable()) {
-            if (loading.idService != -1) {
+        if (loading.idService != -1) {
+            if (networkUtil.isInternetAvailable()) {
                 visibility(isVisible = true)
                 backGroundCoroutine.start {
                     method()
                 }
             } else {
-                visibility(isVisible = loading.isVisible)
+                AppUtilDialog.dialogMaterialDesign(
+                    context = context,
+                    alertMessage = AlertMessage(idMessage = R.string.internet_connection_message)
+                )
             }
         } else {
-            AppUtilDialog.dialogMaterialDesign(
-                context = context,
-                alertMessage = AlertMessage(idMessage = R.string.internet_connection_message)
-            )
+            visibility(isVisible = false)
         }
     }
 
