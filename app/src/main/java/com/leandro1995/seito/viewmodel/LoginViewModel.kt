@@ -30,10 +30,6 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             LOGIN_VALIDATION -> {
                 loginValidation()
             }
-
-            LOGIN_LOADING -> {
-                loginLoading()
-            }
         }
     }
 
@@ -76,13 +72,9 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             }
 
             else -> {
-                actionButton.invoke(LOGIN_LOADING)
+                loading(loading = Loading(idService = LOGIN_FIREBASE))
             }
         }
-    }
-
-    private fun loginLoading() {
-        loading(loading = Loading(idService = LOGIN_FIREBASE))
     }
 
     private fun loginFirebase() {
@@ -103,7 +95,6 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
         const val TEACHER_TYPE = 1
         const val ADMIN_TYPE = 2
         const val LOGIN_VALIDATION = 3
-        private const val LOGIN_LOADING = 4
-        private const val LOGIN_FIREBASE = 5
+        private const val LOGIN_FIREBASE = 4
     }
 }
