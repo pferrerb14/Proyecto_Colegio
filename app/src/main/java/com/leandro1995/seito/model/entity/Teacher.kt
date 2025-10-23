@@ -1,0 +1,21 @@
+package com.leandro1995.seito.model.entity
+
+import com.leandro1995.seito.model.entity.ambient.User
+
+class Teacher(
+    name: String = "",
+    lastName: String = "",
+    email: String = "",
+    age: Int = -1,
+    sex: String = "",
+    code: String = "",
+    password: String = ""
+) : User(
+    name = name,
+    lastName = lastName,
+    email = email,
+    age = age,
+    sex = sex,
+    code = code,
+    password = password
+)
