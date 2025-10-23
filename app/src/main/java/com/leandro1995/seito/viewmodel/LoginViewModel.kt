@@ -13,6 +13,8 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     val user = User()
 
+    private var userType = STUDENT_TYPE
+
     override fun event(action: Int) {
         when (action) {
             STUDENT_TYPE -> {
@@ -42,14 +44,17 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
     }
 
     private fun studentType() {
+        userType = STUDENT_TYPE
         emit(LoginIntentEvent.StudentSelect)
     }
 
     private fun teacherType() {
+        userType = TEACHER_TYPE
         emit(LoginIntentEvent.TeacherSelect)
     }
 
     private fun adminType() {
+        userType = ADMIN_TYPE
         emit(LoginIntentEvent.AdminSelect)
     }
 
