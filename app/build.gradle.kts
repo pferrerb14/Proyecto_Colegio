@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.google.firebase.messaging)
     implementation(libs.google.firebase.perf)
     implementation(libs.google.firebase.crashlytics.ndk)
+    implementation(libs.google.firebase.firestore)
     implementation(libs.play.services.auth)
     implementation (libs.github.lottie)
     testImplementation(libs.junit)

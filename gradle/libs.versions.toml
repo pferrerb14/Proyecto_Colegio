@@ -44,6 +44,7 @@ google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 google-firebase-perf = { module = "com.google.firebase:firebase-perf" }
 google-firebase-crashlytics-ndk = { module = "com.google.firebase:firebase-crashlytics-ndk" }
+google-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 
