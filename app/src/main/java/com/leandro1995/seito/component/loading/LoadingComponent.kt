@@ -15,7 +15,6 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     ComponentAmbient<ComponentLoadingBinding>(context, attrs) {
 
-    private val networkUtil = NetworkUtil(context = context)
     private val backGroundCoroutine =
         BackGroundCoroutine(time = TIME_LONG, timeTypeCoroutine = TimeTypeCoroutine.SECONDS)
 
@@ -27,12 +26,13 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
 
     fun startService(loading: Loading, method: suspend () -> Unit) {
         if (loading.idService != -1) {
-            if (networkUtil.isInternetAvailable()) {
+            if (NetworkUtil(context = context).isInternetAvailable()) {
                 visibility(isVisible = true)
                 backGroundCoroutine.start {
                     method()
                 }
             } else {
+                visibility(isVisible = false)
                 AppUtilDialog.dialogMaterialDesign(
                     context = context,
                     alertMessage = AlertMessage(idMessage = R.string.internet_connection_message)
