@@ -1,30 +1,25 @@
 package com.leandro1995.seito.fcm.firestore
 
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
-import com.leandro1995.seito.model.entity.Student
-import com.leandro1995.seito.model.entity.Teacher
 
 class UserFirestoreFCM : FirestoreAmbientFCM() {
 
-    fun whereEqualToStudent(email: String, success: (student: Student) -> Unit, error: () -> Unit) {
+    fun whereEqualToEmail(
+        email: String,
+        success: (name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int) -> Unit,
+        error: () -> Unit
+    ) {
         whereEqualTo(
             document = USERS, field = EMAIL, value = email, success = { documentSnapshot ->
                 documentSnapshot.first().let { result ->
                     success(
-                        Student(
-                            name = toString(documentSnapshot = result, field = NAME),
-                            lastName = toString(documentSnapshot = result, field = LAST_NAME),
-                            email = toString(documentSnapshot = result, field = EMAIL),
-                            age = toInt(documentSnapshot = result, field = AGE),
-                            sex = toString(documentSnapshot = result, field = SEX),
-                            code = toString(documentSnapshot = result, field = CODE),
-                            teacher = Teacher(
-                                name = toString(
-                                    documentSnapshot = result, field = TEACHER
-                                )
-                            ),
-                            coins = toInt(documentSnapshot = result, field = COINS)
-                        )
+                        toString(documentSnapshot = result, field = NAME),
+                        toString(documentSnapshot = result, field = LAST_NAME),
+                        toInt(documentSnapshot = result, field = AGE),
+                        toString(documentSnapshot = result, field = SEX),
+                        toString(documentSnapshot = result, field = CODE),
+                        toString(documentSnapshot = result, field = TEACHER),
+                        toInt(documentSnapshot = result, field = COINS)
                     )
                 }
             }, error = error

@@ -3,6 +3,7 @@ package com.leandro1995.seito.fcm.firestore.ambient
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.getField
 
 abstract class FirestoreAmbientFCM {
 
@@ -29,7 +30,7 @@ abstract class FirestoreAmbientFCM {
         documentSnapshot.getString(field).orEmpty()
 
     protected fun toInt(documentSnapshot: DocumentSnapshot, field: String) =
-        documentSnapshot.getString(field).orEmpty().toInt()
+        documentSnapshot.getField<Int>(field) ?: -1
 
     private val firestore = Firebase.firestore
 

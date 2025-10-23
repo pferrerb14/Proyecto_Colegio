@@ -1,6 +1,5 @@
 package com.leandro1995.seito.viewmodel
 
-import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.event.LoginIntentEvent
@@ -39,6 +38,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         when (idService) {
             LOGIN_FIREBASE -> {
                 loginFirebase()
+            }
+
+            DETAIL_FIREBASE -> {
+                detailFirebase()
             }
         }
     }
@@ -84,7 +87,16 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     private fun loginFirebase() {
         user.loginFirebase(success = { email ->
-            Log.e("ENTRAA", "SIIIII")
+            detailFirebase()
+        }, error = {
+            emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+            loading()
+        })
+    }
+
+    private fun detailFirebase() {
+        user.detailFirebase(success = { name, lastName, age, sex, code, teacherName, coins ->
+            
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()
@@ -107,5 +119,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         const val ADMIN_TYPE = 2
         const val LOGIN_VALIDATION = 3
         private const val LOGIN_FIREBASE = 4
+
+        private const val DETAIL_FIREBASE = 5
     }
 }

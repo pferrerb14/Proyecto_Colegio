@@ -2,6 +2,7 @@ package com.leandro1995.seito.model.entity.ambient
 
 import com.leandro1995.seito.extension.isEmailFormat
 import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
+import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
 
 open class User(
     val name: String = "",
@@ -17,6 +18,14 @@ open class User(
         AuthenticationFCM().signInWithEmailAndPassword(
             email = email, password = password, success = success, error = error
         )
+    }
+
+    fun detailFirebase(
+        success: (
+            name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int
+        ) -> Unit, error: () -> Unit
+    ) {
+        UserFirestoreFCM().whereEqualToEmail(email = email, success = success, error = error)
     }
 
     fun isLogin() = isEmail() && isPassword()
