@@ -3,13 +3,13 @@ package com.leandro1995.seito.viewmodel
 import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
-import com.leandro1995.seito.intent.action.LoginIntentAction
 import com.leandro1995.seito.intent.event.LoginIntentEvent
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.ambient.User
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
-class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
+class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     val user = User()
 
@@ -72,7 +72,7 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             }
 
             else -> {
-                loading(loading = Loading(idService = LOGIN_FIREBASE))
+                loading(idService = LOGIN_FIREBASE)
             }
         }
     }
@@ -82,12 +82,17 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             Log.e("ENTRAA", "SIIIII")
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
-            loading(loading = Loading())
         })
     }
 
-    override fun loading(loading: Loading?) {
-        value(action = LoginIntentAction(loading = loading))
+    override fun loading(idService: Int) {
+        emit(
+            event = LoginIntentEvent.Loading(
+                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
+                    Loading(idService = idService)
+                )
+            )
+        )
     }
 
     companion object {

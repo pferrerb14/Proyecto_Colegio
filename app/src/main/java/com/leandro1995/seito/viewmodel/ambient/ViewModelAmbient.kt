@@ -36,5 +36,5 @@ open class ViewModelAmbient<A, E> : ViewModel() {
 
     protected open fun event(action: Int) {}
 
-    protected open fun loading(loading: Loading? = null) {}
+    protected open fun loading(idService: Int) {}
 }
