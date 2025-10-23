@@ -25,12 +25,15 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
         onCreateView()
     }
 
-    fun startService(idService: Int, method: suspend () -> Unit) {
+    fun startService(loading: Loading, method: suspend () -> Unit) {
         if (networkUtil.isInternetAvailable()) {
-            visibility(isVisible = true)
-            backGroundCoroutine.start {
-                method()
-                visibility(isVisible = false)
+            if (loading.idService != -1) {
+                visibility(isVisible = true)
+                backGroundCoroutine.start {
+                    method()
+                }
+            } else {
+                visibility(isVisible = loading.isVisible)
             }
         } else {
             AppUtilDialog.dialogMaterialDesign(

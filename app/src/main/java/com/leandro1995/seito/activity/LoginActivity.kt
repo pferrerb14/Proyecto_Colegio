@@ -74,7 +74,7 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
     }
 
     override fun loading(loading: Loading) {
-        dataBinding?.loadingComponent?.startService(idService = loading.idService) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
             loginViewModel.service(idService = loading.idService)
         }
     }

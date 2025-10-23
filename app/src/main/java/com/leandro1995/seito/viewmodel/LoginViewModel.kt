@@ -90,9 +90,8 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             Log.e("ENTRAA", "SIIIII")
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+            loading(loading = Loading(isVisible = false))
         })
-
-        loading()
     }
 
     override fun loading(loading: Loading?) {
