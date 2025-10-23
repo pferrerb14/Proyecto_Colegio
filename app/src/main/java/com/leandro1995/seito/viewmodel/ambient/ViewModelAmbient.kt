@@ -1,6 +1,7 @@
 package com.leandro1995.seito.viewmodel.ambient
 
 import androidx.lifecycle.ViewModel
+import com.leandro1995.seito.component.model.Loading
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -23,6 +24,8 @@ open class ViewModelAmbient<A, E> : ViewModel() {
 
     val actionButton = fun(action: Int) { event(action = action) }
 
+    open suspend fun service(idService: Int) {}
+
     protected fun value(action: A) {
         uiAction.value = action
     }
@@ -33,5 +36,5 @@ open class ViewModelAmbient<A, E> : ViewModel() {
 
     protected open fun event(action: Int) {}
 
-    protected open fun loading(idService: Int) {}
+    protected open fun loading(loading: Loading? = null) {}
 }

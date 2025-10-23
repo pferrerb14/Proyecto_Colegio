@@ -1,6 +1,8 @@
 package com.leandro1995.seito.viewmodel
 
+import android.util.Log
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.LoginIntentAction
 import com.leandro1995.seito.intent.event.LoginIntentEvent
 import com.leandro1995.seito.model.design.AlertMessage
@@ -29,6 +31,14 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
                 loginValidation()
             }
 
+            LOGIN_LOADING -> {
+                loginLoading()
+            }
+        }
+    }
+
+    override suspend fun service(idService: Int) {
+        when (idService) {
             LOGIN_FIREBASE -> {
                 loginFirebase()
             }
@@ -66,21 +76,27 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
             }
 
             else -> {
-                actionButton.invoke(LOGIN_FIREBASE)
+                actionButton.invoke(LOGIN_LOADING)
             }
         }
     }
 
-    private fun loginFirebase() {
-        user.loginFirebase(success = { email ->
-
-        }, error = {
-
-        })
+    private fun loginLoading() {
+        loading(loading = Loading(idService = LOGIN_FIREBASE))
     }
 
-    override fun loading(idService: Int) {
+    private fun loginFirebase() {
+        user.loginFirebase(success = { email ->
+            Log.e("ENTRAA","SIIIII")
+        }, error = {
+            Log.e("ENTRAA","NOOOOO")
+        })
 
+        loading()
+    }
+
+    override fun loading(loading: Loading?) {
+        value(action = LoginIntentAction(loading = loading))
     }
 
     companion object {
@@ -88,6 +104,7 @@ class LoginViewModel : ViewModelAmbient<LoginIntentAction, LoginIntentEvent>() {
         const val TEACHER_TYPE = 1
         const val ADMIN_TYPE = 2
         const val LOGIN_VALIDATION = 3
-        private const val LOGIN_FIREBASE = 4
+        private const val LOGIN_LOADING = 4
+        private const val LOGIN_FIREBASE = 5
     }
 }

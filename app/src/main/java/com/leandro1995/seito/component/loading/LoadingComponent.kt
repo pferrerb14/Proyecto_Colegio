@@ -26,7 +26,7 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     }
 
     fun startService(idService: Int, method: suspend () -> Unit) {
-        if (!networkUtil.isInternetAvailable()) {
+        if (networkUtil.isInternetAvailable()) {
             visibility(isVisible = true)
             backGroundCoroutine.start {
                 method()
