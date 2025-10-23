@@ -3,6 +3,7 @@ package com.leandro1995.seito.activity
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.ActivityLoginBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.intent.callback.action.LoginIntentActionCallBack
@@ -70,5 +71,9 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginIntentEventC
         AppUtilDialog.dialogMaterialDesign(
             context = this@LoginActivity, alertMessage = alertMessage
         )
+    }
+
+    override fun loading(loading: Loading) {
+
     }
 }

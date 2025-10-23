@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class LoginIntentAction
+import com.leandro1995.seito.component.model.Loading
+
+class LoginIntentAction(val loading: Loading? = null)
