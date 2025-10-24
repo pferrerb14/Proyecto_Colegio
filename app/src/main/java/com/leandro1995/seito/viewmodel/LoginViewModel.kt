@@ -96,7 +96,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     private fun detailFirebase() {
         user.detailFirebase(success = { name, lastName, age, sex, code, teacherName, coins ->
-            
+
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()

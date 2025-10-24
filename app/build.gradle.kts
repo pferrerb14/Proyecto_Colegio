@@ -1,3 +1,4 @@
+import com.google.protobuf.gradle.id
 import org.gradle.kotlin.dsl.implementation
 
 plugins {
@@ -6,6 +7,7 @@ plugins {
     alias(libs.plugins.google.services)
     alias(libs.plugins.google.firebase.perf)
     alias(libs.plugins.google.firebase.crashlytics)
+    alias(libs.plugins.google.protobuf)
 }
 
 android {
@@ -61,9 +63,27 @@ dependencies {
     implementation(libs.google.firebase.crashlytics.ndk)
     implementation(libs.google.firebase.firestore)
     implementation(libs.play.services.auth)
-    implementation (libs.github.lottie)
+    implementation(libs.github.lottie)
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.26.0"
+    }
+
+    generateProtoTasks {
+        all().configureEach {
+            builtins {
+                id("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

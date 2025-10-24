@@ -1,6 +1,7 @@
 [versions]
 agp = "8.13.0"
 coreSplashscreen = "1.0.1"
+datastoreCore = "1.1.7"
 firebaseBomVersion = "34.4.0"
 kotlin = "2.2.20"
 coreKtx = "1.17.0"
@@ -15,6 +16,8 @@ material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
 playServicesAuth = "21.4.0"
+protobufJavalite = "4.26.0"
+protobufJavalitePlugin = "0.9.5"
 turbine = "1.2.1"
 googleServices = "4.4.4"
 googFirebaselePerf = "2.0.1"
@@ -33,8 +36,11 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "datastoreCore" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
@@ -56,3 +62,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 google-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "googFirebaselePerf" }
 google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googFirebaseCrashlytics" }
+google-protobuf = { id = "com.google.protobuf", version.ref = "protobufJavalitePlugin" }
