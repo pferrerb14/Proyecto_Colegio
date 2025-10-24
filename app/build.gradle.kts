@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.github.lottie)
     implementation(libs.androidx.datastore.core)
     implementation(libs.protobuf.javalite)
+    implementation(libs.androidx.datastore)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
