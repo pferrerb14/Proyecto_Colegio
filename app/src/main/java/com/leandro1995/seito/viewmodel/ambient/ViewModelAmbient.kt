@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.runBlocking
 
 open class ViewModelAmbient<A, E> : ViewModel() {
-
+    
     private val uiAction: MutableStateFlow<A?> by lazy {
         MutableStateFlow(null)
     }
@@ -21,7 +21,7 @@ open class ViewModelAmbient<A, E> : ViewModel() {
 
     val event = uiEvent.asSharedFlow()
 
-    val actionButton = fun(action: Int) { event(action = action) }
+    val button = fun(action: Int) { event(action = action) }
 
     open suspend fun service(idService: Int) {}
 

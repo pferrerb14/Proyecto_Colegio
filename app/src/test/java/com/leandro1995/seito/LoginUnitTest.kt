@@ -13,7 +13,7 @@ class LoginUnitTest : TestAmbient() {
     @Test
     fun isEmptyField() = runBlocking {
         test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
-            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+            loginViewModel.button.invoke(LoginViewModel.LOGIN_VALIDATION)
         })
     }
 
@@ -23,7 +23,7 @@ class LoginUnitTest : TestAmbient() {
             password = "123456"
         }
         test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
-            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+            loginViewModel.button.invoke(LoginViewModel.LOGIN_VALIDATION)
         })
     }
 
@@ -33,7 +33,7 @@ class LoginUnitTest : TestAmbient() {
             email = "leccbo1995@gmail.com"
         }
         test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
-            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+            loginViewModel.button.invoke(LoginViewModel.LOGIN_VALIDATION)
         })
     }
 
@@ -44,7 +44,7 @@ class LoginUnitTest : TestAmbient() {
             password = "123456"
         }
         test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
-            loginViewModel.actionButton.invoke(LoginViewModel.LOGIN_VALIDATION)
+            loginViewModel.button.invoke(LoginViewModel.LOGIN_VALIDATION)
         })
     }
 }

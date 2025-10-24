@@ -82,7 +82,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/background_select_user_type"
                         android:gravity="center"
-                        android:onClick="@{()-> loginViewModel.actionButton.invoke(loginViewModel.STUDENT_TYPE)}"
+                        android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.STUDENT_TYPE)}"
                         android:text="@string/student_text"
                         android:textAlignment="center"
                         android:textColor="@color/white_FFFFFF" />
@@ -95,7 +95,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:onClick="@{()-> loginViewModel.actionButton.invoke(loginViewModel.TEACHER_TYPE)}"
+                        android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.TEACHER_TYPE)}"
                         android:text="@string/teacher_text"
                         android:textAlignment="center" />
 
@@ -107,7 +107,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:onClick="@{()-> loginViewModel.actionButton.invoke(loginViewModel.ADMIN_TYPE)}"
+                        android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.ADMIN_TYPE)}"
                         android:text="@string/admin_text"
                         android:textAlignment="center" />
 
@@ -147,7 +147,7 @@
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/dimen_20"
-                    android:onClick="@{()-> loginViewModel.actionButton.invoke(loginViewModel.LOGIN_VALIDATION)}"
+                    android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.LOGIN_VALIDATION)}"
                     android:text="@string/get_into_button" />
 
             </LinearLayout>
