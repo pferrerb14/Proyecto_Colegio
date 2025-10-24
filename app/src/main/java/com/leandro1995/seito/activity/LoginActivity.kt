@@ -1,5 +1,6 @@
 package com.leandro1995.seito.activity
 
+import android.content.Intent
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
@@ -61,6 +62,11 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
         AppUtilDialog.dialogMaterialDesign(
             context = this@LoginActivity, alertMessage = alertMessage
         )
+    }
+
+    override fun homeActivity() {
+        startActivity(Intent(this, HomeActivity::class.java))
+        finishAffinity()
     }
 
     override fun loading(loading: Loading) {

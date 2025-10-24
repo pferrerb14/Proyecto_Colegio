@@ -156,6 +156,8 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 }
             }
         }
+
+        emit(event = LoginIntentEvent.HomeActivity)
     }
 
     override fun loading(idService: Int) {
