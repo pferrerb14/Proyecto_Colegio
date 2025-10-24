@@ -5,12 +5,12 @@ import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
 import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
 
 open class User(
-    val name: String = "",
-    val lastName: String = "",
+    var name: String = "",
+    var lastName: String = "",
     var email: String = "",
-    val age: Int = -1,
-    val sex: String = "",
-    val code: String = "",
+    var age: Int = -1,
+    var sex: String = "",
+    var code: String = "",
     var password: String = ""
 ) {
 

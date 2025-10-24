@@ -10,8 +10,8 @@ class Student(
     sex: String = "",
     code: String = "",
     password: String = "",
-    val teacher: Teacher = Teacher(),
-    val coins: Int = -1
+    var teacher: Teacher = Teacher(),
+    var coins: Int = -1
 ) : User(
     name = name,
     lastName = lastName,

@@ -5,12 +5,17 @@ import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.event.LoginIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Student
+import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.model.entity.ambient.User
+import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     val user = User()
+    private var student = Student()
+    private var teacher = Teacher()
 
     private var userType = STUDENT_TYPE
 
@@ -42,6 +47,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
             DETAIL_FIREBASE -> {
                 detailFirebase()
+            }
+
+            USER_PROTO_DATA_STORE -> {
+                userProtoDataStore()
             }
         }
     }
@@ -96,11 +105,57 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     private fun detailFirebase() {
         user.detailFirebase(success = { name, lastName, age, sex, code, teacherName, coins ->
+            when (userType) {
+                STUDENT_TYPE -> {
+                    student.name = name
+                    student.lastName = lastName
+                    student.age = age
+                    student.sex = sex
+                    student.code = code
+                    student.teacher = Teacher(name = teacherName)
+                    student.coins = coins
+                }
 
+                TEACHER_TYPE -> {
+                    teacher.name = name
+                    teacher.lastName = lastName
+                    teacher.age = age
+                    teacher.sex = sex
+                    teacher.code = code
+                }
+            }
+
+            loading(idService = USER_PROTO_DATA_STORE)
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()
         })
+    }
+
+    suspend fun userProtoDataStore() {
+        when (userType) {
+            STUDENT_TYPE -> {
+                UserProtoDataStoreConfig.let { protoDataStore ->
+                    protoDataStore.setName(student.name)
+                    protoDataStore.setLastName(student.lastName)
+                    protoDataStore.setAge(student.age)
+                    protoDataStore.setSex(student.sex)
+                    protoDataStore.setCode(student.code)
+                    protoDataStore.setNameTeacher(student.teacher.name)
+                    protoDataStore.setCoins(student.coins)
+                }
+            }
+
+            TEACHER_TYPE -> {
+                UserProtoDataStoreConfig.let { protoDataStore ->
+                    protoDataStore.setName(teacher.name)
+                    protoDataStore.setLastName(teacher.lastName)
+                    protoDataStore.setAge(teacher.age)
+                    protoDataStore.setSex(teacher.sex)
+                    protoDataStore.setCode(teacher.code)
+                }
+            }
+        }
     }
 
     override fun loading(idService: Int) {
@@ -121,5 +176,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         private const val LOGIN_FIREBASE = 4
 
         private const val DETAIL_FIREBASE = 5
+        private const val USER_PROTO_DATA_STORE = 6
     }
 }
