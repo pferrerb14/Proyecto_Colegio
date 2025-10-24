@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "com.leandro1995.seito";
+option java_multiple_files = true;
+
+message UserProtoDataStore {
+  string name = 1;
+  string last_name = 2;
+  string email = 3;
+  int32 age = 4;
+  string sex = 5;
+  string code = 6;
+  string name_teacher = 7;
+  int32 coins = 8;
+}

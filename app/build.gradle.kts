@@ -1,6 +1,13 @@
+import com.google.protobuf.gradle.id
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.google.firebase.perf)
+    alias(libs.plugins.google.firebase.crashlytics)
+    alias(libs.plugins.google.protobuf)
 }
 
 android {
@@ -23,8 +30,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -34,6 +40,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -45,7 +54,37 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(platform(libs.google.firebase.bom))
+    implementation(libs.google.firebase.analytics)
+    implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.messaging)
+    implementation(libs.google.firebase.perf)
+    implementation(libs.google.firebase.crashlytics.ndk)
+    implementation(libs.google.firebase.firestore)
+    implementation(libs.play.services.auth)
+    implementation(libs.github.lottie)
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.protobuf.javalite)
+    implementation(libs.androidx.datastore)
     testImplementation(libs.junit)
+    testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.26.0"
+    }
+
+    generateProtoTasks {
+        all().configureEach {
+            builtins {
+                id("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

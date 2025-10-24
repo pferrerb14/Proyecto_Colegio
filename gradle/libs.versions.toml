@@ -1,6 +1,8 @@
 [versions]
 agp = "8.13.0"
 coreSplashscreen = "1.0.1"
+datastoreCore = "1.1.7"
+firebaseBomVersion = "34.4.0"
 kotlin = "2.2.20"
 coreKtx = "1.17.0"
 junit = "4.13.2"
@@ -8,9 +10,18 @@ junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 appcompat = "1.7.1"
 kotlinxCoroutinesCore = "1.10.2"
+lifecycleRuntimeKtx = "2.9.4"
+lottie = "6.6.10"
 material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
+playServicesAuth = "21.4.0"
+protobufJavalite = "4.26.0"
+protobufJavalitePlugin = "0.9.5"
+turbine = "1.2.1"
+googleServices = "4.4.4"
+googFirebaselePerf = "2.0.1"
+googFirebaseCrashlytics = "3.0.6"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,9 +35,32 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "datastoreCore" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastoreCore" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+
+protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
+
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+
+google-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBomVersion" }
+google-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
+google-firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
+google-firebase-perf = { module = "com.google.firebase:firebase-perf" }
+google-firebase-crashlytics-ndk = { module = "com.google.firebase:firebase-crashlytics-ndk" }
+google-firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
+
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+
+github-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+google-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "googFirebaselePerf" }
+google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googFirebaseCrashlytics" }
+google-protobuf = { id = "com.google.protobuf", version.ref = "protobufJavalitePlugin" }

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
     <!-- Blue -->
     <color name="blue_0066FF">#0066FF</color>
+
+    <!-- White -->
+    <color name="white_FFFFFF">#FFFFFF</color>
+
+    <!-- Black -->
+    <color name="black_000000">#000000</color>
+
+    <!-- Grey -->
+    <color name="grey_F5F7FA">#F5F7FA</color>
+    <color name="grey_F1F1F3">#F1F1F3</color>
+    <color name="grey_E3E5E9">#E3E5E9</color>
+
+    <!-- Opacity -->
+    <!-- White -->
+    <color name="white_opacity_80">#CCFFFFFF</color>
+
 </resources>

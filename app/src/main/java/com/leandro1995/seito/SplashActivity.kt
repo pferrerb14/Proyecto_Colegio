@@ -1,9 +1,11 @@
 package com.leandro1995.seito
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.leandro1995.seito.activity.LoginActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
 
@@ -18,7 +20,8 @@ class SplashActivity : AppCompatActivity() {
         BackGroundCoroutine(
             time = TIME_SKIP, timeTypeCoroutine = TimeTypeCoroutine.SECONDS
         ).start {
-
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            finishAffinity()
         }
     }
 
