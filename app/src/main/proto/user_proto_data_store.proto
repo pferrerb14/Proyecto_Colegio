@@ -10,4 +10,6 @@ message UserProtoDataStore {
   int32 age = 4;
   string sex = 5;
   string code = 6;
+  string name_teacher = 7;
+  int32 coins = 8;
 }
