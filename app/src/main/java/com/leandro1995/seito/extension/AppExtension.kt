@@ -13,9 +13,9 @@ import androidx.datastore.dataStore
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.leandro1995.seito.UserPreferences
+import com.leandro1995.seito.UserProtoDataStore
 import com.leandro1995.seito.config.Setting
-import com.leandro1995.seito.protodatastore.serializer.UserPreferencesSerializer
+import com.leandro1995.seito.protodatastore.serializer.UserProtoDataStoreSerializer
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
@@ -35,6 +35,6 @@ fun Activity.lifecycleScope(method: suspend () -> Unit) {
 
 fun String.isEmailFormat() = Pattern.compile(Setting.EMAIL_REGEX).matcher(this).matches()
 
-val Context.userPreferencesStore: DataStore<UserPreferences> by dataStore(
-    fileName = Setting.NAME_FILE_DATA_STORE, serializer = UserPreferencesSerializer
+val Context.userProtoDataStore: DataStore<UserProtoDataStore> by dataStore(
+    fileName = Setting.NAME_FILE_DATA_STORE, serializer = UserProtoDataStoreSerializer
 )
