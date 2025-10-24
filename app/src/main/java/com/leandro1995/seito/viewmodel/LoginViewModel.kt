@@ -135,24 +135,24 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
     suspend fun userProtoDataStore() {
         when (userType) {
             STUDENT_TYPE -> {
-                UserProtoDataStoreConfig.let { protoDataStore ->
-                    protoDataStore.setName(student.name)
-                    protoDataStore.setLastName(student.lastName)
-                    protoDataStore.setAge(student.age)
-                    protoDataStore.setSex(student.sex)
-                    protoDataStore.setCode(student.code)
-                    protoDataStore.setNameTeacher(student.teacher.name)
-                    protoDataStore.setCoins(student.coins)
+                with(UserProtoDataStoreConfig) {
+                    setName(student.name)
+                    setLastName(student.lastName)
+                    setAge(student.age)
+                    setSex(student.sex)
+                    setCode(student.code)
+                    setNameTeacher(student.teacher.name)
+                    setCoins(student.coins)
                 }
             }
 
             TEACHER_TYPE -> {
-                UserProtoDataStoreConfig.let { protoDataStore ->
-                    protoDataStore.setName(teacher.name)
-                    protoDataStore.setLastName(teacher.lastName)
-                    protoDataStore.setAge(teacher.age)
-                    protoDataStore.setSex(teacher.sex)
-                    protoDataStore.setCode(teacher.code)
+                with(UserProtoDataStoreConfig) {
+                    setName(teacher.name)
+                    setLastName(teacher.lastName)
+                    setAge(teacher.age)
+                    setSex(teacher.sex)
+                    setCode(teacher.code)
                 }
             }
         }
