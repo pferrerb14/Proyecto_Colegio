@@ -14,8 +14,8 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     val user = User()
-    private var student = Student()
-    private var teacher = Teacher()
+    private val student = Student()
+    private val teacher = Teacher()
 
     private var userType = STUDENT_TYPE
 
