@@ -96,7 +96,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
     private fun loginFirebase() {
         user.loginFirebase(success = { email ->
-            detailFirebase()
+            loading(idService = DETAIL_FIREBASE, isDelayDisable = false)
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()
@@ -125,7 +125,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 }
             }
 
-            loading(idService = USER_PROTO_DATA_STORE)
+            loading(idService = USER_PROTO_DATA_STORE, isDelayDisable = false)
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()
@@ -160,11 +160,11 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         emit(event = LoginIntentEvent.HomeActivity)
     }
 
-    override fun loading(idService: Int) {
+    override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = LoginIntentEvent.Loading(
                 loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
-                    Loading(idService = idService)
+                    Loading(idService = idService, isDelayDisable = isDelayDisable)
                 )
             )
         )

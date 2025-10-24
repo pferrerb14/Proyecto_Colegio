@@ -28,7 +28,9 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
         if (loading.idService != -1) {
             if (NetworkUtil(context = context).isInternetAvailable()) {
                 visibility(isVisible = true)
-                backGroundCoroutine.start {
+                backGroundCoroutine.apply {
+                    isDelayDisable = loading.isDelayDisable
+                }.start {
                     method()
                 }
             } else {
@@ -48,6 +50,6 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     }
 
     companion object {
-        private const val TIME_LONG = 5L
+        private const val TIME_LONG = 2L
     }
 }
