@@ -67,6 +67,31 @@
                 android:gravity="center"
                 android:text="@string/verify_code_description_text" />
 
+            <com.chaos.view.PinView
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:cursorVisible="true"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:inputType="number"
+                android:padding="@dimen/dimen_5"
+                android:textColor="@color/black_000000"
+                android:textSize="@dimen/text_15"
+                app:cursorColor="@color/blue_0066FF"
+                app:cursorWidth="@dimen/dimen_2"
+                app:hideLineWhenFilled="false"
+                app:itemCount="@integer/pin_view_length"
+                app:itemHeight="@dimen/dimen_50"
+                app:itemRadius="@dimen/dimen_5"
+                app:itemSpacing="@dimen/dimen_15"
+                app:itemWidth="@dimen/dimen_50"
+                app:lineColor="@color/blue_0066FF"
+                app:lineWidth="@dimen/dimen_2"
+                app:viewType="rectangle" />
+
             <TextView
                 style="@style/TextBody"
                 android:layout_width="match_parent"

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="icon_animation_splash">300</integer>
+    <integer name="pin_view_length">4</integer>
 </resources>
