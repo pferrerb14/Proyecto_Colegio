@@ -138,6 +138,14 @@
                     android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.LOGIN_VALIDATION)}"
                     android:text="@string/get_into_button" />
 
+                <TextView
+                    style="@style/LinkBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:gravity="center"
+                    android:text="@string/register_student_text" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -9,6 +9,7 @@
     <string name="admin_text">Admin</string>
     <string name="email_text">Correo</string>
     <string name="password_text">Contraseña</string>
+    <string name="register_student_text">Registrar alumno</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>

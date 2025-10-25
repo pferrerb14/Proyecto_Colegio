@@ -35,6 +35,12 @@
         <item name="android:textColor">@color/black_000000</item>
     </style>
 
+    <style name="LinkBody">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/blue_0066FF</item>
+    </style>
+
     <!-- Component -->
     <style name="EditText">
         <item name="android:textSize">@dimen/dimen_15</item>
