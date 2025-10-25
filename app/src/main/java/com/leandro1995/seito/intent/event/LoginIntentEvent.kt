@@ -5,8 +5,8 @@ import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 sealed class LoginIntentEvent {
     data object StudentSelect : LoginIntentEvent()
     data object TeacherSelect : LoginIntentEvent()
-    data object AdminSelect : LoginIntentEvent()
     data object HomeActivity : LoginIntentEvent()
+    data object StudentRegister : LoginIntentEvent()
     data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
         LoginIntentEvent()
 

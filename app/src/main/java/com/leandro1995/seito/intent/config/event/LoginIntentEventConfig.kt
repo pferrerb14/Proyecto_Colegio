@@ -16,10 +16,6 @@ class LoginIntentEventConfig(private val loginIntentEventCallBack: LoginLoadingI
                 loginIntentEventCallBack?.teacherSelect()
             }
 
-            LoginIntentEvent.AdminSelect -> {
-                loginIntentEventCallBack?.adminSelect()
-            }
-
             is LoginIntentEvent.AlertMessage -> {
                 loginIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
             }
@@ -33,6 +29,10 @@ class LoginIntentEventConfig(private val loginIntentEventCallBack: LoginLoadingI
 
             LoginIntentEvent.HomeActivity -> {
                 loginIntentEventCallBack?.homeActivity()
+            }
+
+            LoginIntentEvent.StudentRegister -> {
+                loginIntentEventCallBack?.studentRegister()
             }
 
             null -> {}

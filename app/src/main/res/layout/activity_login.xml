@@ -73,7 +73,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/studentText"
+                        android:id="@+id/student_text"
                         style="@style/TextBody"
                         android:layout_width="@dimen/dimen_0"
                         android:layout_height="@dimen/dimen_30"
@@ -88,7 +88,7 @@
                         android:textColor="@color/white_FFFFFF" />
 
                     <TextView
-                        android:id="@+id/teacherText"
+                        android:id="@+id/teacher_text"
                         style="@style/TextBody"
                         android:layout_width="@dimen/dimen_0"
                         android:layout_height="@dimen/dimen_30"
@@ -97,18 +97,6 @@
                         android:gravity="center"
                         android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.TEACHER_TYPE)}"
                         android:text="@string/teacher_text"
-                        android:textAlignment="center" />
-
-                    <TextView
-                        android:id="@+id/adminText"
-                        style="@style/TextBody"
-                        android:layout_width="@dimen/dimen_0"
-                        android:layout_height="@dimen/dimen_30"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.ADMIN_TYPE)}"
-                        android:text="@string/admin_text"
                         android:textAlignment="center" />
 
                 </LinearLayout>
@@ -150,12 +138,23 @@
                     android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.LOGIN_VALIDATION)}"
                     android:text="@string/get_into_button" />
 
+                <TextView
+                    android:id="@+id/register_student_text"
+                    style="@style/LinkBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:gravity="center"
+                    android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.STUDENT_REGISTER)}"
+                    android:text="@string/register_student_text"
+                    android:visibility="gone" />
+
             </LinearLayout>
 
         </LinearLayout>
 
         <com.leandro1995.seito.component.loading.LoadingComponent
-            android:id="@+id/loadingComponent"
+            android:id="@+id/loading_component"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
             android:layout_marginStart="@dimen/dimen_0"
