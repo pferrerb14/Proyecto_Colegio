@@ -1,6 +1,7 @@
 package com.leandro1995.seito.activity
 
 import android.content.Intent
+import android.view.View
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
@@ -39,6 +40,8 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
             LoginUtilDesign.selectType(
                 context = this@LoginActivity, active = it.studentText, deactivated = it.teacherText
             )
+
+            it.registerStudentText.visibility = View.GONE
         }
     }
 
@@ -47,6 +50,8 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
             LoginUtilDesign.selectType(
                 context = this@LoginActivity, active = it.teacherText, deactivated = it.studentText
             )
+
+            it.registerStudentText.visibility = View.VISIBLE
         }
     }
 
