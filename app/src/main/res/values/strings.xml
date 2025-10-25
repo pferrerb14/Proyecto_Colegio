@@ -10,10 +10,14 @@
     <string name="email_text">Correo</string>
     <string name="password_text">Contraseña</string>
     <string name="register_student_text">Registrar alumno</string>
+    <string name="verify_code_text">Ingrese su código de verificación</string>
+    <string name="verify_code_description_text">Recuerda que este código es único y lo proporciona el centro educativo. Si aún no lo tienes, por favor acércate a solicitarlo.</string>
+    <string name="verify_code_description_length_text">Código (hasta 4): confidencial; no lo compartas</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
     <string name="accept_button">Aceptar</string>
+    <string name="verify_code_button">Verificar Código</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
