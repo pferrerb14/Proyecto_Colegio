@@ -66,6 +66,10 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
         finishAffinity()
     }
 
+    override fun studentRegister() {
+        startActivity(Intent(this, StudentRegisterActivity::class.java))
+    }
+
     override fun loading(loading: Loading) {
         dataBinding?.loadingComponent?.startService(loading = loading) {
             loginViewModel.service(idService = loading.idService)

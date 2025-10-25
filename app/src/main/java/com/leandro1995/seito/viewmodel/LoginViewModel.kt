@@ -32,6 +32,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
             LOGIN_VALIDATION -> {
                 loginValidation()
             }
+
+            STUDENT_REGISTER -> {
+                studentRegister()
+            }
         }
     }
 
@@ -123,6 +127,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         })
     }
 
+    private fun studentRegister() {
+        emit(event = LoginIntentEvent.StudentRegister)
+    }
+
     suspend fun userProtoDataStore() {
         when (userType) {
             STUDENT_TYPE -> {
@@ -165,9 +173,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         const val STUDENT_TYPE = 0
         const val TEACHER_TYPE = 1
         const val LOGIN_VALIDATION = 2
-        private const val LOGIN_FIREBASE = 3
+        const val STUDENT_REGISTER = 3
+        private const val LOGIN_FIREBASE = 4
 
-        private const val DETAIL_FIREBASE = 4
-        private const val USER_PROTO_DATA_STORE = 5
+        private const val DETAIL_FIREBASE = 5
+        private const val USER_PROTO_DATA_STORE = 6
     }
 }

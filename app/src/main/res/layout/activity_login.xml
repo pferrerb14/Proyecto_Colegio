@@ -145,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:gravity="center"
+                    android:onClick="@{()-> loginViewModel.button.invoke(loginViewModel.STUDENT_REGISTER)}"
                     android:text="@string/register_student_text"
                     android:visibility="gone" />
 

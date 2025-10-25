@@ -31,6 +31,10 @@ class LoginIntentEventConfig(private val loginIntentEventCallBack: LoginLoadingI
                 loginIntentEventCallBack?.homeActivity()
             }
 
+            LoginIntentEvent.StudentRegister -> {
+                loginIntentEventCallBack?.studentRegister()
+            }
+
             null -> {}
         }
     }
