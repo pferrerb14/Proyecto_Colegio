@@ -20,94 +20,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewFilledStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16"
-        android:layout_marginTop="@dimen/dimen_32"
-        android:layout_marginEnd="@dimen/dimen_16"
-        android:layout_marginBottom="@dimen/dimen_32"
-        android:checkable="true"
-        android:focusable="true"
-        app:cardBackgroundColor="@color/white_FFFFFF"
-        app:cardElevation="@dimen/dimen_5"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/register_student_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="@dimen/dimen_0"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout_include">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/dimen_25">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_shield"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                style="@style/TextBody2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:gravity="center"
-                android:text="@string/verify_code_text" />
-
-            <TextView
-                style="@style/TextBody3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:gravity="center"
-                android:text="@string/verify_code_description_text" />
-
-            <com.chaos.view.PinView
-                style="@style/PinWidget.PinView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen_15"
-                android:cursorVisible="true"
-                android:fontFamily="@font/regular"
-                android:gravity="center"
-                android:inputType="number"
-                android:padding="@dimen/dimen_5"
-                android:textColor="@color/black_000000"
-                android:textSize="@dimen/text_15"
-                app:cursorColor="@color/blue_0066FF"
-                app:cursorWidth="@dimen/dimen_2"
-                app:hideLineWhenFilled="false"
-                app:itemCount="@integer/pin_view_length"
-                app:itemHeight="@dimen/dimen_50"
-                app:itemRadius="@dimen/dimen_5"
-                app:itemSpacing="@dimen/dimen_15"
-                app:itemWidth="@dimen/dimen_50"
-                app:lineColor="@color/blue_0066FF"
-                app:lineWidth="@dimen/dimen_2"
-                app:viewType="rectangle" />
-
-            <TextView
-                style="@style/TextBody"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_5"
-                android:gravity="center"
-                android:text="@string/verify_code_description_length_text" />
-
-            <Button
-                style="@style/Button"
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="@string/verify_code_button" />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_student_register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
