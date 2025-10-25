@@ -37,7 +37,7 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
     override fun studentSelect() {
         dataBinding?.let {
             LoginUtilDesign.selectType(
-                context = this@LoginActivity, active = it.studentText, it.adminText, it.teacherText
+                context = this@LoginActivity, active = it.studentText, deactivated = it.teacherText
             )
         }
     }
@@ -45,15 +45,7 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
     override fun teacherSelect() {
         dataBinding?.let {
             LoginUtilDesign.selectType(
-                context = this@LoginActivity, active = it.teacherText, it.adminText, it.studentText
-            )
-        }
-    }
-
-    override fun adminSelect() {
-        dataBinding?.let {
-            LoginUtilDesign.selectType(
-                context = this@LoginActivity, active = it.adminText, it.studentText, it.teacherText
+                context = this@LoginActivity, active = it.teacherText, deactivated = it.studentText
             )
         }
     }

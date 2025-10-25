@@ -29,10 +29,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 teacherType()
             }
 
-            ADMIN_TYPE -> {
-                adminType()
-            }
-
             LOGIN_VALIDATION -> {
                 loginValidation()
             }
@@ -63,11 +59,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
     private fun teacherType() {
         userType = TEACHER_TYPE
         emit(LoginIntentEvent.TeacherSelect)
-    }
-
-    private fun adminType() {
-        userType = ADMIN_TYPE
-        emit(LoginIntentEvent.AdminSelect)
     }
 
     private fun loginValidation() {
@@ -173,11 +164,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
     companion object {
         const val STUDENT_TYPE = 0
         const val TEACHER_TYPE = 1
-        const val ADMIN_TYPE = 2
-        const val LOGIN_VALIDATION = 3
-        private const val LOGIN_FIREBASE = 4
+        const val LOGIN_VALIDATION = 2
+        private const val LOGIN_FIREBASE = 3
 
-        private const val DETAIL_FIREBASE = 5
-        private const val USER_PROTO_DATA_STORE = 6
+        private const val DETAIL_FIREBASE = 4
+        private const val USER_PROTO_DATA_STORE = 5
     }
 }
