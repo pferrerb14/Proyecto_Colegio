@@ -18,7 +18,7 @@
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
     <string name="no_email_message">No ingreso un correo electrónico</string>
-    <string name="no_password_message">No ingreso un correo electronico</string>
+    <string name="no_password_message">No ingreso una contraseña</string>
     <string name="no_email_format_message">Ingrese un correo valido</string>
     <string name="internet_connection_message">No tienes conexión a internet</string>
     <string name="no_user_message">El usuario que ingreso no existe</string>
