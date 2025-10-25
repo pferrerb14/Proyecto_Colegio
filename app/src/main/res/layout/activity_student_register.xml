@@ -8,4 +8,16 @@
     android:background="@color/grey_F3F5F8"
     tools:context=".activity.StudentRegisterActivity">
 
+    <include
+        android:id="@+id/app_bar_layout_include"
+        layout="@layout/app_bar_layout"
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_0"
+        android:layout_marginTop="@dimen/dimen_0"
+        android:layout_marginEnd="@dimen/dimen_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
