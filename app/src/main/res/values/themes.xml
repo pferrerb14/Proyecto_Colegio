@@ -4,6 +4,7 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="colorControlActivated">@color/blue_0066FF</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="android:windowBackground">@color/white_FFFFFF</item>
     </style>
 
     <style name="Theme.Seito" parent="Base.Theme.Seito" />
