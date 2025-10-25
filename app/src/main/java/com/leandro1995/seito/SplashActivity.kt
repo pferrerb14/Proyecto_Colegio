@@ -55,6 +55,6 @@ class SplashActivity : AppCompatActivity(), SplashIntentActionCallBack {
     }
 
     companion object {
-        private const val TIME_SKIP = 5L
+        private const val TIME_SKIP = 2L
     }
 }
