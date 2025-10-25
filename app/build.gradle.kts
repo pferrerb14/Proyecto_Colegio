@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.google.firebase.firestore)
     implementation(libs.play.services.auth)
     implementation(libs.github.lottie)
+    implementation(libs.github.pinview)
     implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
