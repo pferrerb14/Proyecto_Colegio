@@ -17,11 +17,13 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        contentView(inflater = inflater, container = container)
         initEventToAction()
-        return contentView(inflater = inflater, container = container)?.root
+        initView()
+        return dataBinding?.root
     }
 
-    private fun contentView(inflater: LayoutInflater, container: ViewGroup?): binding? {
+    private fun contentView(inflater: LayoutInflater, container: ViewGroup?) {
         if (idLayout != -1) {
             if (dataBinding == null) {
                 dataBinding = bindingFragment(
@@ -29,8 +31,9 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
                 )
             }
         }
-        return dataBinding
     }
 
     open fun initEventToAction() {}
+
+    open fun initView() {}
 }
