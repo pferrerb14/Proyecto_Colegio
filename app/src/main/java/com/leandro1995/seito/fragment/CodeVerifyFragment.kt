@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentCodeVerifyBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
@@ -34,5 +35,11 @@ class CodeVerifyFragment : FragmentAmbient<FragmentCodeVerifyBinding>(),
 
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
+    }
+
+    override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            codeVerifyViewModel.service(idService = loading.idService)
+        }
     }
 }

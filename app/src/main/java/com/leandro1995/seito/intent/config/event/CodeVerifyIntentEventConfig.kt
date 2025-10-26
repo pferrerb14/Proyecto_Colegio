@@ -13,7 +13,13 @@ class CodeVerifyIntentEventConfig(private val codeVerifyIntentEventCallBack: Cod
                 codeVerifyIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
             }
 
-            is CodeVerifyIntentEvent.Loading -> {}
+            is CodeVerifyIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = codeVerifyIntentEventCallBack
+                )
+            }
+
             null -> {}
         }
     }
