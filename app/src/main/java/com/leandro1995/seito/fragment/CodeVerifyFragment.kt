@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.leandro1995.seito.R
+import com.leandro1995.seito.databinding.FragmentCodeVerifyBinding
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 
-class CodeVerifyFragment : Fragment() {
+class CodeVerifyFragment : FragmentAmbient<FragmentCodeVerifyBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_code_verify, container, false)
-    }
+    override var idLayout: Int = R.layout.fragment_code_verify
 }
