@@ -30,10 +30,30 @@ class CodeVerifyViewModel : ViewModelAmbient<Any, CodeVerifyIntentEvent>() {
     }
 
     private fun codeVerify() {
-        if (!teacher.isCode() && teacher.isCodeLength(length = Setting.CODE_LENGTH)) {
-            loading(idService = CODE_VERIFY_FIREBASE)
-        } else {
-            emit(event = CodeVerifyIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.code_error_message)))
+        when {
+            teacher.isCode() -> {
+                emit(
+                    event = CodeVerifyIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.no_code_message
+                        )
+                    )
+                )
+            }
+
+            !teacher.isCodeLength(length = Setting.CODE_LENGTH) -> {
+                emit(
+                    event = CodeVerifyIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.no_code_length_message
+                        )
+                    )
+                )
+            }
+
+            else -> {
+                loading(idService = CODE_VERIFY_FIREBASE)
+            }
         }
     }
 

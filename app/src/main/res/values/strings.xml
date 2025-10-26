@@ -29,7 +29,9 @@
     <string name="no_email_format_message">Ingrese un correo valido</string>
     <string name="internet_connection_message">No tienes conexión a internet</string>
     <string name="no_user_message">El usuario que ingreso no existe</string>
-    <string name="code_error_message">El código que ingreso no es válido Inténtelo de nuevo por favor</string>
+    <string name="no_code_message">No ingreso un código</string>
+    <string name="no_code_length_message">El código ingresado no es valido</string>
+    <string name="code_error_message">El código que ingreso no es válido inténtelo de nuevo por favor</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
