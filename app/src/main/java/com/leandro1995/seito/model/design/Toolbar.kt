@@ -11,7 +11,7 @@ class Toolbar(
     @param:StringRes private val idTitle: Int,
     private val isArrow: Boolean = false
 ) {
-    fun config(method: () -> Unit) {
+    fun config(method: () -> Unit = {}) {
         materialToolbar.apply {
             title = context.getString(idTitle)
             if (isArrow) {

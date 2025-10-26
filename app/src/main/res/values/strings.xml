@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Seito</string>
 
+    <!-- Title -->
+    <string name="register_student_title">Registro de alumno</string>
+
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
     <string name="login_as_text">Iniciar sesión como</string>
