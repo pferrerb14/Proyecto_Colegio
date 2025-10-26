@@ -10,7 +10,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class CodeVerifyViewModel : ViewModelAmbient<Any, CodeVerifyIntentEvent>() {
 
-    private val teacher = Teacher()
+    val teacher = Teacher()
 
     override fun event(action: Int) {
         when (action) {

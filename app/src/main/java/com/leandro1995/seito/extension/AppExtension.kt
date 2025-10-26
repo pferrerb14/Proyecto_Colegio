@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,6 +33,14 @@ fun <T : ViewDataBinding> bindingFragment(
 fun Activity.lifecycleScope(method: suspend () -> Unit) {
     (this as AppCompatActivity).lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
+            method()
+        }
+    }
+}
+
+fun Fragment.lifecycleScope(method: suspend () -> Unit) {
+    viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             method()
         }
     }

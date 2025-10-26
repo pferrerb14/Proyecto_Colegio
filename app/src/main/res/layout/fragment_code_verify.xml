@@ -72,6 +72,7 @@
                     android:gravity="center"
                     android:inputType="number"
                     android:padding="@dimen/dimen_5"
+                    android:text="@={codeVerifyViewModel.teacher.code}"
                     android:textColor="@color/black_000000"
                     android:textSize="@dimen/text_15"
                     app:cursorColor="@color/blue_0066FF"
@@ -98,6 +99,7 @@
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/dimen_10"
+                    android:onClick="@{()-> codeVerifyViewModel.button.invoke(codeVerifyViewModel.CODE_VERIFY)}"
                     android:text="@string/verify_code_button" />
 
             </LinearLayout>

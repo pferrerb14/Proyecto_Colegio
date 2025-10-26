@@ -8,6 +8,13 @@ class CodeVerifyIntentEventConfig(private val codeVerifyIntentEventCallBack: Cod
     IntentConfigAmbient<CodeVerifyIntentEvent>() {
 
     override fun initConfig(event: CodeVerifyIntentEvent?) {
+        when (event) {
+            is CodeVerifyIntentEvent.AlertMessage -> {
+                codeVerifyIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
 
+            is CodeVerifyIntentEvent.Loading -> {}
+            null -> {}
+        }
     }
 }
