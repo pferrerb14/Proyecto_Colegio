@@ -1,5 +1,6 @@
 package com.leandro1995.seito.model.entity
 
+import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
 
 class Teacher(
@@ -13,5 +14,10 @@ class Teacher(
 ) : User(
     name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
 ) {
+
+    fun codeVerifyFirebase(success: () -> Unit, error: () -> Unit) {
+        UserFirestoreFCM().whereEqualToCode(code = code, success = success, error = error)
+    }
+
     fun isCode() = code.isEmpty()
 }

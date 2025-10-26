@@ -26,6 +26,16 @@ class UserFirestoreFCM : FirestoreAmbientFCM() {
         )
     }
 
+    fun whereEqualToCode(code: String, success: () -> Unit, error: () -> Unit) {
+        whereEqualTo(
+            document = USERS,
+            field = CODE,
+            value = code,
+            success = { _ -> success() },
+            error = error
+        )
+    }
+
     companion object {
         private const val USERS = "users"
         private const val EMAIL = "email"
