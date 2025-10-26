@@ -16,4 +16,14 @@ class CodeVerifyUnitTest : TestAmbient() {
             codeVerifyViewModel.button.invoke(CodeVerifyViewModel.CODE_VERIFY)
         })
     }
+
+    @Test
+    fun isEmptyCodeLength() = runBlocking {
+        codeVerifyViewModel.teacher.apply {
+            code = "12"
+        }
+        test<CodeVerifyIntentEvent.AlertMessage>(sharedFlow = codeVerifyViewModel.event, action = {
+            codeVerifyViewModel.button.invoke(CodeVerifyViewModel.CODE_VERIFY)
+        })
+    }
 }

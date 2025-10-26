@@ -20,4 +20,6 @@ class Teacher(
     }
 
     fun isCode() = code.isEmpty()
+
+    fun isCodeLength(length: Int) = code.length == length
 }

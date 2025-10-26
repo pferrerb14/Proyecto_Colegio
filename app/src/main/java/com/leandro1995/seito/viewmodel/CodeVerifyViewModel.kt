@@ -2,6 +2,7 @@ package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.intent.event.CodeVerifyIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
@@ -29,7 +30,7 @@ class CodeVerifyViewModel : ViewModelAmbient<Any, CodeVerifyIntentEvent>() {
     }
 
     private fun codeVerify() {
-        if (!teacher.isCode()) {
+        if (!teacher.isCode() && teacher.isCodeLength(length = Setting.CODE_LENGTH)) {
             loading(idService = CODE_VERIFY_FIREBASE)
         } else {
             emit(event = CodeVerifyIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.code_error_message)))
@@ -38,7 +39,7 @@ class CodeVerifyViewModel : ViewModelAmbient<Any, CodeVerifyIntentEvent>() {
 
     private fun codeVerifyFirebase() {
         teacher.codeVerifyFirebase(success = {
-            
+
         }, error = {
             emit(event = CodeVerifyIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.code_error_message)))
         })
