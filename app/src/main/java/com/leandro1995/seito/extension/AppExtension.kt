@@ -25,6 +25,10 @@ fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
 fun <T : ViewDataBinding> ViewGroup.binding(context: Context, @LayoutRes idLayout: Int): T? =
     DataBindingUtil.inflate<T>(LayoutInflater.from(context), idLayout, this, true)
 
+fun <T : ViewDataBinding> bindingFragment(
+    inflater: LayoutInflater, @LayoutRes idLayout: Int, container: ViewGroup?
+): T? = DataBindingUtil.inflate<T>(inflater, idLayout, container, false)
+
 fun Activity.lifecycleScope(method: suspend () -> Unit) {
     (this as AppCompatActivity).lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
