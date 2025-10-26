@@ -10,7 +10,6 @@ open class User(
     var email: String = "",
     var age: Int = -1,
     var sex: String = "",
-    var code: String = "",
     var password: String = ""
 ) {
 

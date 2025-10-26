@@ -106,7 +106,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     student.lastName = lastName
                     student.age = age
                     student.sex = sex
-                    student.code = code
                     student.teacher = Teacher(name = teacherName)
                     student.coins = coins
                 }
@@ -139,7 +138,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     setLastName(student.lastName)
                     setAge(student.age)
                     setSex(student.sex)
-                    setCode(student.code)
                     setNameTeacher(student.teacher.name)
                     setCoins(student.coins)
                 }

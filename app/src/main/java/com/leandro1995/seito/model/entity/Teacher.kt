@@ -8,14 +8,8 @@ class Teacher(
     email: String = "",
     age: Int = -1,
     sex: String = "",
-    code: String = "",
-    password: String = ""
+    password: String = "",
+    var code: String = ""
 ) : User(
-    name = name,
-    lastName = lastName,
-    email = email,
-    age = age,
-    sex = sex,
-    code = code,
-    password = password
+    name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
 )
