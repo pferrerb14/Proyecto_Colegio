@@ -12,4 +12,6 @@ class Teacher(
     var code: String = ""
 ) : User(
     name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
-)
+) {
+    fun isCode() = code.isEmpty()
+}
