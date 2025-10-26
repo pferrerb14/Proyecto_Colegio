@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.google.firebase.perf)
     alias(libs.plugins.google.firebase.crashlytics)
     alias(libs.plugins.google.protobuf)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {

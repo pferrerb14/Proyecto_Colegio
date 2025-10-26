@@ -58,8 +58,9 @@ class CodeVerifyViewModel : ViewModelAmbient<Any, CodeVerifyIntentEvent>() {
     }
 
     private fun codeVerifyFirebase() {
-        teacher.codeVerifyFirebase(success = {
+        teacher.codeVerifyFirebase(success = { teacher ->
             loading()
+            emit(event = CodeVerifyIntentEvent.StudentRegisterFragment(teacher = teacher))
         }, error = {
             emit(event = CodeVerifyIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.code_error_message)))
             loading()

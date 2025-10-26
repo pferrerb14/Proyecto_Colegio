@@ -1,6 +1,7 @@
 package com.leandro1995.seito.fcm.firestore
 
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
+import com.leandro1995.seito.model.entity.Teacher
 
 class UserFirestoreFCM : FirestoreAmbientFCM() {
 
@@ -26,13 +27,22 @@ class UserFirestoreFCM : FirestoreAmbientFCM() {
         )
     }
 
-    fun whereEqualToCode(code: String, success: () -> Unit, error: () -> Unit) {
+    fun whereEqualToCode(code: String, success: (teacher: Teacher) -> Unit, error: () -> Unit) {
         whereEqualTo(
-            document = USERS,
-            field = CODE,
-            value = code,
-            success = { _ -> success() },
-            error = error
+            document = USERS, field = CODE, value = code, success = { documentSnapshot ->
+                documentSnapshot.first().let {
+                    success(
+                        Teacher(
+                            name = toString(documentSnapshot = it, field = NAME),
+                            lastName = toString(documentSnapshot = it, field = LAST_NAME),
+                            email = toString(documentSnapshot = it, field = EMAIL),
+                            age = toInt(documentSnapshot = it, field = AGE),
+                            sex = toString(documentSnapshot = it, field = SEX),
+                            code = toString(documentSnapshot = it, field = CODE)
+                        )
+                    )
+                }
+            }, error = error
         )
     }
 

@@ -25,6 +25,7 @@ googFirebaselePerf = "2.0.1"
 googFirebaseCrashlytics = "3.0.6"
 navigationFragmentKtx = "2.9.5"
 navigationUiKtx = "2.9.5"
+kotlinPlugin = "2.2.21"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -70,3 +71,4 @@ google-services = { id = "com.google.gms.google-services", version.ref = "google
 google-firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "googFirebaselePerf" }
 google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "googFirebaseCrashlytics" }
 google-protobuf = { id = "com.google.protobuf", version.ref = "protobufJavalitePlugin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinPlugin" }

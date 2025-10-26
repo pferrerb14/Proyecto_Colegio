@@ -20,6 +20,10 @@ class CodeVerifyIntentEventConfig(private val codeVerifyIntentEventCallBack: Cod
                 )
             }
 
+            is CodeVerifyIntentEvent.StudentRegisterFragment -> {
+                codeVerifyIntentEventCallBack?.studentRegisterFragment(teacher = event.teacher)
+            }
+
             null -> {}
         }
     }

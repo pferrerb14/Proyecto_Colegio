@@ -8,4 +8,6 @@ object Setting {
     const val NAME_FILE_DATA_STORE = "seito.pb"
 
     const val CODE_LENGTH = 4
+
+    const val TEACHER_BUNDLE = "teacher_bundle"
 }

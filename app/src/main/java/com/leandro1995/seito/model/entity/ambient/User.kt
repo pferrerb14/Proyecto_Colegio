@@ -1,17 +1,20 @@
 package com.leandro1995.seito.model.entity.ambient
 
+import android.os.Parcelable
 import com.leandro1995.seito.extension.isEmailFormat
 import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
 import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 open class User(
-    var name: String = "",
-    var lastName: String = "",
-    var email: String = "",
-    var age: Int = -1,
-    var sex: String = "",
-    var password: String = ""
-) {
+    open var name: String = "",
+    open var lastName: String = "",
+    open var email: String = "",
+    open var age: Int = -1,
+    open var sex: String = "",
+    open var password: String = ""
+) : Parcelable {
 
     fun loginFirebase(success: (email: String) -> Unit, error: () -> Unit) {
         AuthenticationFCM().signInWithEmailAndPassword(
