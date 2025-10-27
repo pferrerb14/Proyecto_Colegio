@@ -8,16 +8,9 @@ class Student(
     email: String = "",
     age: Int = -1,
     sex: String = "",
-    code: String = "",
     password: String = "",
     var teacher: Teacher = Teacher(),
     var coins: Int = -1
 ) : User(
-    name = name,
-    lastName = lastName,
-    email = email,
-    age = age,
-    sex = sex,
-    code = code,
-    password = password
+    name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
 )

@@ -4,6 +4,8 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="colorControlActivated">@color/blue_0066FF</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="android:windowBackground">@color/white_FFFFFF</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.App.TitleLarge</item>
     </style>
 
     <style name="Theme.Seito" parent="Base.Theme.Seito" />
@@ -31,6 +33,18 @@
 
     <style name="TextBody">
         <item name="android:fontFamily">@font/semi_bold</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="TextBody2">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
+    <style name="TextBody3">
+        <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_12</item>
         <item name="android:textColor">@color/black_000000</item>
     </style>
@@ -66,6 +80,10 @@
         <item name="android:textColor">@color/blue_0066FF</item>
     </style>
 
+    <style name="TextAppearance.App.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/regular</item>
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
 
     <!-- Dialog -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">

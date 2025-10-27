@@ -1,21 +1,26 @@
 package com.leandro1995.seito.activity
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.databinding.ActivityStudentRegisterBinding
+import com.leandro1995.seito.model.design.Toolbar
 
-class StudentRegisterActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_student_register)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+class StudentRegisterActivity : ActivityAmbient<ActivityStudentRegisterBinding>() {
+
+    override var idLayout: Int = R.layout.activity_student_register
+
+    override var isStatusBarColorIcon: Boolean = true
+
+    override fun initView() {
+        dataBinding?.appBarLayoutInclude?.toolbar?.let {
+            Toolbar(
+                context = this,
+                materialToolbar = it,
+                idTitle = R.string.register_student_title,
+                isArrow = true
+            ).config {
+                finish()
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.ViewGroup
+import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,6 +17,8 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     protected var dataBinding: binding? = null
 
     protected abstract var idLayout: Int
+
+    open var isStatusBarColorIcon: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,17 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
                 insets
+            }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (isStatusBarColorIcon) {
+                window.decorView.getWindowInsetsController()?.setSystemBarsAppearance(
+                    APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS
+                )
+            } else {
+                window.decorView.getWindowInsetsController()
+                    ?.setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS)
             }
         }
     }

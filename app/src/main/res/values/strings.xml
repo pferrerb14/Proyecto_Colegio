@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Seito</string>
 
+    <!-- Title -->
+    <string name="register_student_title">Registro de alumno</string>
+
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
     <string name="login_as_text">Iniciar sesión como</string>
@@ -10,10 +13,14 @@
     <string name="email_text">Correo</string>
     <string name="password_text">Contraseña</string>
     <string name="register_student_text">Registrar alumno</string>
+    <string name="verify_code_text">Ingrese su código de verificación</string>
+    <string name="verify_code_description_text">Recuerda que este código es único y lo proporciona el centro educativo. Si aún no lo tienes, por favor acércate a solicitarlo.</string>
+    <string name="verify_code_description_length_text">Código (hasta 4): confidencial; no lo compartas</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
     <string name="accept_button">Aceptar</string>
+    <string name="verify_code_button">Verificar Código</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
@@ -22,7 +29,13 @@
     <string name="no_email_format_message">Ingrese un correo valido</string>
     <string name="internet_connection_message">No tienes conexión a internet</string>
     <string name="no_user_message">El usuario que ingreso no existe</string>
+    <string name="no_code_message">No ingreso un código</string>
+    <string name="no_code_length_message">El código ingresado no es valido</string>
+    <string name="code_error_message">El código que ingreso no es válido inténtelo de nuevo por favor</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

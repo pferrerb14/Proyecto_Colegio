@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.google.firebase.perf)
     alias(libs.plugins.google.firebase.crashlytics)
     alias(libs.plugins.google.protobuf)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -47,14 +48,18 @@ android {
 }
 
 dependencies {
+    implementation(libs.material)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.datastore)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.kotlinx.coroutines.core)
     implementation(platform(libs.google.firebase.bom))
     implementation(libs.google.firebase.analytics)
     implementation(libs.google.firebase.auth)
@@ -64,9 +69,8 @@ dependencies {
     implementation(libs.google.firebase.firestore)
     implementation(libs.play.services.auth)
     implementation(libs.github.lottie)
-    implementation(libs.androidx.datastore.core)
+    implementation(libs.github.pinview)
     implementation(libs.protobuf.javalite)
-    implementation(libs.androidx.datastore)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
