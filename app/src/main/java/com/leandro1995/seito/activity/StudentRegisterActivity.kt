@@ -9,6 +9,8 @@ class StudentRegisterActivity : ActivityAmbient<ActivityStudentRegisterBinding>(
 
     override var idLayout: Int = R.layout.activity_student_register
 
+    override var isStatusBarColorIcon: Boolean = true
+
     override fun initView() {
         dataBinding?.appBarLayoutInclude?.toolbar?.let {
             Toolbar(
