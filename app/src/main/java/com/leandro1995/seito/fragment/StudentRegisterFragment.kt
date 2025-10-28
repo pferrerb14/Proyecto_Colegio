@@ -1,17 +1,10 @@
 package com.leandro1995.seito.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.leandro1995.seito.R
+import com.leandro1995.seito.databinding.FragmentStudentRegisterBinding
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 
-class StudentRegisterFragment : Fragment() {
+class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_student_register, container, false)
-    }
+    override var idLayout: Int = R.layout.fragment_student_register
 }
