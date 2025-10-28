@@ -25,6 +25,9 @@
     <string name="confirm_password_text">Confirmar contraseña</string>
     <string name="additional_data_text">Datos adicionales</string>
     <string name="age_text">Edad</string>
+    <string name="sex_text">Sexo</string>
+    <string name="male_text">Masculino</string>
+    <string name="female_text">Femenino</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -37,6 +40,7 @@
     <string name="get_into_button">Ingresar</string>
     <string name="accept_button">Aceptar</string>
     <string name="verify_code_button">Verificar Código</string>
+    <string name="register_button">Registrar</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>

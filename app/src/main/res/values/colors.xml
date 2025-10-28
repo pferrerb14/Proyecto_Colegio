@@ -23,4 +23,7 @@
     <!-- White -->
     <color name="white_opacity_80">#CCFFFFFF</color>
 
+    <!-- Blue -->
+    <color name="blue_opacity_50">#80E5EDFA</color>
+
 </resources>
