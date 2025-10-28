@@ -25,6 +25,12 @@
         <item name="android:textColor">@color/white_FFFFFF</item>
     </style>
 
+    <style name="TitleBody2">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_20</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
+    </style>
+
     <style name="SubTitleBody">
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>

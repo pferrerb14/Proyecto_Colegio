@@ -8,56 +8,77 @@
 
     <LinearLayout
         android:layout_width="@dimen/dimen_0"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_0"
         android:layout_marginStart="@dimen/dimen_0"
         android:layout_marginTop="@dimen/dimen_0"
+        android:background="@drawable/background_teacher_register"
         android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_15"
+        app:layout_constraintBottom_toTopOf="@+id/teacher_Guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="DisableBaselineAlignment">
 
         <LinearLayout
-            android:layout_width="@dimen/dimen_0"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_20"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:ignore="UselessParent">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="@dimen/dimen_75"
+                android:layout_height="@dimen/dimen_80"
+                app:cardBackgroundColor="@color/blue_3383FB"
+                app:cardCornerRadius="@dimen/dimen_10"
+                app:cardElevation="@dimen/dimen_5"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:strokeColor="@color/blue_3383FB">
 
                 <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    tools:src="@tools:sample/avatars" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/dimen_7"
+                    android:src="@drawable/ic_beret"
+                    tools:ignore="ContentDescription" />
 
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="@dimen/dimen_0"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_16"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="InefficientWeight">
 
             <TextView
+                style="@style/TitleBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="@string/professor_charge_text" />
 
             <TextView
+                style="@style/SubTitleBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Leandro Castillo Borja" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/teacher_Guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@
     <string name="verify_code_text">Ingrese su código de verificación</string>
     <string name="verify_code_description_text">Recuerda que este código es único y lo proporciona el centro educativo. Si aún no lo tienes, por favor acércate a solicitarlo.</string>
     <string name="verify_code_description_length_text">Código (hasta 4): confidencial; no lo compartas</string>
+    <string name="professor_charge_text">Profesor a cargo:</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>

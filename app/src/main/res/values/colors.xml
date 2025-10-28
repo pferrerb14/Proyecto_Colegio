@@ -2,6 +2,8 @@
 <resources>
     <!-- Blue -->
     <color name="blue_0066FF">#0066FF</color>
+    <color name="blue_0052CC">#0052CC</color>
+    <color name="blue_3383FB">#3383FB</color>
 
     <!-- White -->
     <color name="white_FFFFFF">#FFFFFF</color>
