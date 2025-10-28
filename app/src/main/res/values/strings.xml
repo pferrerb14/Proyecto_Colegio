@@ -17,6 +17,21 @@
     <string name="verify_code_description_text">Recuerda que este código es único y lo proporciona el centro educativo. Si aún no lo tienes, por favor acércate a solicitarlo.</string>
     <string name="verify_code_description_length_text">Código (hasta 4): confidencial; no lo compartas</string>
     <string name="professor_charge_text">Profesor a cargo:</string>
+    <string name="personal_information_text">Información personal</string>
+    <string name="name_text">Nombre</string>
+    <string name="last_name_text">Apellidos</string>
+    <string name="account_credential_text">Credenciales de la cuenta</string>
+    <string name="email_register_text">Correo electrónico</string>
+    <string name="confirm_password_text">Confirmar contraseña</string>
+    <string name="additional_data_text">Datos adicionales</string>
+    <string name="age_text">Edad</string>
+
+    <!-- Hint -->
+    <string name="enter_your_name_hint">Introduce tu nombre</string>
+    <string name="enter_your_last_name_hint">Introduce tus apellidos</string>
+    <string name="enter_your_email_hint">Introduce tu correo electrónico</string>
+    <string name="enter_your_password_hint">Introduce su contraseña</string>
+    <string name="enter_your_age_hint">Introduce su edad</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
