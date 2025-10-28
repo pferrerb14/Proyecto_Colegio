@@ -1,0 +1,13 @@
+package com.leandro1995.seito.intent.config.event
+
+import com.leandro1995.seito.intent.callback.event.StudentRegisterIntentEventCallBack
+import com.leandro1995.seito.intent.config.ambient.IntentConfigAmbient
+import com.leandro1995.seito.intent.event.StudentRegisterIntentEvent
+
+class StudentRegisterIntentEventConfig(private val studentRegisterIntentEventCallBack: StudentRegisterIntentEventCallBack?) :
+    IntentConfigAmbient<StudentRegisterIntentEvent>() {
+
+    override fun initConfig(event: StudentRegisterIntentEvent?) {
+
+    }
+}
