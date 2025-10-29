@@ -20,6 +20,7 @@ import com.leandro1995.seito.UserProtoDataStore
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.protodatastore.serializer.UserProtoDataStoreSerializer
 import kotlinx.coroutines.launch
+import java.util.Locale
 import java.util.regex.Pattern
 
 fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
@@ -61,3 +62,20 @@ inline fun <reified T> String.argumentParcelable(bundle: Bundle?): T? =
     } else {
         bundle?.getParcelable(this) as? T
     }
+
+fun String.capsSentences(): String {
+    val splitArray =
+        this.lowercase(Locale.getDefault()).split(" ".toRegex()).dropLastWhile { it.isEmpty() }
+            .toTypedArray()
+    val stringBuilder = StringBuilder()
+    for (position in splitArray.indices) {
+        val split = splitArray[position]
+        if (position > 0 && split.isNotEmpty()) {
+            stringBuilder.append(" ")
+        }
+        val value = (split.substring(0, 1).uppercase(Locale.getDefault()) + split.substring(1))
+        stringBuilder.append(value)
+    }
+
+    return stringBuilder.toString()
+}

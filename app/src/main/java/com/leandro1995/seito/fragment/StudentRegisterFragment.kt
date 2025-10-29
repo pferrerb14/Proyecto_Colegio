@@ -31,7 +31,10 @@ class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(
     override fun initView() {
         dataBinding?.studentRegisterViewModel = studentRegisterViewModel
 
-        studentRegisterViewModel.student.sex = getString(R.string.male_constant)
+        studentRegisterViewModel.apply {
+            student.sex = getString(R.string.male_constant)
+            button.invoke(StudentRegisterViewModel.TEACHER_DETAIL)
+        }
     }
 
     override fun initEventToAction() {
@@ -82,5 +85,9 @@ class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(
             )
         }
         studentRegisterViewModel.student.sex = getString(R.string.female_constant)
+    }
+
+    override fun nameTeacher(fullName: String) {
+        dataBinding?.teacherNameText?.text = fullName
     }
 }

@@ -1,6 +1,7 @@
 package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
+import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.intent.action.StudentRegisterIntentAction
 import com.leandro1995.seito.intent.event.StudentRegisterIntentEvent
 import com.leandro1995.seito.model.design.AlertMessage
@@ -27,6 +28,10 @@ class StudentRegisterViewModel :
 
             FEMALE_SELECT -> {
                 femaleSelect()
+            }
+
+            TEACHER_DETAIL -> {
+                teacherDetail()
             }
         }
     }
@@ -133,9 +138,14 @@ class StudentRegisterViewModel :
         emit(event = StudentRegisterIntentEvent.FemaleSelect)
     }
 
+    private fun teacherDetail() {
+        value(action = StudentRegisterIntentAction(nameTeacher = "${teacher.name} ${teacher.lastName}".capsSentences()))
+    }
+
     companion object {
         const val STUDENT_VALIDATION = 0
         const val MALE_SELECT = 1
         const val FEMALE_SELECT = 2
+        const val TEACHER_DETAIL = 3
     }
 }

@@ -1,3 +1,3 @@
 package com.leandro1995.seito.intent.action
 
-class StudentRegisterIntentAction
+class StudentRegisterIntentAction(val nameTeacher: String)

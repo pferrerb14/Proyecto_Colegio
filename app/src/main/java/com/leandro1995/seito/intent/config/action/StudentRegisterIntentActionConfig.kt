@@ -8,6 +8,10 @@ class StudentRegisterIntentActionConfig(private val studentRegisterIntentActionC
     IntentConfigAmbient<StudentRegisterIntentAction>() {
 
     override fun initConfig(event: StudentRegisterIntentAction?) {
-
+        event?.let {
+            if (it.nameTeacher.isNotEmpty()) {
+                studentRegisterIntentActionCallBack?.nameTeacher(fullName = it.nameTeacher)
+            }
+        }
     }
 }

@@ -75,6 +75,7 @@
                     android:text="@string/professor_charge_text" />
 
                 <TextView
+                    android:id="@+id/teacher_name_text"
                     style="@style/SubTitleBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
