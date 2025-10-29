@@ -397,6 +397,7 @@
                         android:drawableStart="@drawable/ic_calendar_hint"
                         android:drawablePadding="@dimen/dimen_10"
                         android:ems="10"
+                        android:int="@={studentRegisterViewModel.student.age}"
                         android:hint="@string/enter_your_age_hint"
                         android:inputType="number"
                         android:maxLength="@integer/age_student_length"
