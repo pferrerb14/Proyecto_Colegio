@@ -173,6 +173,7 @@
                         android:ems="10"
                         android:hint="@string/enter_your_name_hint"
                         android:inputType="text"
+                        android:text="@={studentRegisterViewModel.student.name}"
                         tools:ignore="Autofill,LabelFor" />
 
                     <TextView
@@ -196,6 +197,7 @@
                         android:ems="10"
                         android:hint="@string/enter_your_last_name_hint"
                         android:inputType="text"
+                        android:text="@={studentRegisterViewModel.student.lastName}"
                         tools:ignore="Autofill,LabelFor" />
 
                     <include
@@ -272,6 +274,7 @@
                         android:ems="10"
                         android:hint="@string/enter_your_email_hint"
                         android:inputType="textEmailAddress"
+                        android:text="@={studentRegisterViewModel.student.email}"
                         tools:ignore="Autofill,LabelFor" />
 
                     <TextView
@@ -295,6 +298,7 @@
                         android:ems="10"
                         android:hint="@string/enter_your_password_hint"
                         android:inputType="textPassword"
+                        android:text="@={studentRegisterViewModel.student.password}"
                         tools:ignore="Autofill,LabelFor" />
 
                     <TextView
@@ -318,6 +322,7 @@
                         android:ems="10"
                         android:hint="@string/enter_your_password_hint"
                         android:inputType="textPassword"
+                        android:text="@={studentRegisterViewModel.confirmPassword}"
                         tools:ignore="Autofill,LabelFor" />
 
                     <include
@@ -491,6 +496,7 @@
                         android:layout_marginTop="@dimen/dimen_20"
                         android:layout_marginEnd="@dimen/dimen_16"
                         android:layout_marginBottom="@dimen/dimen_20"
+                        android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.STUDENT_VALIDATION)}"
                         android:text="@string/register_button" />
 
                 </LinearLayout>
