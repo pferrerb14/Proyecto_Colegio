@@ -11,7 +11,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class StudentRegisterViewModel :
     ViewModelAmbient<StudentRegisterIntentAction, StudentRegisterIntentEvent>() {
 
-    val teacher = Teacher()
+    var teacher = Teacher()
     val student = Student()
     var confirmPassword = ""
 

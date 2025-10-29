@@ -2,6 +2,8 @@ package com.leandro1995.seito.extension
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -51,3 +53,11 @@ fun String.isEmailFormat() = Pattern.compile(Setting.EMAIL_REGEX).matcher(this).
 val Context.userProtoDataStore: DataStore<UserProtoDataStore> by dataStore(
     fileName = Setting.NAME_FILE_DATA_STORE, serializer = UserProtoDataStoreSerializer
 )
+
+@Suppress("DEPRECATION")
+inline fun <reified T> String.argumentParcelable(bundle: Bundle?): T? =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        bundle?.getParcelable(this, T::class.java)
+    } else {
+        bundle?.getParcelable(this) as? T
+    }

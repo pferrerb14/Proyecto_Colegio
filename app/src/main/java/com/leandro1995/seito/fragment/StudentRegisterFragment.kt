@@ -2,7 +2,9 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentStudentRegisterBinding
+import com.leandro1995.seito.extension.argumentParcelable
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.StudentRegisterIntentActionCallBack
@@ -10,6 +12,7 @@ import com.leandro1995.seito.intent.callback.event.StudentRegisterIntentEventCal
 import com.leandro1995.seito.intent.config.action.StudentRegisterIntentActionConfig
 import com.leandro1995.seito.intent.config.event.StudentRegisterIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.util.design.StudentRegisterUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.StudentRegisterViewModel
@@ -42,6 +45,12 @@ class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(
             studentRegisterViewModel.action.collect { studentRegisterIntentAction ->
                 studentRegisterIntentActionConfig.initConfig(event = studentRegisterIntentAction)
             }
+        }
+    }
+
+    override fun arguments() {
+        Setting.TEACHER_BUNDLE.argumentParcelable<Teacher>(bundle = arguments)?.apply {
+            studentRegisterViewModel.teacher = this
         }
     }
 
