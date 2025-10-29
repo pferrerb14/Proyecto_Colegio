@@ -8,6 +8,12 @@ class StudentRegisterIntentEventConfig(private val studentRegisterIntentEventCal
     IntentConfigAmbient<StudentRegisterIntentEvent>() {
 
     override fun initConfig(event: StudentRegisterIntentEvent?) {
+        when (event) {
+            is StudentRegisterIntentEvent.AlertMessage -> {
+                studentRegisterIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
 
+            null -> {}
+        }
     }
 }

@@ -37,4 +37,8 @@ open class User(
     fun isPassword() = password.isEmpty()
 
     fun isEmailFormat() = email.isEmailFormat()
+
+    fun isName() = name.isEmpty()
+
+    fun isLastName() = lastName.isEmpty()
 }

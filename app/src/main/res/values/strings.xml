@@ -52,6 +52,11 @@
     <string name="no_code_message">No ingreso un código</string>
     <string name="no_code_length_message">El código ingresado no es valido</string>
     <string name="code_error_message">El código que ingreso no es válido inténtelo de nuevo por favor</string>
+    <string name="no_empty_name_student_message">Ingrese el nombre del alumno</string>
+    <string name="no_empty_last_name_student_message">Ingrese el apellido del alumno</string>
+    <string name="no_empty_confirm_password_student_message">La contraseña no concuerda con la que escribió</string>
+    <string name="no_empty_age_student_message">Ingrese la edad del alumno</string>
+    <string name="no_empty_age_validation_student_message">La edad que ingreso no es valida</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
