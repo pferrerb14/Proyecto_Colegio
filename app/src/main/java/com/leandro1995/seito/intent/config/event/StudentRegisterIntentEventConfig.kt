@@ -13,6 +13,14 @@ class StudentRegisterIntentEventConfig(private val studentRegisterIntentEventCal
                 studentRegisterIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
             }
 
+            StudentRegisterIntentEvent.FemaleSelect -> {
+                studentRegisterIntentEventCallBack?.femaleSelect()
+            }
+
+            StudentRegisterIntentEvent.MaleSelect -> {
+                studentRegisterIntentEventCallBack?.maleSelect()
+            }
+
             null -> {}
         }
     }

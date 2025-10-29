@@ -20,6 +20,14 @@ class StudentRegisterViewModel :
             STUDENT_VALIDATION -> {
                 studentRegister()
             }
+
+            MALE_SELECT -> {
+                maleSelect()
+            }
+
+            FEMALE_SELECT -> {
+                femaleSelect()
+            }
         }
     }
 
@@ -117,7 +125,17 @@ class StudentRegisterViewModel :
         }
     }
 
+    private fun maleSelect() {
+        emit(event = StudentRegisterIntentEvent.MaleSelect)
+    }
+
+    private fun femaleSelect() {
+        emit(event = StudentRegisterIntentEvent.FemaleSelect)
+    }
+
     companion object {
         const val STUDENT_VALIDATION = 0
+        const val MALE_SELECT = 1
+        const val FEMALE_SELECT = 2
     }
 }

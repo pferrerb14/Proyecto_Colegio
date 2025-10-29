@@ -397,9 +397,9 @@
                         android:drawableStart="@drawable/ic_calendar_hint"
                         android:drawablePadding="@dimen/dimen_10"
                         android:ems="10"
-                        android:int="@={studentRegisterViewModel.student.age}"
                         android:hint="@string/enter_your_age_hint"
                         android:inputType="number"
+                        android:int="@={studentRegisterViewModel.student.age}"
                         android:maxLength="@integer/age_student_length"
                         tools:ignore="Autofill,LabelFor" />
 
@@ -422,6 +422,7 @@
                         tools:ignore="DisableBaselineAlignment">
 
                         <LinearLayout
+                            android:id="@+id/male_linear"
                             android:layout_width="@dimen/dimen_0"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -429,16 +430,19 @@
                             android:layout_weight="1"
                             android:background="@drawable/background_sex_selected"
                             android:gravity="center"
+                            android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.MALE_SELECT)}"
                             android:orientation="horizontal"
                             android:padding="@dimen/dimen_20"
                             tools:ignore="InefficientWeight,UselessParent">
 
                             <View
+                                android:id="@+id/male_view"
                                 android:layout_width="@dimen/dimen_10"
                                 android:layout_height="@dimen/dimen_10"
                                 android:background="@drawable/background_black_spot" />
 
                             <ImageView
+                                android:id="@+id/male_image"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimen_5"
@@ -455,6 +459,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/female_linear"
                             android:layout_width="@dimen/dimen_0"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -462,16 +467,19 @@
                             android:layout_weight="1"
                             android:background="@drawable/background_sex_deselected"
                             android:gravity="center"
+                            android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.FEMALE_SELECT)}"
                             android:orientation="horizontal"
                             android:padding="@dimen/dimen_20"
                             tools:ignore="UselessParent">
 
                             <View
+                                android:id="@+id/female_view"
                                 android:layout_width="@dimen/dimen_10"
                                 android:layout_height="@dimen/dimen_10"
                                 android:background="@drawable/background_white_spot" />
 
                             <ImageView
+                                android:id="@+id/female_image"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/dimen_5"

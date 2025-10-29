@@ -58,6 +58,10 @@
     <string name="no_empty_age_student_message">Ingrese la edad del alumno</string>
     <string name="no_empty_age_validation_student_message">La edad que ingreso no es valida</string>
 
+    <!-- Constant  APP -->
+    <string name="male_constant">Masculino</string>
+    <string name="female_constant">Femenino</string>
+
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
 </resources>
