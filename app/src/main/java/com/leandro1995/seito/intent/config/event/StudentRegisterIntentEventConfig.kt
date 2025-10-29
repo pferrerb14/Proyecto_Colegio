@@ -21,6 +21,13 @@ class StudentRegisterIntentEventConfig(private val studentRegisterIntentEventCal
                 studentRegisterIntentEventCallBack?.maleSelect()
             }
 
+            is StudentRegisterIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = studentRegisterIntentEventCallBack
+                )
+            }
+
             null -> {}
         }
     }

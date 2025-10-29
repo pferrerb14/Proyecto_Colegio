@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentStudentRegisterBinding
 import com.leandro1995.seito.extension.argumentParcelable
@@ -89,5 +90,11 @@ class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(
 
     override fun nameTeacher(fullName: String) {
         dataBinding?.teacherNameText?.text = fullName
+    }
+
+    override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            studentRegisterViewModel.service(idService = loading.idService)
+        }
     }
 }

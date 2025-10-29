@@ -1,9 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.intent.action.StudentRegisterIntentAction
 import com.leandro1995.seito.intent.event.StudentRegisterIntentEvent
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.model.entity.Teacher
@@ -127,6 +129,10 @@ class StudentRegisterViewModel :
                     )
                 )
             }
+
+            else -> {
+                loading(idService = STUDENT_REGISTER_FIREBASE)
+            }
         }
     }
 
@@ -142,10 +148,21 @@ class StudentRegisterViewModel :
         value(action = StudentRegisterIntentAction(nameTeacher = "${teacher.name} ${teacher.lastName}".capsSentences()))
     }
 
+    override fun loading(idService: Int, isDelayDisable: Boolean) {
+        emit(
+            event = StudentRegisterIntentEvent.Loading(
+                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
+                    loading = Loading(idService = idService, isDelayDisable = isDelayDisable)
+                )
+            )
+        )
+    }
+
     companion object {
         const val STUDENT_VALIDATION = 0
         const val MALE_SELECT = 1
         const val FEMALE_SELECT = 2
         const val TEACHER_DETAIL = 3
+        private const val STUDENT_REGISTER_FIREBASE = 4
     }
 }
