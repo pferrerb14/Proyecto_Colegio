@@ -4,11 +4,11 @@
     <item
         android:id="@+id/navigation_home"
         android:checked="true"
-        android:icon="@drawable/ic_user_hint"
+        android:icon="@drawable/ic_home"
         android:title="@string/home_constant" />
     <item
         android:id="@+id/navigation_assistant"
-        android:icon="@drawable/ic_user_hint"
+        android:icon="@drawable/ic_assistant"
         android:title="@string/assistant_constant" />
     <item
         android:id="@+id/navigation_profile"
