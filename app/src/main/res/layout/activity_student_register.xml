@@ -10,8 +10,8 @@
         android:background="@color/grey_F3F5F8">
 
         <include
-            android:id="@+id/app_bar_layout_include"
-            layout="@layout/app_bar_layout"
+            android:id="@+id/app_bar_include"
+            layout="@layout/app_bar"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_0"
@@ -34,7 +34,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_bar_layout_include"
+            app:layout_constraintTop_toBottomOf="@id/app_bar_include"
             app:navGraph="@navigation/nav_student_register" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
