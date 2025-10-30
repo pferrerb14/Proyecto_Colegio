@@ -43,6 +43,10 @@ class StudentRegisterViewModel :
             STUDENT_REGISTER_FIREBASE -> {
                 studentRegisterFirebase()
             }
+
+            STUDENT_CREATE_USER_FIREBASE -> {
+                studentCreateUserFirebase()
+            }
         }
     }
 
@@ -158,7 +162,7 @@ class StudentRegisterViewModel :
 
     private fun studentRegisterFirebase() {
         teacher.addStudentFirebase(student = student, success = {
-
+            loading(idService = STUDENT_CREATE_USER_FIREBASE, isDelayDisable = false)
         }, error = {
             emit(
                 event = StudentRegisterIntentEvent.AlertMessage(
@@ -167,6 +171,22 @@ class StudentRegisterViewModel :
                     )
                 )
             )
+            loading()
+        })
+    }
+
+    private fun studentCreateUserFirebase() {
+        teacher.createUserStudentFirebase(student = student, success = {
+            loading()
+        }, error = {
+            emit(
+                event = StudentRegisterIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_register_student_message
+                    )
+                )
+            )
+            loading()
         })
     }
 
@@ -186,5 +206,6 @@ class StudentRegisterViewModel :
         const val FEMALE_SELECT = 2
         const val TEACHER_DETAIL = 3
         private const val STUDENT_REGISTER_FIREBASE = 4
+        private const val STUDENT_CREATE_USER_FIREBASE = 5
     }
 }
