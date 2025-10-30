@@ -119,7 +119,21 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 }
             }
 
-            loading(idService = USER_PROTO_DATA_STORE, isDelayDisable = false)
+            when {
+                userType == STUDENT_TYPE && student.isCoins() -> {
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+                    loading()
+                }
+
+                userType == TEACHER_TYPE && teacher.isCode() -> {
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+                    loading()
+                }
+
+                else -> {
+                    loading(idService = USER_PROTO_DATA_STORE, isDelayDisable = false)
+                }
+            }
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()

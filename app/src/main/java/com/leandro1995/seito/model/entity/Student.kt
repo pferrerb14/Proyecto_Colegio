@@ -19,4 +19,6 @@ class Student(
     fun isEmptyAge() = age == -1
 
     fun isAgeRange() = age in 6..18
+
+    fun isCoins() = coins == -1
 }
