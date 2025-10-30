@@ -18,4 +18,16 @@ class AuthenticationFCM {
             }
         }
     }
+
+    fun createUserWithEmailAndPassword(
+        email: String, password: String, success: () -> Unit, error: () -> Unit
+    ) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+            if (it.isSuccessful) {
+                success()
+            } else {
+                error()
+            }
+        }
+    }
 }
