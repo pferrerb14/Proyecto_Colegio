@@ -2,6 +2,7 @@ package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.intent.action.StudentRegisterIntentAction
 import com.leandro1995.seito.intent.event.StudentRegisterIntentEvent
@@ -117,6 +118,16 @@ class StudentRegisterViewModel :
                     event = StudentRegisterIntentEvent.AlertMessage(
                         alertMessage = AlertMessage(
                             idMessage = R.string.no_password_message
+                        )
+                    )
+                )
+            }
+
+            confirmPassword.length < Setting.PASSWORD_LENGTH -> {
+                emit(
+                    event = StudentRegisterIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.password_length_message
                         )
                     )
                 )
