@@ -6,6 +6,7 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.getField
 
 abstract class FirestoreAmbientFCM {
+    private val firestore = Firebase.firestore
 
     protected fun whereEqualTo(
         document: String,
@@ -26,13 +27,11 @@ abstract class FirestoreAmbientFCM {
             }
     }
 
+    protected fun collection(document: String) = firestore.collection(document)
+
     protected fun toString(documentSnapshot: DocumentSnapshot, field: String) =
         documentSnapshot.getString(field).orEmpty()
 
     protected fun toInt(documentSnapshot: DocumentSnapshot, field: String) =
         documentSnapshot.getField<Int>(field) ?: -1
-
-    private val firestore = Firebase.firestore
-
-    private fun collection(document: String) = firestore.collection(document)
 }
