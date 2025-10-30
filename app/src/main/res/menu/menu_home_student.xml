@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:checked="true"
+        android:icon="@drawable/ic_user_hint"
+        android:title="@string/home_constant" />
+    <item
+        android:id="@+id/navigation_assistant"
+        android:icon="@drawable/ic_user_hint"
+        android:title="@string/assistant_constant" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_user_hint"
+        android:title="@string/profile_constant" />
+
+</menu>

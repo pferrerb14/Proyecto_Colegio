@@ -103,6 +103,18 @@
         <item name="android:fontFamily">@font/regular</item>
     </style>
 
+    <style name="BottomNavigationTextInactive" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="BottomNavigationTextActive" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/semi_bold</item>
+    </style>
+
+    <style name="BottomNavigationIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/blue_3383FB</item>
+    </style>
+
     <!-- Dialog -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/blue_0066FF</item>
