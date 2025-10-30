@@ -1,17 +1,107 @@
 package com.leandro1995.seito.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
+import com.leandro1995.seito.databinding.FragmentStudentRegisterBinding
+import com.leandro1995.seito.extension.argumentParcelable
+import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.intent.callback.action.StudentRegisterIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.StudentRegisterIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.StudentRegisterIntentActionConfig
+import com.leandro1995.seito.intent.config.event.StudentRegisterIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Teacher
+import com.leandro1995.seito.util.design.StudentRegisterUtilDesign
+import com.leandro1995.seito.util.dialog.AppUtilDialog
+import com.leandro1995.seito.viewmodel.StudentRegisterViewModel
 
-class StudentRegisterFragment : Fragment() {
+class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(),
+    StudentRegisterIntentActionCallBack, StudentRegisterIntentEventCallBack {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_student_register, container, false)
+    private val studentRegisterViewModel by viewModels<StudentRegisterViewModel>()
+    private val studentRegisterIntentActionConfig =
+        StudentRegisterIntentActionConfig(studentRegisterIntentActionCallBack = this)
+    private val studentRegisterIntentEventConfig =
+        StudentRegisterIntentEventConfig(studentRegisterIntentEventCallBack = this)
+
+    override var idLayout: Int = R.layout.fragment_student_register
+
+    override fun initView() {
+        dataBinding?.studentRegisterViewModel = studentRegisterViewModel
+
+        studentRegisterViewModel.apply {
+            student.sex = getString(R.string.male_constant)
+            button.invoke(StudentRegisterViewModel.TEACHER_DETAIL)
+        }
+    }
+
+    override fun initEventToAction() {
+        lifecycleScope {
+            studentRegisterViewModel.event.collect { studentRegisterIntentEvent ->
+                studentRegisterIntentEventConfig.initConfig(event = studentRegisterIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            studentRegisterViewModel.action.collect { studentRegisterIntentAction ->
+                studentRegisterIntentActionConfig.initConfig(event = studentRegisterIntentAction)
+            }
+        }
+    }
+
+    override fun arguments() {
+        Setting.TEACHER_BUNDLE.argumentParcelable<Teacher>(bundle = arguments)?.apply {
+            studentRegisterViewModel.teacher = this
+        }
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
+    }
+
+    override fun maleSelect() {
+        dataBinding?.let {
+            StudentRegisterUtilDesign.sexSelect(
+                context = requireContext(),
+                activeTriple = Triple(it.maleView, it.maleImage, it.maleLinear),
+                deactivateTriple = Triple(it.femaleView, it.femaleImage, it.femaleLinear),
+                activeIcon = R.drawable.ic_male,
+                deactivateIcon = R.drawable.ic_female_hint
+            )
+        }
+        studentRegisterViewModel.student.sex = getString(R.string.male_constant)
+    }
+
+    override fun femaleSelect() {
+        dataBinding?.let {
+            StudentRegisterUtilDesign.sexSelect(
+                context = requireContext(),
+                activeTriple = Triple(it.femaleView, it.femaleImage, it.femaleLinear),
+                deactivateTriple = Triple(it.maleView, it.maleImage, it.maleLinear),
+                activeIcon = R.drawable.ic_female,
+                deactivateIcon = R.drawable.ic_male_hint
+            )
+        }
+        studentRegisterViewModel.student.sex = getString(R.string.female_constant)
+    }
+
+    override fun loginActivity(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = requireContext(), alertMessage = alertMessage, positiveButton = {
+                requireActivity().finish()
+            })
+    }
+
+    override fun nameTeacher(fullName: String) {
+        dataBinding?.teacherNameText?.text = fullName
+    }
+
+    override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            studentRegisterViewModel.service(idService = loading.idService)
+        }
     }
 }

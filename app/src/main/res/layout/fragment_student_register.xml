@@ -1,14 +1,548 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".fragment.StudentRegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <data>
 
-</FrameLayout>
+        <variable
+            name="studentRegisterViewModel"
+            type="com.leandro1995.seito.viewmodel.StudentRegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/teacher_linearLayout"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:background="@drawable/background_teacher_register"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dimen_15"
+            app:layout_constraintBottom_toTopOf="@+id/teacher_Guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="DisableBaselineAlignment">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="@dimen/dimen_75"
+                    android:layout_height="@dimen/dimen_80"
+                    app:cardBackgroundColor="@color/blue_3383FB"
+                    app:cardCornerRadius="@dimen/dimen_10"
+                    app:cardElevation="@dimen/dimen_5"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/blue_3383FB">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/dimen_7"
+                        android:src="@drawable/ic_beret"
+                        tools:ignore="ContentDescription" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                tools:ignore="InefficientWeight">
+
+                <TextView
+                    style="@style/TitleBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/professor_charge_text" />
+
+                <TextView
+                    android:id="@+id/teacher_name_text"
+                    style="@style/SubTitleBody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            style="?attr/materialCardViewOutlinedStyle"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_32"
+            app:cardBackgroundColor="@color/white_FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/student_Guideline"
+            app:strokeColor="@color/grey_E3E5E9">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_55"
+                            android:layout_height="@dimen/dimen_55"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_type_data"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_15"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_user"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_15"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextBody4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_information_text" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/name_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_user_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_name_hint"
+                        android:inputType="text"
+                        android:text="@={studentRegisterViewModel.student.name}"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/last_name_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_user_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_last_name_hint"
+                        android:inputType="text"
+                        android:text="@={studentRegisterViewModel.student.lastName}"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <include
+                        layout="@layout/separator_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:layout_marginEnd="@dimen/dimen_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_55"
+                            android:layout_height="@dimen/dimen_55"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_type_data"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_15"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_email"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_15"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextBody4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/account_credential_text" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/email_register_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_email_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_email_hint"
+                        android:inputType="textEmailAddress"
+                        android:text="@={studentRegisterViewModel.student.email}"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/password_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_password_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_password_hint"
+                        android:inputType="textPassword"
+                        android:text="@={studentRegisterViewModel.student.password}"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/confirm_password_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_password_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_password_hint"
+                        android:inputType="textPassword"
+                        android:text="@={studentRegisterViewModel.confirmPassword}"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <include
+                        layout="@layout/separator_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:layout_marginEnd="@dimen/dimen_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_55"
+                            android:layout_height="@dimen/dimen_55"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_type_data"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_15"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_calendar"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dimen_15"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextBody4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/additional_data_text" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/age_text" />
+
+                    <EditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_50"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_5"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:drawableStart="@drawable/ic_calendar_hint"
+                        android:drawablePadding="@dimen/dimen_10"
+                        android:ems="10"
+                        android:hint="@string/enter_your_age_hint"
+                        android:inputType="number"
+                        android:int="@={studentRegisterViewModel.student.age}"
+                        android:maxLength="@integer/age_student_length"
+                        tools:ignore="Autofill,LabelFor" />
+
+                    <TextView
+                        style="@style/TextBody5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_15"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:text="@string/sex_text" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:orientation="horizontal"
+                        tools:ignore="DisableBaselineAlignment">
+
+                        <LinearLayout
+                            android:id="@+id/male_linear"
+                            android:layout_width="@dimen/dimen_0"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="@dimen/dimen_5"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_sex_selected"
+                            android:gravity="center"
+                            android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.MALE_SELECT)}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_20"
+                            tools:ignore="InefficientWeight,UselessParent">
+
+                            <View
+                                android:id="@+id/male_view"
+                                android:layout_width="@dimen/dimen_10"
+                                android:layout_height="@dimen/dimen_10"
+                                android:background="@drawable/background_black_spot" />
+
+                            <ImageView
+                                android:id="@+id/male_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimen_5"
+                                android:layout_marginEnd="@dimen/dimen_5"
+                                android:src="@drawable/ic_male"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                style="@style/TextBody6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/male_text" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/female_linear"
+                            android:layout_width="@dimen/dimen_0"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/dimen_5"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_sex_deselected"
+                            android:gravity="center"
+                            android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.FEMALE_SELECT)}"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_20"
+                            tools:ignore="UselessParent">
+
+                            <View
+                                android:id="@+id/female_view"
+                                android:layout_width="@dimen/dimen_10"
+                                android:layout_height="@dimen/dimen_10"
+                                android:background="@drawable/background_white_spot" />
+
+                            <ImageView
+                                android:id="@+id/female_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimen_5"
+                                android:layout_marginEnd="@dimen/dimen_5"
+                                android:src="@drawable/ic_female_hint"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                style="@style/TextBody6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/female_text" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_60"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:layout_marginEnd="@dimen/dimen_16"
+                        android:layout_marginBottom="@dimen/dimen_20"
+                        android:onClick="@{()-> studentRegisterViewModel.button.invoke(studentRegisterViewModel.STUDENT_VALIDATION)}"
+                        android:text="@string/register_button" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/student_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/teacher_Guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <com.leandro1995.seito.component.loading.LoadingComponent
+            android:id="@+id/loading_component"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

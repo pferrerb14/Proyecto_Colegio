@@ -19,6 +19,7 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
     ): View? {
         contentView(inflater = inflater, container = container)
         initEventToAction()
+        arguments()
         initView()
         return dataBinding?.root
     }
@@ -36,4 +37,6 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
     open fun initEventToAction() {}
 
     open fun initView() {}
+
+    open fun arguments() {}
 }

@@ -2,4 +2,5 @@
 <resources>
     <integer name="icon_animation_splash">300</integer>
     <integer name="pin_view_length">4</integer>
+    <integer name="age_student_length">3</integer>
 </resources>

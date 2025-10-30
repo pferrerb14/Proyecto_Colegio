@@ -1,6 +1,7 @@
 package com.leandro1995.seito.model.entity.ambient
 
 import android.os.Parcelable
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.extension.isEmailFormat
 import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
 import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
@@ -36,5 +37,11 @@ open class User(
 
     fun isPassword() = password.isEmpty()
 
+    fun isPasswordLength() = password.length >= Setting.PASSWORD_LENGTH
+
     fun isEmailFormat() = email.isEmailFormat()
+
+    fun isName() = name.isEmpty()
+
+    fun isLastName() = lastName.isEmpty()
 }

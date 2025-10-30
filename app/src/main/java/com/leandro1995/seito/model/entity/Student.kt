@@ -13,4 +13,10 @@ class Student(
     var coins: Int = -1
 ) : User(
     name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
-)
+) {
+    fun isEqualPassword(confirmPassword: String) = password == confirmPassword
+
+    fun isEmptyAge() = age == -1
+
+    fun isAgeRange() = age in 6..18
+}

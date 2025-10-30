@@ -2,12 +2,16 @@
 <resources>
     <!-- Blue -->
     <color name="blue_0066FF">#0066FF</color>
+    <color name="blue_0052CC">#0052CC</color>
+    <color name="blue_3383FB">#3383FB</color>
+    <color name="blue_E6F0FF">#E6F0FF</color>
 
     <!-- White -->
     <color name="white_FFFFFF">#FFFFFF</color>
 
     <!-- Black -->
     <color name="black_000000">#000000</color>
+    <color name="black_1A1A1A">#1A1A1A</color>
 
     <!-- Grey -->
     <color name="grey_F5F7FA">#F5F7FA</color>
@@ -18,5 +22,8 @@
     <!-- Opacity -->
     <!-- White -->
     <color name="white_opacity_80">#CCFFFFFF</color>
+
+    <!-- Blue -->
+    <color name="blue_opacity_50">#80E5EDFA</color>
 
 </resources>
