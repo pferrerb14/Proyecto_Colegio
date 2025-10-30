@@ -177,6 +177,13 @@ class StudentRegisterViewModel :
 
     private fun studentCreateUserFirebase() {
         teacher.createUserStudentFirebase(student = student, success = {
+            emit(
+                event = StudentRegisterIntentEvent.LoginActivity(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.register_student_complete_message, isCancelable = false
+                    )
+                )
+            )
             loading()
         }, error = {
             emit(

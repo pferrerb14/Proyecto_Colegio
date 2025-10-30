@@ -7,4 +7,5 @@ interface StudentRegisterIntentEventCallBack : LoadingIntentCallBackAmbient {
     fun alertMessage(alertMessage: AlertMessage)
     fun maleSelect()
     fun femaleSelect()
+    fun loginActivity(alertMessage: AlertMessage)
 }

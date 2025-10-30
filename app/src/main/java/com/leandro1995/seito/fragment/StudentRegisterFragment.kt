@@ -88,6 +88,13 @@ class StudentRegisterFragment : FragmentAmbient<FragmentStudentRegisterBinding>(
         studentRegisterViewModel.student.sex = getString(R.string.female_constant)
     }
 
+    override fun loginActivity(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = requireContext(), alertMessage = alertMessage, positiveButton = {
+                requireActivity().finish()
+            })
+    }
+
     override fun nameTeacher(fullName: String) {
         dataBinding?.teacherNameText?.text = fullName
     }

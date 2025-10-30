@@ -28,6 +28,10 @@ class StudentRegisterIntentEventConfig(private val studentRegisterIntentEventCal
                 )
             }
 
+            is StudentRegisterIntentEvent.LoginActivity -> {
+                studentRegisterIntentEventCallBack?.loginActivity(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

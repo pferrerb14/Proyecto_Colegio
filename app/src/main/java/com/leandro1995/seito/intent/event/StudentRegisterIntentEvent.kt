@@ -10,4 +10,7 @@ sealed class StudentRegisterIntentEvent {
     data object FemaleSelect : StudentRegisterIntentEvent()
     data class Loading(val loadingIntentEventAmbient: LoadingIntentEventAmbient) :
         StudentRegisterIntentEvent()
+
+    data class LoginActivity(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        StudentRegisterIntentEvent()
 }
