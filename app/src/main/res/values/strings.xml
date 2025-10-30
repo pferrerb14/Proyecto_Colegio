@@ -60,6 +60,8 @@
     <string name="no_register_student_message">Hubo problemas con el registro</string>
     <string name="register_student_complete_message">Se registro el estudiante correctamente</string>
     <string name="password_length_message">El tamaño de la contraseña tiene que ser de 6 dígitos a mas</string>
+    <string name="profile_student_message">Usted ingreso con un perfil de profesor</string>
+    <string name="profile_teacher_message">Usted ingreso con un perfil de alumno</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

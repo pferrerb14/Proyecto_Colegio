@@ -79,6 +79,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_password_message)))
             }
 
+            !user.isPasswordLength() -> {
+                emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.password_length_message)))
+            }
+
             !user.isEmailFormat() -> {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_email_format_message)))
             }
@@ -119,7 +123,21 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 }
             }
 
-            loading(idService = USER_PROTO_DATA_STORE, isDelayDisable = false)
+            when {
+                userType == STUDENT_TYPE && student.isCoins() -> {
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.profile_student_message)))
+                    loading()
+                }
+
+                userType == TEACHER_TYPE && teacher.isCode() -> {
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.profile_teacher_message)))
+                    loading()
+                }
+
+                else -> {
+                    loading(idService = USER_PROTO_DATA_STORE, isDelayDisable = false)
+                }
+            }
         }, error = {
             emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
             loading()
