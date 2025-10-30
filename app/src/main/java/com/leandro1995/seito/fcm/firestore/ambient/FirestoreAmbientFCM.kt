@@ -29,6 +29,8 @@ abstract class FirestoreAmbientFCM {
 
     protected fun collection(document: String) = firestore.collection(document)
 
+    protected val addObject = hashMapOf<String, Any>()
+
     protected fun toString(documentSnapshot: DocumentSnapshot, field: String) =
         documentSnapshot.getString(field).orEmpty()
 
