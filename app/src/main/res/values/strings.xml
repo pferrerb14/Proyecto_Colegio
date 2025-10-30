@@ -59,6 +59,7 @@
     <string name="no_empty_age_validation_student_message">La edad que ingreso no es valida</string>
     <string name="no_register_student_message">Hubo problemas con el registro</string>
     <string name="register_student_complete_message">Se registro el estudiante correctamente</string>
+    <string name="password_length_message">El tamaño de la contraseña tiene que ser de 6 dígitos a mas</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

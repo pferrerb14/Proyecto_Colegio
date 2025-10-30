@@ -68,6 +68,20 @@ class StudentRegisterUnitTest : TestAmbient() {
     }
 
     @Test
+    fun isEmptyStudentPasswordLength() = runBlocking {
+        studentRegisterViewModel.student.apply {
+            name = "Leandro"
+            lastName = "Castillo Borja"
+            email = "leccbo@gmail.com"
+            password = "1234"
+        }
+        test<StudentRegisterIntentEvent.AlertMessage>(
+            sharedFlow = studentRegisterViewModel.event, action = {
+                studentRegisterViewModel.button.invoke(StudentRegisterViewModel.STUDENT_VALIDATION)
+            })
+    }
+
+    @Test
     fun isEmptyStudentConfirmPassword() = runBlocking {
         studentRegisterViewModel.apply {
             student.apply {

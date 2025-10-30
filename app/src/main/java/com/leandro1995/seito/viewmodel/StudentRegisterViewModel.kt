@@ -102,6 +102,16 @@ class StudentRegisterViewModel :
                 )
             }
 
+            !student.isPasswordLength() -> {
+                emit(
+                    event = StudentRegisterIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.password_length_message
+                        )
+                    )
+                )
+            }
+
             confirmPassword.isEmpty() -> {
                 emit(
                     event = StudentRegisterIntentEvent.AlertMessage(
