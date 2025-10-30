@@ -57,6 +57,7 @@
     <string name="no_empty_confirm_password_student_message">La contraseña no concuerda con la que escribió</string>
     <string name="no_empty_age_student_message">Ingrese la edad del alumno</string>
     <string name="no_empty_age_validation_student_message">La edad que ingreso no es valida</string>
+    <string name="no_register_student_message">Hubo problemas con el registro</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

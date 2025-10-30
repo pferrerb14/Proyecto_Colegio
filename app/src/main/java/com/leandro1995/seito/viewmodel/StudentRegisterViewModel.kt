@@ -38,6 +38,14 @@ class StudentRegisterViewModel :
         }
     }
 
+    override suspend fun service(idService: Int) {
+        when (idService) {
+            STUDENT_REGISTER_FIREBASE -> {
+                studentRegisterFirebase()
+            }
+        }
+    }
+
     private fun studentRegister() {
         when {
             student.isName() -> {
@@ -146,6 +154,20 @@ class StudentRegisterViewModel :
 
     private fun teacherDetail() {
         value(action = StudentRegisterIntentAction(nameTeacher = "${teacher.name} ${teacher.lastName}".capsSentences()))
+    }
+
+    private fun studentRegisterFirebase() {
+        teacher.addStudentFirebase(student = student, success = {
+
+        }, error = {
+            emit(
+                event = StudentRegisterIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_register_student_message
+                    )
+                )
+            )
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

@@ -1,6 +1,7 @@
 package com.leandro1995.seito.model.entity
 
 import android.os.Parcelable
+import com.leandro1995.seito.fcm.firestore.TeacherFirestoreFCM
 import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
 import kotlinx.parcelize.Parcelize
@@ -20,6 +21,10 @@ data class Teacher(
 
     fun codeVerifyFirebase(success: (teacher: Teacher) -> Unit, error: () -> Unit) {
         UserFirestoreFCM().whereEqualToCode(code = code, success = success, error = error)
+    }
+
+    fun addStudentFirebase(student: Student, success: () -> Unit, error: () -> Unit) {
+        TeacherFirestoreFCM().documentSet(student = student, success = success, error = error)
     }
 
     fun isCode() = code.isEmpty()
