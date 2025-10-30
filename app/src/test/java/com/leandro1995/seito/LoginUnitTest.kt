@@ -38,6 +38,17 @@ class LoginUnitTest : TestAmbient() {
     }
 
     @Test
+    fun isEmptyPasswordLength() = runBlocking {
+        loginViewModel.user.apply {
+            email = "leccbo1995@gmail.com"
+            password = "133"
+        }
+        test<LoginIntentEvent.AlertMessage>(sharedFlow = loginViewModel.event, action = {
+            loginViewModel.button.invoke(LoginViewModel.LOGIN_VALIDATION)
+        })
+    }
+
+    @Test
     fun isEmptyEmailFormat() = runBlocking {
         loginViewModel.user.apply {
             email = "leccbo1995"

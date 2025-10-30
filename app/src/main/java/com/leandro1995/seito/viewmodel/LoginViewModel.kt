@@ -79,6 +79,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_password_message)))
             }
 
+            !user.isPasswordLength() -> {
+                emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.password_length_message)))
+            }
+
             !user.isEmailFormat() -> {
                 emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_email_format_message)))
             }
