@@ -121,12 +121,12 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
 
             when {
                 userType == STUDENT_TYPE && student.isCoins() -> {
-                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.profile_student_message)))
                     loading()
                 }
 
                 userType == TEACHER_TYPE && teacher.isCode() -> {
-                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.no_user_message)))
+                    emit(event = LoginIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.profile_teacher_message)))
                     loading()
                 }
 
