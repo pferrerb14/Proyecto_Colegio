@@ -10,14 +10,14 @@ import kotlin.coroutines.CoroutineContext
 
 class BackGroundCoroutine(
     private val context: CoroutineContext = Dispatchers.Main,
-    private val time: Long,
+    private val time: Long = -1L,
     private val timeTypeCoroutine: TimeTypeCoroutine,
     var isDelayDisable: Boolean = true
 ) {
 
     fun start(method: suspend () -> Unit) {
         CoroutineScope(context).launch {
-            if (isDelayDisable) {
+            if (isDelayDisable || time == -1L) {
                 delay(time())
             }
             method()
