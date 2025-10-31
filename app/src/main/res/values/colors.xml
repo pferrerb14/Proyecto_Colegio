@@ -26,6 +26,12 @@
     <!-- Red -->
     <color name="red_F92C36">#F92C36</color>
 
+    <!-- Purple -->
+    <color name="purple_F8F3FD">#F8F3FD</color>
+
+    <!-- Yellow -->
+    <color name="yellow_F8F3FD">#FFF9DB</color>
+
     <!-- Opacity -->
     <!-- White -->
     <color name="white_opacity_80">#CCFFFFFF</color>

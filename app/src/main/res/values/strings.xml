@@ -30,6 +30,8 @@
     <string name="female_text">Femenino</string>
     <string name="version_text">Version</string>
     <string name="smart_school_management_text">© 2025 Gestión Escolar Inteligente</string>
+    <string name="role_text">Rol</string>
+    <string name="available_coins_text">Monedas disponibles</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

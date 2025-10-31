@@ -39,15 +39,18 @@
         app:cardElevation="@dimen/dimen_5"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/detail_profile_guide_line"
+        app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/grey_E3E5E9">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_24">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,26 +59,25 @@
                 tools:ignore="UselessParent">
 
                 <LinearLayout
-                    android:layout_width="@dimen/dimen_0"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="vertical"></LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="@dimen/dimen_0"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/dimen_15"
                     android:orientation="vertical">
 
                     <TextView
+                        style="@style/TextBody5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content" />
 
                     <TextView
+                        style="@style/TextBody8"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -83,7 +85,8 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,31 +96,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         tools:ignore="UselessLeaf">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_35"
+                            android:layout_height="@dimen/dimen_35"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_type_data"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_9"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_email"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_15"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            style="@style/TextBody8"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="@string/email_text" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            style="@style/TextBody7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -126,31 +152,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         tools:ignore="UselessLeaf">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_35"
+                            android:layout_height="@dimen/dimen_35"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_coins"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_9"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_coins"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_15"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            style="@style/TextBody8"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="@string/available_coins_text" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            style="@style/TextBody7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -159,31 +208,54 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:gravity="center"
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal"
                         tools:ignore="UselessLeaf">
+
+                        <LinearLayout
+                            android:layout_width="@dimen/dimen_35"
+                            android:layout_height="@dimen/dimen_35"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_content_shield"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dimen_9"
+                            tools:ignore="UselessParent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/ic_shield"
+                                tools:ignore="ContentDescription" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_15"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            style="@style/TextBody8"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="@string/role_text" />
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            style="@style/TextBody7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -196,6 +268,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_24"
@@ -209,8 +282,6 @@
         app:layout_constraintBottom_toTopOf="@+id/go_out_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-        app:layout_constraintVertical_bias="1.0"
         app:strokeColor="@color/grey_E3E5E9">
 
         <LinearLayout
