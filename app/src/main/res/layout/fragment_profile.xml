@@ -200,32 +200,48 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_24"
-        android:layout_marginBottom="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_10"
+        app:cardBackgroundColor="@color/grey_F7F8F9"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:cardElevation="@dimen/dimen_5"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toTopOf="@+id/go_out_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="1.0"
+        app:strokeColor="@color/grey_E3E5E9">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10">
 
             <TextView
+                style="@style/TextBody7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/app_name" />
 
             <TextView
+                style="@style/TextBody8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/version_text" />
 
             <TextView
+                style="@style/TextBody8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/smart_school_management_text" />
 
         </LinearLayout>
 

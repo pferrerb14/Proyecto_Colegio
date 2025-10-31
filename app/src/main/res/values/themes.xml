@@ -67,6 +67,18 @@
         <item name="android:textColor">@color/black_1A1A1A</item>
     </style>
 
+    <style name="TextBody7">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_1A202C</item>
+    </style>
+
+    <style name="TextBody8">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_98A0AE</item>
+    </style>
+
     <style name="LinkBody">
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>
