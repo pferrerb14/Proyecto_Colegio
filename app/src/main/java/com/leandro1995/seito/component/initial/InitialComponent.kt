@@ -14,4 +14,23 @@ class InitialComponent(context: Context, attrs: AttributeSet? = null) :
     init {
         onCreateView()
     }
+
+    fun setText(text: String) {
+        dataBinding?.initialText?.text = textInitials(text = text)
+    }
+
+    private fun textInitials(text: String): String {
+        if (text.isEmpty()) {
+            return ""
+        }
+
+        val initials = text.split(" ").mapNotNull { it.firstOrNull()?.toString() }
+            .reduce { acc, string -> acc + string }
+
+        return if (initials.length == 3) {
+            initials.substring(0, 2)
+        } else {
+            initials
+        }
+    }
 }
