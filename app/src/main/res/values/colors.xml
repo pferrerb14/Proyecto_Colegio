@@ -20,6 +20,9 @@
     <color name="grey_F3F5F8">#F3F5F8</color>
     <color name="grey_9CA3B1">#9CA3B1</color>
 
+    <!-- Red -->
+    <color name="red_F92C36">#F92C36</color>
+
     <!-- Opacity -->
     <!-- White -->
     <color name="white_opacity_80">#CCFFFFFF</color>

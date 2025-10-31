@@ -115,6 +115,10 @@
         <item name="android:color">@color/blue_3383FB</item>
     </style>
 
+    <style name="ButtonGoOut" parent="Button">
+        <item name="android:backgroundTint">@color/red_F92C36</item>
+    </style>
+
     <!-- Dialog -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/blue_0066FF</item>
