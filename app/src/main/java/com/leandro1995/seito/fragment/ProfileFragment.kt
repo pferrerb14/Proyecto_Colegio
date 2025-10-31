@@ -1,18 +1,56 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.LoginActivity
+import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.databinding.FragmentProfileBinding
+import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.intent.callback.event.ProfileIntentEventCallBack
+import com.leandro1995.seito.intent.config.event.ProfileIntentEventConfig
+import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.ProfileViewModel
 
-class ProfileFragment : FragmentAmbient<FragmentProfileBinding>() {
+class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntentEventCallBack {
 
     private val profileViewModel by viewModels<ProfileViewModel>()
+
+    private val profileIntentEventConfig =
+        ProfileIntentEventConfig(profileIntentEventCallBack = this)
+
+    private val backGroundCoroutine = BackGroundCoroutine()
 
     override var idLayout: Int = R.layout.fragment_profile
 
     override fun initView() {
         dataBinding?.profileViewModel = profileViewModel
+    }
+
+    override fun initEventToAction() {
+        lifecycleScope {
+            profileViewModel.event.collect { profileIntentEvent ->
+                profileIntentEventConfig.initConfig(event = profileIntentEvent)
+            }
+        }
+    }
+
+    override fun cleanProtoDataStore() {
+        backGroundCoroutine.start {
+            UserProtoDataStoreConfig.let {
+                it.setName(name = "")
+                it.setLastName(lastName = "")
+                it.setAge(age = -1)
+                it.setSex(sex = "")
+                it.setCode(code = "")
+                it.setEmail(email = "")
+                it.setCoins(coins = -1)
+                it.setNameTeacher(nameTeacher = "")
+            }
+
+            startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            requireActivity().finishAffinity()
+        }
     }
 }

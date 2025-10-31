@@ -11,7 +11,7 @@ import kotlin.coroutines.CoroutineContext
 class BackGroundCoroutine(
     private val context: CoroutineContext = Dispatchers.Main,
     private val time: Long = -1L,
-    private val timeTypeCoroutine: TimeTypeCoroutine,
+    private val timeTypeCoroutine: TimeTypeCoroutine? = null,
     var isDelayDisable: Boolean = true
 ) {
 
@@ -28,5 +28,8 @@ class BackGroundCoroutine(
         TimeTypeCoroutine.HOURS -> TimeUnit.HOURS.toMillis(time)
         TimeTypeCoroutine.MINUTES -> TimeUnit.MINUTES.toMillis(time)
         TimeTypeCoroutine.SECONDS -> TimeUnit.SECONDS.toMillis(time)
+        null -> {
+            -1L
+        }
     }
 }

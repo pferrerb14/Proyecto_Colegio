@@ -342,6 +342,7 @@
             android:layout_marginStart="@dimen/dimen_24"
             android:layout_marginEnd="@dimen/dimen_24"
             android:layout_marginBottom="@dimen/dimen_32"
+            android:onClick="@{()-> profileViewModel.button.invoke(profileViewModel.CLEAN_PROTO_DATA_STORE)}"
             android:text="@string/go_out_button"
             app:icon="@drawable/ic_log_out"
             app:iconGravity="textStart"
