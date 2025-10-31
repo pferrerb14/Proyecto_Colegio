@@ -1,9 +1,10 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.intent.action.ProfileIntentAction
 import com.leandro1995.seito.intent.event.ProfileIntentEvent
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
-class ProfileViewModel : ViewModelAmbient<Any, ProfileIntentEvent>() {
+class ProfileViewModel : ViewModelAmbient<ProfileIntentAction, ProfileIntentEvent>() {
 
     override fun event(action: Int) {
         when (action) {

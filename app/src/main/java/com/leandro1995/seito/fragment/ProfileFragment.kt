@@ -8,17 +8,23 @@ import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.databinding.FragmentProfileBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.intent.callback.action.ProfileIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ProfileIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.ProfileIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ProfileIntentEventConfig
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.ProfileViewModel
 
-class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntentEventCallBack {
+class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntentEventCallBack,
+    ProfileIntentActionCallBack {
 
     private val profileViewModel by viewModels<ProfileViewModel>()
 
     private val profileIntentEventConfig =
         ProfileIntentEventConfig(profileIntentEventCallBack = this)
+
+    private val profileIntentActionConfig =
+        ProfileIntentActionConfig(profileIntentActionCallBack = this)
 
     private val backGroundCoroutine = BackGroundCoroutine()
 
@@ -32,6 +38,12 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
         lifecycleScope {
             profileViewModel.event.collect { profileIntentEvent ->
                 profileIntentEventConfig.initConfig(event = profileIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            profileViewModel.action.collect { profileIntentAction ->
+                profileIntentActionConfig.initConfig(event = profileIntentAction)
             }
         }
     }
@@ -52,5 +64,9 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
             startActivity(Intent(requireActivity(), LoginActivity::class.java))
             requireActivity().finishAffinity()
         }
+    }
+
+    override fun getProtoDataStore() {
+        
     }
 }
