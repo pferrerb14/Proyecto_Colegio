@@ -34,7 +34,7 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
 
     override fun initView() {
         dataBinding?.apply {
-            profileViewModel = profileViewModel
+            profileViewModel = this@ProfileFragment.profileViewModel
             Toolbar(
                 context = requireContext(),
                 materialToolbar = appBarBlueInclude.toolbar,
