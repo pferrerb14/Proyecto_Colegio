@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(libs.github.lottie)
     implementation(libs.github.pinview)
+    implementation(libs.github.permissionx)
     implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)

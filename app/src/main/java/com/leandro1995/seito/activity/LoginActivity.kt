@@ -13,6 +13,7 @@ import com.leandro1995.seito.intent.config.event.LoginIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.util.design.LoginUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
+import com.leandro1995.seito.util.permission.AppPermissionUtil
 import com.leandro1995.seito.viewmodel.LoginViewModel
 
 class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingIntentEventCallBack {
@@ -71,8 +72,10 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
     }
 
     override fun loading(loading: Loading) {
-        dataBinding?.loadingComponent?.startService(loading = loading) {
-            loginViewModel.service(idService = loading.idService)
-        }
+        AppPermissionUtil.notificationPermission(activity = this, success = {
+            dataBinding?.loadingComponent?.startService(loading = loading) {
+                loginViewModel.service(idService = loading.idService)
+            }
+        })
     }
 }

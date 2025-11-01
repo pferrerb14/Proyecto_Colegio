@@ -195,7 +195,6 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         const val LOGIN_VALIDATION = 2
         const val STUDENT_REGISTER = 3
         private const val LOGIN_FIREBASE = 4
-
         private const val DETAIL_FIREBASE = 5
         private const val USER_PROTO_DATA_STORE = 6
     }

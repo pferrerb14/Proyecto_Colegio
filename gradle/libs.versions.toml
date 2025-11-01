@@ -15,6 +15,7 @@ lottie = "6.6.10"
 material = "1.13.0"
 activity = "1.11.0"
 constraintlayout = "2.2.1"
+permissionx = "1.8.1"
 pinview = "1.4.4"
 playServicesAuth = "21.4.0"
 protobufJavalite = "4.26.0"
@@ -64,6 +65,7 @@ play-services-auth = { module = "com.google.android.gms:play-services-auth", ver
 
 github-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 github-pinview = { module = "io.github.chaosleung:pinview", version.ref = "pinview" }
+github-permissionx = { module = "com.guolindev.permissionx:permissionx", version.ref = "permissionx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
