@@ -12,7 +12,7 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         addObject[Setting.EMAIL] = student.email
         addObject[Setting.AGE] = student.age
         addObject[Setting.SEX] = student.sex
-        addObject[Setting.TEACHER] = "${student.teacher.name} ${student.teacher.lastName}"
+        addObject[Setting.TEACHER] = student.teacher.fullName()
         addObject[Setting.COINS] = 0
 
         collection(document = Setting.USERS).document(student.email).set(addObject)
