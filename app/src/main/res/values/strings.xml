@@ -79,6 +79,11 @@
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>
+
+    <!-- Notification -->
+    <string name="id_channel">5645451521</string>
+    <string name="name_channel">app_channel_seito</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
