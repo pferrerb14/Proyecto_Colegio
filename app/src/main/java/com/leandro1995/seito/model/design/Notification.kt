@@ -15,8 +15,8 @@ import com.leandro1995.seito.R
 
 class Notification(
     private val context: Context,
-    @param:StringRes private val idTitle: Int,
-    @param:StringRes private val idContent: Int,
+    private val title: String,
+    private val content: String,
     private val activity: Activity
 ) {
 
@@ -30,8 +30,7 @@ class Notification(
 
     private fun notificationCompatBuild() =
         NotificationCompat.Builder(context, getText(idString = R.string.id_channel)).setSmallIcon(0)
-            .setContentTitle(getText(idString = idTitle))
-            .setContentText(getText(idString = idContent))
+            .setContentTitle(title).setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT).setContentIntent(pendingIntent())
             .build()
 
