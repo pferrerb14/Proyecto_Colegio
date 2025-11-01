@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import android.content.Intent
 import androidx.fragment.app.viewModels
+import com.leandro1995.seito.BuildConfig
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.LoginActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
@@ -40,6 +41,7 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
                 materialToolbar = appBarBlueInclude.toolbar,
                 idTitle = R.string.profile_title
             ).config()
+            versionText.text = getString(R.string.version_text, BuildConfig.VERSION_NAME)
         }
     }
 
