@@ -12,6 +12,7 @@ import com.leandro1995.seito.intent.callback.action.ProfileIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ProfileIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ProfileIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ProfileIntentEventConfig
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.ProfileViewModel
@@ -32,7 +33,14 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
     override var idLayout: Int = R.layout.fragment_profile
 
     override fun initView() {
-        dataBinding?.profileViewModel = profileViewModel
+        dataBinding?.apply {
+            profileViewModel = profileViewModel
+            Toolbar(
+                context = requireContext(),
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.profile_title
+            ).config()
+        }
     }
 
     override fun initEventToAction() {

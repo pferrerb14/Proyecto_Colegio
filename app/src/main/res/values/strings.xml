@@ -3,6 +3,7 @@
 
     <!-- Title -->
     <string name="register_student_title">Registro de alumno</string>
+    <string name="profile_title">Perfil</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
