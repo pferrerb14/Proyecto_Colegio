@@ -25,11 +25,13 @@ open class User(
 
     fun detailFirebase(
         success: (
-            name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int
+            name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int, email: String
         ) -> Unit, error: () -> Unit
     ) {
         UserFirestoreFCM().whereEqualToEmail(email = email, success = success, error = error)
     }
+
+    fun fullName() = "$name $lastName"
 
     fun isLogin() = isEmail() && isPassword()
 

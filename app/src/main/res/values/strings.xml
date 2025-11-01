@@ -3,6 +3,7 @@
 
     <!-- Title -->
     <string name="register_student_title">Registro de alumno</string>
+    <string name="profile_title">Perfil</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -28,6 +29,11 @@
     <string name="sex_text">Sexo</string>
     <string name="male_text">Masculino</string>
     <string name="female_text">Femenino</string>
+    <string name="version_text">Version</string>
+    <string name="smart_school_management_text">© 2025 Gestión Escolar Inteligente</string>
+    <string name="role_text">Rol</string>
+    <string name="available_coins_text">Monedas disponibles</string>
+    <string name="student_type_text">Estudiante</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -41,6 +47,7 @@
     <string name="accept_button">Aceptar</string>
     <string name="verify_code_button">Verificar Código</string>
     <string name="register_button">Registrar</string>
+    <string name="go_out_button">Salir</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>

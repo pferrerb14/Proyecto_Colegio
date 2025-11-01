@@ -19,6 +19,18 @@
     <color name="grey_E3E5E9">#E3E5E9</color>
     <color name="grey_F3F5F8">#F3F5F8</color>
     <color name="grey_9CA3B1">#9CA3B1</color>
+    <color name="grey_F7F8F9">#F7F8F9</color>
+    <color name="grey_1A202C">#1A202C</color>
+    <color name="grey_98A0AE">#98A0AE</color>
+
+    <!-- Red -->
+    <color name="red_F92C36">#F92C36</color>
+
+    <!-- Purple -->
+    <color name="purple_F8F3FD">#F8F3FD</color>
+
+    <!-- Yellow -->
+    <color name="yellow_F8F3FD">#FFF9DB</color>
 
     <!-- Opacity -->
     <!-- White -->

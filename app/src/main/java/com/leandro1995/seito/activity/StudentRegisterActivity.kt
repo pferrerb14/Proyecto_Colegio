@@ -12,7 +12,7 @@ class StudentRegisterActivity : ActivityAmbient<ActivityStudentRegisterBinding>(
     override var isStatusBarColorIcon: Boolean = true
 
     override fun initView() {
-        dataBinding?.appBarLayoutInclude?.toolbar?.let {
+        dataBinding?.appBarInclude?.toolbar?.let {
             Toolbar(
                 context = this,
                 materialToolbar = it,

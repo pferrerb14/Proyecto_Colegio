@@ -103,7 +103,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
     }
 
     private fun detailFirebase() {
-        user.detailFirebase(success = { name, lastName, age, sex, code, teacherName, coins ->
+        user.detailFirebase(success = { name, lastName, age, sex, code, teacherName, coins, email ->
             when (userType) {
                 STUDENT_TYPE -> {
                     student.name = name
@@ -112,6 +112,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     student.sex = sex
                     student.teacher = Teacher(name = teacherName)
                     student.coins = coins
+                    student.email = email
                 }
 
                 TEACHER_TYPE -> {
@@ -120,6 +121,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     teacher.age = age
                     teacher.sex = sex
                     teacher.code = code
+                    teacher.email = email
                 }
             }
 
@@ -152,22 +154,24 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
         when (userType) {
             STUDENT_TYPE -> {
                 with(UserProtoDataStoreConfig) {
-                    setName(student.name)
-                    setLastName(student.lastName)
-                    setAge(student.age)
-                    setSex(student.sex)
-                    setNameTeacher(student.teacher.name)
-                    setCoins(student.coins)
+                    setName(name = student.name)
+                    setLastName(lastName = student.lastName)
+                    setAge(age = student.age)
+                    setSex(sex = student.sex)
+                    setNameTeacher(nameTeacher = student.teacher.name)
+                    setCoins(coins = student.coins)
+                    setEmail(email = student.email)
                 }
             }
 
             TEACHER_TYPE -> {
                 with(UserProtoDataStoreConfig) {
-                    setName(teacher.name)
-                    setLastName(teacher.lastName)
-                    setAge(teacher.age)
-                    setSex(teacher.sex)
-                    setCode(teacher.code)
+                    setName(name = teacher.name)
+                    setLastName(lastName = teacher.lastName)
+                    setAge(age = teacher.age)
+                    setSex(sex = teacher.sex)
+                    setCode(code = teacher.code)
+                    setEmail(email = teacher.email)
                 }
             }
         }

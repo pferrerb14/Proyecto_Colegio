@@ -67,6 +67,24 @@
         <item name="android:textColor">@color/black_1A1A1A</item>
     </style>
 
+    <style name="TextBody7">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_1A202C</item>
+    </style>
+
+    <style name="TextBody8">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/grey_98A0AE</item>
+    </style>
+
+    <style name="TextBody9">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
+    </style>
+
     <style name="LinkBody">
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>
@@ -113,6 +131,10 @@
 
     <style name="BottomNavigationIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/blue_3383FB</item>
+    </style>
+
+    <style name="ButtonGoOut" parent="Button">
+        <item name="android:backgroundTint">@color/red_F92C36</item>
     </style>
 
     <!-- Dialog -->

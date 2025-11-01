@@ -1,26 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:tint="#0066FF"
-    android:viewportWidth="24"
-    android:viewportHeight="24">
-
-    <path
-        android:name="shield_outline"
-        android:fillColor="@android:color/transparent"
-        android:pathData="M12,2 L4,6 L4,11 C4,16.55 7.84,21.74 13,23 C18.16,21.74 22,16.55 22,11 L22,6 L12,2 Z"
-        android:strokeWidth="2"
-        android:strokeColor="#0066FF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round" />
-
-    <path
-        android:name="checkmark"
-        android:fillColor="@android:color/transparent"
-        android:pathData="M9,12 L11,14 L15,10"
-        android:strokeWidth="2"
-        android:strokeColor="#0066FF"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round" />
+    android:width="14dp"
+    android:height="17dp"
+    android:viewportWidth="14"
+    android:viewportHeight="17">
+  <path
+      android:pathData="M6.908,17L6.754,16.942C2.701,15.63 0,11.887 0,7.622V1.988L6.889,0L13.797,1.988V7.622C13.797,11.887 11.095,15.63 7.062,16.942L6.908,17ZM0.965,2.74V7.641C0.965,11.423 3.338,14.762 6.908,15.997C10.459,14.762 12.832,11.423 12.832,7.641V2.74L6.889,1.023L0.965,2.74Z"
+      android:fillColor="#9710F8"/>
 </vector>
