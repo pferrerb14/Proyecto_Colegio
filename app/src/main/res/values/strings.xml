@@ -29,7 +29,7 @@
     <string name="sex_text">Sexo</string>
     <string name="male_text">Masculino</string>
     <string name="female_text">Femenino</string>
-    <string name="version_text">Version</string>
+    <string name="version_text">Version: %1$s</string>
     <string name="smart_school_management_text">© 2025 Gestión Escolar Inteligente</string>
     <string name="role_text">Rol</string>
     <string name="available_coins_text">Monedas disponibles</string>
