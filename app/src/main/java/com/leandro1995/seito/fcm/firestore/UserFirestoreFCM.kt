@@ -8,7 +8,7 @@ class UserFirestoreFCM : FirestoreAmbientFCM() {
 
     fun whereEqualToEmail(
         email: String,
-        success: (name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int) -> Unit,
+        success: (name: String, lastName: String, age: Int, sex: String, code: String, teacherName: String, coins: Int, email: String) -> Unit,
         error: () -> Unit
     ) {
         whereEqualTo(
@@ -24,7 +24,8 @@ class UserFirestoreFCM : FirestoreAmbientFCM() {
                         toString(documentSnapshot = result, field = Setting.SEX),
                         toString(documentSnapshot = result, field = Setting.CODE),
                         toString(documentSnapshot = result, field = Setting.TEACHER),
-                        toInt(documentSnapshot = result, field = Setting.COINS)
+                        toInt(documentSnapshot = result, field = Setting.COINS),
+                        toString(documentSnapshot = result, field = Setting.EMAIL)
                     )
                 }
             },
