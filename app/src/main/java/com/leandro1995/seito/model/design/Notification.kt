@@ -29,10 +29,10 @@ class Notification(
     }
 
     private fun notificationCompatBuild() =
-        NotificationCompat.Builder(context, getText(idString = R.string.id_channel)).setSmallIcon(0)
-            .setContentTitle(title).setContentText(content)
+        NotificationCompat.Builder(context, getText(idString = R.string.id_channel))
+            .setSmallIcon(R.drawable.ic_notification).setContentTitle(title).setContentText(content)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT).setContentIntent(pendingIntent())
-            .build()
+            .setAutoCancel(true).build()
 
     private fun pendingIntent() = PendingIntent.getActivity(
         context, 0, Intent(context, activity::class.java).apply {
