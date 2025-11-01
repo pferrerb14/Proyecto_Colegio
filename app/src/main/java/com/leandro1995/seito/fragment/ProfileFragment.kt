@@ -12,6 +12,7 @@ import com.leandro1995.seito.intent.callback.action.ProfileIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ProfileIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ProfileIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ProfileIntentEventConfig
+import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.ProfileViewModel
 
@@ -67,6 +68,28 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
     }
 
     override fun getProtoDataStore() {
-        
+        backGroundCoroutine.start {
+            UserProtoDataStoreConfig.apply {
+                profileViewModel.protoDataStore(
+                    name = getName(),
+                    lastName = getLastName(),
+                    email = getEmail(),
+                    coins = getCoins(),
+                )
+            }
+
+            profileViewModel.button.invoke(ProfileViewModel.GET_PROTO_DATA_STORE)
+        }
+    }
+
+    override fun studentView(student: Student) {
+        dataBinding?.apply {
+            nameText.text = student.fullName()
+            initialComponent.setText(text = student.fullName())
+            emailText.text = student.email
+            coinsText.text = student.coins.toString()
+            rolText.text = getString(R.string.student_type_text)
+            roleUserText.text = getString(R.string.student_type_text)
+        }
     }
 }

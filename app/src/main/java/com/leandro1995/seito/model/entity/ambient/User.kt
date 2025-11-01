@@ -31,6 +31,8 @@ open class User(
         UserFirestoreFCM().whereEqualToEmail(email = email, success = success, error = error)
     }
 
+    fun fullName() = "$name $lastName"
+
     fun isLogin() = isEmail() && isPassword()
 
     fun isEmail() = email.isEmpty()

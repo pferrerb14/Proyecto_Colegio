@@ -9,7 +9,9 @@ class ProfileIntentActionConfig(private val profileIntentActionCallBack: Profile
 
     override fun initConfig(event: ProfileIntentAction?) {
         if (event != null) {
-
+            event.student?.let {
+                profileIntentActionCallBack?.studentView(student = it)
+            }
         } else {
             profileIntentActionCallBack?.getProtoDataStore()
         }
