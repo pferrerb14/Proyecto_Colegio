@@ -1,10 +1,48 @@
 package com.leandro1995.seito.fragment
 
+import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentHomeBinding
+import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
+import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
+import com.leandro1995.seito.viewmodel.HomeViewModel
 
-class HomeFragment : FragmentAmbient<FragmentHomeBinding>() {
+class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCallBack,
+    HomeIntentEventCallBack {
+
+    private val homeViewModel by viewModels<HomeViewModel>()
+
+    private val homeIntentActionConfig = HomeIntentActionConfig(homeIntentActionCallBack = this)
+
+    private val homeIntentEventConfig = HomeIntentEventConfig(homeIntentEventCallBack = this)
 
     override var idLayout: Int = R.layout.fragment_home
+
+    override fun initView() {
+        dataBinding?.homeViewmodel = homeViewModel
+    }
+
+    override fun initEventToAction() {
+
+        lifecycleScope {
+            homeViewModel.event.collect { homeIntentEvent ->
+                homeIntentEventConfig.initConfig(event = homeIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            homeViewModel.action.collect { homeIntentAction ->
+                homeIntentActionConfig.initConfig(event = homeIntentAction)
+            }
+        }
+    }
+
+    override fun loading(loading: Loading) {
+
+    }
 }
