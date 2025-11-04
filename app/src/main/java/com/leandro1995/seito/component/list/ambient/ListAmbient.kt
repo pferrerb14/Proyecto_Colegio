@@ -3,6 +3,9 @@ package com.leandro1995.seito.component.list.ambient
 import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.ambient.ComponentAmbient
 import com.leandro1995.seito.component.util.TypeArrayUtil
@@ -20,7 +23,6 @@ class ListAmbient(context: Context, attrs: AttributeSet? = null) :
                 attrs = attrs, idStyleableRes = R.styleable.ListAmbient
             )
         )
-        messageErrorVisibility(arrayList = arrayListOf<String>())
     }
 
     override fun typeArrayView(typedArray: TypedArray?) {
@@ -42,6 +44,33 @@ class ListAmbient(context: Context, attrs: AttributeSet? = null) :
                 )
             )
         }
+    }
+
+    protected fun recyclerViewLayout(
+        recyclerViewAdapter: RecyclerView.Adapter<*>, isHorizontal: Boolean = false
+    ) {
+        dataBinding?.listAmbientRecycler?.let {
+            it.layoutManager =
+                LinearLayoutManager(context, orientation(isOrientation = isHorizontal), false)
+            it.adapter = recyclerViewAdapter
+        }
+    }
+
+    protected fun gridViewLayout(
+        recyclerViewAdapter: RecyclerView.Adapter<*>, spanCount: Int, isHorizontal: Boolean = false
+    ) {
+        dataBinding?.listAmbientRecycler?.let {
+            it.layoutManager = GridLayoutManager(
+                context, spanCount, orientation(isOrientation = isHorizontal), false
+            )
+            it.adapter = recyclerViewAdapter
+        }
+    }
+
+    private fun orientation(isOrientation: Boolean) = if (isOrientation) {
+        LinearLayoutManager.HORIZONTAL
+    } else {
+        LinearLayoutManager.VERTICAL
     }
 
     private fun messageErrorVisibility(arrayList: ArrayList<*>) {
