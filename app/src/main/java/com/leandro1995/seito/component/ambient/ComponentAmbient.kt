@@ -1,7 +1,9 @@
 package com.leandro1995.seito.component.ambient
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
+import androidx.annotation.StyleableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.ViewDataBinding
 import com.leandro1995.seito.extension.binding
@@ -22,5 +24,11 @@ abstract class ComponentAmbient<binding : ViewDataBinding> @JvmOverloads constru
         }
     }
 
+    protected fun typeArray(
+        attrs: AttributeSet? = null, @StyleableRes idStyleableRes: IntArray
+    ): TypedArray? = context.obtainStyledAttributes(attrs, idStyleableRes)
+
     open fun visibility(isVisible: Boolean) {}
+
+    open fun typeArrayView(typedArray: TypedArray?) {}
 }

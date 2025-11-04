@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.github.permissionx)
     implementation(libs.protobuf.javalite)
     implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
