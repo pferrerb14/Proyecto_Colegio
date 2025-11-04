@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.github.pinview)
     implementation(libs.github.permissionx)
     implementation(libs.protobuf.javalite)
+    implementation(libs.androidx.legacy.support.v4)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)
     androidTestImplementation(libs.androidx.junit)
