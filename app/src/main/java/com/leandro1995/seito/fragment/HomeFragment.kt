@@ -2,14 +2,18 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentHomeBinding
+import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
+import com.leandro1995.seito.model.entity.Student
+import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeViewModel
 
 class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCallBack,
@@ -20,6 +24,9 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
     private val homeIntentActionConfig = HomeIntentActionConfig(homeIntentActionCallBack = this)
 
     private val homeIntentEventConfig = HomeIntentEventConfig(homeIntentEventCallBack = this)
+
+    private val backGroundCoroutine = BackGroundCoroutine()
+
 
     override var idLayout: Int = R.layout.fragment_home
 
@@ -44,5 +51,27 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
 
     override fun loading(loading: Loading) {
 
+    }
+
+    override fun getProtoDataStore() {
+        backGroundCoroutine.start {
+            UserProtoDataStoreConfig.apply {
+                homeViewModel.protoDataStore(
+                    name = getName(), lastName = getLastName(), nameTeacher = getNameTeacher()
+                )
+            }
+
+            homeViewModel.button.invoke(HomeViewModel.GET_PROTO_DATA_STORE)
+        }
+    }
+
+    override fun studentDetail(student: Student) {
+        dataBinding?.apply {
+            initialComponent.setText(text = student.fullName())
+            studentNameText.text =
+                getString(R.string.student_name_text, student.fullName().capsSentences())
+            studentNameDetailText.text = student.fullName().capsSentences()
+            teacherNameDetailText.text = student.teacher.fullName().capsSentences()
+        }
     }
 }

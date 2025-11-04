@@ -8,6 +8,12 @@ class HomeIntentActionConfig(private val homeIntentActionCallBack: HomeIntentAct
     IntentConfigAmbient<HomeIntentAction>() {
 
     override fun initConfig(event: HomeIntentAction?) {
-
+        if (event != null) {
+            event.student?.let {
+                homeIntentActionCallBack?.studentDetail(student = it)
+            }
+        } else {
+            homeIntentActionCallBack?.getProtoDataStore()
+        }
     }
 }

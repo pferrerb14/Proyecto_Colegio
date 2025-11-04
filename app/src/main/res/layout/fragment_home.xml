@@ -33,32 +33,39 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="@dimen/dimen_0"
-            android:layout_height="@dimen/dimen_0"
+            android:layout_width="410dp"
+            android:layout_height="119dp"
             android:layout_marginStart="@dimen/dimen_0"
             android:layout_marginTop="@dimen/dimen_0"
             android:layout_marginEnd="@dimen/dimen_0"
             android:layout_marginBottom="@dimen/dimen_0"
             android:gravity="center|bottom"
             android:orientation="vertical"
-            android:paddingStart="@dimen/dimen_32"
-            android:paddingEnd="@dimen/dimen_32"
+            android:paddingStart="@dimen/dimen_40"
+            android:paddingTop="@dimen/dimen_32"
+            android:paddingEnd="@dimen/dimen_40"
             app:layout_constraintBottom_toTopOf="@+id/course_profile_guide_line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                style="@style/TitleBody"
+                android:id="@+id/student_name_text"
+                style="@style/TextBody9"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="¡Hola, Priya Sharma! 👋" />
+                android:layout_height="@dimen/dimen_0"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                tools:ignore="InefficientWeight" />
 
             <TextView
                 style="@style/SubTitleBody"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bienvenido de nuevo" />
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:text="@string/welcome_text" />
 
         </LinearLayout>
 
@@ -97,17 +104,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|left"
-                    android:layout_marginStart="@dimen/dimen_15"
-                    android:layout_marginEnd="@dimen/dimen_15"
                     android:gravity="center|left"
                     android:orientation="vertical"
                     tools:ignore="RtlHardcoded">
 
                     <TextView
+                        android:id="@+id/student_name_detail_text"
                         style="@style/TextBody2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Aarav Kumar" />
+                        android:layout_height="wrap_content" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -117,6 +122,7 @@
                         android:padding="@dimen/dimen_10">
 
                         <TextView
+                            android:id="@+id/teacher_name_detail_text"
                             style="@style/TextBody10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -124,7 +130,6 @@
                             android:drawableStart="@drawable/ic_teacher"
                             android:drawablePadding="@dimen/dimen_5"
                             android:gravity="center_vertical|center_horizontal"
-                            android:text="Prof. María González"
                             tools:ignore="UseCompatTextViewDrawableXml" />
 
                     </LinearLayout>

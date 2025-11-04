@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class HomeIntentAction()
+import com.leandro1995.seito.model.entity.Student
+
+class HomeIntentAction(val student: Student? = null)
