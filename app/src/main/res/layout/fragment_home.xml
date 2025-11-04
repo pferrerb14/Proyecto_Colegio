@@ -190,7 +190,7 @@
 
                 </LinearLayout>
 
-                <com.leandro1995.seito.component.list.VideoList
+                <com.leandro1995.seito.component.list.VideoGridList
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_15"

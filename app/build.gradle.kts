@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.github.lottie)
     implementation(libs.github.pinview)
     implementation(libs.github.permissionx)
+    implementation(libs.github.fresco)
     implementation(libs.protobuf.javalite)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.recyclerview)
