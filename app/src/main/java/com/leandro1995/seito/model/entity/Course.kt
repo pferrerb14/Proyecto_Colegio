@@ -1,3 +1,3 @@
-package com.leandro1995.seito.component.list.model
+package com.leandro1995.seito.model.entity
 
 class Course(val name: String, val imageUrl: String, val videoUrl: String)

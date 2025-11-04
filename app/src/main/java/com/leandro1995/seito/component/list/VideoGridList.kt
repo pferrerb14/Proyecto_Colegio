@@ -1,5 +1,6 @@
 package com.leandro1995.seito.component.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoGridAdapter
@@ -24,8 +25,22 @@ class VideoGridList(context: Context, attrs: AttributeSet? = null) : ListAmbient
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun setAdapter(arrayList: ArrayList<*>) {
         messageErrorVisibility(arrayList = arrayList)
+
+        courseArrayList?.clear()
+        arrayList.forEach {
+            (it as com.leandro1995.seito.model.entity.Course).let { course ->
+                courseArrayList?.add(
+                    Course(
+                        name = course.name, imageUrl = course.imageUrl, videoUrl = course.videoUrl
+                    )
+                )
+            }
+        }
+
+        videoGridAdapter?.notifyDataSetChanged()
     }
 
     companion object {
