@@ -190,6 +190,15 @@
 
                 </LinearLayout>
 
+                <com.leandro1995.seito.component.list.VideoList
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    app:error_color="@color/blue_EDF3FD"
+                    app:error_image="@drawable/ic_video_hint"
+                    app:error_sub_title="@string/no_video_available_description_text"
+                    app:error_title="@string/no_video_available_text" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

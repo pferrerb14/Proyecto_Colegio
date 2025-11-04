@@ -11,7 +11,7 @@ import com.leandro1995.seito.component.ambient.ComponentAmbient
 import com.leandro1995.seito.component.util.TypeArrayUtil
 import com.leandro1995.seito.databinding.ComponentListAmbientBinding
 
-class ListAmbient(context: Context, attrs: AttributeSet? = null) :
+open class ListAmbient(context: Context, attrs: AttributeSet? = null) :
     ComponentAmbient<ComponentListAmbientBinding>(context, attrs) {
 
     override var idLayout: Int = R.layout.component_list_ambient
@@ -46,6 +46,8 @@ class ListAmbient(context: Context, attrs: AttributeSet? = null) :
         }
     }
 
+    open fun setAdapter(arrayList: ArrayList<*>) {}
+
     protected fun recyclerViewLayout(
         recyclerViewAdapter: RecyclerView.Adapter<*>, isHorizontal: Boolean = false
     ) {
@@ -67,13 +69,7 @@ class ListAmbient(context: Context, attrs: AttributeSet? = null) :
         }
     }
 
-    private fun orientation(isOrientation: Boolean) = if (isOrientation) {
-        LinearLayoutManager.HORIZONTAL
-    } else {
-        LinearLayoutManager.VERTICAL
-    }
-
-    private fun messageErrorVisibility(arrayList: ArrayList<*>) {
+    protected fun messageErrorVisibility(arrayList: ArrayList<*>) {
         if (arrayList.isEmpty()) {
             dataBinding?.errorListMaterialCardView?.visibility = VISIBLE
             dataBinding?.listAmbientRecycler?.visibility = GONE
@@ -81,5 +77,13 @@ class ListAmbient(context: Context, attrs: AttributeSet? = null) :
             dataBinding?.errorListMaterialCardView?.visibility = GONE
             dataBinding?.listAmbientRecycler?.visibility = VISIBLE
         }
+    }
+
+    protected open fun onCreateViewList() {}
+
+    private fun orientation(isOrientation: Boolean) = if (isOrientation) {
+        LinearLayoutManager.HORIZONTAL
+    } else {
+        LinearLayoutManager.VERTICAL
     }
 }

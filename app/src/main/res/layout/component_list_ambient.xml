@@ -47,8 +47,8 @@
 
                 <ImageView
                     android:id="@+id/error_message_image_view"
-                    android:layout_width="@dimen/dimen_65"
-                    android:layout_height="@dimen/dimen_65"
+                    android:layout_width="@dimen/dimen_75"
+                    android:layout_height="@dimen/dimen_75"
                     tools:ignore="ContentDescription" />
 
                 <TextView
