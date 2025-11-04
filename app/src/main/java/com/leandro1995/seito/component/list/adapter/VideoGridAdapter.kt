@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.VideoGridViewHolder
+import com.leandro1995.seito.component.list.model.Course
 import com.leandro1995.seito.databinding.ItemVideoGridBinding
 
-class VideoGridAdapter : RecyclerView.Adapter<VideoGridViewHolder>() {
+class VideoGridAdapter(private val courseArrayList: ArrayList<Course>) :
+    RecyclerView.Adapter<VideoGridViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -27,6 +29,6 @@ class VideoGridAdapter : RecyclerView.Adapter<VideoGridViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return courseArrayList.size
     }
 }
