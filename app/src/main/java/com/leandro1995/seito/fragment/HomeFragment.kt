@@ -1,9 +1,11 @@
 package com.leandro1995.seito.fragment
 
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
+import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentHomeBinding
 import com.leandro1995.seito.extension.capsSentences
@@ -85,6 +87,11 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
         dataBinding?.videoGridList?.apply {
             visibility = View.VISIBLE
             setAdapter(arrayList = courseArrayList)
+            videoGridListCallBack = object : VideoGridListCallBack {
+                override fun videoUrl(videoUrl: String) {
+                    Log.e("ENTRAAAA", "${videoUrl} <----------------")
+                }
+            }
         }
     }
 }
