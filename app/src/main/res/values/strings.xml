@@ -4,6 +4,7 @@
     <!-- Title -->
     <string name="register_student_title">Registro de alumno</string>
     <string name="profile_title">Perfil</string>
+    <string name="educational_videos_title">Videos Educativos</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
