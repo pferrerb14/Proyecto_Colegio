@@ -9,5 +9,5 @@ class Course(
     val name: String = "",
     val imageUrl: String = "",
     val videoUrl: String = "",
-    val theme: Theme = Theme()
+    val themeArrayList: ArrayList<Theme> = arrayListOf()
 ) : Parcelable

@@ -14,4 +14,5 @@ object Setting {
     const val IMAGE_URL = "imageUrl"
     const val VIDEO_URL = "videoUrl"
     const val COURSE = "course"
+    const val THEME = "THEME"
 }
