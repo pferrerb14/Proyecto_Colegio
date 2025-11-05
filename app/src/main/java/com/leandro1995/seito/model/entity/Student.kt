@@ -1,14 +1,16 @@
 package com.leandro1995.seito.model.entity
 
 import com.leandro1995.seito.model.entity.ambient.User
+import kotlinx.parcelize.Parcelize
 
-class Student(
-    name: String = "",
-    lastName: String = "",
-    email: String = "",
-    age: Int = -1,
-    sex: String = "",
-    password: String = "",
+@Parcelize
+data class Student(
+    override var name: String = "",
+    override var lastName: String = "",
+    override var email: String = "",
+    override var age: Int = -1,
+    override var sex: String = "",
+    override var password: String = "",
     var teacher: Teacher = Teacher(),
     var coins: Int = -1
 ) : User(
