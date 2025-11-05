@@ -103,6 +103,10 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
         }
     }
 
+    override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+
+    }
+
     override fun videoDetail(courseArrayList: ArrayList<Course>) {
         startActivity(Intent(requireContext(), VideoDetailActivity::class.java).apply {
             putExtra(Setting.COURSE_ARRAY_LIST_PUT_EXTRA, courseArrayList)
