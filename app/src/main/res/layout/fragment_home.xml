@@ -194,7 +194,7 @@
 
                 </LinearLayout>
 
-                <com.leandro1995.seito.component.list.VideoGridList
+                <com.leandro1995.seito.component.list.VideoGridComponentList
                     android:id="@+id/video_grid_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -220,7 +220,7 @@
                     tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
 
 
-                <com.leandro1995.seito.component.list.CourseGridList
+                <com.leandro1995.seito.component.list.CourseGridComponentList
                     android:id="@+id/course_grid_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

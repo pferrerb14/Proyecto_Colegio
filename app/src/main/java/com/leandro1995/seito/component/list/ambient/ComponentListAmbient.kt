@@ -11,7 +11,7 @@ import com.leandro1995.seito.component.ambient.ComponentAmbient
 import com.leandro1995.seito.component.util.TypeArrayUtil
 import com.leandro1995.seito.databinding.ComponentListAmbientBinding
 
-open class ListAmbient(context: Context, attrs: AttributeSet? = null) :
+open class ComponentListAmbient(context: Context, attrs: AttributeSet? = null) :
     ComponentAmbient<ComponentListAmbientBinding>(context, attrs) {
 
     override var idLayout: Int = R.layout.component_list_ambient

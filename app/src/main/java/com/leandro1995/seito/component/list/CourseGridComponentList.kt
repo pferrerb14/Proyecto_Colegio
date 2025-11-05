@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.CourseGridAdapter
-import com.leandro1995.seito.component.list.ambient.ListAmbient
+import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
 import com.leandro1995.seito.component.list.model.Course
 
-class CourseGridList(context: Context, attrs: AttributeSet? = null) : ListAmbient(context, attrs) {
+class CourseGridComponentList(context: Context, attrs: AttributeSet? = null) : ComponentListAmbient(context, attrs) {
 
     private var courseArrayList: ArrayList<Course>? = null
     private var courseGridAdapter: CourseGridAdapter? = null
