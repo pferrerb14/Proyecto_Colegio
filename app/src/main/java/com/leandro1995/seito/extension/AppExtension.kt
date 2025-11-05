@@ -3,13 +3,14 @@ package com.leandro1995.seito.extension
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.datastore.core.DataStore
@@ -24,8 +25,6 @@ import com.leandro1995.seito.protodatastore.serializer.UserProtoDataStoreSeriali
 import kotlinx.coroutines.launch
 import java.util.Locale
 import java.util.regex.Pattern
-import androidx.core.net.toUri
-import com.google.android.play.integrity.internal.ac
 
 fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
     DataBindingUtil.setContentView<T>(this, idLayout)
@@ -94,4 +93,10 @@ fun String.capsSentences(): String {
 
 fun Activity.youtubeStartActivity(url: String) {
     startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+}
+
+fun visible(isVisible: Boolean) = if (!isVisible) {
+    View.VISIBLE
+} else {
+    View.GONE
 }

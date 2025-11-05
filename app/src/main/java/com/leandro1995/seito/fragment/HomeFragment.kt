@@ -12,6 +12,7 @@ import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentHomeBinding
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.extension.youtubeStartActivity
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
@@ -89,6 +90,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
         dataBinding?.headerVideoLinear?.visibility = View.VISIBLE
+        dataBinding?.watchFullVideoText?.visibility = visible(isVisible = courseArrayList.isEmpty())
 
         dataBinding?.videoGridList?.apply {
             visibility = View.VISIBLE
