@@ -10,7 +10,7 @@ object Setting {
     const val CODE = "code"
     const val TEACHER = "teacher"
     const val COINS = "coins"
-    const val COURSE = "course"
+    const val VIDEO_COURSE = "video_course"
     const val IMAGE_URL = "imageUrl"
     const val VIDEO_URL = "videoUrl"
 }
