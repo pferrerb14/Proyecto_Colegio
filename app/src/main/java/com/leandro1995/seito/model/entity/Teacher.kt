@@ -25,6 +25,7 @@ data class Teacher(
     }
 
     fun addStudentFirebase(student: Student, success: () -> Unit, error: () -> Unit) {
+        student.teacher = this
         TeacherFirestoreFCM().documentSet(student = student, success = success, error = error)
     }
 
