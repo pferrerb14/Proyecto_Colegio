@@ -11,7 +11,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
 
     private val student = Student()
-    private val courseArrayList = arrayListOf<Course>()
+    private val courseVideoArrayList = arrayListOf<Course>()
 
     override fun event(action: Int) {
         when (action) {
@@ -62,14 +62,14 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
     }
 
     private fun videoDetail() {
-        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseArrayList))
+        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseVideoArrayList))
     }
 
     private fun courseFirebase() {
-        student.courseFirebaseArrayList(success = { response ->
-            courseArrayList.clear()
-            courseArrayList.addAll(response)
-            value(action = HomeIntentAction(courseArrayList = courseArrayList))
+        student.courseVideoFirebaseArrayList(success = { response ->
+            courseVideoArrayList.clear()
+            courseVideoArrayList.addAll(response)
+            value(action = HomeIntentAction(courseVideoArrayList = courseVideoArrayList))
             loading()
         }, error = {
 

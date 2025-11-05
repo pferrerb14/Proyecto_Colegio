@@ -7,5 +7,5 @@ interface HomeIntentActionCallBack {
 
     fun getProtoDataStore()
     fun studentDetail(student: Student)
-    fun courseArrayList(courseArrayList: ArrayList<Course>)
+    fun courseVideoArrayList(courseArrayList: ArrayList<Course>)
 }

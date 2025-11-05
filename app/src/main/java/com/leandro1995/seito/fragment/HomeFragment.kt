@@ -88,7 +88,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
         homeViewModel.button.invoke(HomeViewModel.COURSE_LIST)
     }
 
-    override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+    override fun courseVideoArrayList(courseArrayList: ArrayList<Course>) {
         dataBinding?.headerVideoLinear?.visibility = View.VISIBLE
         dataBinding?.watchFullVideoText?.visibility = visible(isVisible = courseArrayList.isEmpty())
 
