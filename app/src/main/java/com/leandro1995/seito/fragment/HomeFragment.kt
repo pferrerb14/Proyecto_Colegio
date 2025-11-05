@@ -1,14 +1,18 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentHomeBinding
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.extension.youtubeStartActivity
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
@@ -77,7 +81,8 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
             studentNameText.text =
                 getString(R.string.student_name_text, student.fullName().capsSentences())
             studentNameDetailText.text = student.fullName().capsSentences()
-            teacherNameDetailText.text = student.teacher.fullName().capsSentences()
+            teacherNameDetailText.text =
+                getString(R.string.name_teacher_text, student.teacher.fullName().capsSentences())
         }
 
         homeViewModel.button.invoke(HomeViewModel.COURSE_LIST)
@@ -85,6 +90,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
         dataBinding?.headerVideoLinear?.visibility = View.VISIBLE
+        dataBinding?.watchFullVideoText?.visibility = visible(isVisible = courseArrayList.isEmpty())
 
         dataBinding?.videoGridList?.apply {
             visibility = View.VISIBLE
@@ -95,5 +101,11 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
                 }
             }
         }
+    }
+
+    override fun videoDetail(courseArrayList: ArrayList<Course>) {
+        startActivity(Intent(requireContext(), VideoDetailActivity::class.java).apply {
+            putExtra(Setting.COURSE_ARRAY_LIST_PUT_EXTRA, courseArrayList)
+        })
     }
 }

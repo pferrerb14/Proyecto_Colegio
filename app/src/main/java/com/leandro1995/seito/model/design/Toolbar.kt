@@ -9,13 +9,14 @@ class Toolbar(
     private val context: Context,
     private val materialToolbar: MaterialToolbar,
     @param:StringRes private val idTitle: Int,
-    private val isArrow: Boolean = false
+    private val isArrow: Boolean = false,
+    private val icArrow: Int = R.drawable.ic_arrow
 ) {
     fun config(method: () -> Unit = {}) {
         materialToolbar.apply {
             title = context.getString(idTitle)
             if (isArrow) {
-                setNavigationIcon(R.drawable.ic_arrow)
+                setNavigationIcon(icArrow)
             }
             setNavigationOnClickListener { method() }
         }

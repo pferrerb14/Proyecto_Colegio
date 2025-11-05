@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_350">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/video_grid_material_card_view"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_0"
+            app:cardBackgroundColor="@color/white_FFFFFF"
+            app:cardCornerRadius="@dimen/dimen_15"
+            app:cardElevation="@dimen/dimen_5"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/grey_E3E5E9">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/course_image_simple_drawee_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_200"
+                    android:background="@color/grey_E3E5E9"
+                    app:placeholderImage="@drawable/ic_image_place_holder" />
+
+                <TextView
+                    android:id="@+id/course_name_text_view"
+                    style="@style/TextBody11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|left"
+                    android:gravity="center|left"
+                    android:padding="@dimen/dimen_15"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

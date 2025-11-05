@@ -11,4 +11,6 @@ object Setting {
     const val PASSWORD_LENGTH = 6
 
     const val TEACHER_BUNDLE = "teacher_bundle"
+
+    const val COURSE_ARRAY_LIST_PUT_EXTRA = "course_array_list_put_extra"
 }
