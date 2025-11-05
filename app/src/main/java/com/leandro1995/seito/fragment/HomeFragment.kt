@@ -1,6 +1,5 @@
 package com.leandro1995.seito.fragment
 
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
@@ -10,6 +9,7 @@ import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentHomeBinding
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.youtubeStartActivity
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
@@ -89,7 +89,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
             setAdapter(arrayList = courseArrayList)
             videoGridListCallBack = object : VideoGridListCallBack {
                 override fun videoUrl(videoUrl: String) {
-                    Log.e("ENTRAAAA", "${videoUrl} <----------------")
+                    requireActivity().youtubeStartActivity(url = videoUrl)
                 }
             }
         }

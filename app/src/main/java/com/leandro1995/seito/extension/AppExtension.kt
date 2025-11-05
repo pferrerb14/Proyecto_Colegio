@@ -2,6 +2,8 @@ package com.leandro1995.seito.extension
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +24,7 @@ import com.leandro1995.seito.protodatastore.serializer.UserProtoDataStoreSeriali
 import kotlinx.coroutines.launch
 import java.util.Locale
 import java.util.regex.Pattern
+import androidx.core.net.toUri
 
 fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
     DataBindingUtil.setContentView<T>(this, idLayout)
@@ -78,4 +81,8 @@ fun String.capsSentences(): String {
     }
 
     return stringBuilder.toString()
+}
+
+fun Activity.youtubeStartActivity(url: String) {
+    startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
 }
