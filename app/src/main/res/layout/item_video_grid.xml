@@ -38,6 +38,7 @@
                     app:placeholderImage="@drawable/ic_image_place_holder" />
 
                 <TextView
+                    android:id="@+id/course_name_text_view"
                     style="@style/TextBody3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

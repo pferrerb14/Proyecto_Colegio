@@ -25,7 +25,10 @@ class VideoGridAdapter(private val courseArrayList: ArrayList<Course>) :
     override fun onBindViewHolder(
         holder: VideoGridViewHolder, position: Int
     ) {
-
+        holder.itemVideoGridBinding.apply {
+            courseImageSimpleDraweeView.setImageURI(courseArrayList[position].imageUrl)
+            courseNameTextView.text = courseArrayList[position].name
+        }
     }
 
     override fun getItemCount(): Int {
