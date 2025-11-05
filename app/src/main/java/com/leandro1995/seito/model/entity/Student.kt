@@ -1,5 +1,6 @@
 package com.leandro1995.seito.model.entity
 
+import com.leandro1995.seito.fcm.firestore.StudentFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
 import kotlinx.parcelize.Parcelize
 
@@ -16,6 +17,13 @@ data class Student(
 ) : User(
     name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
 ) {
+
+    fun courseFirebaseArrayList(
+        success: (courseArrayList: ArrayList<Course>) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().courseArrayList(success = success, error = error)
+    }
+
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1

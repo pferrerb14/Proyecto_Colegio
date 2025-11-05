@@ -1,5 +1,6 @@
 package com.leandro1995.seito.fragment
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
@@ -12,6 +13,7 @@ import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
+import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeViewModel
@@ -50,7 +52,9 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            homeViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun getProtoDataStore() {
@@ -72,6 +76,15 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
                 getString(R.string.student_name_text, student.fullName().capsSentences())
             studentNameDetailText.text = student.fullName().capsSentences()
             teacherNameDetailText.text = student.teacher.fullName().capsSentences()
+        }
+
+        homeViewModel.button.invoke(HomeViewModel.COURSE_LIST)
+    }
+
+    override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+        dataBinding?.videoGridList?.apply {
+            visibility = View.VISIBLE
+            setAdapter(arrayList = courseArrayList)
         }
     }
 }

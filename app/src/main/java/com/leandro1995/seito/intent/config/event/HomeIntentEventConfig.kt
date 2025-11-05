@@ -8,6 +8,15 @@ class HomeIntentEventConfig(private val homeIntentEventCallBack: HomeIntentEvent
     IntentConfigAmbient<HomeIntentEvent>() {
 
     override fun initConfig(event: HomeIntentEvent?) {
+        when (event) {
+            is HomeIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = homeIntentEventCallBack
+                )
+            }
 
+            null -> {}
+        }
     }
 }

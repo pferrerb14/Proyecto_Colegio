@@ -1,3 +1,7 @@
 package com.leandro1995.seito.intent.event
 
-sealed class HomeIntentEvent {}
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+
+sealed class HomeIntentEvent {
+    data class Loading(val loadingIntentEventAmbient: LoadingIntentEventAmbient) : HomeIntentEvent()
+}

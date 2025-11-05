@@ -12,6 +12,10 @@ class HomeIntentActionConfig(private val homeIntentActionCallBack: HomeIntentAct
             event.student?.let {
                 homeIntentActionCallBack?.studentDetail(student = it)
             }
+
+            event.courseArrayList?.let {
+                homeIntentActionCallBack?.courseArrayList(courseArrayList = it)
+            }
         } else {
             homeIntentActionCallBack?.getProtoDataStore()
         }
