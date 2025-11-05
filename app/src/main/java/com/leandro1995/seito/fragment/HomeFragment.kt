@@ -1,10 +1,10 @@
 package com.leandro1995.seito.fragment
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.ThemeActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
@@ -114,7 +114,9 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
             setAdapter(arrayList = courseArrayList)
             courseGridComponentListCallBack = object : CourseGridComponentListCallBack {
                 override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
-                    
+                    startActivity(Intent(requireContext(), ThemeActivity::class.java).apply {
+                        putExtra(Setting.THEME_ARRAY_LIST_PUT_EXTRA, themeArrayList)
+                    })
                 }
             }
         }

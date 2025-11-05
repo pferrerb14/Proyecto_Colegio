@@ -13,4 +13,5 @@ object Setting {
     const val TEACHER_BUNDLE = "teacher_bundle"
 
     const val COURSE_ARRAY_LIST_PUT_EXTRA = "course_array_list_put_extra"
+    const val THEME_ARRAY_LIST_PUT_EXTRA = "theme_array_list_put_extra"
 }
