@@ -1,11 +1,14 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentHomeBinding
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
@@ -95,5 +98,11 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
                 }
             }
         }
+    }
+
+    override fun videoDetail(courseArrayList: ArrayList<Course>) {
+        startActivity(Intent(requireContext(), VideoDetailActivity::class.java).apply {
+            putExtra(Setting.COURSE_ARRAY_LIST_PUT_EXTRA, courseArrayList)
+        })
     }
 }

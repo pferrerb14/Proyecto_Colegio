@@ -22,6 +22,10 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
             COURSE_LIST -> {
                 courseList()
             }
+
+            VIDEO_DETAIL -> {
+                videoDetail()
+            }
         }
     }
 
@@ -57,6 +61,10 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
         loading(idService = COURSE_FIREBASE)
     }
 
+    private fun videoDetail() {
+        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseArrayList))
+    }
+
     private fun courseFirebase() {
         student.courseFirebaseArrayList(success = { response ->
             courseArrayList.clear()
@@ -71,6 +79,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
     companion object {
         const val GET_PROTO_DATA_STORE = 0
         const val COURSE_LIST = 1
-        const val COURSE_FIREBASE = 2
+        const val VIDEO_DETAIL = 2
+        const val COURSE_FIREBASE = 3
     }
 }

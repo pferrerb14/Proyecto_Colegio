@@ -16,6 +16,10 @@ class HomeIntentEventConfig(private val homeIntentEventCallBack: HomeIntentEvent
                 )
             }
 
+            is HomeIntentEvent.VideoDetail -> {
+                homeIntentEventCallBack?.videoDetail(courseArrayList = event.courseArrayList)
+            }
+
             null -> {}
         }
     }
