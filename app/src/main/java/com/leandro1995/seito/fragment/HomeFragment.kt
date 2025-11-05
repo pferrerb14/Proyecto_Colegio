@@ -80,7 +80,8 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
             studentNameText.text =
                 getString(R.string.student_name_text, student.fullName().capsSentences())
             studentNameDetailText.text = student.fullName().capsSentences()
-            teacherNameDetailText.text = student.teacher.fullName().capsSentences()
+            teacherNameDetailText.text =
+                getString(R.string.name_teacher_text, student.teacher.fullName().capsSentences())
         }
 
         homeViewModel.button.invoke(HomeViewModel.COURSE_LIST)

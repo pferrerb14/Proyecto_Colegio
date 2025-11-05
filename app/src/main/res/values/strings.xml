@@ -37,6 +37,7 @@
     <string name="student_type_text">Estudiante</string>
     <string name="student_name_text">¡Hola, %1$s! 👋</string>
     <string name="welcome_text">Bienvenido de nuevo</string>
+    <string name="name_teacher_text">Prof. %1$s</string>
     <string name="video_play_text">Videos Educativos</string>
     <string name="view_all_text">Ver todos</string>
     <string name="no_video_available_text">No hay videos disponibles</string>
