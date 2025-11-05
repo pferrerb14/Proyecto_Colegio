@@ -39,9 +39,12 @@
     <string name="welcome_text">Bienvenido de nuevo</string>
     <string name="name_teacher_text">Prof. %1$s</string>
     <string name="video_play_text">Videos Educativos</string>
+    <string name="areas_study_text">Áreas de Estudio</string>
     <string name="view_all_text">Ver todos</string>
     <string name="no_video_available_text">No hay videos disponibles</string>
+    <string name="no_course_available_text">No hay áreas disponibles</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
+    <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
