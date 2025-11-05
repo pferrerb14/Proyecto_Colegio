@@ -4,9 +4,25 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.getField
+import com.leandro1995.seito.fcm.firestore.config.Setting
+import com.leandro1995.seito.model.entity.Course
 
 abstract class FirestoreAmbientFCM {
     private val firestore = Firebase.firestore
+
+    fun courseArrayList(success: (ArrayList<Course>) -> Unit, error: () -> Unit) {
+        val courseArrayList = arrayListOf<Course>()
+        collection(document = Setting.COURSE).get().addOnSuccessListener { result ->
+            result.forEach {
+                courseArrayList.add(
+                    Course(
+                        id = it.id, name = toString(documentSnapshot = it, field = Setting.NAME)
+                    )
+                )
+            }
+            success(courseArrayList)
+        }.addOnFailureListener { error() }
+    }
 
     protected fun whereEqualTo(
         document: String,
