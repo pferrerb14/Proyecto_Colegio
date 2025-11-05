@@ -10,7 +10,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
 
         val courseArrayList = arrayListOf<Course>()
 
-        collection(document = Setting.COURSE).get().addOnSuccessListener { result ->
+        collection(document = Setting.VIDEO_COURSE).get().addOnSuccessListener { result ->
             result.forEach {
                 courseArrayList.add(
                     Course(
