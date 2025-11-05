@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 import java.util.Locale
 import java.util.regex.Pattern
 import androidx.core.net.toUri
+import com.google.android.play.integrity.internal.ac
 
 fun <T : ViewDataBinding> Activity.binding(@LayoutRes idLayout: Int): T? =
     DataBindingUtil.setContentView<T>(this, idLayout)
@@ -64,6 +65,14 @@ inline fun <reified T> String.argumentParcelable(bundle: Bundle?): T? =
         bundle?.getParcelable(this, T::class.java)
     } else {
         bundle?.getParcelable(this) as? T
+    }
+
+@Suppress("DEPRECATION")
+inline fun <reified T> String.parcelable(activity: Activity): T? =
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        activity.intent.getParcelableExtra(this, T::class.java)
+    } else {
+        activity.intent.getParcelableExtra(this) as? T
     }
 
 fun String.capsSentences(): String {
