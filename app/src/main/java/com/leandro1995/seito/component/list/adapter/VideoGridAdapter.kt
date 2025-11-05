@@ -22,7 +22,7 @@ class VideoGridAdapter(private val courseArrayList: ArrayList<Course>) :
                 LayoutInflater.from(
                     parent.context
                 ), parent, false
-            ), this
+            ), listAmbientOnclick = this
         )
     }
 

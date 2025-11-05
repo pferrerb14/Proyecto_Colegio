@@ -104,7 +104,14 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
     }
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+        dataBinding?.headerCourseLinear?.visibility = View.VISIBLE
+        dataBinding?.watchFullCourseText?.visibility =
+            visible(isVisible = courseArrayList.isEmpty())
 
+        dataBinding?.courseGridList?.apply {
+            visibility = View.VISIBLE
+            setAdapter(arrayList = courseArrayList)
+        }
     }
 
     override fun videoDetail(courseArrayList: ArrayList<Course>) {
