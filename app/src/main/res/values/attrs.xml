@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Component list ambient -->
+    <declare-styleable name="ListAmbient">
+        <attr name="error_image" format="reference" />
+        <attr name="error_title" format="string" />
+        <attr name="error_sub_title" format="string" />
+        <attr name="error_color" format="color" />
+    </declare-styleable>
+</resources>
