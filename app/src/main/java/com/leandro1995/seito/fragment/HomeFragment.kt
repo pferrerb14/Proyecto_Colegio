@@ -104,9 +104,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
     }
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
-        dataBinding?.headerCourseLinear?.visibility = View.VISIBLE
-        dataBinding?.watchFullCourseText?.visibility =
-            visible(isVisible = courseArrayList.isEmpty())
+        dataBinding?.headerCourseText?.visibility = View.VISIBLE
 
         dataBinding?.courseGridList?.apply {
             visibility = View.VISIBLE

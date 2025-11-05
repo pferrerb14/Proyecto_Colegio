@@ -205,39 +205,20 @@
                     app:error_sub_title="@string/no_video_available_description_text"
                     app:error_title="@string/no_video_available_text" />
 
-                <LinearLayout
-                    android:id="@+id/header_course_linear"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/header_course_text"
+                    style="@style/TextBody2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
                     android:layout_marginTop="@dimen/dimen_10"
-                    android:orientation="horizontal"
+                    android:drawableLeft="@drawable/ic_grid_course"
+                    android:drawablePadding="@dimen/dimen_10"
+                    android:gravity="center|left"
+                    android:text="@string/areas_study_text"
                     android:visibility="gone"
-                    tools:ignore="UselessParent">
+                    tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
 
-                    <TextView
-                        style="@style/TextBody2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|left"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/ic_grid_course"
-                        android:drawablePadding="@dimen/dimen_10"
-                        android:gravity="center|left"
-                        android:text="@string/areas_study_text"
-                        tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
-
-                    <TextView
-                        android:id="@+id/watch_full_course_text"
-                        style="@style/LinkBody"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="@string/view_all_text"
-                        tools:ignore="RtlHardcoded" />
-
-                </LinearLayout>
 
                 <com.leandro1995.seito.component.list.CourseGridList
                     android:id="@+id/course_grid_list"

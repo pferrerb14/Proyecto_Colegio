@@ -29,6 +29,7 @@ class CourseGridList(context: Context, attrs: AttributeSet? = null) : ListAmbien
     override fun setAdapter(arrayList: ArrayList<*>) {
         messageErrorVisibility(arrayList = arrayList)
 
+        courseArrayList?.clear()
         arrayList.forEach {
             (it as com.leandro1995.seito.model.entity.Course).let { course ->
                 courseArrayList?.add(
