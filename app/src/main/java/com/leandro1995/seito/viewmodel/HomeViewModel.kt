@@ -11,6 +11,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
 
     private val student = Student()
+    private val courseVideoArrayList = arrayListOf<Course>()
     private val courseArrayList = arrayListOf<Course>()
 
     override fun event(action: Int) {
@@ -31,6 +32,10 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
 
     override suspend fun service(idService: Int) {
         when (idService) {
+            COURSE_VIDEO_FIREBASE -> {
+                courseVideoFirebase()
+            }
+
             COURSE_FIREBASE -> {
                 courseFirebase()
             }
@@ -58,18 +63,33 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
     }
 
     private fun courseList() {
-        loading(idService = COURSE_FIREBASE)
+        loading(idService = COURSE_VIDEO_FIREBASE)
     }
 
     private fun videoDetail() {
-        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseArrayList))
+        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseVideoArrayList))
+    }
+
+    private fun courseVideoFirebase() {
+        student.courseVideoFirebaseArrayList(success = { response ->
+            courseVideoArrayList.clear()
+            courseVideoArrayList.addAll(response)
+            value(action = HomeIntentAction(courseVideoArrayList = courseVideoArrayList))
+            loading(idService = COURSE_FIREBASE, isDelayDisable = false)
+        }, error = {
+
+        })
     }
 
     private fun courseFirebase() {
         student.courseFirebaseArrayList(success = { response ->
             courseArrayList.clear()
             courseArrayList.addAll(response)
-            value(action = HomeIntentAction(courseArrayList = courseArrayList))
+            value(
+                action = HomeIntentAction(
+                    courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
+                )
+            )
             loading()
         }, error = {
 
@@ -80,6 +100,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
         const val GET_PROTO_DATA_STORE = 0
         const val COURSE_LIST = 1
         const val VIDEO_DETAIL = 2
-        const val COURSE_FIREBASE = 3
+        const val COURSE_VIDEO_FIREBASE = 3
+        const val COURSE_FIREBASE = 4
     }
 }

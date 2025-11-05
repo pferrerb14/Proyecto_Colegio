@@ -13,4 +13,5 @@ object Setting {
     const val VIDEO_COURSE = "video_course"
     const val IMAGE_URL = "imageUrl"
     const val VIDEO_URL = "videoUrl"
+    const val COURSE = "course"
 }

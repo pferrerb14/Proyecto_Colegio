@@ -34,6 +34,9 @@
     <!-- Yellow -->
     <color name="yellow_F8F3FD">#FFF9DB</color>
 
+    <!-- Green -->
+    <color name="green_EEFBF3">#EEFBF3</color>
+
     <!-- Opacity -->
     <!-- White -->
     <color name="white_opacity_80">#CCFFFFFF</color>

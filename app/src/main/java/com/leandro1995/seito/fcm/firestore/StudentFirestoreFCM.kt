@@ -6,7 +6,7 @@ import com.leandro1995.seito.model.entity.Course
 
 class StudentFirestoreFCM : FirestoreAmbientFCM() {
 
-    fun courseArrayList(success: (courseArrayList: ArrayList<Course>) -> Unit, error: () -> Unit) {
+    fun courseVideoArrayList(success: (courseVideoArrayList: ArrayList<Course>) -> Unit, error: () -> Unit) {
 
         val courseArrayList = arrayListOf<Course>()
 

@@ -18,9 +18,13 @@ data class Student(
     name = name, lastName = lastName, email = email, age = age, sex = sex, password = password
 ) {
 
-    fun courseFirebaseArrayList(
+    fun courseVideoFirebaseArrayList(
         success: (courseArrayList: ArrayList<Course>) -> Unit, error: () -> Unit
     ) {
+        StudentFirestoreFCM().courseVideoArrayList(success = success, error = error)
+    }
+
+    fun courseFirebaseArrayList(success: (ArrayList<Course>) -> Unit, error: () -> Unit) {
         StudentFirestoreFCM().courseArrayList(success = success, error = error)
     }
 

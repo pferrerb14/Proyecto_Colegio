@@ -147,7 +147,7 @@
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_0"
             android:layout_marginEnd="@dimen/dimen_16"
-            android:layout_marginBottom="@dimen/dimen_32"
+            android:layout_marginBottom="@dimen/dimen_0"
             android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +194,7 @@
 
                 </LinearLayout>
 
-                <com.leandro1995.seito.component.list.VideoGridList
+                <com.leandro1995.seito.component.list.VideoGridComponentList
                     android:id="@+id/video_grid_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,6 +204,32 @@
                     app:error_image="@drawable/ic_video_hint"
                     app:error_sub_title="@string/no_video_available_description_text"
                     app:error_title="@string/no_video_available_text" />
+
+                <TextView
+                    android:id="@+id/header_course_text"
+                    style="@style/TextBody2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:drawableLeft="@drawable/ic_grid_course"
+                    android:drawablePadding="@dimen/dimen_10"
+                    android:gravity="center|left"
+                    android:text="@string/areas_study_text"
+                    android:visibility="gone"
+                    tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+
+                <com.leandro1995.seito.component.list.CourseGridComponentList
+                    android:id="@+id/course_grid_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:visibility="gone"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_course_available_description_text"
+                    app:error_title="@string/no_course_available_text" />
 
             </LinearLayout>
 

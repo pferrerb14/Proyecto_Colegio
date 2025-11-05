@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.leandro1995.seito.component.list.VideoVerticalList
+        <com.leandro1995.seito.component.list.VideoVerticalComponentList
             android:id="@+id/video_vertical_list"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"

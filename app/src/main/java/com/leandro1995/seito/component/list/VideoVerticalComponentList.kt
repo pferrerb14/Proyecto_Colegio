@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoVerticalAdapter
-import com.leandro1995.seito.component.list.ambient.ListAmbient
+import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
 import com.leandro1995.seito.component.list.callback.VideoVerticalListCallBack
 import com.leandro1995.seito.component.list.callback.adapter.VideoVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
-class VideoVerticalList(context: Context, attrs: AttributeSet? = null) :
-    ListAmbient(context, attrs), VideoVerticalAdapterCallBack {
+class VideoVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
+    ComponentListAmbient(context, attrs), VideoVerticalAdapterCallBack {
 
     private var courseArrayList: ArrayList<Course>? = null
     private var videoVerticalAdapter: VideoVerticalAdapter? = null
@@ -25,7 +25,7 @@ class VideoVerticalList(context: Context, attrs: AttributeSet? = null) :
         courseArrayList = arrayListOf()
         courseArrayList?.let {
             videoVerticalAdapter = VideoVerticalAdapter(courseArrayList = it).apply {
-                videoVerticalAdapterCallBack = this@VideoVerticalList
+                videoVerticalAdapterCallBack = this@VideoVerticalComponentList
             }
         }
 

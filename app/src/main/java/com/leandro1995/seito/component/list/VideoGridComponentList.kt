@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoGridAdapter
-import com.leandro1995.seito.component.list.ambient.ListAmbient
+import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
 import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
 import com.leandro1995.seito.component.list.callback.adapter.VideoGridAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
-class VideoGridList(context: Context, attrs: AttributeSet? = null) : ListAmbient(context, attrs),
+class VideoGridComponentList(context: Context, attrs: AttributeSet? = null) : ComponentListAmbient(context, attrs),
     VideoGridAdapterCallBack {
 
     private var videoGridAdapter: VideoGridAdapter? = null
@@ -25,7 +25,7 @@ class VideoGridList(context: Context, attrs: AttributeSet? = null) : ListAmbient
         courseArrayList = arrayListOf()
         videoGridAdapter = courseArrayList?.let {
             VideoGridAdapter(courseArrayList = it).apply {
-                videoGridAdapterCallBack = this@VideoGridList
+                videoGridAdapterCallBack = this@VideoGridComponentList
             }
         }
 
