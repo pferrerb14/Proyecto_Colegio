@@ -1,11 +1,13 @@
 package com.leandro1995.seito.fragment
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
+import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
 import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
@@ -21,6 +23,7 @@ import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
+import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeViewModel
 
@@ -109,6 +112,11 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
         dataBinding?.courseGridList?.apply {
             visibility = View.VISIBLE
             setAdapter(arrayList = courseArrayList)
+            courseGridComponentListCallBack = object : CourseGridComponentListCallBack {
+                override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+                    
+                }
+            }
         }
     }
 
