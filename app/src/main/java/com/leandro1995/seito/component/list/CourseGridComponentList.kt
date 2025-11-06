@@ -8,7 +8,6 @@ import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
 import com.leandro1995.seito.component.list.callback.adapter.CourseGridAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
-import com.leandro1995.seito.component.list.model.Theme
 
 class CourseGridComponentList(context: Context, attrs: AttributeSet? = null) :
     ComponentListAmbient(context, attrs), CourseGridAdapterCallBack {
@@ -49,8 +48,12 @@ class CourseGridComponentList(context: Context, attrs: AttributeSet? = null) :
         courseGridAdapter?.notifyDataSetChanged()
     }
 
-    override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
-
+    override fun course(course: Course) {
+        courseGridComponentListCallBack?.course(
+            course = com.leandro1995.seito.model.entity.Course(
+                id = course.id, name = course.name
+            )
+        )
     }
 
     companion object {

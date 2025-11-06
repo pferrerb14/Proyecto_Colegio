@@ -42,6 +42,6 @@ class CourseGridAdapter(private val courseArrayList: ArrayList<Course>) :
     }
 
     override fun onclick(position: Int) {
-
+        courseGridAdapterCallBack?.course(course = courseArrayList[position])
     }
 }
