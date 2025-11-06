@@ -8,6 +8,15 @@ class ThemeIntentEventConfig(private val themeIntentEventCallBack: ThemeIntentEv
     IntentConfigAmbient<ThemeIntentEvent>() {
 
     override fun initConfig(event: ThemeIntentEvent?) {
+        when (event) {
+            is ThemeIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = themeIntentEventCallBack
+                )
+            }
 
+            null -> {}
+        }
     }
 }

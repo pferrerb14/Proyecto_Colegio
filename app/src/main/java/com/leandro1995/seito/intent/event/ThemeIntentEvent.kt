@@ -1,4 +1,8 @@
 package com.leandro1995.seito.intent.event
 
-class ThemeIntentEvent {
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+
+sealed class ThemeIntentEvent {
+    data class Loading(val loadingIntentEventAmbient: LoadingIntentEventAmbient) :
+        ThemeIntentEvent()
 }

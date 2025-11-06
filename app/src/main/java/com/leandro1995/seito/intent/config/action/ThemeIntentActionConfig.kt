@@ -8,6 +8,10 @@ class ThemeIntentActionConfig(private val themeIntentActionCallBack: ThemeIntent
     IntentConfigAmbient<ThemeIntentAction>() {
 
     override fun initConfig(event: ThemeIntentAction?) {
+        if (event != null) {
 
+        } else {
+            themeIntentActionCallBack?.startService()
+        }
     }
 }

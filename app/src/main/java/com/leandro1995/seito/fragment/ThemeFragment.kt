@@ -59,6 +59,12 @@ class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventC
     }
 
     override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            themeViewModel.service(idService = loading.idService)
+        }
+    }
 
+    override fun startService() {
+        themeViewModel.button.invoke(ThemeViewModel.THEME)
     }
 }
