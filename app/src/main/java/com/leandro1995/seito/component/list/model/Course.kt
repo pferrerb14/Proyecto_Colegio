@@ -6,8 +6,7 @@ class Course(
     private val id: String = "",
     val name: String = "",
     val imageUrl: String = "",
-    val videoUrl: String = "",
-    val themeArrayList: ArrayList<Theme> = arrayListOf()
+    val videoUrl: String = ""
 ) {
 
     fun iconCourseType() = when (id) {

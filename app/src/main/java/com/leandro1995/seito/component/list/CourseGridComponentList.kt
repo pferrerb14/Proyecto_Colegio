@@ -42,13 +42,7 @@ class CourseGridComponentList(context: Context, attrs: AttributeSet? = null) :
         courseArrayList?.clear()
         arrayList.forEach {
             (it as com.leandro1995.seito.model.entity.Course).let { course ->
-                courseArrayList?.add(
-                    Course(
-                        id = course.id,
-                        name = course.name,
-                        themeArrayList = modelThemeArrayList(courseThemeArrayList = course.themeArrayList)
-                    )
-                )
+                courseArrayList?.add(Course(id = course.id, name = course.name))
             }
         }
 
@@ -56,27 +50,7 @@ class CourseGridComponentList(context: Context, attrs: AttributeSet? = null) :
     }
 
     override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
-        courseGridComponentListCallBack?.themeArrayList(entityThemeArrayList(modelThemeArrayList = themeArrayList))
-    }
 
-    private fun modelThemeArrayList(courseThemeArrayList: ArrayList<com.leandro1995.seito.model.entity.Theme>): ArrayList<Theme> {
-        val themeArrayList = arrayListOf<Theme>()
-
-        courseThemeArrayList.forEach {
-            themeArrayList.add(Theme(name = it.name))
-        }
-
-        return themeArrayList
-    }
-
-    private fun entityThemeArrayList(modelThemeArrayList: ArrayList<Theme>): ArrayList<com.leandro1995.seito.model.entity.Theme> {
-        val themeArrayList = arrayListOf<com.leandro1995.seito.model.entity.Theme>()
-
-        modelThemeArrayList.forEach {
-            themeArrayList.add(com.leandro1995.seito.model.entity.Theme(name = it.name))
-        }
-
-        return themeArrayList
     }
 
     companion object {
