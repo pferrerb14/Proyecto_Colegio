@@ -37,7 +37,6 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
         dataBinding?.apply {
             profileViewModel = this@ProfileFragment.profileViewModel
             Toolbar(
-                context = requireContext(),
                 materialToolbar = appBarBlueInclude.toolbar,
                 idTitle = R.string.profile_title
             ).config()
