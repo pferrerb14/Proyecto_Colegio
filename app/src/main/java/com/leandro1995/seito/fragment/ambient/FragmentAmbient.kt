@@ -18,9 +18,10 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         contentView(inflater = inflater, container = container)
-        initEventToAction()
-        arguments()
         initView()
+        arguments()
+        putExtra()
+        initEventToAction()
         return dataBinding?.root
     }
 
@@ -39,4 +40,6 @@ abstract class FragmentAmbient<binding : ViewDataBinding> : Fragment() {
     open fun initView() {}
 
     open fun arguments() {}
+
+    open fun putExtra() {}
 }
