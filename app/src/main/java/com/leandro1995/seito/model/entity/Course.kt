@@ -5,5 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Course(
-    val id: String = "", val name: String = "", val imageUrl: String = "", val videoUrl: String = ""
+    val id: String = "",
+    val name: String = "",
+    val imageUrl: String = "",
+    val videoUrl: String = "",
+    val themeArrayList: ArrayList<Theme> = arrayListOf()
 ) : Parcelable

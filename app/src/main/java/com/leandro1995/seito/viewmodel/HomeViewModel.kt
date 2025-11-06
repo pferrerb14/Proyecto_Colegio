@@ -74,7 +74,6 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
         student.courseVideoFirebaseArrayList(success = { response ->
             courseVideoArrayList.clear()
             courseVideoArrayList.addAll(response)
-            value(action = HomeIntentAction(courseVideoArrayList = courseVideoArrayList))
             loading(idService = COURSE_FIREBASE, isDelayDisable = false)
         }, error = {
 

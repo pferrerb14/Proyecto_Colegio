@@ -5,6 +5,7 @@
     <string name="register_student_title">Registro de alumno</string>
     <string name="profile_title">Perfil</string>
     <string name="educational_videos_title">Videos Educativos</string>
+    <string name="theme_title">Temas</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -45,6 +46,7 @@
     <string name="no_course_available_text">No hay áreas disponibles</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
+    <string name="course_text">Curso:</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

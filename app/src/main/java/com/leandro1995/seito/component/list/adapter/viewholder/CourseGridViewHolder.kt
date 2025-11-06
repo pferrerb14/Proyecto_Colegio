@@ -8,4 +8,9 @@ class CourseGridViewHolder(
     val itemCourseGridBinding: ItemCourseGridBinding, val listAmbientOnclick: ListAmbientOnclick?
 ) : RecyclerView.ViewHolder(itemCourseGridBinding.root) {
 
+    init {
+        itemCourseGridBinding.courseMaterialCardView.setOnClickListener {
+            listAmbientOnclick?.onclick(bindingAdapterPosition)
+        }
+    }
 }

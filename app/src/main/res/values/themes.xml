@@ -97,6 +97,12 @@
         <item name="android:textColor">@color/black_000000</item>
     </style>
 
+    <style name="TextBody12">
+        <item name="android:fontFamily">@font/semi_bold</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/black_000000</item>
+    </style>
+
     <style name="LinkBody">
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>
