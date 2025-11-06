@@ -9,7 +9,9 @@ class ThemeIntentActionConfig(private val themeIntentActionCallBack: ThemeIntent
 
     override fun initConfig(event: ThemeIntentAction?) {
         if (event != null) {
-
+            event.themeArrayList?.let {
+                themeIntentActionCallBack?.themeArrayList(themeArrayList = it)
+            }
         } else {
             themeIntentActionCallBack?.startService()
         }

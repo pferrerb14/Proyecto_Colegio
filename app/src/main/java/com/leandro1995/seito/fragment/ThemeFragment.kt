@@ -14,6 +14,7 @@ import com.leandro1995.seito.intent.config.action.ThemeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ThemeIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ThemeViewModel
 
 class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventCallBack,
@@ -66,5 +67,9 @@ class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventC
 
     override fun startService() {
         themeViewModel.button.invoke(ThemeViewModel.THEME)
+    }
+
+    override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+        dataBinding?.themeVerticalList?.setAdapter(arrayList = themeArrayList)
     }
 }

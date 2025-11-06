@@ -35,7 +35,7 @@ class ThemeVerticalComponentList(context: Context, attrs: AttributeSet? = null) 
         themeArrayList?.clear()
         arrayList.forEach {
             (it as com.leandro1995.seito.model.entity.Theme).let { theme ->
-                themeArrayList?.add(Theme(name = theme.name))
+                themeArrayList?.add(Theme(id = theme.id, name = theme.name))
             }
         }
 
