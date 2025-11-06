@@ -9,4 +9,9 @@ class ThemeVerticalViewHolder(
     private val listAmbientOnclick: ListAmbientOnclick?
 ) : RecyclerView.ViewHolder(itemThemeVerticalBinding.root) {
 
+    init {
+        itemThemeVerticalBinding.themeMaterialCardView.setOnClickListener {
+            listAmbientOnclick?.onclick(bindingAdapterPosition)
+        }
+    }
 }

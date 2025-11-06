@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.list.callback.ThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentThemeBinding
@@ -18,7 +19,7 @@ import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ThemeViewModel
 
 class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventCallBack,
-    ThemeIntentActionCallBack {
+    ThemeIntentActionCallBack, ThemeVerticalComponentListCallBack {
 
     private val themeViewModel by viewModels<ThemeViewModel>()
     private val themeIntentEventConfig = ThemeIntentEventConfig(themeIntentEventCallBack = this)
@@ -28,6 +29,7 @@ class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventC
 
     override fun initView() {
         dataBinding?.themeViewModel = themeViewModel
+        dataBinding?.themeVerticalList?.themeVerticalComponentListCallBack = this
     }
 
     override fun initEventToAction() {
@@ -71,5 +73,9 @@ class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventC
 
     override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
         dataBinding?.themeVerticalList?.setAdapter(arrayList = themeArrayList)
+    }
+
+    override fun theme(theme: Theme) {
+
     }
 }
