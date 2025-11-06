@@ -23,7 +23,6 @@ import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
-import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeViewModel
 
@@ -113,9 +112,9 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
             visibility = View.VISIBLE
             setAdapter(arrayList = courseArrayList)
             courseGridComponentListCallBack = object : CourseGridComponentListCallBack {
-                override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+                override fun course(course: Course) {
                     startActivity(Intent(requireContext(), ThemeActivity::class.java).apply {
-                        putExtra(Setting.THEME_ARRAY_LIST_PUT_EXTRA, themeArrayList)
+                        putExtra(Setting.COURSE_PUT_EXTRA, course)
                     })
                 }
             }

@@ -6,7 +6,6 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.getField
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.model.entity.Course
-import com.leandro1995.seito.model.entity.Theme
 
 abstract class FirestoreAmbientFCM {
     private val firestore = Firebase.firestore
@@ -15,16 +14,12 @@ abstract class FirestoreAmbientFCM {
         val courseArrayList = arrayListOf<Course>()
         collection(document = Setting.COURSE).get().addOnSuccessListener { result ->
             result.forEach {
-                themeArrayList(idCourse = it.id, success = { themeArrayList ->
-                    courseArrayList.add(
-                        Course(
-                            id = it.id,
-                            name = toString(documentSnapshot = it, field = Setting.NAME),
-                            themeArrayList = themeArrayList
-                        )
+                courseArrayList.add(
+                    Course(
+                        id = it.id, name = toString(documentSnapshot = it, field = Setting.NAME)
                     )
-                    success(courseArrayList)
-                }, error = error)
+                )
+                success(courseArrayList)
             }
         }.addOnFailureListener { error() }
     }
@@ -46,23 +41,6 @@ abstract class FirestoreAmbientFCM {
             }.addOnFailureListener {
                 error()
             }
-    }
-
-    private fun themeArrayList(
-        idCourse: String, success: (ArrayList<Theme>) -> Unit, error: () -> Unit
-    ) {
-        val themeArrayList = arrayListOf<Theme>()
-        collection(document = "${Setting.COURSE}/$idCourse/${idCourse}_${Setting.THEME}").get()
-            .addOnSuccessListener { result ->
-                result.forEach {
-                    themeArrayList.add(
-                        Theme(
-                            id = it.id, name = toString(documentSnapshot = it, field = Setting.NAME)
-                        )
-                    )
-                }
-                success(themeArrayList)
-            }.addOnFailureListener { error() }
     }
 
     protected fun collection(document: String) = firestore.collection(document)

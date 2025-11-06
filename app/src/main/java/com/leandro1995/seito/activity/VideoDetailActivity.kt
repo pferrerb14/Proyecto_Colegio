@@ -18,10 +18,9 @@ class VideoDetailActivity : ActivityAmbient<ActivityVideoDetailBinding>(),
     override fun initView() {
         dataBinding?.apply {
             Toolbar(
-                this@VideoDetailActivity,
-                appBarBlueInclude.toolbar,
-                R.string.educational_videos_title,
-                true,
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.educational_videos_title,
+                isArrow = true,
                 icArrow = R.drawable.ic_arrow_white
             ).config { finish() }
 

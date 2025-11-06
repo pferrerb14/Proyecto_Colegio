@@ -4,12 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.ThemeVerticalViewHolder
+import com.leandro1995.seito.component.list.callback.adapter.ThemeVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Theme
 import com.leandro1995.seito.databinding.ItemThemeVerticalBinding
 
 class ThemeVerticalAdapter(private val themeArrayList: ArrayList<Theme>) :
     RecyclerView.Adapter<ThemeVerticalViewHolder>(), ListAmbientOnclick {
+
+    var themeVerticalAdapterCallBack: ThemeVerticalAdapterCallBack? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -36,6 +39,6 @@ class ThemeVerticalAdapter(private val themeArrayList: ArrayList<Theme>) :
     }
 
     override fun onclick(position: Int) {
-
+        themeVerticalAdapterCallBack?.theme(theme = themeArrayList[position])
     }
 }

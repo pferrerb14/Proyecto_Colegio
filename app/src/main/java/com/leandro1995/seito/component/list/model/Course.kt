@@ -3,11 +3,7 @@ package com.leandro1995.seito.component.list.model
 import com.leandro1995.seito.R
 
 class Course(
-    private val id: String = "",
-    val name: String = "",
-    val imageUrl: String = "",
-    val videoUrl: String = "",
-    val themeArrayList: ArrayList<Theme> = arrayListOf()
+    val id: String = "", val name: String = "", val imageUrl: String = "", val videoUrl: String = ""
 ) {
 
     fun iconCourseType() = when (id) {

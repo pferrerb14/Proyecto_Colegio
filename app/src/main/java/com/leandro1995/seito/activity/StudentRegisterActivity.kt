@@ -14,7 +14,6 @@ class StudentRegisterActivity : ActivityAmbient<ActivityStudentRegisterBinding>(
     override fun initView() {
         dataBinding?.appBarInclude?.toolbar?.let {
             Toolbar(
-                context = this,
                 materialToolbar = it,
                 idTitle = R.string.register_student_title,
                 isArrow = true
