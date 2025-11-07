@@ -4,6 +4,7 @@ import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.SubThemeIntentAction
 import com.leandro1995.seito.intent.event.SubThemeIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -11,6 +12,8 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
 
     var theme = Theme()
     var idCourse = ""
+
+    private val subthemeArrayList = arrayListOf<SubTheme>()
 
     override fun event(action: Int) {
         when (action) {
@@ -33,7 +36,14 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
     }
 
     private fun subThemeFirestore() {
-        theme.subThemeFirebase(idCourse = idCourse)
+        theme.subThemeFirebase(idCourse = idCourse, success = { response ->
+            subthemeArrayList.clear()
+            subthemeArrayList.addAll(response)
+            value(action = SubThemeIntentAction(subThemeArrayList = subthemeArrayList))
+            loading()
+        }, error = {
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

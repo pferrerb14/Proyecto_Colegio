@@ -15,7 +15,7 @@ class SubThemeVerticalComponentList(context: Context, attrs: AttributeSet? = nul
     private var subthemeArrayList: ArrayList<SubTheme>? = null
     private var subThemeVerticalAdapter: SubThemeVerticalAdapter? = null
 
-    private var subThemeVerticalComponentListCallBack: SubThemeVerticalComponentListCallBack? = null
+    var subThemeVerticalComponentListCallBack: SubThemeVerticalComponentListCallBack? = null
 
     init {
         onCreateViewList()

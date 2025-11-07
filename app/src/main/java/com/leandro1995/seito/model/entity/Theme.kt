@@ -7,7 +7,13 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Theme(val id: String = "", val name: String = "") : Parcelable {
 
-    fun subThemeFirebase(idCourse: String) {
-        ThemeFirestoreFCM().subThemeArrayList(idCourse = idCourse, id = id)
+    fun subThemeFirebase(
+        idCourse: String,
+        success: (subThemeArrayList: ArrayList<SubTheme>) -> Unit,
+        error: () -> Unit
+    ) {
+        ThemeFirestoreFCM().subThemeArrayList(
+            idCourse = idCourse, id = id, success = success, error = error
+        )
     }
 }

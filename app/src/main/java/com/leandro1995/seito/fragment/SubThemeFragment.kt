@@ -3,6 +3,7 @@ package com.leandro1995.seito.fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.list.callback.SubThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeBinding
@@ -15,11 +16,12 @@ import com.leandro1995.seito.intent.callback.event.SubThemeIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.SubThemeIntentActionConfig
 import com.leandro1995.seito.intent.config.event.SubThemeIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.SubThemeViewModel
 
 class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeIntentEventCallBack,
-    SubThemeIntentActionCallBack {
+    SubThemeIntentActionCallBack, SubThemeVerticalComponentListCallBack {
 
     private val subThemeViewModel by viewModels<SubThemeViewModel>()
     private val subThemeIntentEventConfig =
@@ -31,6 +33,7 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
 
     override fun initView() {
         dataBinding?.subThemeViewModel = subThemeViewModel
+        dataBinding?.subThemeVerticalList?.subThemeVerticalComponentListCallBack = this
     }
 
     override fun initEventToAction() {
@@ -74,5 +77,13 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
 
     override fun startService() {
         subThemeViewModel.button.invoke(SubThemeViewModel.SUB_THEME)
+    }
+
+    override fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>) {
+        dataBinding?.subThemeVerticalList?.setAdapter(arrayList = subThemeArrayList)
+    }
+
+    override fun subTheme(subTheme: SubTheme) {
+
     }
 }
