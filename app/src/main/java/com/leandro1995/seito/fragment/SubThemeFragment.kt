@@ -1,17 +1,10 @@
 package com.leandro1995.seito.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.leandro1995.seito.R
+import com.leandro1995.seito.databinding.FragmentSubThemeBinding
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 
-class SubThemeFragment : Fragment() {
+class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sub_theme, container, false)
-    }
+    override var idLayout: Int = R.layout.fragment_sub_theme
 }
