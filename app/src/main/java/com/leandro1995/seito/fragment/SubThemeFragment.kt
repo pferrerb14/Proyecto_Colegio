@@ -66,4 +66,8 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
             subThemeViewModel.service(idService = loading.idService)
         }
     }
+
+    override fun startService() {
+        subThemeViewModel.button.invoke(SubThemeViewModel.SUB_THEME)
+    }
 }

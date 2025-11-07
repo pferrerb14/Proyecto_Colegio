@@ -8,6 +8,10 @@ class SubThemeIntentActionConfig(private val subThemeIntentActionCallBack: SubTh
     IntentConfigAmbient<SubThemeIntentAction>() {
 
     override fun initConfig(event: SubThemeIntentAction?) {
+        if (event != null) {
 
+        } else {
+            subThemeIntentActionCallBack?.startService()
+        }
     }
 }

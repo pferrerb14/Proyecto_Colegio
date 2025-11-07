@@ -1,3 +1,6 @@
 package com.leandro1995.seito.intent.callback.action
 
-interface SubThemeIntentActionCallBack
+interface SubThemeIntentActionCallBack {
+
+    fun startService()
+}

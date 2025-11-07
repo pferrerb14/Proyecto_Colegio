@@ -13,14 +13,26 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
 
     override fun event(action: Int) {
         when (action) {
-
+            SUB_THEME -> {
+                subTheme()
+            }
         }
     }
 
     override suspend fun service(idService: Int) {
         when (idService) {
-
+            SUB_THEME_FIRESTORE -> {
+                subThemeFirestore()
+            }
         }
+    }
+
+    private fun subTheme() {
+        loading(idService = SUB_THEME_FIRESTORE)
+    }
+
+    private fun subThemeFirestore() {
+
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
@@ -31,5 +43,10 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
                 )
             )
         )
+    }
+
+    companion object {
+        const val SUB_THEME = 0
+        private const val SUB_THEME_FIRESTORE = 1
     }
 }
