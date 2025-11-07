@@ -7,6 +7,7 @@ import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeBinding
 import com.leandro1995.seito.extension.argumentParcelable
+import com.leandro1995.seito.extension.argumentString
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.SubThemeIntentActionCallBack
@@ -49,6 +50,10 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
     override fun arguments() {
         Setting.THEME_BUNDLE.argumentParcelable<Theme>(bundle = arguments)?.let {
             subThemeViewModel.theme = it
+        }
+
+        Setting.ID_COURSE_BUNDLE.argumentString(bundle = arguments)?.let {
+            subThemeViewModel.idCourse = it
         }
 
         dataBinding?.appBarBlueInclude?.toolbar?.let {

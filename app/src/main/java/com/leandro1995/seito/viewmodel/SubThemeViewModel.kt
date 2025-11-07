@@ -10,6 +10,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentEvent>() {
 
     var theme = Theme()
+    var idCourse = ""
 
     override fun event(action: Int) {
         when (action) {
@@ -32,7 +33,7 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
     }
 
     private fun subThemeFirestore() {
-
+        theme.subThemeFirebase(idCourse = idCourse)
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

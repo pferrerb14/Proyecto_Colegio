@@ -80,6 +80,7 @@ class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventC
     override fun theme(theme: Theme) {
         findNavController().navigate(R.id.sub_theme_fragment, Bundle().apply {
             putParcelable(Setting.THEME_BUNDLE, theme)
+            putString(Setting.ID_COURSE_BUNDLE, themeViewModel.course.id)
         })
     }
 }

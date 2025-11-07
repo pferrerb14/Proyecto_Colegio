@@ -66,6 +66,8 @@ inline fun <reified T> String.argumentParcelable(bundle: Bundle?): T? =
         bundle?.getParcelable(this) as? T
     }
 
+fun String.argumentString(bundle: Bundle?): String? = bundle?.getString(this)
+
 @Suppress("DEPRECATION")
 inline fun <reified T> String.parcelable(activity: Activity): T? =
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
