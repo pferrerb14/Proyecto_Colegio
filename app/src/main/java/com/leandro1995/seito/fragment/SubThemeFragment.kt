@@ -1,5 +1,6 @@
 package com.leandro1995.seito.fragment
 
+import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
@@ -84,6 +85,10 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
     }
 
     override fun subTheme(subTheme: SubTheme) {
-
+        findNavController().navigate(R.id.sub_theme_level, Bundle().apply {
+            putString(Setting.ID_COURSE_BUNDLE, subThemeViewModel.idCourse)
+            putString(Setting.ID_THEME_BUNDLE, subThemeViewModel.theme.id)
+            putParcelable(Setting.ID_SUB_THEME_BUNDLE, subTheme)
+        })
     }
 }
