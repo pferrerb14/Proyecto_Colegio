@@ -29,7 +29,9 @@ class SubThemeVerticalAdapter(private val subThemeArrayList: ArrayList<SubTheme>
     override fun onBindViewHolder(
         holder: SubThemeVerticalViewHolder, position: Int
     ) {
-
+        holder.itemSubThemeVerticalBinding.apply {
+            titleText.text = subThemeArrayList[position].name
+        }
     }
 
     override fun getItemCount(): Int {
