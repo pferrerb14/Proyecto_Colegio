@@ -1,6 +1,6 @@
 package com.leandro1995.seito.component.list.callback
 
-interface VideoVerticalListCallBack {
+interface VideoGridComponentListCallBack {
 
     fun videoUrl(videoUrl: String)
 }

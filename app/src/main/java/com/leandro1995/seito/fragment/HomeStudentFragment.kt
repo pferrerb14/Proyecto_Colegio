@@ -8,7 +8,7 @@ import com.leandro1995.seito.activity.ThemeActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
-import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
+import com.leandro1995.seito.component.list.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentHomeStudentBinding
@@ -98,7 +98,7 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
         dataBinding?.videoGridList?.apply {
             visibility = View.VISIBLE
             setAdapter(arrayList = courseArrayList)
-            videoGridListCallBack = object : VideoGridListCallBack {
+            videoGridComponentListCallBack = object : VideoGridComponentListCallBack {
                 override fun videoUrl(videoUrl: String) {
                     requireActivity().youtubeStartActivity(url = videoUrl)
                 }
