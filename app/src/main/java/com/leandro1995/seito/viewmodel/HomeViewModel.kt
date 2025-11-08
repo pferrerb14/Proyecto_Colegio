@@ -52,16 +52,6 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
         value(action = HomeIntentAction(student = student))
     }
 
-    override fun loading(idService: Int, isDelayDisable: Boolean) {
-        emit(
-            event = HomeIntentEvent.Loading(
-                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
-                    Loading(idService = idService, isDelayDisable = isDelayDisable)
-                )
-            )
-        )
-    }
-
     private fun courseList() {
         loading(idService = COURSE_VIDEO_FIREBASE)
     }
@@ -76,7 +66,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
             courseVideoArrayList.addAll(response)
             loading(idService = COURSE_FIREBASE, isDelayDisable = false)
         }, error = {
-
+            errorFirebase()
         })
     }
 
@@ -91,8 +81,29 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
             )
             loading()
         }, error = {
-
+            errorFirebase()
         })
+    }
+
+    private fun errorFirebase() {
+        courseVideoArrayList.clear()
+        courseArrayList.clear()
+        value(
+            action = HomeIntentAction(
+                courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
+            )
+        )
+        loading()
+    }
+
+    override fun loading(idService: Int, isDelayDisable: Boolean) {
+        emit(
+            event = HomeIntentEvent.Loading(
+                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
+                    Loading(idService = idService, isDelayDisable = isDelayDisable)
+                )
+            )
+        )
     }
 
     companion object {
