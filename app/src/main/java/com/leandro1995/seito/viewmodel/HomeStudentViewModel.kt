@@ -1,14 +1,14 @@
 package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.component.model.Loading
-import com.leandro1995.seito.intent.action.HomeIntentAction
-import com.leandro1995.seito.intent.event.HomeIntentEvent
+import com.leandro1995.seito.intent.action.HomeStudentIntentAction
+import com.leandro1995.seito.intent.event.HomeStudentIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
-class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
+class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStudentIntentEvent>() {
 
     private val student = Student()
     private val courseVideoArrayList = arrayListOf<Course>()
@@ -49,7 +49,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
     }
 
     private fun getProtoDataStore() {
-        value(action = HomeIntentAction(student = student))
+        value(action = HomeStudentIntentAction(student = student))
     }
 
     private fun courseList() {
@@ -57,7 +57,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
     }
 
     private fun videoDetail() {
-        emit(event = HomeIntentEvent.VideoDetail(courseArrayList = courseVideoArrayList))
+        emit(event = HomeStudentIntentEvent.VideoDetail(courseArrayList = courseVideoArrayList))
     }
 
     private fun courseVideoFirebase() {
@@ -75,7 +75,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
             courseArrayList.clear()
             courseArrayList.addAll(response)
             value(
-                action = HomeIntentAction(
+                action = HomeStudentIntentAction(
                     courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
                 )
             )
@@ -89,7 +89,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
         courseVideoArrayList.clear()
         courseArrayList.clear()
         value(
-            action = HomeIntentAction(
+            action = HomeStudentIntentAction(
                 courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
             )
         )
@@ -98,7 +98,7 @@ class HomeViewModel : ViewModelAmbient<HomeIntentAction, HomeIntentEvent>() {
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
-            event = HomeIntentEvent.Loading(
+            event = HomeStudentIntentEvent.Loading(
                 loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
                     Loading(idService = idService, isDelayDisable = isDelayDisable)
                 )
