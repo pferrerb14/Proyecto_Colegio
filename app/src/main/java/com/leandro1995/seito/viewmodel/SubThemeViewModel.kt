@@ -42,6 +42,8 @@ class SubThemeViewModel : ViewModelAmbient<SubThemeIntentAction, SubThemeIntentE
             value(action = SubThemeIntentAction(subThemeArrayList = subthemeArrayList))
             loading()
         }, error = {
+            subthemeArrayList.clear()
+            value(action = SubThemeIntentAction(subThemeArrayList = subthemeArrayList))
             loading()
         })
     }

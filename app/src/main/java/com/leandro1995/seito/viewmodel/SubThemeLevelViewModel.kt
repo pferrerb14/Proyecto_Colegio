@@ -43,7 +43,11 @@ class SubThemeLevelViewModel :
             levelArrayList.addAll(result)
             value(action = SubThemeLevelIntentAction(levelArrayList = levelArrayList))
             loading()
-        }, error = {})
+        }, error = {
+            levelArrayList.clear()
+            value(action = SubThemeLevelIntentAction(levelArrayList = levelArrayList))
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
