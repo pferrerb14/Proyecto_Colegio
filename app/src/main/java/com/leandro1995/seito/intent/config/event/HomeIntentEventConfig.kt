@@ -1,23 +1,19 @@
 package com.leandro1995.seito.intent.config.event
 
-import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBack
+import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
 import com.leandro1995.seito.intent.config.ambient.IntentConfigAmbient
-import com.leandro1995.seito.intent.event.HomeStudentIntentEvent
+import com.leandro1995.seito.intent.event.HomeIntentEvent
 
-class HomeIntentEventConfig(private val homeStudentIntentEventCallBack: HomeStudentIntentEventCallBack?) :
-    IntentConfigAmbient<HomeStudentIntentEvent>() {
+class HomeIntentEventConfig(private val homeIntentEventCallBack: HomeIntentEventCallBack?) :
+    IntentConfigAmbient<HomeIntentEvent>() {
 
-    override fun initConfig(event: HomeStudentIntentEvent?) {
+    override fun initConfig(event: HomeIntentEvent?) {
         when (event) {
-            is HomeStudentIntentEvent.Loading -> {
-                loadingIntentEventAmbient(
-                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
-                    loadingIntentEventCallBack = homeStudentIntentEventCallBack
+            is HomeIntentEvent.HomeView -> {
+                homeIntentEventCallBack?.homeView(
+                    idBottomNavigation = event.idBottomNavigation,
+                    idGraphNavigation = event.idGraphNavigation
                 )
-            }
-
-            is HomeStudentIntentEvent.VideoDetail -> {
-                homeStudentIntentEventCallBack?.videoDetail(courseArrayList = event.courseArrayList)
             }
 
             null -> {}

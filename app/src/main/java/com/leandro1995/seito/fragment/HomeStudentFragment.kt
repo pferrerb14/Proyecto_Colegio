@@ -20,7 +20,7 @@ import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.HomeStudentIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
-import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
+import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
@@ -35,7 +35,7 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
         HomeStudentIntentActionConfig(homeStudentIntentActionCallBack = this)
 
     private val homeStudentIntentEventConfig =
-        HomeIntentEventConfig(homeStudentIntentEventCallBack = this)
+        HomeStudentIntentEventConfig(homeStudentIntentEventCallBack = this)
 
     private val backGroundCoroutine = BackGroundCoroutine()
 
