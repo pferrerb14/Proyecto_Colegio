@@ -12,4 +12,5 @@ message UserProtoDataStore {
   string code = 6;
   string name_teacher = 7;
   int32 coins = 8;
+  bool is_user_type = 9;
 }
