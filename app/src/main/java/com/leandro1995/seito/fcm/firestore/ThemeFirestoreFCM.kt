@@ -15,7 +15,7 @@ class ThemeFirestoreFCM : FirestoreAmbientFCM() {
     ) {
         val subThemeArrayList = arrayListOf<SubTheme>()
 
-        collection(document = RouteCollection.subThemeRute(idCourse = idCourse, id = id)).get()
+        collection(document = RouteCollection.subThemeRute(idCourse = idCourse, idTheme = id)).get()
             .addOnSuccessListener { result ->
                 result.forEach {
                     subThemeArrayList.add(

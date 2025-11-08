@@ -4,6 +4,7 @@ import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.SubThemeLevelIntentAction
 import com.leandro1995.seito.intent.event.SubThemeLevelIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -13,6 +14,8 @@ class SubThemeLevelViewModel :
     var idCourse = ""
     var idTheme = ""
     var subTheme = SubTheme()
+
+    private var levelArrayList = ArrayList<Level>()
 
     override fun event(action: Int) {
         when (action) {
@@ -35,7 +38,12 @@ class SubThemeLevelViewModel :
     }
 
     private fun levelFirebase() {
-
+        subTheme.levelFirebase(idCourse = idCourse, idTheme = idTheme, success = { result ->
+            levelArrayList.clear()
+            levelArrayList.addAll(result)
+            value(action = SubThemeLevelIntentAction(levelArrayList = levelArrayList))
+            loading()
+        }, error = {})
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

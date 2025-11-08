@@ -15,6 +15,7 @@ import com.leandro1995.seito.intent.callback.event.SubThemeLevelIntentEventCallB
 import com.leandro1995.seito.intent.config.action.SubThemeLevelIntentActionConfig
 import com.leandro1995.seito.intent.config.event.SubThemeLevelIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.viewmodel.SubThemeLevelViewModel
 
@@ -76,5 +77,9 @@ class SubThemeLevelFragment : FragmentAmbient<FragmentSubThemeLevelBinding>(),
 
     override fun startService() {
         subThemeLevelViewModel.button.invoke(SubThemeLevelViewModel.LEVEL)
+    }
+
+    override fun levelArrayList(levelArrayList: ArrayList<Level>) {
+        dataBinding?.subThemeLevelVerticalComponentList?.setAdapter(arrayList = levelArrayList)
     }
 }

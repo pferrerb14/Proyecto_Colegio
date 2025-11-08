@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class SubThemeLevelIntentAction
+import com.leandro1995.seito.model.entity.Level
+
+class SubThemeLevelIntentAction(val levelArrayList: ArrayList<Level>? = null)
