@@ -7,4 +7,11 @@ import com.leandro1995.seito.databinding.ItemSubThemeVerticalBinding
 class SubThemeVerticalViewHolder(
     val itemSubThemeVerticalBinding: ItemSubThemeVerticalBinding,
     val listAmbientOnclick: ListAmbientOnclick
-) : RecyclerView.ViewHolder(itemSubThemeVerticalBinding.root)
+) : RecyclerView.ViewHolder(itemSubThemeVerticalBinding.root) {
+
+    init {
+        itemSubThemeVerticalBinding.root.setOnClickListener {
+            listAmbientOnclick.onclick(bindingAdapterPosition)
+        }
+    }
+}

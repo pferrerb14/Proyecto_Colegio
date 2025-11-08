@@ -41,6 +41,8 @@ class ThemeViewModel : ViewModelAmbient<ThemeIntentAction, ThemeIntentEvent>() {
             value(action = ThemeIntentAction(themeArrayList = themeArrayList))
             loading()
         }, error = {
+            themeArrayList.clear()
+            value(action = ThemeIntentAction(themeArrayList = themeArrayList))
             loading()
         })
     }
