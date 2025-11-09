@@ -36,6 +36,7 @@
     <string name="role_text">Rol</string>
     <string name="available_coins_text">Monedas disponibles</string>
     <string name="student_type_text">Estudiante</string>
+    <string name="teacher_type_text">Profesor</string>
     <string name="student_name_text">¡Hola, %1$s! 👋</string>
     <string name="welcome_text">Bienvenido de nuevo</string>
     <string name="name_teacher_text">Prof. %1$s</string>

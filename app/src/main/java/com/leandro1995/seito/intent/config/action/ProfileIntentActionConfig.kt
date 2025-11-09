@@ -12,6 +12,9 @@ class ProfileIntentActionConfig(private val profileIntentActionCallBack: Profile
             event.student?.let {
                 profileIntentActionCallBack?.studentView(student = it)
             }
+            event.teacher?.let {
+                profileIntentActionCallBack?.teacherView(teacher = it)
+            }
         } else {
             profileIntentActionCallBack?.getProtoDataStore()
         }
