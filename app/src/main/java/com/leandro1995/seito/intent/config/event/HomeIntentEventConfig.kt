@@ -9,15 +9,11 @@ class HomeIntentEventConfig(private val homeIntentEventCallBack: HomeIntentEvent
 
     override fun initConfig(event: HomeIntentEvent?) {
         when (event) {
-            is HomeIntentEvent.Loading -> {
-                loadingIntentEventAmbient(
-                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
-                    loadingIntentEventCallBack = homeIntentEventCallBack
+            is HomeIntentEvent.HomeView -> {
+                homeIntentEventCallBack?.homeView(
+                    idBottomNavigation = event.idBottomNavigation,
+                    idGraphNavigation = event.idGraphNavigation
                 )
-            }
-
-            is HomeIntentEvent.VideoDetail -> {
-                homeIntentEventCallBack?.videoDetail(courseArrayList = event.courseArrayList)
             }
 
             null -> {}

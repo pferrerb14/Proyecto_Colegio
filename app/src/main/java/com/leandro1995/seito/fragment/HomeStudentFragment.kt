@@ -8,72 +8,73 @@ import com.leandro1995.seito.activity.ThemeActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
-import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
+import com.leandro1995.seito.component.list.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
-import com.leandro1995.seito.databinding.FragmentHomeBinding
+import com.leandro1995.seito.databinding.FragmentHomeStudentBinding
 import com.leandro1995.seito.extension.capsSentences
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.extension.youtubeStartActivity
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
-import com.leandro1995.seito.intent.callback.action.HomeIntentActionCallBack
-import com.leandro1995.seito.intent.callback.event.HomeIntentEventCallBack
-import com.leandro1995.seito.intent.config.action.HomeIntentActionConfig
-import com.leandro1995.seito.intent.config.event.HomeIntentEventConfig
+import com.leandro1995.seito.intent.callback.action.HomeStudentIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
+import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
-import com.leandro1995.seito.viewmodel.HomeViewModel
+import com.leandro1995.seito.viewmodel.HomeStudentViewModel
 
-class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCallBack,
-    HomeIntentEventCallBack {
+class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
+    HomeStudentIntentActionCallBack, HomeStudentIntentEventCallBack {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val homeStudentViewModel by viewModels<HomeStudentViewModel>()
 
-    private val homeIntentActionConfig = HomeIntentActionConfig(homeIntentActionCallBack = this)
+    private val homeStudentIntentActionConfig =
+        HomeStudentIntentActionConfig(homeStudentIntentActionCallBack = this)
 
-    private val homeIntentEventConfig = HomeIntentEventConfig(homeIntentEventCallBack = this)
+    private val homeStudentIntentEventConfig =
+        HomeStudentIntentEventConfig(homeStudentIntentEventCallBack = this)
 
     private val backGroundCoroutine = BackGroundCoroutine()
 
-
-    override var idLayout: Int = R.layout.fragment_home
+    override var idLayout: Int = R.layout.fragment_home_student
 
     override fun initView() {
-        dataBinding?.homeViewmodel = homeViewModel
+        dataBinding?.homeStudentViewmodel = homeStudentViewModel
     }
 
     override fun initEventToAction() {
 
         lifecycleScope {
-            homeViewModel.event.collect { homeIntentEvent ->
-                homeIntentEventConfig.initConfig(event = homeIntentEvent)
+            homeStudentViewModel.event.collect { homeIntentEvent ->
+                homeStudentIntentEventConfig.initConfig(event = homeIntentEvent)
             }
         }
 
         lifecycleScope {
-            homeViewModel.action.collect { homeIntentAction ->
-                homeIntentActionConfig.initConfig(event = homeIntentAction)
+            homeStudentViewModel.action.collect { homeIntentAction ->
+                homeStudentIntentActionConfig.initConfig(event = homeIntentAction)
             }
         }
     }
 
     override fun loading(loading: Loading) {
         dataBinding?.loadingComponent?.startService(loading = loading) {
-            homeViewModel.service(idService = loading.idService)
+            homeStudentViewModel.service(idService = loading.idService)
         }
     }
 
     override fun getProtoDataStore() {
         backGroundCoroutine.start {
             UserProtoDataStoreConfig.apply {
-                homeViewModel.protoDataStore(
+                homeStudentViewModel.protoDataStore(
                     name = getName(), lastName = getLastName(), nameTeacher = getNameTeacher()
                 )
             }
 
-            homeViewModel.button.invoke(HomeViewModel.GET_PROTO_DATA_STORE)
+            homeStudentViewModel.button.invoke(HomeStudentViewModel.GET_PROTO_DATA_STORE)
         }
     }
 
@@ -87,7 +88,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
                 getString(R.string.name_teacher_text, student.teacher.fullName().capsSentences())
         }
 
-        homeViewModel.button.invoke(HomeViewModel.COURSE_LIST)
+        homeStudentViewModel.button.invoke(HomeStudentViewModel.COURSE_LIST)
     }
 
     override fun courseVideoArrayList(courseArrayList: ArrayList<Course>) {
@@ -97,7 +98,7 @@ class HomeFragment : FragmentAmbient<FragmentHomeBinding>(), HomeIntentActionCal
         dataBinding?.videoGridList?.apply {
             visibility = View.VISIBLE
             setAdapter(arrayList = courseArrayList)
-            videoGridListCallBack = object : VideoGridListCallBack {
+            videoGridComponentListCallBack = object : VideoGridComponentListCallBack {
                 override fun videoUrl(videoUrl: String) {
                     requireActivity().youtubeStartActivity(url = videoUrl)
                 }

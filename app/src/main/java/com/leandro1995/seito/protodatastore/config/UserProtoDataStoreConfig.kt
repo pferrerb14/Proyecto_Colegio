@@ -64,6 +64,12 @@ object UserProtoDataStoreConfig {
         }
     }
 
+    suspend fun setIsUserType(isUserType: Boolean) {
+        userProtoDataStore?.updateData { setting ->
+            setting.toBuilder().setIsUserType(isUserType).build()
+        }
+    }
+
     suspend fun getName(): String {
         return userProtoDataStore?.data?.first()?.name.orEmpty()
     }
@@ -94,5 +100,9 @@ object UserProtoDataStoreConfig {
 
     suspend fun getCoins(): Int {
         return userProtoDataStore?.data?.first()?.coins ?: -1
+    }
+
+    suspend fun getIsUserType(): Boolean {
+        return userProtoDataStore?.data?.first()?.isUserType ?: false
     }
 }

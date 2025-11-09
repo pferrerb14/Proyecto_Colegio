@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.VideoVerticalListCallBack
+import com.leandro1995.seito.component.list.callback.VideoVerticalComponentListCallBack
 import com.leandro1995.seito.component.list.callback.adapter.VideoVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
@@ -15,7 +15,7 @@ class VideoVerticalComponentList(context: Context, attrs: AttributeSet? = null) 
     private var courseArrayList: ArrayList<Course>? = null
     private var videoVerticalAdapter: VideoVerticalAdapter? = null
 
-    var videoVerticalListCallBack: VideoVerticalListCallBack? = null
+    var videoVerticalComponentListCallBack: VideoVerticalComponentListCallBack? = null
 
     init {
         onCreateViewList()
@@ -53,6 +53,6 @@ class VideoVerticalComponentList(context: Context, attrs: AttributeSet? = null) 
     }
 
     override fun videoUrl(videoUrl: String) {
-        videoVerticalListCallBack?.videoUrl(videoUrl = videoUrl)
+        videoVerticalComponentListCallBack?.videoUrl(videoUrl = videoUrl)
     }
 }

@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoGridAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.VideoGridListCallBack
+import com.leandro1995.seito.component.list.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.list.callback.adapter.VideoGridAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
@@ -15,7 +15,7 @@ class VideoGridComponentList(context: Context, attrs: AttributeSet? = null) : Co
     private var videoGridAdapter: VideoGridAdapter? = null
     private var courseArrayList: ArrayList<Course>? = null
 
-    var videoGridListCallBack: VideoGridListCallBack? = null
+    var videoGridComponentListCallBack: VideoGridComponentListCallBack? = null
 
     init {
         onCreateViewList()
@@ -53,7 +53,7 @@ class VideoGridComponentList(context: Context, attrs: AttributeSet? = null) : Co
     }
 
     override fun videoUrl(videoUrl: String) {
-        videoGridListCallBack?.videoUrl(videoUrl = videoUrl)
+        videoGridComponentListCallBack?.videoUrl(videoUrl = videoUrl)
     }
 
     companion object {
