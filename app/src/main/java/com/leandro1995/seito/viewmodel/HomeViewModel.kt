@@ -25,7 +25,12 @@ class HomeViewModel : ViewModelAmbient<Any, HomeIntentEvent>() {
                 )
             )
         } else {
-            emit(event = HomeIntentEvent.HomeView(idBottomNavigation = 0, idGraphNavigation = 0))
+            emit(
+                event = HomeIntentEvent.HomeView(
+                    idBottomNavigation = R.menu.menu_home_teacher,
+                    idGraphNavigation = R.navigation.nav_home_teacher
+                )
+            )
         }
     }
 

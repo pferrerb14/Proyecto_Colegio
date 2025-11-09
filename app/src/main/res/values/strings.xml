@@ -92,6 +92,7 @@
     <string name="home_constant">Inicio</string>
     <string name="assistant_constant">Asistente</string>
     <string name="profile_constant">Perfil</string>
+    <string name="courses_constant">Cursos</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>

@@ -12,7 +12,7 @@
         android:title="@string/assistant_constant" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_user_hint"
+        android:icon="@drawable/ic_user_black"
         android:title="@string/profile_constant" />
 
 </menu>
