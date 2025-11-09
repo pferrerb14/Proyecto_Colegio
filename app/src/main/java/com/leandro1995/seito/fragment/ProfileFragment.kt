@@ -99,7 +99,9 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
             nameText.text = student.fullName().capsSentences()
             initialComponent.setText(text = student.fullName())
             emailText.text = student.email
-            coinsText.text = student.coins.toString()
+            valueProfileText.text = getString(R.string.available_coins_text)
+            valueProfileImage.setImageResource(R.drawable.ic_coins)
+            valueText.text = student.coins.toString()
             rolText.text = getString(R.string.student_type_text)
             roleUserText.text = getString(R.string.student_type_text)
         }
@@ -110,6 +112,9 @@ class ProfileFragment : FragmentAmbient<FragmentProfileBinding>(), ProfileIntent
             nameText.text = teacher.fullName().capsSentences()
             initialComponent.setText(text = teacher.fullName())
             emailText.text = teacher.email
+            valueProfileText.text = getString(R.string.code_text)
+            valueProfileImage.setImageResource(R.drawable.ic_code)
+            valueText.text = teacher.code
             rolText.text = getString(R.string.teacher_type_text)
             roleUserText.text = getString(R.string.teacher_type_text)
         }

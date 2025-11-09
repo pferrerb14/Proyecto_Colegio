@@ -198,9 +198,9 @@
                                 tools:ignore="UselessParent">
 
                                 <ImageView
+                                    android:id="@+id/value_profile_image"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/ic_coins"
                                     tools:ignore="ContentDescription" />
 
                             </LinearLayout>
@@ -214,13 +214,13 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/value_profile_text"
                                 style="@style/TextBody8"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/available_coins_text" />
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:id="@+id/coins_text"
+                                android:id="@+id/value_text"
                                 style="@style/TextBody7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
