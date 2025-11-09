@@ -173,6 +173,7 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     setSex(sex = teacher.sex)
                     setCode(code = teacher.code)
                     setEmail(email = teacher.email)
+                    setCoins(coins = -1)
                     setIsUserType(isUserType = false)
                 }
             }
