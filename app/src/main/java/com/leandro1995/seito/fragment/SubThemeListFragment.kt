@@ -7,7 +7,7 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.component.list.callback.SubThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
-import com.leandro1995.seito.databinding.FragmentSubThemeBinding
+import com.leandro1995.seito.databinding.FragmentSubThemeListBinding
 import com.leandro1995.seito.extension.argumentParcelable
 import com.leandro1995.seito.extension.argumentString
 import com.leandro1995.seito.extension.lifecycleScope
@@ -21,8 +21,9 @@ import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.SubThemeViewModel
 
-class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeIntentEventCallBack,
-    SubThemeIntentActionCallBack, SubThemeVerticalComponentListCallBack {
+class SubThemeListFragment : FragmentAmbient<FragmentSubThemeListBinding>(),
+    SubThemeIntentEventCallBack, SubThemeIntentActionCallBack,
+    SubThemeVerticalComponentListCallBack {
 
     private val subThemeViewModel by viewModels<SubThemeViewModel>()
     private val subThemeIntentEventConfig =
@@ -30,7 +31,7 @@ class SubThemeFragment : FragmentAmbient<FragmentSubThemeBinding>(), SubThemeInt
     private val subThemeIntentActionConfig =
         SubThemeIntentActionConfig(subThemeIntentActionCallBack = this)
 
-    override var idLayout: Int = R.layout.fragment_sub_theme
+    override var idLayout: Int = R.layout.fragment_sub_theme_list
 
     override fun initView() {
         dataBinding?.subThemeViewModel = subThemeViewModel

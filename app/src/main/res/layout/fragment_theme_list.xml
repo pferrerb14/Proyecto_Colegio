@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.SubThemeLevelFragment">
+    tools:context=".fragment.ThemeListFragment">
 
     <data>
 
         <variable
-            name="subThemeLevelViewModel"
-            type="com.leandro1995.seito.viewmodel.SubThemeLevelViewModel" />
+            name="themeViewModel"
+            type="com.leandro1995.seito.viewmodel.ThemeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,14 +27,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.leandro1995.seito.component.list.SubThemeLevelVerticalComponentList
-            android:id="@+id/sub_theme_level_vertical_component_list"
+        <com.leandro1995.seito.component.list.ThemeVerticalComponentList
+            android:id="@+id/theme_vertical_list"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_0"
             android:layout_marginEnd="@dimen/dimen_16"
             android:layout_marginBottom="@dimen/dimen_0"
+            app:error_color="@color/green_EEFBF3"
+            app:error_image="@drawable/ic_grid_course_hint"
+            app:error_sub_title="@string/no_course_available_description_text"
+            app:error_title="@string/no_course_available_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

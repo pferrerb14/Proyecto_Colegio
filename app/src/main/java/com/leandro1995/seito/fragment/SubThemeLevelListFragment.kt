@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
-import com.leandro1995.seito.databinding.FragmentSubThemeLevelBinding
+import com.leandro1995.seito.databinding.FragmentSubThemeLevelListBinding
 import com.leandro1995.seito.extension.argumentParcelable
 import com.leandro1995.seito.extension.argumentString
 import com.leandro1995.seito.extension.lifecycleScope
@@ -19,7 +19,7 @@ import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.viewmodel.SubThemeLevelViewModel
 
-class SubThemeLevelFragment : FragmentAmbient<FragmentSubThemeLevelBinding>(),
+class SubThemeLevelListFragment : FragmentAmbient<FragmentSubThemeLevelListBinding>(),
     SubThemeLevelIntentActionCallBack, SubThemeLevelIntentEventCallBack {
 
     private val subThemeLevelViewModel by viewModels<SubThemeLevelViewModel>()
@@ -28,7 +28,7 @@ class SubThemeLevelFragment : FragmentAmbient<FragmentSubThemeLevelBinding>(),
     private val subThemeLevelIntentActionConfig =
         SubThemeLevelIntentActionConfig(subthemeLevelIntentActionCallBack = this)
 
-    override var idLayout: Int = R.layout.fragment_sub_theme_level
+    override var idLayout: Int = R.layout.fragment_sub_theme_level_list
 
     override fun initView() {
         dataBinding?.subThemeLevelViewModel = subThemeLevelViewModel
