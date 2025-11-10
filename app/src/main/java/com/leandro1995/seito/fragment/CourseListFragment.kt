@@ -3,7 +3,7 @@ package com.leandro1995.seito.fragment
 import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
-import com.leandro1995.seito.activity.CourseAddActivity
+import com.leandro1995.seito.activity.ThemeAddActivity
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
@@ -68,7 +68,7 @@ class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
     }
 
     override fun course(course: Course) {
-        startActivity(Intent(requireContext(), CourseAddActivity::class.java).apply {
+        startActivity(Intent(requireContext(), ThemeAddActivity::class.java).apply {
             putExtra(Setting.COURSE_PUT_EXTRA, course)
         })
     }
