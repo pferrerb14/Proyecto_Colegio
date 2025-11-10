@@ -10,6 +10,7 @@ import com.leandro1995.seito.intent.callback.action.CourseListIntentActionCallBa
 import com.leandro1995.seito.intent.callback.event.CourseListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.CourseListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.CourseListIntentEventConfig
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.viewmodel.CourseListViewModel
 
 class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
@@ -24,7 +25,12 @@ class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
     override var idLayout: Int = R.layout.fragment_course_list
 
     override fun initView() {
-        dataBinding?.courseListViewModel = courseListViewModel
+        dataBinding?.apply {
+            courseListViewModel = this@CourseListFragment.courseListViewModel
+            appBarBlueInclude.toolbar.let {
+                Toolbar(materialToolbar = it, idTitle = R.string.course_title).config()
+            }
+        }
     }
 
     override fun initEventToAction() {
