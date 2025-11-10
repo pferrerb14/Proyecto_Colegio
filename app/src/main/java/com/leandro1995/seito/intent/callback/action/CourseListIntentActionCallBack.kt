@@ -1,3 +1,6 @@
 package com.leandro1995.seito.intent.callback.action
 
-interface CourseListIntentActionCallBack
+interface CourseListIntentActionCallBack {
+
+    fun startService()
+}

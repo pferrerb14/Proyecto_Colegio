@@ -11,7 +11,7 @@ class CourseListIntentActionConfig(private var courseListIntentActionCallBack: C
         if (event != null) {
 
         } else {
-
+            courseListIntentActionCallBack?.startService()
         }
     }
 }
