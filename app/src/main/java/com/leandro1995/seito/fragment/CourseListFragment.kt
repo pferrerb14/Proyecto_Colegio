@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentCourseListBinding
 import com.leandro1995.seito.extension.lifecycleScope
@@ -15,7 +16,7 @@ import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.viewmodel.CourseListViewModel
 
 class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
-    CourseListIntentActionCallBack, CourseListIntentEventCallBack {
+    CourseListIntentActionCallBack, CourseListIntentEventCallBack, CourseGridComponentListCallBack {
 
     private val courseListViewModel by viewModels<CourseListViewModel>()
     private val courseListIntentActionConfig =
@@ -31,6 +32,7 @@ class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
             appBarBlueInclude.toolbar.let {
                 Toolbar(materialToolbar = it, idTitle = R.string.course_title).config()
             }
+            courseGridComponentList.courseGridComponentListCallBack = this@CourseListFragment
         }
     }
 
@@ -60,5 +62,9 @@ class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
         dataBinding?.courseGridComponentList?.setAdapter(arrayList = courseArrayList)
+    }
+
+    override fun course(course: Course) {
+
     }
 }
