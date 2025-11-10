@@ -24,10 +24,6 @@ data class Student(
         StudentFirestoreFCM().courseVideoArrayList(success = success, error = error)
     }
 
-    fun courseFirebaseArrayList(success: (ArrayList<Course>) -> Unit, error: () -> Unit) {
-        StudentFirestoreFCM().courseArrayList(success = success, error = error)
-    }
-
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1

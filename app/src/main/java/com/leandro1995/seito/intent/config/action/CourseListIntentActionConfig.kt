@@ -9,7 +9,9 @@ class CourseListIntentActionConfig(private var courseListIntentActionCallBack: C
 
     override fun initConfig(event: CourseListIntentAction?) {
         if (event != null) {
-
+            event.courseArrayList?.let {
+                courseListIntentActionCallBack?.courseArrayList(courseArrayList = it)
+            }
         } else {
             courseListIntentActionCallBack?.startService()
         }

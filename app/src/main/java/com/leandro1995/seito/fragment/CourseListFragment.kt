@@ -11,6 +11,7 @@ import com.leandro1995.seito.intent.callback.event.CourseListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.CourseListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.CourseListIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.viewmodel.CourseListViewModel
 
 class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
@@ -55,5 +56,9 @@ class CourseListFragment : FragmentAmbient<FragmentCourseListBinding>(),
 
     override fun startService() {
         courseListViewModel.button.invoke(CourseListViewModel.COURSE)
+    }
+
+    override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+        dataBinding?.courseGridComponentList?.setAdapter(arrayList = courseArrayList)
     }
 }

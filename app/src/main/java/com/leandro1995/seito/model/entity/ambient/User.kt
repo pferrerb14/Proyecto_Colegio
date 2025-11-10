@@ -5,6 +5,7 @@ import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.extension.isEmailFormat
 import com.leandro1995.seito.fcm.authentication.AuthenticationFCM
 import com.leandro1995.seito.fcm.firestore.UserFirestoreFCM
+import com.leandro1995.seito.model.entity.Course
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -29,6 +30,10 @@ open class User(
         ) -> Unit, error: () -> Unit
     ) {
         UserFirestoreFCM().whereEqualToEmail(email = email, success = success, error = error)
+    }
+
+    fun courseFirebaseArrayList(success: (ArrayList<Course>) -> Unit, error: () -> Unit) {
+        UserFirestoreFCM().courseArrayList(success = success, error = error)
     }
 
     fun fullName() = "$name $lastName"
