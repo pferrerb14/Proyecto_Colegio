@@ -82,6 +82,8 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
     }
 
     override fun topicEditorBottomSheet() {
-        AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager)
+        AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager) { name ->
+
+        }
     }
 }
