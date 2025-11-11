@@ -92,6 +92,7 @@
     <string name="error_permission_message">Usaremos solo los permisos necesarios para brindarte todas las funciones de la app. Por favor, concédeselos para continuar.</string>
     <string name="deny_permits_again_permission_message">Si rechazó los permisos, habilítelos manualmente desde la configuración de la aplicación.</string>
     <string name="not_name_theme_message">No ingreso un nombre de tema</string>
+    <string name="not_name_theme_firebase_message">No se pudo registrar el tema</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

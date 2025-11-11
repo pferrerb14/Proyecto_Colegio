@@ -7,15 +7,17 @@ import com.leandro1995.seito.intent.event.ThemeAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentEvent>() {
 
     var course = Course()
-    var nameTheme = ""
+    var themeName = ""
 
     private val themeArrayList = ArrayList<Theme>()
+    private val teacher = Teacher()
 
     override fun event(action: Int) {
         when (action) {
@@ -36,6 +38,10 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
     override suspend fun service(idService: Int) {
         when (idService) {
             THEME_LIST_FIREBASE -> {
+                themeListFirebase()
+            }
+
+            THEME_ADD_FIREBASE -> {
                 themeAddFirebase()
             }
         }
@@ -49,7 +55,7 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
         emit(event = ThemeAddIntentEvent.TopicEditorBottomSheet)
     }
 
-    private fun themeAddFirebase() {
+    private fun themeListFirebase() {
         course.themeFirebase(success = { response ->
             themeArrayList.clear()
             themeArrayList.addAll(response)
@@ -63,11 +69,20 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
     }
 
     private fun nameThemeValidation() {
-        if (nameTheme.isEmpty()) {
+        if (themeName.isEmpty()) {
             emit(event = ThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_message)))
         } else {
-
+            loading(idService = THEME_ADD_FIREBASE)
         }
+    }
+
+    private fun themeAddFirebase() {
+        teacher.addThemeFirebase(idCourse = course.id, themeName = themeName, success = {
+            loading(idService = THEME_LIST_FIREBASE, isDelayDisable = false)
+        }, error = {
+            emit(event = ThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_firebase_message)))
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
@@ -85,5 +100,6 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
         const val TOPIC_EDITOR_BOTTOM_SHEET = 2
         const val NAME_THEME_VALIDATION = 3
         private const val THEME_LIST_FIREBASE = 4
+        private const val THEME_ADD_FIREBASE = 5
     }
 }

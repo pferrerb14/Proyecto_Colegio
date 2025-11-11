@@ -85,7 +85,7 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
     override fun topicEditorBottomSheet() {
         AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager) { name ->
             themeAddViewModel.let {
-                it.nameTheme = name
+                it.themeName = name
                 it.button.invoke(ThemeAddViewModel.NAME_THEME_VALIDATION)
             }
         }
