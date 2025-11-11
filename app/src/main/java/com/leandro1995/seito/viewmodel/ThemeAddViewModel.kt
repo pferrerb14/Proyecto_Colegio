@@ -66,7 +66,7 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
         if (nameTheme.isEmpty()) {
             emit(event = ThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_message)))
         } else {
-            
+
         }
     }
 
