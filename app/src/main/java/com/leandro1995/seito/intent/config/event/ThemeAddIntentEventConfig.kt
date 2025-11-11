@@ -20,6 +20,10 @@ class ThemeAddIntentEventConfig(private val themeAddIntentEventCallBack: ThemeAd
                 themeAddIntentEventCallBack?.topicEditorBottomSheet()
             }
 
+            is ThemeAddIntentEvent.AlertMessage -> {
+                themeAddIntentEventCallBack?.message(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

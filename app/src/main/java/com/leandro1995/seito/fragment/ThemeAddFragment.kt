@@ -13,6 +13,7 @@ import com.leandro1995.seito.intent.callback.action.ThemeAddIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ThemeAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ThemeAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ThemeAddIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Theme
@@ -85,5 +86,9 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
         AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager) { name ->
 
         }
+    }
+
+    override fun message(alertMessage: AlertMessage) {
+
     }
 }

@@ -1,9 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.ThemeAddIntentAction
 import com.leandro1995.seito.intent.event.ThemeAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
@@ -11,6 +13,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentEvent>() {
 
     var course = Course()
+    var nameTheme = ""
 
     private val themeArrayList = ArrayList<Theme>()
 
@@ -22,6 +25,10 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
 
             TOPIC_EDITOR_BOTTOM_SHEET -> {
                 topicEditorBottomSheet()
+            }
+
+            NAME_THEME_VALIDATION -> {
+                nameThemeValidation()
             }
         }
     }
@@ -55,6 +62,14 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
         })
     }
 
+    private fun nameThemeValidation() {
+        if (nameTheme.isEmpty()) {
+            emit(event = ThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_message)))
+        } else {
+            
+        }
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ThemeAddIntentEvent.Loading(
@@ -68,6 +83,7 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
     companion object {
         const val THEME_ADD = 1
         const val TOPIC_EDITOR_BOTTOM_SHEET = 2
-        private const val THEME_ADD_FIREBASE = 3
+        const val NAME_THEME_VALIDATION = 3
+        private const val THEME_ADD_FIREBASE = 4
     }
 }
