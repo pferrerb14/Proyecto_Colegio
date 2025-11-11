@@ -11,11 +11,11 @@
         android:label="fragment_theme_add"
         tools:layout="@layout/fragment_theme_add">
         <action
-            android:id="@+id/action_themeAddFragment_to_subThemeAddFragment2"
-            app:destination="@id/subThemeAddFragment2" />
+            android:id="@+id/sub_theme_add_fragment"
+            app:destination="@id/subThemeAddFragment" />
     </fragment>
     <fragment
-        android:id="@+id/subThemeAddFragment2"
+        android:id="@+id/subThemeAddFragment"
         android:name="com.leandro1995.seito.fragment.SubThemeAddFragment"
         android:label="fragment_sub_theme_add"
         tools:layout="@layout/fragment_sub_theme_add" />

@@ -1,8 +1,11 @@
 package com.leandro1995.seito.fragment
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.list.callback.ThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentThemeAddBinding
@@ -21,7 +24,7 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ThemeAddViewModel
 
 class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddIntentActionCallBack,
-    ThemeAddIntentEventCallBack {
+    ThemeAddIntentEventCallBack, ThemeVerticalComponentListCallBack {
 
     private val themeAddViewModel by viewModels<ThemeAddViewModel>()
     private val themeAddIntentActionConfig =
@@ -32,7 +35,10 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
     override var idLayout: Int = R.layout.fragment_theme_add
 
     override fun initView() {
-        dataBinding?.themeAddViewModel = themeAddViewModel
+        dataBinding?.apply {
+            themeAddViewModel = this@ThemeAddFragment.themeAddViewModel
+            themeVerticalList.themeVerticalComponentListCallBack = this@ThemeAddFragment
+        }
     }
 
     override fun initEventToAction() {
@@ -93,5 +99,12 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
 
     override fun message(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
+    }
+
+    override fun theme(theme: Theme) {
+        findNavController().navigate(R.id.sub_theme_add_fragment, Bundle().apply {
+            putParcelable(Setting.THEME_BUNDLE, theme)
+            putString(Setting.ID_COURSE_BUNDLE, themeAddViewModel.course.id)
+        })
     }
 }
