@@ -16,6 +16,7 @@ import com.leandro1995.seito.intent.config.event.ThemeAddIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Theme
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ThemeAddViewModel
 
 class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddIntentActionCallBack,
@@ -78,5 +79,9 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
             dataBinding?.themeAddFloatingActionButton?.visibility = View.VISIBLE
         }
         dataBinding?.themeVerticalList?.setAdapter(arrayList = themeArrayList)
+    }
+
+    override fun topicEditorBottomSheet() {
+        AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager)
     }
 }

@@ -19,6 +19,10 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
             THEME_ADD -> {
                 themeAdd()
             }
+
+            TOPIC_EDITOR_BOTTOM_SHEET -> {
+                topicEditorBottomSheet()
+            }
         }
     }
 
@@ -32,6 +36,10 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
 
     private fun themeAdd() {
         loading(idService = THEME_ADD_FIREBASE)
+    }
+
+    private fun topicEditorBottomSheet() {
+        emit(event = ThemeAddIntentEvent.TopicEditorBottomSheet)
     }
 
     private fun themeAddFirebase() {
@@ -59,6 +67,7 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
 
     companion object {
         const val THEME_ADD = 1
-        private const val THEME_ADD_FIREBASE = 2
+        const val TOPIC_EDITOR_BOTTOM_SHEET = 2
+        private const val THEME_ADD_FIREBASE = 3
     }
 }

@@ -16,6 +16,10 @@ class ThemeAddIntentEventConfig(private val themeAddIntentEventCallBack: ThemeAd
                 )
             }
 
+            ThemeAddIntentEvent.TopicEditorBottomSheet -> {
+                themeAddIntentEventCallBack?.topicEditorBottomSheet()
+            }
+
             null -> {}
         }
     }

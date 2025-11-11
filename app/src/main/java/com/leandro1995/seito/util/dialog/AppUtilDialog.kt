@@ -1,8 +1,10 @@
 package com.leandro1995.seito.util.dialog
 
 import android.content.Context
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leandro1995.seito.R
+import com.leandro1995.seito.dialog.TopicEditorBottomSheet
 import com.leandro1995.seito.model.design.AlertMessage
 
 object AppUtilDialog {
@@ -18,4 +20,12 @@ object AppUtilDialog {
                 positiveButton()
             }.show()
     }
+
+    fun topicEditorBottomSheet(fragmentManager: FragmentManager) {
+        TopicEditorBottomSheet().apply {
+            show(fragmentManager, TOPIC_EDITOR_BOTTOM_SHEET)
+        }
+    }
+
+    private const val TOPIC_EDITOR_BOTTOM_SHEET = "topicEditorBottomSheet"
 }

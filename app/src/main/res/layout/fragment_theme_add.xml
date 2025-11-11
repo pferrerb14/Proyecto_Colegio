@@ -67,6 +67,7 @@
             android:clickable="true"
             android:focusable="true"
             android:importantForAccessibility="no"
+            android:onClick="@{()-> themeAddViewModel.button.invoke(themeAddViewModel.TOPIC_EDITOR_BOTTOM_SHEET)}"
             android:src="@drawable/ic_add"
             app:backgroundTint="@color/blue_E6F0FF"
             app:layout_constraintBottom_toBottomOf="parent"

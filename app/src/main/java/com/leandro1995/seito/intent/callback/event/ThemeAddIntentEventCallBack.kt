@@ -2,4 +2,7 @@ package com.leandro1995.seito.intent.callback.event
 
 import com.leandro1995.seito.intent.callback.ambient.LoadingIntentCallBackAmbient
 
-interface ThemeAddIntentEventCallBack : LoadingIntentCallBackAmbient
+interface ThemeAddIntentEventCallBack : LoadingIntentCallBackAmbient {
+
+    fun topicEditorBottomSheet()
+}
