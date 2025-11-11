@@ -19,7 +19,7 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
 
     override fun event(action: Int) {
         when (action) {
-            THEME_ADD -> {
+            THEME_LIST -> {
                 themeAdd()
             }
 
@@ -35,14 +35,14 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
 
     override suspend fun service(idService: Int) {
         when (idService) {
-            THEME_ADD_FIREBASE -> {
+            THEME_LIST_FIREBASE -> {
                 themeAddFirebase()
             }
         }
     }
 
     private fun themeAdd() {
-        loading(idService = THEME_ADD_FIREBASE)
+        loading(idService = THEME_LIST_FIREBASE)
     }
 
     private fun topicEditorBottomSheet() {
@@ -81,9 +81,9 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
     }
 
     companion object {
-        const val THEME_ADD = 1
+        const val THEME_LIST = 1
         const val TOPIC_EDITOR_BOTTOM_SHEET = 2
         const val NAME_THEME_VALIDATION = 3
-        private const val THEME_ADD_FIREBASE = 4
+        private const val THEME_LIST_FIREBASE = 4
     }
 }

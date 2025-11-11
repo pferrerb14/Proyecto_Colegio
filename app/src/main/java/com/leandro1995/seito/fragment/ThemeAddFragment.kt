@@ -72,7 +72,7 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
     }
 
     override fun startService() {
-        themeAddViewModel.button.invoke(ThemeAddViewModel.THEME_ADD)
+        themeAddViewModel.button.invoke(ThemeAddViewModel.THEME_LIST)
     }
 
     override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
