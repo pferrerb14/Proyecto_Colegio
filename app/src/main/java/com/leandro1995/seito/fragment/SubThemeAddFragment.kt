@@ -1,5 +1,6 @@
 package com.leandro1995.seito.fragment
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
@@ -15,8 +16,10 @@ import com.leandro1995.seito.intent.callback.event.SubThemeAddIntentEventCallBac
 import com.leandro1995.seito.intent.config.action.SubThemeAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.SubThemeAddIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.SubThemeAddViewModel
+import com.leandro1995.seito.viewmodel.SubThemeViewModel
 
 class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
     SubThemeAddIntentActionCallBack, SubThemeAddIntentEventCallBack {
@@ -67,8 +70,20 @@ class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
     }
 
     override fun loading(loading: Loading) {
+        dataBinding?.subThemeAddFloatingActionButton?.visibility = View.GONE
         dataBinding?.loadingComponent?.startService(loading = loading) {
             subThemeViewModel.service(idService = loading.idService)
         }
+    }
+
+    override fun startService() {
+        subThemeViewModel.button.invoke(SubThemeViewModel.SUB_THEME)
+    }
+
+    override fun subThemeList(subThemeArrayList: ArrayList<SubTheme>) {
+        dataBinding?.subThemeAddFloatingActionButton?.post {
+            dataBinding?.subThemeAddFloatingActionButton?.visibility = View.VISIBLE
+        }
+        dataBinding?.subThemeVerticalComponentList?.setAdapter(arrayList = subThemeArrayList)
     }
 }

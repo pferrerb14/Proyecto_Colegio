@@ -9,9 +9,11 @@ class SubThemeAddIntentActionConfig(private val subThemeAddIntentActionCallBack:
 
     override fun initConfig(event: SubThemeAddIntentAction?) {
         if (event != null) {
-
+            event.subThemeArrayList?.let {
+                subThemeAddIntentActionCallBack?.subThemeList(subThemeArrayList = it)
+            }
         } else {
-
+            subThemeAddIntentActionCallBack?.startService()
         }
     }
 }
