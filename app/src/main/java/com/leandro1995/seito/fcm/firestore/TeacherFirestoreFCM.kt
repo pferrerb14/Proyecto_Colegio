@@ -34,4 +34,20 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
                 error()
             }
     }
+
+    fun subthemeAdd(
+        idCourse: String, themeName: String, idTheme: String, success: () -> Unit, error: () -> Unit
+    ) {
+        addObject[Setting.NAME] = themeName
+
+        collection(
+            document = RouteCollection.subThemeRute(
+                idCourse = idCourse, idTheme = idTheme
+            )
+        ).add(addObject).addOnSuccessListener {
+            success()
+        }.addOnFailureListener {
+            error()
+        }
+    }
 }

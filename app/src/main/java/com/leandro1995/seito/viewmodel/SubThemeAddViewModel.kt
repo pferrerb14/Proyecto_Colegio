@@ -7,6 +7,7 @@ import com.leandro1995.seito.intent.event.SubThemeAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.SubTheme
+import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -17,6 +18,7 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
     var theme = Theme()
 
     private val subthemeArrayList = ArrayList<SubTheme>()
+    private val teacher = Teacher()
 
     override fun event(action: Int) {
         when (action) {
@@ -39,6 +41,10 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
             SUB_THEME_LIST_FIREBASE -> {
                 subThemeListFirebase()
             }
+
+            SUB_THEME_ADD_FIREBASE -> {
+                subThemeAddFirebase()
+            }
         }
     }
 
@@ -54,8 +60,28 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
         if (themeName.isEmpty()) {
             emit(event = SubThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_firebase_message)))
         } else {
-
+            loading(idService = SUB_THEME_ADD_FIREBASE)
         }
+    }
+
+    private fun subThemeAddFirebase() {
+        teacher.addSubThemeFirebase(
+            idCourse = idCourse,
+            themeName = themeName,
+            idTheme = theme.id,
+            success = {
+                loading(idService = SUB_THEME_LIST_FIREBASE, isDelayDisable = false)
+            },
+            error = {
+                emit(
+                    event = SubThemeAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_name_theme_firebase_message
+                        )
+                    )
+                )
+                loading()
+            })
     }
 
     private fun subThemeListFirebase() {
@@ -85,5 +111,6 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
         const val TOPIC_EDITOR_BOTTOM_SHEET = 1
         const val NAME_SUB_THEME_VALIDATION = 2
         private const val SUB_THEME_LIST_FIREBASE = 3
+        private const val SUB_THEME_ADD_FIREBASE = 4
     }
 }

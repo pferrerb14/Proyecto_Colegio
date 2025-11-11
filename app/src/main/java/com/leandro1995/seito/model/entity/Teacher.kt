@@ -43,6 +43,18 @@ data class Teacher(
         )
     }
 
+    fun addSubThemeFirebase(
+        idCourse: String, themeName: String, idTheme: String, success: () -> Unit, error: () -> Unit
+    ) {
+        TeacherFirestoreFCM().subthemeAdd(
+            idCourse = idCourse,
+            themeName = themeName,
+            idTheme = idTheme,
+            success = success,
+            error = error
+        )
+    }
+
     fun isCode() = code.isEmpty()
 
     fun isCodeLength(length: Int) = code.length == length

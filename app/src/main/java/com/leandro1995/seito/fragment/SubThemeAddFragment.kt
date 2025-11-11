@@ -97,6 +97,6 @@ class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
     }
 
     override fun message(alertMessage: AlertMessage) {
-
+        AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
     }
 }
