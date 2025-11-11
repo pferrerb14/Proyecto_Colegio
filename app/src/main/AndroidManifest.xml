@@ -16,7 +16,10 @@
         android:theme="@style/Theme.Seito"
         tools:ignore="DataExtractionRules">
         <activity
-            android:name=".activity.ThemeActivity"
+            android:name=".activity.ThemeAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ThemeListActivity"
             android:exported="false" />
         <activity
             android:name=".activity.VideoDetailActivity"

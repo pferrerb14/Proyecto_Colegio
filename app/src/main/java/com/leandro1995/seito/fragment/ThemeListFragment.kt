@@ -7,7 +7,7 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.component.list.callback.ThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
-import com.leandro1995.seito.databinding.FragmentThemeBinding
+import com.leandro1995.seito.databinding.FragmentThemeListBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.extension.parcelable
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
@@ -20,14 +20,14 @@ import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ThemeViewModel
 
-class ThemeFragment : FragmentAmbient<FragmentThemeBinding>(), ThemeIntentEventCallBack,
+class ThemeListFragment : FragmentAmbient<FragmentThemeListBinding>(), ThemeIntentEventCallBack,
     ThemeIntentActionCallBack, ThemeVerticalComponentListCallBack {
 
     private val themeViewModel by viewModels<ThemeViewModel>()
     private val themeIntentEventConfig = ThemeIntentEventConfig(themeIntentEventCallBack = this)
     private val themeIntentActionConfig = ThemeIntentActionConfig(themeIntentActionCallBack = this)
 
-    override var idLayout: Int = R.layout.fragment_theme
+    override var idLayout: Int = R.layout.fragment_theme_list
 
     override fun initView() {
         dataBinding?.themeViewModel = themeViewModel

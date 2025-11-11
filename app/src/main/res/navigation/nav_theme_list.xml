@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_theme"
+    app:startDestination="@id/themeListFragment">
+
+    <fragment
+        android:id="@+id/themeListFragment"
+        android:name="com.leandro1995.seito.fragment.ThemeListFragment"
+        android:label="fragment_theme_list"
+        tools:layout="@layout/fragment_theme_list">
+        <action
+            android:id="@+id/sub_theme_fragment"
+            app:destination="@id/subThemeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subThemeListFragment"
+        android:name="com.leandro1995.seito.fragment.SubThemeListFragment"
+        android:label="fragment_sub_theme_list"
+        tools:layout="@layout/fragment_sub_theme_list">
+        <action
+            android:id="@+id/sub_theme_level"
+            app:destination="@id/subThemeLevelListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subThemeLevelListFragment"
+        android:name="com.leandro1995.seito.fragment.SubThemeLevelListFragment"
+        android:label="fragment_sub_theme_level_list"
+        tools:layout="@layout/fragment_sub_theme_level_list" />
+</navigation>

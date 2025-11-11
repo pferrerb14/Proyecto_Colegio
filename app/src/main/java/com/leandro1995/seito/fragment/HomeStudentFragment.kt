@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
-import com.leandro1995.seito.activity.ThemeActivity
+import com.leandro1995.seito.activity.ThemeListActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
@@ -114,7 +114,7 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
             setAdapter(arrayList = courseArrayList)
             courseGridComponentListCallBack = object : CourseGridComponentListCallBack {
                 override fun course(course: Course) {
-                    startActivity(Intent(requireContext(), ThemeActivity::class.java).apply {
+                    startActivity(Intent(requireContext(), ThemeListActivity::class.java).apply {
                         putExtra(Setting.COURSE_PUT_EXTRA, course)
                     })
                 }

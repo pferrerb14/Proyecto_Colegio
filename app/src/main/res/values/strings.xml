@@ -50,6 +50,7 @@
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
     <string name="course_text">Curso:</string>
+    <string name="register_topic_text">Registre su tema</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -57,6 +58,7 @@
     <string name="enter_your_email_hint">Introduce tu correo electrónico</string>
     <string name="enter_your_password_hint">Introduce su contraseña</string>
     <string name="enter_your_age_hint">Introduce su edad</string>
+    <string name="name_theme_hint">Nombre del tema</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
@@ -65,6 +67,7 @@
     <string name="register_button">Registrar</string>
     <string name="go_out_button">Salir</string>
     <string name="cancel_button">Cancelar</string>
+    <string name="add_theme_button">Agregar</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
@@ -88,6 +91,8 @@
     <string name="profile_teacher_message">Usted ingreso con un perfil de alumno</string>
     <string name="error_permission_message">Usaremos solo los permisos necesarios para brindarte todas las funciones de la app. Por favor, concédeselos para continuar.</string>
     <string name="deny_permits_again_permission_message">Si rechazó los permisos, habilítelos manualmente desde la configuración de la aplicación.</string>
+    <string name="not_name_theme_message">No ingreso un nombre de tema</string>
+    <string name="not_name_theme_firebase_message">No se pudo registrar el tema</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>
