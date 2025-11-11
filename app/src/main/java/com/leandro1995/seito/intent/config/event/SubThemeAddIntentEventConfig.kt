@@ -16,6 +16,10 @@ class SubThemeAddIntentEventConfig(private val subThemeAddIntentEventCallBack: S
                 )
             }
 
+            SubThemeAddIntentEvent.TopicEditorBottomSheet -> {
+                subThemeAddIntentEventCallBack?.topicEditorBottomSheet()
+            }
+
             null -> {}
         }
     }

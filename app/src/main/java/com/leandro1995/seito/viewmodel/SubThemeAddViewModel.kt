@@ -20,6 +20,10 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
             SUB_THEME_LIST -> {
                 subThemeList()
             }
+
+            TOPIC_EDITOR_BOTTOM_SHEET -> {
+                topicEditorBottomSheet()
+            }
         }
     }
 
@@ -33,6 +37,10 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
 
     private fun subThemeList() {
         loading(idService = SUB_THEME_LIST_FIREBASE)
+    }
+
+    private fun topicEditorBottomSheet() {
+        emit(event = SubThemeAddIntentEvent.TopicEditorBottomSheet)
     }
 
     private fun subThemeListFirebase() {
@@ -59,6 +67,7 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
 
     companion object {
         const val SUB_THEME_LIST = 0
-        private const val SUB_THEME_LIST_FIREBASE = 0
+        const val TOPIC_EDITOR_BOTTOM_SHEET = 1
+        private const val SUB_THEME_LIST_FIREBASE = 2
     }
 }
