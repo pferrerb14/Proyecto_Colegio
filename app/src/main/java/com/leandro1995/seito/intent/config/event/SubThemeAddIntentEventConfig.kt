@@ -20,6 +20,10 @@ class SubThemeAddIntentEventConfig(private val subThemeAddIntentEventCallBack: S
                 subThemeAddIntentEventCallBack?.topicEditorBottomSheet()
             }
 
+            is SubThemeAddIntentEvent.AlertMessage -> {
+                subThemeAddIntentEventCallBack?.message(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

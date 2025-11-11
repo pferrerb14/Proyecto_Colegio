@@ -1,9 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.SubThemeAddIntentAction
 import com.leandro1995.seito.intent.event.SubThemeAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
@@ -11,6 +13,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeAddIntentEvent>() {
 
     var idCourse: String = ""
+    var themeName = ""
     var theme = Theme()
 
     private val subthemeArrayList = ArrayList<SubTheme>()
@@ -23,6 +26,10 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
 
             TOPIC_EDITOR_BOTTOM_SHEET -> {
                 topicEditorBottomSheet()
+            }
+
+            NAME_SUB_THEME_VALIDATION -> {
+                nameSubThemeValidation()
             }
         }
     }
@@ -41,6 +48,14 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
 
     private fun topicEditorBottomSheet() {
         emit(event = SubThemeAddIntentEvent.TopicEditorBottomSheet)
+    }
+
+    fun nameSubThemeValidation() {
+        if (themeName.isEmpty()) {
+            emit(event = SubThemeAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.not_name_theme_firebase_message)))
+        } else {
+
+        }
     }
 
     private fun subThemeListFirebase() {
@@ -68,6 +83,7 @@ class SubThemeAddViewModel : ViewModelAmbient<SubThemeAddIntentAction, SubThemeA
     companion object {
         const val SUB_THEME_LIST = 0
         const val TOPIC_EDITOR_BOTTOM_SHEET = 1
-        private const val SUB_THEME_LIST_FIREBASE = 2
+        const val NAME_SUB_THEME_VALIDATION = 2
+        private const val SUB_THEME_LIST_FIREBASE = 3
     }
 }

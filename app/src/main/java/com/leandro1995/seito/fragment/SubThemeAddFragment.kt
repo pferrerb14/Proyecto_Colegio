@@ -15,6 +15,7 @@ import com.leandro1995.seito.intent.callback.action.SubThemeAddIntentActionCallB
 import com.leandro1995.seito.intent.callback.event.SubThemeAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.SubThemeAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.SubThemeAddIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
@@ -90,7 +91,12 @@ class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
 
     override fun topicEditorBottomSheet() {
         AppUtilDialog.topicEditorBottomSheet(fragmentManager = parentFragmentManager) { name ->
-            
+            subThemeViewModel.themeName = name
+            subThemeViewModel.button.invoke(SubThemeAddViewModel.NAME_SUB_THEME_VALIDATION)
         }
+    }
+
+    override fun message(alertMessage: AlertMessage) {
+
     }
 }

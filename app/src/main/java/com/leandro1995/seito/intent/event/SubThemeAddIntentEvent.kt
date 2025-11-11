@@ -7,4 +7,6 @@ sealed class SubThemeAddIntentEvent {
         SubThemeAddIntentEvent()
 
     data object TopicEditorBottomSheet : SubThemeAddIntentEvent()
+    data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        SubThemeAddIntentEvent()
 }
