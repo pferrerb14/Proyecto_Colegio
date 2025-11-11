@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_theme_add"
+    app:startDestination="@id/themeAddFragment">
+
+    <fragment
+        android:id="@+id/themeAddFragment"
+        android:name="com.leandro1995.seito.fragment.ThemeAddFragment"
+        android:label="fragment_theme_add"
+        tools:layout="@layout/fragment_theme_add">
+        <action
+            android:id="@+id/action_themeAddFragment_to_subThemeAddFragment2"
+            app:destination="@id/subThemeAddFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/subThemeAddFragment2"
+        android:name="com.leandro1995.seito.fragment.SubThemeAddFragment"
+        android:label="fragment_sub_theme_add"
+        tools:layout="@layout/fragment_sub_theme_add" />
+</navigation>
