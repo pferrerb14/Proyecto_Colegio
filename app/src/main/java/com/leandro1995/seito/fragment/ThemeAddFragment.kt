@@ -15,6 +15,7 @@ import com.leandro1995.seito.intent.config.action.ThemeAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ThemeAddIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ThemeAddViewModel
 
 class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddIntentActionCallBack,
@@ -63,7 +64,6 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
 
     override fun loading(loading: Loading) {
         dataBinding?.themeAddFloatingActionButton?.visibility = View.GONE
-
         dataBinding?.loadingComponent?.startService(loading = loading) {
             themeAddViewModel.service(idService = loading.idService)
         }
@@ -71,5 +71,12 @@ class ThemeAddFragment : FragmentAmbient<FragmentThemeAddBinding>(), ThemeAddInt
 
     override fun startService() {
         themeAddViewModel.button.invoke(ThemeAddViewModel.THEME_ADD)
+    }
+
+    override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+        dataBinding?.themeAddFloatingActionButton?.post {
+            dataBinding?.themeAddFloatingActionButton?.visibility = View.VISIBLE
+        }
+        dataBinding?.themeVerticalList?.setAdapter(arrayList = themeArrayList)
     }
 }

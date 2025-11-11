@@ -5,11 +5,14 @@ import com.leandro1995.seito.intent.action.ThemeAddIntentAction
 import com.leandro1995.seito.intent.event.ThemeAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentEvent>() {
 
     var course = Course()
+
+    private val themeArrayList = ArrayList<Theme>()
 
     override fun event(action: Int) {
         when (action) {
@@ -32,7 +35,16 @@ class ThemeAddViewModel : ViewModelAmbient<ThemeAddIntentAction, ThemeAddIntentE
     }
 
     private fun themeAddFirebase() {
-
+        course.themeFirebase(success = { response ->
+            themeArrayList.clear()
+            themeArrayList.addAll(response)
+            value(action = ThemeAddIntentAction(themArrayList = themeArrayList))
+            loading()
+        }, error = {
+            themeArrayList.clear()
+            value(action = ThemeAddIntentAction(themArrayList = themeArrayList))
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class ThemeAddIntentAction
+import com.leandro1995.seito.model.entity.Theme
+
+class ThemeAddIntentAction(val themArrayList: ArrayList<Theme>? = null)
