@@ -1,17 +1,17 @@
 package com.leandro1995.seito.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.leandro1995.seito.R
+import com.leandro1995.seito.databinding.FragmentStudentListBinding
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.model.design.Toolbar
 
-class StudentListFragment : Fragment() {
+class StudentListFragment : FragmentAmbient<FragmentStudentListBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_student_list, container, false)
+    override var idLayout: Int = R.layout.fragment_student_list
+
+    override fun initView() {
+        dataBinding?.appBarBlueInclude?.toolbar?.let {
+            Toolbar(materialToolbar = it, idTitle = R.string.student_title).config()
+        }
     }
 }
