@@ -9,9 +9,13 @@ class SubThemeLevelAddIntentActionConfig(private val subThemeLevelAddIntentActio
 
     override fun initConfig(event: SubThemeLevelAddIntentAction?) {
         if (event != null) {
-
+            event.levelArrayList?.let {
+                subThemeLevelAddIntentActionCallBack?.levelArrayList(
+                    levelArrayList = it, isShowButton = event.isShowButton
+                )
+            }
         } else {
-
+            subThemeLevelAddIntentActionCallBack?.starService()
         }
     }
 }

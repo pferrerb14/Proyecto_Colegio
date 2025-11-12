@@ -34,11 +34,23 @@
             android:layout_marginStart="@dimen/dimen_0"
             android:layout_marginTop="@dimen/dimen_0"
             android:layout_marginEnd="@dimen/dimen_0"
-            android:layout_marginBottom="@dimen/dimen_0"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/level_add_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar_blue_include" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/level_add_button"
+            style="@style/Button"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:text="@string/add_level_button"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.leandro1995.seito.component.loading.LoadingComponent
             android:id="@+id/loading_component"
