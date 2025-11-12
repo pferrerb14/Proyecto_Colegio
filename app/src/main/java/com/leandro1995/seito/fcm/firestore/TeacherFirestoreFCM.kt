@@ -50,4 +50,39 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
             error()
         }
     }
+
+    fun levelAdd(
+        idCourse: String,
+        idTheme: String,
+        idSubTheme: String,
+        position: Int = 0,
+        levelStringArrayList: ArrayList<String>,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+
+        levelStringArrayList.getOrNull(position)?.let {
+            addObject[Setting.NAME] = it
+
+            collection(
+                document = RouteCollection.levelRute(
+                    idCourse = idCourse, idTheme = idTheme, idSubTeme = idSubTheme
+                )
+            ).document().set(addObject).addOnSuccessListener {
+                levelAdd(
+                    idCourse = idCourse,
+                    idTheme = idTheme,
+                    idSubTheme = idSubTheme,
+                    position = position + 1,
+                    levelStringArrayList = levelStringArrayList,
+                    success = success,
+                    error = error
+                )
+            }.addOnFailureListener {
+                error()
+            }
+        } ?: run {
+            success()
+        }
+    }
 }

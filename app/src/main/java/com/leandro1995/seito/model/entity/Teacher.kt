@@ -55,6 +55,24 @@ data class Teacher(
         )
     }
 
+    fun addLevelFirebase(
+        idCourse: String,
+        idTheme: String,
+        idSubTheme: String,
+        levelStringArrayList: ArrayList<String>,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+        TeacherFirestoreFCM().levelAdd(
+            idCourse = idCourse,
+            idTheme = idTheme,
+            idSubTheme = idSubTheme,
+            levelStringArrayList = levelStringArrayList,
+            success = success,
+            error = error
+        )
+    }
+
     fun isCode() = code.isEmpty()
 
     fun isCodeLength(length: Int) = code.length == length
