@@ -18,5 +18,14 @@
         android:id="@+id/subThemeAddFragment"
         android:name="com.leandro1995.seito.fragment.SubThemeAddFragment"
         android:label="fragment_sub_theme_add"
-        tools:layout="@layout/fragment_sub_theme_add" />
+        tools:layout="@layout/fragment_sub_theme_add">
+        <action
+            android:id="@+id/sub_theme_level_add_fragment"
+            app:destination="@id/subThemeLevelAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subThemeLevelAddFragment"
+        android:name="com.leandro1995.seito.fragment.SubThemeLevelAddFragment"
+        android:label="fragment_sub_theme_level_add"
+        tools:layout="@layout/fragment_sub_theme_level_add" />
 </navigation>
