@@ -3,16 +3,20 @@ package com.leandro1995.seito.fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeLevelAddBinding
 import com.leandro1995.seito.extension.argumentParcelable
 import com.leandro1995.seito.extension.argumentString
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.intent.callback.action.SubThemeLevelAddIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.SubThemeLevelAddIntentEventCallBack
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.viewmodel.SubThemeLevelAddViewModel
 
-class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding>() {
+class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding>(),
+    SubThemeLevelAddIntentActionCallBack, SubThemeLevelAddIntentEventCallBack {
 
     private val subThemeLevelAddViewModel by viewModels<SubThemeLevelAddViewModel>()
 
@@ -42,6 +46,12 @@ class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding
                 icArrow = R.drawable.ic_arrow_white,
                 isArrow = true
             ).config { findNavController().popBackStack() }
+        }
+    }
+
+    override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            subThemeLevelAddViewModel.service(idService = loading.idService)
         }
     }
 }
