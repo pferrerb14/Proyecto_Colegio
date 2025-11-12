@@ -1,9 +1,11 @@
 package com.leandro1995.seito.fragment
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.list.callback.SubThemeVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeAddBinding
@@ -24,7 +26,8 @@ import com.leandro1995.seito.viewmodel.SubThemeAddViewModel
 import com.leandro1995.seito.viewmodel.SubThemeViewModel
 
 class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
-    SubThemeAddIntentActionCallBack, SubThemeAddIntentEventCallBack {
+    SubThemeAddIntentActionCallBack, SubThemeAddIntentEventCallBack,
+    SubThemeVerticalComponentListCallBack {
 
     private val subThemeViewModel by viewModels<SubThemeAddViewModel>()
     private val subThemeAddIntentActionConfig =
@@ -35,7 +38,11 @@ class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
     override var idLayout: Int = R.layout.fragment_sub_theme_add
 
     override fun initView() {
-        dataBinding?.subThemeViewModel = subThemeViewModel
+        dataBinding?.apply {
+            subThemeViewModel = this@SubThemeAddFragment.subThemeViewModel
+            subThemeVerticalComponentList.subThemeVerticalComponentListCallBack =
+                this@SubThemeAddFragment
+        }
     }
 
     override fun initEventToAction() {
@@ -98,5 +105,13 @@ class SubThemeAddFragment : FragmentAmbient<FragmentSubThemeAddBinding>(),
 
     override fun message(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
+    }
+
+    override fun subTheme(subTheme: SubTheme) {
+        findNavController().navigate(R.id.sub_theme_level_add_fragment, Bundle().apply {
+            putString(Setting.ID_COURSE_BUNDLE, subThemeViewModel.idCourse)
+            putString(Setting.ID_THEME_BUNDLE, subThemeViewModel.theme.id)
+            putParcelable(Setting.ID_SUB_THEME_BUNDLE, subTheme)
+        })
     }
 }
