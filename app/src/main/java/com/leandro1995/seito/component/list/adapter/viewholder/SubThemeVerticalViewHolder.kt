@@ -10,7 +10,7 @@ class SubThemeVerticalViewHolder(
 ) : RecyclerView.ViewHolder(itemSubThemeVerticalBinding.root) {
 
     init {
-        itemSubThemeVerticalBinding.root.setOnClickListener {
+        itemSubThemeVerticalBinding.themeMaterialCardView.setOnClickListener {
             listAmbientOnclick.onclick(bindingAdapterPosition)
         }
     }
