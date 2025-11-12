@@ -51,6 +51,8 @@
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
     <string name="course_text">Curso:</string>
     <string name="register_topic_text">Registre su tema</string>
+    <string name="previous_level_text">Nivel previo al inicio</string>
+    <string name="level_text">Nivel en inicio</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

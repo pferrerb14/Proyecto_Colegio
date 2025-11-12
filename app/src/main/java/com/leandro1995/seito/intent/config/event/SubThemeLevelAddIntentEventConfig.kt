@@ -16,6 +16,10 @@ class SubThemeLevelAddIntentEventConfig(private val subThemeLevelAddIntentEventC
                 )
             }
 
+            is SubThemeLevelAddIntentEvent.AlertMessage -> {
+                subThemeLevelAddIntentEventCallBack?.message(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

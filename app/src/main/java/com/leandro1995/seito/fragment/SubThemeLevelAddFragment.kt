@@ -15,9 +15,11 @@ import com.leandro1995.seito.intent.callback.action.SubThemeLevelAddIntentAction
 import com.leandro1995.seito.intent.callback.event.SubThemeLevelAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.SubThemeLevelAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.SubThemeLevelAddIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.SubTheme
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.SubThemeLevelAddViewModel
 
 class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding>(),
@@ -33,6 +35,8 @@ class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding
 
     override fun initView() {
         dataBinding?.subThemeLevelAddViewModel = subThemeLevelAddViewModel
+        subThemeLevelAddViewModel.levelStringArrayList =
+            Setting.levelStringArrayList(context = requireContext())
     }
 
     override fun initEventToAction() {
@@ -86,6 +90,14 @@ class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding
         dataBinding?.let {
             it.levelAddButton.visibility = visible(isVisible = isShowButton)
             it.subThemeLevelVerticalComponentList.setAdapter(arrayList = levelArrayList)
+        }
+    }
+
+    override fun message(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = requireContext(), alertMessage = alertMessage
+        ) {
+            findNavController().popBackStack()
         }
     }
 }
