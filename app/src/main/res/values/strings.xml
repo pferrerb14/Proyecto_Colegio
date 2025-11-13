@@ -54,6 +54,9 @@
     <string name="register_topic_text">Registre su tema</string>
     <string name="previous_level_text">Nivel previo al inicio</string>
     <string name="level_text">Nivel en inicio</string>
+    <string name="item_student_text">Alumno:</string>
+    <string name="email_item_text">Correo: %1$s</string>
+    <string name="age_item_text">Correo: %1$d</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
