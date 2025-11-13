@@ -74,6 +74,7 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
 
     override fun studentRegister() {
         startActivity(Intent(this, StudentRegisterActivity::class.java))
+        finishAffinity()
     }
 
     override fun loading(loading: Loading) {
