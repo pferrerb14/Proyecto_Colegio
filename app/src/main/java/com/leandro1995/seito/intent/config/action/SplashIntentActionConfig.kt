@@ -20,10 +20,6 @@ class SplashIntentActionConfig(private val splashIntentActionCallBack: SplashInt
             if (it.isTeacherHomeDirect) {
                 splashIntentActionCallBack?.teacherHome()
             }
-
-            if (it.isValidationDirect) {
-                splashIntentActionCallBack?.validationDirect()
-            }
         }
     }
 }

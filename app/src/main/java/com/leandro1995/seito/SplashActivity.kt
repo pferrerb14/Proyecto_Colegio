@@ -34,10 +34,6 @@ class SplashActivity : AppCompatActivity(), SplashIntentActionCallBack {
             }
         }
 
-        splashViewModel.button.invoke(SplashViewModel.VALIDATION_DIRECT)
-    }
-
-    override fun validationDirect() {
         BackGroundCoroutine(
             time = TIME_SKIP, timeTypeCoroutine = TimeTypeCoroutine.SECONDS
         ).start {
