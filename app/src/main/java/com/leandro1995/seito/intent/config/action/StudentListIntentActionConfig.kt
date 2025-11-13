@@ -11,7 +11,7 @@ class StudentListIntentActionConfig(private val studentListIntentActionCallBack:
         if (event != null) {
 
         } else {
-
+            studentListIntentActionCallBack?.startService()
         }
     }
 }

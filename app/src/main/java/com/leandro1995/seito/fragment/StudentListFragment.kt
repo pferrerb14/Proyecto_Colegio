@@ -49,6 +49,12 @@ class StudentListFragment : FragmentAmbient<FragmentStudentListBinding>(),
     }
 
     override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            studentListViewModel.service(idService = loading.idService)
+        }
+    }
 
+    override fun startService() {
+        studentListViewModel.button.invoke(StudentListViewModel.USER_LIST)
     }
 }
