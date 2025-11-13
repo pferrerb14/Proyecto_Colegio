@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.leandro1995.seito.extension.binding
 
-
 abstract class ActivityAmbient<binding> : AppCompatActivity() {
 
     protected var dataBinding: binding? = null
@@ -19,6 +18,8 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     protected abstract var idLayout: Int
 
     open var isStatusBarColorIcon: Boolean = false
+
+    open var isBottomNavigationPadding: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +32,25 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     private fun fullScreen() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA && !isGestureNavigation()) {
             enableEdgeToEdge()
-            ViewCompat.setOnApplyWindowInsetsListener(
-                findViewById<ViewGroup>(android.R.id.content).getChildAt(
-                    0
-                )
-            ) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
+            onApplyWindowInsetsListener()
         }
 
+        statusBarColorIcon()
+    }
+
+    private fun isGestureNavigation(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return false
+        }
+
+        return try {
+            Settings.Secure.getInt(this.contentResolver, NAVIGATION_MODE) == 2
+        } catch (_: Settings.SettingNotFoundException) {
+            false
+        }
+    }
+
+    private fun statusBarColorIcon() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (isStatusBarColorIcon) {
                 window.decorView.getWindowInsetsController()?.setSystemBarsAppearance(
@@ -54,15 +63,17 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
         }
     }
 
-    private fun isGestureNavigation(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            return false
-        }
-
-        return try {
-            Settings.Secure.getInt(this.contentResolver, NAVIGATION_MODE) == 2
-        } catch (_: Settings.SettingNotFoundException) {
-            false
+    private fun onApplyWindowInsetsListener() {
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById<ViewGroup>(android.R.id.content).getChildAt(
+                0
+            )
+        ) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            if (isBottomNavigationPadding) {
+                v.setPadding(0, 0, systemBars.right, systemBars.bottom)
+            }
+            insets
         }
     }
 

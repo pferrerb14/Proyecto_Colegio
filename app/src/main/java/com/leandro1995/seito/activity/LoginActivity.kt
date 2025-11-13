@@ -62,13 +62,19 @@ class LoginActivity : ActivityAmbient<ActivityLoginBinding>(), LoginLoadingInten
         )
     }
 
-    override fun homeActivity() {
-        startActivity(Intent(this, HomeActivity::class.java))
+    override fun studentHomeActivity() {
+        startActivity(Intent(this, StudentHomeActivity::class.java))
+        finishAffinity()
+    }
+
+    override fun teacherHomeActivity() {
+        startActivity(Intent(this, TeacherHomeActivity::class.java))
         finishAffinity()
     }
 
     override fun studentRegister() {
         startActivity(Intent(this, StudentRegisterActivity::class.java))
+        finishAffinity()
     }
 
     override fun loading(loading: Loading) {

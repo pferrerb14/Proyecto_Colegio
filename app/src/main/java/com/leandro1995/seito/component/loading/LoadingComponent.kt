@@ -1,7 +1,9 @@
 package com.leandro1995.seito.component.loading
 
+import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
+import android.view.inputmethod.InputMethodManager
 import com.leandro1995.seito.R
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
@@ -25,6 +27,7 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
     }
 
     fun startService(loading: Loading, method: suspend () -> Unit) {
+        hideKeyboard()
         if (loading.idService != -1) {
             if (NetworkUtil(context = context).isInternetAvailable()) {
                 visibility(isVisible = true)
@@ -47,6 +50,12 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
 
     override fun visibility(isVisible: Boolean) {
         dataBinding?.loadingConstraint?.visibility = if (isVisible) VISIBLE else GONE
+    }
+
+    private fun hideKeyboard() {
+        (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+            windowToken, 0
+        )
     }
 
     companion object {

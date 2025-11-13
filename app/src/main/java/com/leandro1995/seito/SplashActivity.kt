@@ -6,8 +6,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.leandro1995.seito.activity.HomeActivity
+import com.leandro1995.seito.activity.StudentHomeActivity
 import com.leandro1995.seito.activity.LoginActivity
+import com.leandro1995.seito.activity.TeacherHomeActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
 import com.leandro1995.seito.extension.lifecycleScope
@@ -33,10 +34,6 @@ class SplashActivity : AppCompatActivity(), SplashIntentActionCallBack {
             }
         }
 
-        splashViewModel.button.invoke(SplashViewModel.VALIDATION_DIRECT)
-    }
-
-    override fun validationDirect() {
         BackGroundCoroutine(
             time = TIME_SKIP, timeTypeCoroutine = TimeTypeCoroutine.SECONDS
         ).start {
@@ -49,8 +46,13 @@ class SplashActivity : AppCompatActivity(), SplashIntentActionCallBack {
         finishAffinity()
     }
 
-    override fun home() {
-        startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+    override fun studentHome() {
+        startActivity(Intent(this@SplashActivity, StudentHomeActivity::class.java))
+        finishAffinity()
+    }
+
+    override fun teacherHome() {
+        startActivity(Intent(this@SplashActivity, TeacherHomeActivity::class.java))
         finishAffinity()
     }
 

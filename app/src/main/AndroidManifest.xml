@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Seito"
         tools:ignore="DataExtractionRules">
         <activity
+            android:name=".activity.TeacherHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ThemeAddActivity"
             android:exported="false" />
         <activity
@@ -28,7 +31,7 @@
             android:name=".activity.StudentRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".activity.StudentHomeActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"

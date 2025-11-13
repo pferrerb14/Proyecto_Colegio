@@ -8,6 +8,7 @@ interface LoginLoadingIntentEventCallBack : LoadingIntentCallBackAmbient {
     fun studentSelect()
     fun teacherSelect()
     fun alertMessage(alertMessage: AlertMessage)
-    fun homeActivity()
+    fun studentHomeActivity()
+    fun teacherHomeActivity()
     fun studentRegister()
 }

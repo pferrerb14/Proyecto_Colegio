@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.leandro1995.seito.activity.HomeActivity
+import com.leandro1995.seito.activity.StudentHomeActivity
 import com.leandro1995.seito.model.design.Notification
 
 @SuppressLint("MissingFirebaseInstanceTokenRefresh")
@@ -19,7 +19,7 @@ class MessagingServiceFCM : FirebaseMessagingService() {
                     context = this,
                     title = it.title.orEmpty(),
                     content = it.body.orEmpty(),
-                    activity = HomeActivity()
+                    activity = StudentHomeActivity()
                 ).showNotification()
             }
         }
