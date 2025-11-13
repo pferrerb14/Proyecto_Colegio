@@ -13,8 +13,12 @@ class SplashIntentActionConfig(private val splashIntentActionCallBack: SplashInt
                 splashIntentActionCallBack?.login()
             }
 
-            if (it.isHomeDirect) {
-                splashIntentActionCallBack?.home()
+            if (it.isStudentHomeDirect) {
+                splashIntentActionCallBack?.studentHome()
+            }
+
+            if (it.isTeacherHomeDirect) {
+                splashIntentActionCallBack?.teacherHome()
             }
 
             if (it.isValidationDirect) {

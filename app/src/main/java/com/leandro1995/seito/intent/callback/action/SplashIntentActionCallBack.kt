@@ -4,5 +4,6 @@ interface SplashIntentActionCallBack {
 
     fun validationDirect()
     fun login()
-    fun home()
+    fun studentHome()
+    fun teacherHome()
 }

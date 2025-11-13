@@ -18,7 +18,11 @@ class SplashViewModel : ViewModelAmbient<SplashIntentAction, Any>() {
         if (UserProtoDataStoreConfig.getName().isEmpty()) {
             value(action = SplashIntentAction(isLoginDirect = true))
         } else {
-            value(action = SplashIntentAction(isHomeDirect = true))
+            if (UserProtoDataStoreConfig.getIsUserType()) {
+                value(action = SplashIntentAction(isStudentHomeDirect = true))
+            } else {
+                value(action = SplashIntentAction(isTeacherHomeDirect = true))
+            }
         }
     }
 
