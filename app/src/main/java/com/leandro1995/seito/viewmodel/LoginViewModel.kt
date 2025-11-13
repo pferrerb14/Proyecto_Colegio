@@ -163,6 +163,8 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     setEmail(email = student.email)
                     setIsUserType(isUserType = true)
                 }
+
+                emit(event = LoginIntentEvent.StudentHomeActivity)
             }
 
             TEACHER_TYPE -> {
@@ -176,10 +178,10 @@ class LoginViewModel : ViewModelAmbient<Any, LoginIntentEvent>() {
                     setCoins(coins = -1)
                     setIsUserType(isUserType = false)
                 }
+
+                emit(event = LoginIntentEvent.TeacherHomeActivity)
             }
         }
-
-        emit(event = LoginIntentEvent.HomeActivity)
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
