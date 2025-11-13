@@ -4,6 +4,7 @@ import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.fcm.firestore.util.RouteCollection
 import com.leandro1995.seito.model.entity.Student
+import com.leandro1995.seito.model.entity.Teacher
 
 class TeacherFirestoreFCM : FirestoreAmbientFCM() {
 
@@ -84,5 +85,30 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         } ?: run {
             success()
         }
+    }
+
+
+    fun studentArrayList(success: (ArrayList<Student>) -> Unit, error: () -> Unit) {
+        whereEqualTo(document = Setting.USERS, field = Setting.CODE, value = "", success = {
+            val studentArrayList = arrayListOf<Student>()
+            it.forEach { result ->
+                studentArrayList.add(
+                    Student(
+                        name = toString(documentSnapshot = result, field = Setting.NAME),
+                        lastName = toString(documentSnapshot = result, field = Setting.LAST_NAME),
+                        email = toString(documentSnapshot = result, field = Setting.EMAIL),
+                        age = toInt(documentSnapshot = result, field = Setting.AGE),
+                        sex = toString(documentSnapshot = result, field = Setting.SEX),
+                        teacher = Teacher(
+                            name = toString(
+                                documentSnapshot = result, field = Setting.TEACHER
+                            )
+                        ),
+                        coins = toInt(documentSnapshot = result, field = Setting.COINS)
+                    )
+                )
+            }
+            success(studentArrayList)
+        }, error = error)
     }
 }
