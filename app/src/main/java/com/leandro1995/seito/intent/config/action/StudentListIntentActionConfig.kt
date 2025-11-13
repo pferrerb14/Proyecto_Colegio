@@ -9,7 +9,9 @@ class StudentListIntentActionConfig(private val studentListIntentActionCallBack:
 
     override fun initConfig(event: StudentListIntentAction?) {
         if (event != null) {
-
+            event.studentArrayList?.let {
+                studentListIntentActionCallBack?.studentArrayList(studentArrayList = it)
+            }
         } else {
             studentListIntentActionCallBack?.startService()
         }

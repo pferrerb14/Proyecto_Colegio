@@ -11,6 +11,7 @@ import com.leandro1995.seito.intent.callback.event.StudentListIntentEventCallBac
 import com.leandro1995.seito.intent.config.action.StudentListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.StudentListIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.StudentListViewModel
 
 class StudentListFragment : FragmentAmbient<FragmentStudentListBinding>(),
@@ -56,5 +57,9 @@ class StudentListFragment : FragmentAmbient<FragmentStudentListBinding>(),
 
     override fun startService() {
         studentListViewModel.button.invoke(StudentListViewModel.USER_LIST)
+    }
+
+    override fun studentArrayList(studentArrayList: ArrayList<Student>) {
+        dataBinding?.studentVerticalComponentList?.setAdapter(arrayList = studentArrayList)
     }
 }

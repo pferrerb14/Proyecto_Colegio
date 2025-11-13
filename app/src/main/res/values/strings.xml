@@ -47,16 +47,18 @@
     <string name="areas_study_text">Áreas de Estudio</string>
     <string name="view_all_text">Ver todos</string>
     <string name="no_video_available_text">No hay videos disponibles</string>
+    <string name="no_student_available_text">No hay alumnos disponibles</string>
     <string name="no_course_available_text">No hay áreas disponibles</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
+    <string name="no_student_available_description_text">Los alumnos aparecerán aquí cuando se registren en el sistema</string>
     <string name="course_text">Curso:</string>
     <string name="register_topic_text">Registre su tema</string>
     <string name="previous_level_text">Nivel previo al inicio</string>
     <string name="level_text">Nivel en inicio</string>
     <string name="item_student_text">Alumno:</string>
     <string name="email_item_text">Correo: %1$s</string>
-    <string name="age_item_text">Correo: %1$d</string>
+    <string name="age_item_text">Edad: %1$d</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
