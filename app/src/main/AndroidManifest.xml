@@ -28,7 +28,7 @@
             android:name=".activity.StudentRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".activity.HomeStudentActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"

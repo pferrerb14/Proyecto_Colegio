@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.HomeActivity">
+    tools:context=".activity.HomeStudentActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,8 @@
             app:layout_constraintBottom_toTopOf="@+id/materialDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_home_student" />
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/materialDivider"
@@ -41,7 +42,8 @@
             app:itemTextColor="@color/color_select_text_bottom_navigation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_home_student" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

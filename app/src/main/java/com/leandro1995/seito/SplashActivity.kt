@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.leandro1995.seito.activity.HomeActivity
+import com.leandro1995.seito.activity.HomeStudentActivity
 import com.leandro1995.seito.activity.LoginActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.background.coroutine.setting.TimeTypeCoroutine
@@ -50,7 +50,7 @@ class SplashActivity : AppCompatActivity(), SplashIntentActionCallBack {
     }
 
     override fun home() {
-        startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+        startActivity(Intent(this@SplashActivity, HomeStudentActivity::class.java))
         finishAffinity()
     }
 
