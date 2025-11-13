@@ -19,6 +19,8 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
 
     open var isStatusBarColorIcon: Boolean = false
 
+    open var isBottomNavigationPadding: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentView()
@@ -30,15 +32,7 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     private fun fullScreen() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA && !isGestureNavigation()) {
             enableEdgeToEdge()
-            ViewCompat.setOnApplyWindowInsetsListener(
-                findViewById<ViewGroup>(android.R.id.content).getChildAt(
-                    0
-                )
-            ) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(0, 0, systemBars.right, systemBars.bottom)
-                insets
-            }
+            onApplyWindowInsetsListener()
         }
 
         statusBarColorIcon()
@@ -66,6 +60,20 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
                 window.decorView.getWindowInsetsController()
                     ?.setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS)
             }
+        }
+    }
+
+    private fun onApplyWindowInsetsListener() {
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById<ViewGroup>(android.R.id.content).getChildAt(
+                0
+            )
+        ) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            if (isBottomNavigationPadding) {
+                v.setPadding(0, 0, systemBars.right, systemBars.bottom)
+            }
+            insets
         }
     }
 

@@ -21,6 +21,8 @@ class HomeActivity : ActivityAmbient<ActivityHomeBinding>(), HomeIntentEventCall
 
     override var idLayout: Int = R.layout.activity_home
 
+    override var isBottomNavigationPadding: Boolean = false
+
     override fun initView() {
         backGroundCoroutine.start {
             homeViewModel.isUserType = UserProtoDataStoreConfig.getIsUserType()
