@@ -4,11 +4,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
-import com.leandro1995.seito.databinding.ActivityHomeStudentBinding
+import com.leandro1995.seito.databinding.ActivityStudentHomeBinding
 
-class HomeStudentActivity : ActivityAmbient<ActivityHomeStudentBinding>() {
+class StudentHomeActivity : ActivityAmbient<ActivityStudentHomeBinding>() {
 
-    override var idLayout: Int = R.layout.activity_home_student
+    override var idLayout: Int = R.layout.activity_student_home
 
     override var isBottomNavigationPadding: Boolean = false
 
