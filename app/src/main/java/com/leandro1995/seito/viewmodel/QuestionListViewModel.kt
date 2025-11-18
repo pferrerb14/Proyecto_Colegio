@@ -9,4 +9,20 @@ class QuestionListViewModel :
     ViewModelAmbient<QuestionListIntentAction, QuestionListIntentEvent>() {
 
     var level = Level()
+
+    override fun event(action: Int) {
+        when (action) {
+            QUESTION_ADD -> {
+                questionAdd()
+            }
+        }
+    }
+
+    private fun questionAdd() {
+        emit(event = QuestionListIntentEvent.QuestionAdd)
+    }
+
+    companion object {
+        const val QUESTION_ADD = 0
+    }
 }

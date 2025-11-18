@@ -4,11 +4,15 @@ import com.leandro1995.seito.intent.callback.event.QuestionListIntentEventCallBa
 import com.leandro1995.seito.intent.config.ambient.IntentConfigAmbient
 import com.leandro1995.seito.intent.event.QuestionListIntentEvent
 
-class QuestionListIntentEventConfig(private val questionListIntentEventCallBack: QuestionListIntentEventCallBack) :
+class QuestionListIntentEventConfig(private val questionListIntentEventCallBack: QuestionListIntentEventCallBack?) :
     IntentConfigAmbient<QuestionListIntentEvent>() {
 
     override fun initConfig(event: QuestionListIntentEvent?) {
         when (event) {
+            QuestionListIntentEvent.QuestionAdd -> {
+                questionListIntentEventCallBack?.questionAdd()
+            }
+
             null -> {}
         }
     }
