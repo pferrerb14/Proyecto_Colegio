@@ -56,6 +56,8 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
     }
 
     override fun questionAdd() {
-        startActivity(Intent(this, QuestionAddActivity::class.java))
+        startActivity(Intent(this, QuestionAddActivity::class.java).apply {
+            putExtra(Setting.LEVEL_PUT_EXTRA, questionListViewModel.level)
+        })
     }
 }
