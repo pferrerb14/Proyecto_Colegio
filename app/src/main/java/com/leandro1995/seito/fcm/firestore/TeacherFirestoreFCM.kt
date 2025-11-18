@@ -64,6 +64,7 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
 
         levelStringArrayList.getOrNull(position)?.let {
             addObject[Setting.NAME] = it
+            addObject[Setting.IS_TYPE] = position != 0
 
             collection(
                 document = RouteCollection.levelRute(

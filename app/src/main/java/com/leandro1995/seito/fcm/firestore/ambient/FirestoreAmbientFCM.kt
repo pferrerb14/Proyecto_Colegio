@@ -52,4 +52,7 @@ abstract class FirestoreAmbientFCM {
 
     protected fun toInt(documentSnapshot: DocumentSnapshot, field: String) =
         documentSnapshot.getField<Int>(field) ?: -1
+
+    protected fun toBoolean(documentSnapshot: DocumentSnapshot, field: String) =
+        documentSnapshot.getField<Boolean>(field) ?: false
 }
