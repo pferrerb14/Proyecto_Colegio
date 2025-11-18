@@ -1,8 +1,11 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.QuestionListActivity
+import com.leandro1995.seito.component.list.callback.SubThemeLevelVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeLevelAddBinding
@@ -23,7 +26,8 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.SubThemeLevelAddViewModel
 
 class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding>(),
-    SubThemeLevelAddIntentActionCallBack, SubThemeLevelAddIntentEventCallBack {
+    SubThemeLevelAddIntentActionCallBack, SubThemeLevelAddIntentEventCallBack,
+    SubThemeLevelVerticalComponentListCallBack {
 
     private val subThemeLevelAddViewModel by viewModels<SubThemeLevelAddViewModel>()
     private val subThemeLevelAddIntentActionConfig =
@@ -34,9 +38,13 @@ class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding
     override var idLayout: Int = R.layout.fragment_sub_theme_level_add
 
     override fun initView() {
-        dataBinding?.subThemeLevelAddViewModel = subThemeLevelAddViewModel
-        subThemeLevelAddViewModel.levelStringArrayList =
-            Setting.levelStringArrayList(context = requireContext())
+        dataBinding?.apply {
+            subThemeLevelAddViewModel = this@SubThemeLevelAddFragment.subThemeLevelAddViewModel
+            subThemeLevelVerticalComponentList.subThemeLevelVerticalComponentListCallBack =
+                this@SubThemeLevelAddFragment
+            subThemeLevelAddViewModel?.levelStringArrayList =
+                Setting.levelStringArrayList(context = requireContext())
+        }
     }
 
     override fun initEventToAction() {
@@ -99,5 +107,11 @@ class SubThemeLevelAddFragment : FragmentAmbient<FragmentSubThemeLevelAddBinding
         ) {
             findNavController().popBackStack()
         }
+    }
+
+    override fun level(level: Level) {
+        startActivity(Intent(requireContext(), QuestionListActivity::class.java).apply {
+            putExtra(Setting.LEVEL_PUT_EXTRA, level)
+        })
     }
 }

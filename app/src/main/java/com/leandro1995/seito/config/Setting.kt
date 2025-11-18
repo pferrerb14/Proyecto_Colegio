@@ -21,6 +21,7 @@ object Setting {
 
     const val COURSE_ARRAY_LIST_PUT_EXTRA = "course_array_list_put_extra"
     const val COURSE_PUT_EXTRA = "course_put_extra"
+    const val LEVEL_PUT_EXTRA = "level_put_extra"
 
     fun levelStringArrayList(context: Context) = arrayListOf(
         context.getString(R.string.previous_level_text), context.getString(R.string.level_text)
