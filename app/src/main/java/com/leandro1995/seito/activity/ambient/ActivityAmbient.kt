@@ -24,6 +24,7 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         contentView()
+        putExtra()
         initView()
         initEventToAction()
         fullScreen()
@@ -88,6 +89,8 @@ abstract class ActivityAmbient<binding> : AppCompatActivity() {
     open fun initView() {}
 
     open fun initEventToAction() {}
+
+    open fun putExtra() {}
 
     companion object {
         private const val NAVIGATION_MODE = "navigation_mode"
