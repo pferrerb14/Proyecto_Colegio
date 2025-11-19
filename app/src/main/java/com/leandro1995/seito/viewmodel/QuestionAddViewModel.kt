@@ -31,6 +31,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                 )
             }
 
+            question.isCoin() -> {
+                emit(
+                    event = QuestionAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_coin_message
+                        )
+                    )
+                )
+            }
+
             question.isOptionArrayList() -> {
                 emit(
                     event = QuestionAddIntentEvent.AlertMessage(
@@ -46,16 +56,6 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     event = QuestionAddIntentEvent.AlertMessage(
                         alertMessage = AlertMessage(
                             idMessage = R.string.not_option_length_message
-                        )
-                    )
-                )
-            }
-
-            question.isCoin() -> {
-                emit(
-                    event = QuestionAddIntentEvent.AlertMessage(
-                        alertMessage = AlertMessage(
-                            idMessage = R.string.not_coin_message
                         )
                     )
                 )

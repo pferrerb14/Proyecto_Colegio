@@ -19,8 +19,21 @@ class QuestionAddUnitTest : TestAmbient() {
     }
 
     @Test
+    fun isCoin() = runBlocking {
+        questionAddViewModel.question.apply {
+            name = "¿Pregunta de prueba 1?"
+        }
+        test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
+            questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
+        })
+    }
+
+    @Test
     fun isOptionArrayList() = runBlocking {
-        questionAddViewModel.question.name = "¿Pregunta de prueba 1?"
+        questionAddViewModel.question.apply {
+            name = "¿Pregunta de prueba 1?"
+            coin = 10
+        }
         test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
             questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
         })
@@ -30,23 +43,9 @@ class QuestionAddUnitTest : TestAmbient() {
     fun optionLength() = runBlocking {
         questionAddViewModel.question.apply {
             name = "¿Pregunta de prueba 1?"
+            coin = 10
             optionArrayList.add(Option(false, "Opcion 1"))
             optionArrayList.add(Option(false, "Opcion 2"))
-        }
-        test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
-            questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
-        })
-    }
-
-    @Test
-    fun isCoin() = runBlocking {
-        questionAddViewModel.question.apply {
-            name = "¿Pregunta de prueba 1?"
-            optionArrayList.add(Option(false, "Opcion 1"))
-            optionArrayList.add(Option(false, "Opcion 2"))
-            optionArrayList.add(Option(false, "Opcion 3"))
-            optionArrayList.add(Option(false, "Opcion 4"))
-            optionArrayList.add(Option(false, "Opcion 5"))
         }
         test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
             questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
