@@ -4,11 +4,15 @@ import com.leandro1995.seito.intent.callback.event.QuestionAddIntentEventCallBac
 import com.leandro1995.seito.intent.config.ambient.IntentConfigAmbient
 import com.leandro1995.seito.intent.event.QuestionAddIntentEvent
 
-class QuestionAddIntentEventConfig(private val questionAddIntentEventCallBack: QuestionAddIntentEventCallBack) :
+class QuestionAddIntentEventConfig(private val questionAddIntentEventCallBack: QuestionAddIntentEventCallBack?) :
     IntentConfigAmbient<QuestionAddIntentEvent>() {
 
     override fun initConfig(event: QuestionAddIntentEvent?) {
         when (event) {
+            is QuestionAddIntentEvent.AlertMessage -> {
+                questionAddIntentEventCallBack?.alertMessage(event.alertMessage)
+            }
+
             null -> {}
         }
     }

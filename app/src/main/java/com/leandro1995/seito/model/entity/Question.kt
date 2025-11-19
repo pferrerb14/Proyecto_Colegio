@@ -7,4 +7,7 @@ class Question(
     var answer: String = "",
     val isType: Boolean = false,
     var coin: Int = -1
-)
+) {
+
+    fun isName() = name.isEmpty()
+}

@@ -107,6 +107,7 @@
     <string name="deny_permits_again_permission_message">Si rechazó los permisos, habilítelos manualmente desde la configuración de la aplicación.</string>
     <string name="not_name_theme_message">No ingreso un nombre de tema</string>
     <string name="not_name_theme_firebase_message">No se pudo registrar el tema</string>
+    <string name="not_question_title_message">Ingrese el título de la pregunta</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>
