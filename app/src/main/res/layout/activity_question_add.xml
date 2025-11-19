@@ -59,6 +59,7 @@
                     android:ems="10"
                     android:hint="@string/question_heading_hint"
                     android:inputType="text"
+                    android:text="@={questionAddViewModel.question.name}"
                     tools:ignore="Autofill,LabelFor" />
 
                 <TextView
@@ -75,6 +76,7 @@
                     android:ems="10"
                     android:hint="@string/question_coin_hint"
                     android:inputType="number"
+                    android:int="@={questionAddViewModel.question.coin}"
                     tools:ignore="Autofill,LabelFor" />
 
                 <TextView
@@ -114,6 +116,7 @@
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginEnd="@dimen/dimen_16"
             android:layout_marginBottom="@dimen/dimen_16"
+            android:onClick="@{()-> questionAddViewModel.button.invoke(questionAddViewModel.QUESTION_VALIDATION)}"
             android:text="@string/add_question_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
