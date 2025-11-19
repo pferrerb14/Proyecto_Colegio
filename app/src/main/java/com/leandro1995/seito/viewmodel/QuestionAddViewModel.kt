@@ -16,6 +16,10 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
             QUESTION_VALIDATION -> {
                 questionValidation()
             }
+
+            OPTION_ADD_BOTTOM_SHEET -> {
+                optionAddBottomSheet()
+            }
         }
     }
 
@@ -63,7 +67,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
         }
     }
 
+    private fun optionAddBottomSheet() {
+        emit(
+            event = QuestionAddIntentEvent.OptionAddBottomSheet(
+                isAnswer = question.isAnswerSelect()
+            )
+        )
+    }
+
     companion object {
         const val QUESTION_VALIDATION = 0
+        const val OPTION_ADD_BOTTOM_SHEET = 1
     }
 }

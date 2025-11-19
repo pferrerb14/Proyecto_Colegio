@@ -18,4 +18,6 @@ class Question(
     fun optionLength() = optionArrayList.size != Setting.OPTION_LENGTH
 
     fun isCoin() = coin == -1
+
+    fun isAnswerSelect() = optionArrayList.none { it.isAnswer }
 }

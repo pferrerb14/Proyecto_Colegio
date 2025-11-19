@@ -56,6 +56,14 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
 
+    override fun optionAddBottomSheet(isAnswer: Boolean) {
+        AppUtilDialog.optionAddBottomSheet(
+            fragmentManager = supportFragmentManager, isVisibleAnswer = isAnswer
+        ) { option ->
+            
+        }
+    }
+
     override fun loading(loading: Loading) {
 
     }

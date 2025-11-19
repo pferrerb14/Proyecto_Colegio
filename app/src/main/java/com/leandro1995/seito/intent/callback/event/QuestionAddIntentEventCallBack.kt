@@ -6,4 +6,5 @@ import com.leandro1995.seito.model.design.AlertMessage
 interface QuestionAddIntentEventCallBack : LoadingIntentCallBackAmbient {
 
     fun alertMessage(alertMessage: AlertMessage)
+    fun optionAddBottomSheet(isAnswer: Boolean)
 }

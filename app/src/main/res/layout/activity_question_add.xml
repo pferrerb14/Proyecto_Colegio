@@ -92,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginTop="@dimen/dimen_15"
+                    android:onClick="@{()-> questionAddViewModel.button.invoke(questionAddViewModel.OPTION_ADD_BOTTOM_SHEET)}"
                     android:text="@string/add_option_text"
                     tools:ignore="RtlHardcoded" />
 

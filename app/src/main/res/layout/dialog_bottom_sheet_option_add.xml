@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_0"
+            android:background="@drawable/background_bottom_sheet"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tint="@color/grey_E3E5E9" />
+
+            <TextView
+                style="@style/TextBody5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/register_option_text" />
+
+            <EditText
+                android:id="@+id/option_name_edit"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:ems="10"
+                android:hint="@string/option_hint"
+                android:inputType="text"
+                tools:ignore="Autofill,LabelFor" />
+
+            <CheckBox
+                android:id="@+id/option_check"
+                style="@style/TextBody7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/dimen_4"
+                android:text="@string/select_option_answer_text"
+                app:buttonTint="@color/blue_0066FF" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register_button"
+                style="@style/Button"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:text="@string/add_theme_button" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

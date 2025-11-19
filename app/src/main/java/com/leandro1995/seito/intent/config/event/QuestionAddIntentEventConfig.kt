@@ -13,6 +13,10 @@ class QuestionAddIntentEventConfig(private val questionAddIntentEventCallBack: Q
                 questionAddIntentEventCallBack?.alertMessage(event.alertMessage)
             }
 
+            is QuestionAddIntentEvent.OptionAddBottomSheet -> {
+                questionAddIntentEventCallBack?.optionAddBottomSheet(isAnswer = event.isAnswer)
+            }
+
             null -> {}
         }
     }
