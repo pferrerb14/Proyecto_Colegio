@@ -1,5 +1,7 @@
 package com.leandro1995.seito.model.entity
 
+import com.leandro1995.seito.config.Setting
+
 class Question(
     var imageUrl: String = "",
     var name: String = "",
@@ -12,4 +14,6 @@ class Question(
     fun isName() = name.isEmpty()
 
     fun isOptionArrayList() = optionArrayList.isEmpty()
+
+    fun optionLength() = optionArrayList.size != Setting.OPTION_LENGTH
 }

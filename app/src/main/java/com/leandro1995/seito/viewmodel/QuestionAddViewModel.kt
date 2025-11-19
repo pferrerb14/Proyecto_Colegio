@@ -40,6 +40,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     )
                 )
             }
+
+            question.optionLength() -> {
+                emit(
+                    event = QuestionAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_option_length_message
+                        )
+                    )
+                )
+            }
         }
     }
 
