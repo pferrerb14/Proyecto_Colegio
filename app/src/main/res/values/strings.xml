@@ -59,6 +59,7 @@
     <string name="item_student_text">Alumno:</string>
     <string name="email_item_text">Correo: %1$s</string>
     <string name="age_item_text">Edad: %1$d</string>
+    <string name="add_option_text">Agregar opción</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -67,6 +68,7 @@
     <string name="enter_your_password_hint">Introduce su contraseña</string>
     <string name="enter_your_age_hint">Introduce su edad</string>
     <string name="name_theme_hint">Nombre del tema</string>
+    <string name="question_heading_hint">Encabezado de la pregunta</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
@@ -77,6 +79,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="add_theme_button">Agregar</string>
     <string name="add_level_button">Agregar Level</string>
+    <string name="add_question_button">Crear pregunta</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
