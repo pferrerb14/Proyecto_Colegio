@@ -37,4 +37,19 @@ class QuestionAddUnitTest : TestAmbient() {
             questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
         })
     }
+
+    @Test
+    fun isCoin() = runBlocking {
+        questionAddViewModel.question.apply {
+            name = "¿Pregunta de prueba 1?"
+            optionArrayList.add(Option(false, "Opcion 1"))
+            optionArrayList.add(Option(false, "Opcion 2"))
+            optionArrayList.add(Option(false, "Opcion 3"))
+            optionArrayList.add(Option(false, "Opcion 4"))
+            optionArrayList.add(Option(false, "Opcion 5"))
+        }
+        test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
+            questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
+        })
+    }
 }

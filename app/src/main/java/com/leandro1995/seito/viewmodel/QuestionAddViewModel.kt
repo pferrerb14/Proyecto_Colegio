@@ -50,6 +50,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     )
                 )
             }
+
+            question.isCoin() -> {
+                emit(
+                    event = QuestionAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_coin_message
+                        )
+                    )
+                )
+            }
         }
     }
 
