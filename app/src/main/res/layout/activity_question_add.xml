@@ -46,6 +46,12 @@
                 android:orientation="vertical"
                 android:padding="@dimen/dimen_16">
 
+                <TextView
+                    style="@style/TextBody5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/question_heading_text" />
+
                 <EditText
                     style="@style/EditText"
                     android:layout_width="match_parent"
@@ -54,6 +60,29 @@
                     android:hint="@string/question_heading_hint"
                     android:inputType="text"
                     tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    style="@style/TextBody5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:text="@string/question_coin_text" />
+
+                <EditText
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50"
+                    android:ems="10"
+                    android:hint="@string/question_coin_hint"
+                    android:inputType="number"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    style="@style/TextBody5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:text="@string/question_option_text" />
 
                 <TextView
                     style="@style/LinkBody"

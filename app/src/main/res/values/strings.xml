@@ -62,6 +62,9 @@
     <string name="email_item_text">Correo: %1$s</string>
     <string name="age_item_text">Edad: %1$d</string>
     <string name="add_option_text">Agregar opción</string>
+    <string name="question_heading_text">Encabezado de la pregunta</string>
+    <string name="question_coin_text">Ingreso las monedas de la pregunta</string>
+    <string name="question_option_text">Ingreso de opciones</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -70,7 +73,8 @@
     <string name="enter_your_password_hint">Introduce su contraseña</string>
     <string name="enter_your_age_hint">Introduce su edad</string>
     <string name="name_theme_hint">Nombre del tema</string>
-    <string name="question_heading_hint">Encabezado de la pregunta</string>
+    <string name="question_heading_hint">ejemplo: 1. ¿Cuandos años tienes…?</string>
+    <string name="question_coin_hint">ejemplo: 10</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
