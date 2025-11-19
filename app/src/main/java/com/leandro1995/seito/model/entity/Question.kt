@@ -10,4 +10,6 @@ class Question(
 ) {
 
     fun isName() = name.isEmpty()
+
+    fun isOptionArrayList() = optionArrayList.isEmpty()
 }

@@ -16,4 +16,12 @@ class QuestionAddUnitTest : TestAmbient() {
             questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
         })
     }
+
+    @Test
+    fun isOptionArrayList() = runBlocking {
+        questionAddViewModel.question.name = "¿Pregunta de prueba 1?"
+        test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
+            questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
+        })
+    }
 }

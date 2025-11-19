@@ -30,6 +30,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     )
                 )
             }
+
+            question.isOptionArrayList() -> {
+                emit(
+                    event = QuestionAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_option_message
+                        )
+                    )
+                )
+            }
         }
     }
 
