@@ -49,9 +49,11 @@
     <string name="no_video_available_text">No hay videos disponibles</string>
     <string name="no_student_available_text">No hay alumnos disponibles</string>
     <string name="no_course_available_text">No hay áreas disponibles</string>
+    <string name="no_option_available_text">Agregar opciónes</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
     <string name="no_student_available_description_text">Los alumnos aparecerán aquí cuando se registren en el sistema</string>
+    <string name="no_option_available_description_text">Ingrese las opciones de la pregunta que desea registrar</string>
     <string name="course_text">Curso:</string>
     <string name="register_topic_text">Registre su tema</string>
     <string name="previous_level_text">Nivel previo al inicio</string>

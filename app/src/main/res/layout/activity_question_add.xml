@@ -57,6 +57,16 @@
                     android:text="@string/add_option_text"
                     tools:ignore="RtlHardcoded" />
 
+                <com.leandro1995.seito.component.list.OptionVerticalComponentList
+                    android:id="@+id/option_vertical_component_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_option_available_description_text"
+                    app:error_title="@string/no_option_available_text" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
