@@ -1,5 +1,6 @@
 package com.leandro1995.seito.component.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.QuestionVerticalAdapter
@@ -26,7 +27,21 @@ class QuestionVerticalComponentList(context: Context, attrs: AttributeSet? = nul
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun setAdapter(arrayList: ArrayList<*>) {
-        
+        messageErrorVisibility(arrayList = arrayList)
+
+        questionArrayList?.clear()
+        arrayList.forEach {
+            (it as com.leandro1995.seito.model.entity.Question).let { question ->
+                questionArrayList?.add(
+                    Question(
+                        name = question.name, answer = question.answer, coins = question.coins
+                    )
+                )
+            }
+        }
+
+        questionVerticalAdapter?.notifyDataSetChanged()
     }
 }
