@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.list.adapter.viewholder.OptionVerticalHolder
+import com.leandro1995.seito.component.list.callback.adapter.OptionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Option
 import com.leandro1995.seito.databinding.ItemOptionQuestionBinding
@@ -13,6 +14,8 @@ import com.leandro1995.seito.databinding.ItemOptionQuestionBinding
 class OptionVerticalAdapter(
     private val context: Context, private val optionArrayList: ArrayList<Option>
 ) : RecyclerView.Adapter<OptionVerticalHolder>(), ListAmbientOnclick {
+
+    var optionVerticalAdapterCallBack: OptionVerticalAdapterCallBack? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -46,6 +49,6 @@ class OptionVerticalAdapter(
     }
 
     override fun onclick(position: Int) {
-
+        optionVerticalAdapterCallBack?.deleteOption(position = position)
     }
 }

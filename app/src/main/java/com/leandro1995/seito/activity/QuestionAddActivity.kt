@@ -3,6 +3,7 @@ package com.leandro1995.seito.activity
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.component.list.callback.OptionVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.ActivityQuestionAddBinding
 import com.leandro1995.seito.extension.lifecycleScope
@@ -18,7 +19,8 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionAddViewModel
 
 class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
-    QuestionAddIntentActionCallBack, QuestionAddIntentEventCallBack {
+    QuestionAddIntentActionCallBack, QuestionAddIntentEventCallBack,
+    OptionVerticalComponentListCallBack {
 
     private val questionAddViewModel by viewModels<QuestionAddViewModel>()
     private val questionAddIntentEventConfig =
@@ -37,6 +39,8 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
                 icArrow = R.drawable.ic_arrow_white,
                 isArrow = true
             ).config { finish() }
+            optionVerticalComponentList.optionVerticalComponentListCallBack =
+                this@QuestionAddActivity
         }
     }
 
@@ -77,5 +81,9 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
 
     override fun isOptionAddLink(isVisible: Boolean) {
         dataBinding?.addOptionTextView?.visibility = visible(isVisible = isVisible)
+    }
+
+    override fun deleteOption(position: Int) {
+        questionAddViewModel.optionRemover(position = position)
     }
 }

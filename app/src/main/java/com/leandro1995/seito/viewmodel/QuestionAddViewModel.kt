@@ -26,7 +26,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
             OPTION_ADD_VALIDATION_BOTTOM_SHEET -> {
                 optionAddValidationBottomSheet()
             }
+
+            OPTION_UPDATE_LIST -> {
+                optionUpdateList()
+            }
         }
+    }
+
+    fun optionRemover(position: Int) {
+        question.optionArrayList.removeAt(position)
+        button.invoke(OPTION_UPDATE_LIST)
     }
 
     private fun questionValidation() {
@@ -92,18 +101,23 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
             )
         } else {
             question.optionArrayList.add(option)
-            value(
-                action = QuestionAddIntentAction(
-                    optionArrayList = question.optionArrayList,
-                    isOptionAddLink = !question.optionLength()
-                )
-            )
+            button.invoke(OPTION_UPDATE_LIST)
         }
+    }
+
+    private fun optionUpdateList() {
+        value(
+            action = QuestionAddIntentAction(
+                optionArrayList = question.optionArrayList,
+                isOptionAddLink = !question.optionLength()
+            )
+        )
     }
 
     companion object {
         const val QUESTION_VALIDATION = 0
         const val OPTION_ADD_BOTTOM_SHEET = 1
         const val OPTION_ADD_VALIDATION_BOTTOM_SHEET = 2
+        private const val OPTION_UPDATE_LIST = 3
     }
 }
