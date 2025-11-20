@@ -60,7 +60,8 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
         AppUtilDialog.optionAddBottomSheet(
             fragmentManager = supportFragmentManager, isVisibleAnswer = isAnswer
         ) { option ->
-            
+            questionAddViewModel.option = option
+            questionAddViewModel.button.invoke(QuestionAddViewModel.OPTION_ADD_VALIDATION_BOTTOM_SHEET)
         }
     }
 

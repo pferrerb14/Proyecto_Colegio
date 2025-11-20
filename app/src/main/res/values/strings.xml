@@ -119,6 +119,7 @@
     <string name="not_option_message">No agrego opciones en la pregunta</string>
     <string name="not_option_length_message">Máximo debe tener 5 opciones no menos</string>
     <string name="not_coin_message">Colocar monedas para la pregunta</string>
+    <string name="not_option_name_message">No ingreso la opción correctamente</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>
