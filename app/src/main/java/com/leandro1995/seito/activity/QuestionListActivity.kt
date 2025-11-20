@@ -13,6 +13,7 @@ import com.leandro1995.seito.intent.callback.action.QuestionListIntentActionCall
 import com.leandro1995.seito.intent.callback.event.QuestionListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.QuestionListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionListIntentEventConfig
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.viewmodel.QuestionListViewModel
 
@@ -28,7 +29,15 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
     override var idLayout: Int = R.layout.activity_question_list
 
     override fun initView() {
-        dataBinding?.questionListViewModel = questionListViewModel
+        dataBinding?.apply {
+            questionListViewModel = this@QuestionListActivity.questionListViewModel
+            Toolbar(
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.list_question_title,
+                icArrow = R.drawable.ic_arrow_white,
+                isArrow = true
+            ).config { finish() }
+        }
     }
 
     override fun initEventToAction() {
