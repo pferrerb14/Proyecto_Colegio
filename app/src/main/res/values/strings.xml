@@ -8,6 +8,7 @@
     <string name="theme_title">Temas</string>
     <string name="course_title">Cursos</string>
     <string name="student_title">Alumnos</string>
+    <string name="add_question_title">Agregar pregunta</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -49,16 +50,24 @@
     <string name="no_video_available_text">No hay videos disponibles</string>
     <string name="no_student_available_text">No hay alumnos disponibles</string>
     <string name="no_course_available_text">No hay áreas disponibles</string>
+    <string name="no_option_available_text">Agregar opciónes</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
     <string name="no_student_available_description_text">Los alumnos aparecerán aquí cuando se registren en el sistema</string>
+    <string name="no_option_available_description_text">Ingrese las opciones de la pregunta que desea registrar</string>
     <string name="course_text">Curso:</string>
     <string name="register_topic_text">Registre su tema</string>
+    <string name="register_option_text">Registre una opción</string>
     <string name="previous_level_text">Nivel previo al inicio</string>
     <string name="level_text">Nivel en inicio</string>
     <string name="item_student_text">Alumno:</string>
     <string name="email_item_text">Correo: %1$s</string>
     <string name="age_item_text">Edad: %1$d</string>
+    <string name="add_option_text">Agregar opción</string>
+    <string name="question_heading_text">Encabezado de la pregunta</string>
+    <string name="question_coin_text">Ingreso las monedas de la pregunta</string>
+    <string name="question_option_text">Ingreso de opciones</string>
+    <string name="select_option_answer_text">Seleccionar como respuesta</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -67,6 +76,9 @@
     <string name="enter_your_password_hint">Introduce su contraseña</string>
     <string name="enter_your_age_hint">Introduce su edad</string>
     <string name="name_theme_hint">Nombre del tema</string>
+    <string name="option_hint">Nombre de la opción</string>
+    <string name="question_heading_hint">ejemplo: 1. ¿Cuandos años tienes…?</string>
+    <string name="question_coin_hint">ejemplo: 10</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
@@ -77,6 +89,7 @@
     <string name="cancel_button">Cancelar</string>
     <string name="add_theme_button">Agregar</string>
     <string name="add_level_button">Agregar Level</string>
+    <string name="add_question_button">Crear pregunta</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
@@ -102,6 +115,13 @@
     <string name="deny_permits_again_permission_message">Si rechazó los permisos, habilítelos manualmente desde la configuración de la aplicación.</string>
     <string name="not_name_theme_message">No ingreso un nombre de tema</string>
     <string name="not_name_theme_firebase_message">No se pudo registrar el tema</string>
+    <string name="not_question_title_message">Ingrese el título de la pregunta</string>
+    <string name="not_option_message">No agrego opciones en la pregunta</string>
+    <string name="not_option_length_message">Máximo debe tener 5 opciones no menos</string>
+    <string name="not_coin_message">Colocar monedas para la pregunta</string>
+    <string name="not_option_name_message">No ingreso la opción correctamente</string>
+    <string name="not_option_response_message">No ingreso una opción como respuesta</string>
+    <string name="question_complete_message">Se registro la pregunta</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

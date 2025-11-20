@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.leandro1995.seito.R
+import com.leandro1995.seito.dialog.OptionAddBottomSheet
 import com.leandro1995.seito.dialog.TopicEditorBottomSheet
+import com.leandro1995.seito.dialog.config.callback.OptionAddBottomSheetCallBack
 import com.leandro1995.seito.dialog.config.callback.TopicEditorBottomSheetCallBack
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Option
 
 object AppUtilDialog {
 
@@ -33,5 +36,19 @@ object AppUtilDialog {
         }
     }
 
+    fun optionAddBottomSheet(
+        fragmentManager: FragmentManager, isVisibleAnswer: Boolean, option: (Option) -> Unit
+    ) {
+        OptionAddBottomSheet(isVisibleAnswer = isVisibleAnswer).apply {
+            optionAddBottomSheetCallBack = object : OptionAddBottomSheetCallBack {
+                override fun option(option: Option) {
+                    option(option)
+                }
+            }
+            show(fragmentManager, QUESTION_ADD_BOTTOM_SHEET)
+        }
+    }
+
     private const val TOPIC_EDITOR_BOTTOM_SHEET = "topicEditorBottomSheet"
+    private const val QUESTION_ADD_BOTTOM_SHEET = "questionAddBottomSheet"
 }

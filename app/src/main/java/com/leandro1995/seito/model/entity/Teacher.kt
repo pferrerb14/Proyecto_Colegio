@@ -77,6 +77,10 @@ data class Teacher(
         TeacherFirestoreFCM().studentArrayList(success = success, error = error)
     }
 
+    fun addQuestionFirebase(question: Question, success: () -> Unit, error: () -> Unit) {
+        TeacherFirestoreFCM().questionAdd(question = question, success = success, error = error)
+    }
+
     fun isCode() = code.isEmpty()
 
     fun isCodeLength(length: Int) = code.length == length

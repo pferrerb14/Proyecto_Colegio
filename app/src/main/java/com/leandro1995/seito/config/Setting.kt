@@ -12,6 +12,7 @@ object Setting {
 
     const val CODE_LENGTH = 4
     const val PASSWORD_LENGTH = 6
+    const val OPTION_LENGTH = 5
 
     const val TEACHER_BUNDLE = "teacher_bundle"
     const val THEME_BUNDLE = "theme_put_bundle"
@@ -21,6 +22,7 @@ object Setting {
 
     const val COURSE_ARRAY_LIST_PUT_EXTRA = "course_array_list_put_extra"
     const val COURSE_PUT_EXTRA = "course_put_extra"
+    const val LEVEL_PUT_EXTRA = "level_put_extra"
 
     fun levelStringArrayList(context: Context) = arrayListOf(
         context.getString(R.string.previous_level_text), context.getString(R.string.level_text)

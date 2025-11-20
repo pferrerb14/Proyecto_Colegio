@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Seito"
         tools:ignore="DataExtractionRules">
         <activity
+            android:name=".activity.QuestionAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QuestionListActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.TeacherHomeActivity"
             android:exported="false" />
         <activity
