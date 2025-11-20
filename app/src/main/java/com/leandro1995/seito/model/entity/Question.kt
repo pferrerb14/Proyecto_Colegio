@@ -20,4 +20,8 @@ class Question(
     fun isCoin() = coin == -1
 
     fun isAnswerSelect() = optionArrayList.none { it.isAnswer }
+
+    fun answerUpdate() {
+        answer = optionArrayList.firstOrNull { it.isAnswer }?.name.orEmpty()
+    }
 }

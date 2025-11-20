@@ -35,6 +35,7 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
 
     fun optionRemover(position: Int) {
         question.optionArrayList.removeAt(position)
+        question.answerUpdate()
         button.invoke(OPTION_UPDATE_LIST)
     }
 
@@ -101,6 +102,7 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
             )
         } else {
             question.optionArrayList.add(option)
+            question.answerUpdate()
             button.invoke(OPTION_UPDATE_LIST)
         }
     }
