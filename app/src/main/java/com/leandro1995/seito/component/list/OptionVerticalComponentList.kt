@@ -1,5 +1,6 @@
 package com.leandro1995.seito.component.list
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.OptionVerticalAdapter
@@ -26,5 +27,19 @@ class OptionVerticalComponentList(context: Context, attrs: AttributeSet? = null)
         optionVerticalAdapter?.let {
             recyclerViewLayout(recyclerViewAdapter = it)
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun setAdapter(arrayList: ArrayList<*>) {
+        messageErrorVisibility(arrayList = arrayList)
+
+        optionArrayList?.clear()
+        arrayList.forEach {
+            (it as com.leandro1995.seito.model.entity.Option).let { option ->
+                optionArrayList?.add(Option(check = option.isAnswer, option = option.name))
+            }
+        }
+
+        optionVerticalAdapter?.notifyDataSetChanged()
     }
 }

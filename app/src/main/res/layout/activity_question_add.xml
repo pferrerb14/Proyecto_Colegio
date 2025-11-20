@@ -87,6 +87,7 @@
                     android:text="@string/question_option_text" />
 
                 <TextView
+                    android:id="@+id/add_option_text_view"
                     style="@style/LinkBody"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

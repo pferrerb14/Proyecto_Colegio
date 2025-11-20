@@ -6,12 +6,14 @@ import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.ActivityQuestionAddBinding
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.intent.callback.action.QuestionAddIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.QuestionAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.QuestionAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionAddIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionAddViewModel
 
@@ -67,5 +69,13 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
 
     override fun loading(loading: Loading) {
 
+    }
+
+    override fun optionArrayList(optionArrayList: ArrayList<Option>) {
+        dataBinding?.optionVerticalComponentList?.setAdapter(arrayList = optionArrayList)
+    }
+
+    override fun isOptionAddLink(isVisible: Boolean) {
+        dataBinding?.addOptionTextView?.visibility = visible(isVisible = isVisible)
     }
 }

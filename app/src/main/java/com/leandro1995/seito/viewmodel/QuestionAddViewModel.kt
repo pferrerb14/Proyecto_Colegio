@@ -91,7 +91,13 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                 )
             )
         } else {
-            
+            question.optionArrayList.add(option)
+            value(
+                action = QuestionAddIntentAction(
+                    optionArrayList = question.optionArrayList,
+                    isOptionAddLink = !question.optionLength()
+                )
+            )
         }
     }
 
