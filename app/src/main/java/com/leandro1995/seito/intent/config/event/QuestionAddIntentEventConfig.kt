@@ -17,6 +17,13 @@ class QuestionAddIntentEventConfig(private val questionAddIntentEventCallBack: Q
                 questionAddIntentEventCallBack?.optionAddBottomSheet(isAnswer = event.isAnswer)
             }
 
+            is QuestionAddIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = questionAddIntentEventCallBack
+                )
+            }
+
             null -> {}
         }
     }

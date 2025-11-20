@@ -7,8 +7,8 @@ class Question(
     var name: String = "",
     var optionArrayList: ArrayList<Option> = arrayListOf(),
     var answer: String = "",
-    val isType: Boolean = false,
-    var coin: Int = -1
+    var isType: Boolean = false,
+    var coins: Int = -1
 ) {
 
     fun isName() = name.isEmpty()
@@ -17,7 +17,7 @@ class Question(
 
     fun optionLength() = optionArrayList.size != Setting.OPTION_LENGTH
 
-    fun isCoin() = coin == -1
+    fun isCoin() = coins == -1
 
     fun isAnswerSelect() = optionArrayList.none { it.isAnswer }
 

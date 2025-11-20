@@ -32,7 +32,7 @@ class QuestionAddUnitTest : TestAmbient() {
     fun isOptionArrayList() = runBlocking {
         questionAddViewModel.question.apply {
             name = "¿Pregunta de prueba 1?"
-            coin = 10
+            coins = 10
         }
         test<QuestionAddIntentEvent>(sharedFlow = questionAddViewModel.event, action = {
             questionAddViewModel.button.invoke(QuestionAddViewModel.QUESTION_VALIDATION)
@@ -43,7 +43,7 @@ class QuestionAddUnitTest : TestAmbient() {
     fun optionLength() = runBlocking {
         questionAddViewModel.question.apply {
             name = "¿Pregunta de prueba 1?"
-            coin = 10
+            coins = 10
             optionArrayList.add(Option(false, "Opcion 1"))
             optionArrayList.add(Option(false, "Opcion 2"))
         }
@@ -56,7 +56,7 @@ class QuestionAddUnitTest : TestAmbient() {
     fun isAnswerSelect() = runBlocking {
         questionAddViewModel.question.apply {
             name = "¿Pregunta de prueba 1?"
-            coin = 10
+            coins = 10
             optionArrayList.add(Option(false, "Opcion 1"))
             optionArrayList.add(Option(false, "Opcion 2"))
             optionArrayList.add(Option(false, "Opcion 3"))

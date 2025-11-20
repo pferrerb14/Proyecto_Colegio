@@ -1,17 +1,21 @@
 package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.QuestionAddIntentAction
 import com.leandro1995.seito.intent.event.QuestionAddIntentEvent
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionAddIntentEvent>() {
 
     val question = Question()
     var option = Option()
+    private val teacher = Teacher()
 
     override fun event(action: Int) {
         when (action) {
@@ -29,6 +33,14 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
 
             OPTION_UPDATE_LIST -> {
                 optionUpdateList()
+            }
+        }
+    }
+
+    override suspend fun service(idService: Int) {
+        when (idService) {
+            QUESTION_REGISTER_FIREBASE -> {
+                questionRegisterFirebase()
             }
         }
     }
@@ -90,6 +102,10 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     )
                 )
             }
+
+            else -> {
+                loading(idService = QUESTION_REGISTER_FIREBASE)
+            }
         }
     }
 
@@ -126,10 +142,37 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
         )
     }
 
+    private fun questionRegisterFirebase() {
+        teacher.addQuestionFirebase(question = question, success = {
+            emit(event = QuestionAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.question_complete_message)))
+            loading()
+        }, error = {
+            emit(
+                event = QuestionAddIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_register_student_message
+                    )
+                )
+            )
+            loading()
+        })
+    }
+
+    override fun loading(idService: Int, isDelayDisable: Boolean) {
+        emit(
+            event = QuestionAddIntentEvent.Loading(
+                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
+                    Loading(idService = idService, isDelayDisable = isDelayDisable)
+                )
+            )
+        )
+    }
+
     companion object {
         const val QUESTION_VALIDATION = 0
         const val OPTION_ADD_BOTTOM_SHEET = 1
         const val OPTION_ADD_VALIDATION_BOTTOM_SHEET = 2
         private const val OPTION_UPDATE_LIST = 3
+        private const val QUESTION_REGISTER_FIREBASE = 4
     }
 }

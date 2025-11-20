@@ -5,8 +5,10 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.component.list.callback.OptionVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityQuestionAddBinding
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.parcelable
 import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.intent.callback.action.QuestionAddIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.QuestionAddIntentEventCallBack
@@ -14,6 +16,7 @@ import com.leandro1995.seito.intent.config.action.QuestionAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionAddIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionAddViewModel
@@ -58,6 +61,12 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
         }
     }
 
+    override fun putExtra() {
+        Setting.LEVEL_PUT_EXTRA.parcelable<Level>(activity = this)?.let {
+            questionAddViewModel.question.isType = it.isType
+        }
+    }
+
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
@@ -72,7 +81,9 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            questionAddViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun optionArrayList(optionArrayList: ArrayList<Option>) {

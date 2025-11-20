@@ -3,6 +3,7 @@ package com.leandro1995.seito.fcm.firestore
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.fcm.firestore.util.RouteCollection
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.model.entity.Teacher
 
@@ -88,7 +89,6 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         }
     }
 
-
     fun studentArrayList(success: (ArrayList<Student>) -> Unit, error: () -> Unit) {
         whereEqualTo(document = Setting.USERS, field = Setting.CODE, value = "", success = {
             val studentArrayList = arrayListOf<Student>()
@@ -111,5 +111,17 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
             }
             success(studentArrayList)
         }, error = error)
+    }
+
+    fun questionAdd(question: Question, success: () -> Unit, error: () -> Unit) {
+        addObject[Setting.IMAGE_URL] = question.imageUrl
+        addObject[Setting.NAME] = question.name
+        addObject[Setting.OPTION_ARRAY] = question.optionArrayList.map { it.name }
+        addObject[Setting.ANSWER] = question.answer
+        addObject[Setting.IS_TYPE] = question.isType
+        addObject[Setting.COINS] = question.coins
+
+        collection(document = Setting.BALLOT).add(addObject).addOnSuccessListener { success() }
+            .addOnFailureListener { error() }
     }
 }
