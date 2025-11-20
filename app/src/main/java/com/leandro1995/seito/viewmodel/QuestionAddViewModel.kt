@@ -80,6 +80,16 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
                     )
                 )
             }
+
+            question.isAnswerSelect() -> {
+                emit(
+                    event = QuestionAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.not_option_response_message
+                        )
+                    )
+                )
+            }
         }
     }
 
