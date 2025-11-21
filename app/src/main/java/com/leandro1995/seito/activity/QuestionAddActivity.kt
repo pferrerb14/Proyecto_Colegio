@@ -1,5 +1,7 @@
 package com.leandro1995.seito.activity
 
+import android.app.Activity
+import android.content.Intent
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
@@ -78,6 +80,14 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
             questionAddViewModel.option = option
             questionAddViewModel.button.invoke(QuestionAddViewModel.OPTION_ADD_VALIDATION_BOTTOM_SHEET)
         }
+    }
+
+    override fun registerAlertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = this, alertMessage = alertMessage, positiveButton = {
+                setResult(RESULT_OK, Intent())
+                finish()
+            })
     }
 
     override fun loading(loading: Loading) {

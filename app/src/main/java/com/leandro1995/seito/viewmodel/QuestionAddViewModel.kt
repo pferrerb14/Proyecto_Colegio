@@ -144,7 +144,13 @@ class QuestionAddViewModel : ViewModelAmbient<QuestionAddIntentAction, QuestionA
 
     private fun questionRegisterFirebase() {
         teacher.addQuestionFirebase(question = question, success = {
-            emit(event = QuestionAddIntentEvent.AlertMessage(alertMessage = AlertMessage(idMessage = R.string.question_complete_message)))
+            emit(
+                event = QuestionAddIntentEvent.RegisterAlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.question_complete_message
+                    )
+                )
+            )
             loading()
         }, error = {
             emit(

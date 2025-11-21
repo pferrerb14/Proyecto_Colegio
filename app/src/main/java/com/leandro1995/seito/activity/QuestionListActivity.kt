@@ -9,6 +9,7 @@ import com.leandro1995.seito.component.list.callback.QuestionVerticalComponentLi
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityQuestionListBinding
+import com.leandro1995.seito.extension.launcher
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.extension.parcelable
 import com.leandro1995.seito.intent.callback.action.QuestionListIntentActionCallBack
@@ -33,6 +34,13 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
         QuestionListIntentEventConfig(questionListIntentEventCallBack = this)
 
     override var idLayout: Int = R.layout.activity_question_list
+
+    val launcher = launcher {
+        dataBinding?.addQuestionFloatingButton?.post {
+            dataBinding?.addQuestionFloatingButton?.visibility = View.GONE
+        }
+        questionListViewModel.button.invoke(QuestionListViewModel.QUESTION_LIST)
+    }
 
     override fun initView() {
         dataBinding?.apply {
@@ -76,9 +84,10 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
     }
 
     override fun questionAdd() {
-        startActivity(Intent(this, QuestionAddActivity::class.java).apply {
-            putExtra(Setting.LEVEL_PUT_EXTRA, questionListViewModel.level)
-        })
+        launcher.launch(
+            Intent(
+                this, QuestionAddActivity::class.java
+            ).apply { putExtra(Setting.LEVEL_PUT_EXTRA, questionListViewModel.level) })
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
