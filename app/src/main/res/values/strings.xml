@@ -9,6 +9,7 @@
     <string name="course_title">Cursos</string>
     <string name="student_title">Alumnos</string>
     <string name="add_question_title">Agregar pregunta</string>
+    <string name="list_question_title">Lista de preguntas</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -68,6 +69,11 @@
     <string name="question_coin_text">Ingreso las monedas de la pregunta</string>
     <string name="question_option_text">Ingreso de opciones</string>
     <string name="select_option_answer_text">Seleccionar como respuesta</string>
+    <string name="question_text">Pregunta:</string>
+    <string name="answer_text">Respuesta:</string>
+    <string name="coins_text">Monedas:</string>
+    <string name="no_question_text">No hay preguntas disponibles</string>
+    <string name="no_question_description_text">Se mostrarán las preguntas que vallas registrando para el balotario</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

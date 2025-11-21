@@ -55,4 +55,10 @@ abstract class FirestoreAmbientFCM {
 
     protected fun toBoolean(documentSnapshot: DocumentSnapshot, field: String) =
         documentSnapshot.getField<Boolean>(field) ?: false
+
+    protected inline fun <reified T> toArray(
+        documentSnapshot: DocumentSnapshot, field: String
+    ): Array<T> =
+        (documentSnapshot.get(field) as? List<*> ?: emptyList<Any?>()).filterIsInstance<T>()
+            .toTypedArray()
 }

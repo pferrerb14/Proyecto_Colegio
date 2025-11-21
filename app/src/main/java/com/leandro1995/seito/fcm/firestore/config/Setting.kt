@@ -14,7 +14,7 @@ object Setting {
     const val IMAGE_URL = "image_url"
     const val VIDEO_URL = "video_url"
     const val COURSE = "course"
-    const val IS_TYPE = "is_type"
+    const val ID_LEVEL = "id_level"
     const val BALLOT = "ballot"
     const val OPTION_ARRAY = "option_array"
     const val ANSWER = "answer"

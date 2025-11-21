@@ -7,4 +7,5 @@ interface QuestionAddIntentEventCallBack : LoadingIntentCallBackAmbient {
 
     fun alertMessage(alertMessage: AlertMessage)
     fun optionAddBottomSheet(isAnswer: Boolean)
+    fun registerAlertMessage(alertMessage: AlertMessage)
 }

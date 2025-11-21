@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class QuestionListIntentAction
+import com.leandro1995.seito.model.entity.Question
+
+class QuestionListIntentAction(val questionArrayList: ArrayList<Question>? = null)

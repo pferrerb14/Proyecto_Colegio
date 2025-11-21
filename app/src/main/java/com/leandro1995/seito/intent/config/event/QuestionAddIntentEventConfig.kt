@@ -24,6 +24,10 @@ class QuestionAddIntentEventConfig(private val questionAddIntentEventCallBack: Q
                 )
             }
 
+            is QuestionAddIntentEvent.RegisterAlertMessage -> {
+                questionAddIntentEventCallBack?.registerAlertMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

@@ -27,8 +27,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.leandro1995.seito.component.list.QuestionVerticalComponentList
+            android:id="@+id/question_vertical_component_list"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_0"
+            app:error_color="@color/green_EEFBF3"
+            app:error_image="@drawable/ic_grid_course_hint"
+            app:error_sub_title="@string/no_question_description_text"
+            app:error_title="@string/no_question_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_blue_include" />
+
+        <com.leandro1995.seito.component.loading.LoadingComponent
+            android:id="@+id/loading_component"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_blue_include" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_question_button"
+            android:id="@+id/add_question_floating_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen_16"
