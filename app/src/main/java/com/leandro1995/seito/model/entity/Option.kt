@@ -1,6 +1,10 @@
 package com.leandro1995.seito.model.entity
 
-class Option(var isAnswer: Boolean = false, var name: String = "") {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class Option(var isAnswer: Boolean = false, var name: String = "") : Parcelable {
 
     fun isName() = name.isEmpty()
 }

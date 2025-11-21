@@ -81,7 +81,7 @@ class SubThemeLevelViewModel :
                     )
                 )
             } else {
-                
+                emit(event = SubThemeLevelIntentEvent.QuestionAnswer(questionArrayList = questionArrayList))
             }
             loading()
         }, error = {
