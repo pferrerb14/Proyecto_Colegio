@@ -6,4 +6,7 @@ sealed class QuestionListIntentEvent {
     data object QuestionAdd : QuestionListIntentEvent()
     data class Loading(val loadingIntentEventAmbient: LoadingIntentEventAmbient) :
         QuestionListIntentEvent()
+
+    data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        QuestionListIntentEvent()
 }

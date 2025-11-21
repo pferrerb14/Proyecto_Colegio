@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.component.list.callback.QuestionVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityQuestionListBinding
@@ -14,13 +15,16 @@ import com.leandro1995.seito.intent.callback.action.QuestionListIntentActionCall
 import com.leandro1995.seito.intent.callback.event.QuestionListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.QuestionListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionListIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionListViewModel
 
 class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
-    QuestionListIntentActionCallBack, QuestionListIntentEventCallBack {
+    QuestionListIntentActionCallBack, QuestionListIntentEventCallBack,
+    QuestionVerticalComponentListCallBack {
 
     val questionListViewModel by viewModels<QuestionListViewModel>()
     private val questionListIntentActionConfig =
@@ -39,6 +43,8 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
                 icArrow = R.drawable.ic_arrow_white,
                 isArrow = true
             ).config { finish() }
+            questionVerticalComponentList.questionVerticalComponentListCallBack =
+                this@QuestionListActivity
         }
     }
 
@@ -75,6 +81,10 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
         })
     }
 
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
+    }
+
     override fun questionArrayList(questionArrayList: ArrayList<Question>) {
         dataBinding?.addQuestionFloatingButton?.post {
             dataBinding?.addQuestionFloatingButton?.visibility = View.VISIBLE
@@ -84,5 +94,10 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
 
     override fun startService() {
         questionListViewModel.button.invoke(QuestionListViewModel.QUESTION_LIST)
+    }
+
+    override fun question(question: Question) {
+        questionListViewModel.question = question
+        questionListViewModel.button.invoke(QuestionListViewModel.QUESTION_DELETE)
     }
 }

@@ -1,6 +1,7 @@
 package com.leandro1995.seito.model.entity
 
 import com.leandro1995.seito.config.Setting
+import com.leandro1995.seito.fcm.firestore.QuestionFirestoreFCM
 
 class Question(
     val id: String = "",
@@ -11,6 +12,9 @@ class Question(
     var isType: Boolean = false,
     var coins: Int = -1
 ) {
+    fun deleteFirebase(success: () -> Unit, error: () -> Unit) {
+        QuestionFirestoreFCM().questionDelete(id = id, success = success, error = error)
+    }
 
     fun isName() = name.isEmpty()
 

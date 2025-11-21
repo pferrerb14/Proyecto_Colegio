@@ -20,6 +20,10 @@ class QuestionListIntentEventConfig(private val questionListIntentEventCallBack:
                 )
             }
 
+            is QuestionListIntentEvent.AlertMessage -> {
+                questionListIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }
