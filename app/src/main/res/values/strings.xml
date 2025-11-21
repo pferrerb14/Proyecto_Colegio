@@ -128,6 +128,7 @@
     <string name="not_option_name_message">No ingreso la opción correctamente</string>
     <string name="not_option_response_message">No ingreso una opción como respuesta</string>
     <string name="question_complete_message">Se registro la pregunta</string>
+    <string name="no_question_message">Actualmente no cuenta con preguntas</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>
