@@ -5,12 +5,14 @@ import com.leandro1995.seito.intent.action.QuestionListIntentAction
 import com.leandro1995.seito.intent.event.QuestionListIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class QuestionListViewModel :
     ViewModelAmbient<QuestionListIntentAction, QuestionListIntentEvent>() {
 
     var level = Level()
+    private val questionArrayList = arrayListOf<Question>()
 
     override fun event(action: Int) {
         when (action) {
@@ -41,7 +43,16 @@ class QuestionListViewModel :
     }
 
     private fun questionFirebase() {
-
+        level.questionFirebase(success = { response ->
+            questionArrayList.clear()
+            questionArrayList.addAll(response)
+            value(action = QuestionListIntentAction(questionArrayList = questionArrayList))
+            loading()
+        }, error = {
+            questionArrayList.clear()
+            value(action = QuestionListIntentAction(questionArrayList = questionArrayList))
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

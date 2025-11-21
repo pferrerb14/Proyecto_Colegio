@@ -72,6 +72,8 @@
     <string name="question_text">Pregunta:</string>
     <string name="answer_text">Respuesta:</string>
     <string name="coins_text">Monedas:</string>
+    <string name="no_question_text">No hay preguntas disponibles</string>
+    <string name="no_question_description_text">Se mostrarán las preguntas que vallas registrando para el balotario</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

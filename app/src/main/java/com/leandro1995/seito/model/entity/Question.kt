@@ -3,6 +3,7 @@ package com.leandro1995.seito.model.entity
 import com.leandro1995.seito.config.Setting
 
 class Question(
+    val id: String = "",
     var imageUrl: String = "",
     var name: String = "",
     var optionArrayList: ArrayList<Option> = arrayListOf(),
