@@ -1,6 +1,7 @@
 package com.leandro1995.seito.activity
 
 import android.content.Intent
+import android.view.View
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
@@ -15,6 +16,7 @@ import com.leandro1995.seito.intent.config.action.QuestionListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionListIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.viewmodel.QuestionListViewModel
 
 class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
@@ -61,12 +63,26 @@ class QuestionListActivity : ActivityAmbient<ActivityQuestionListBinding>(),
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.addQuestionFloatingButton?.visibility = View.GONE
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            questionListViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun questionAdd() {
         startActivity(Intent(this, QuestionAddActivity::class.java).apply {
             putExtra(Setting.LEVEL_PUT_EXTRA, questionListViewModel.level)
         })
+    }
+
+    override fun questionArrayList(questionArrayList: ArrayList<Question>) {
+        dataBinding?.addQuestionFloatingButton?.post {
+            dataBinding?.addQuestionFloatingButton?.visibility = View.VISIBLE
+        }
+        dataBinding?.questionVerticalComponentList?.setAdapter(arrayList = questionArrayList)
+    }
+
+    override fun startService() {
+        questionListViewModel.button.invoke(QuestionListViewModel.QUESTION_LIST)
     }
 }

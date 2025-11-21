@@ -13,6 +13,13 @@ class QuestionListIntentEventConfig(private val questionListIntentEventCallBack:
                 questionListIntentEventCallBack?.questionAdd()
             }
 
+            is QuestionListIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = questionListIntentEventCallBack
+                )
+            }
+
             null -> {}
         }
     }
