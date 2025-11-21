@@ -10,6 +10,6 @@ class Level(val id: String = "", val name: String = "") : Parcelable {
     fun questionFirebase(
         success: (questionArrayList: ArrayList<Question>) -> Unit, error: () -> Unit
     ) {
-        LevelFirestoreFCM().questionArrayList(success = success, error = error)
+        LevelFirestoreFCM().questionArrayList(idLevel = id, success = success, error = error)
     }
 }
