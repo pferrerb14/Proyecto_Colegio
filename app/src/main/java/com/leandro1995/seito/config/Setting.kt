@@ -13,6 +13,7 @@ object Setting {
     const val CODE_LENGTH = 4
     const val PASSWORD_LENGTH = 6
     const val OPTION_LENGTH = 5
+    const val QUESTION_LENGTH = 5
 
     const val TEACHER_BUNDLE = "teacher_bundle"
     const val THEME_BUNDLE = "theme_put_bundle"
