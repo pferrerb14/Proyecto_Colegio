@@ -65,7 +65,6 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
 
         levelStringArrayList.getOrNull(position)?.let {
             addObject[Setting.NAME] = it
-            addObject[Setting.IS_TYPE] = position != 0
 
             collection(
                 document = RouteCollection.levelRute(
@@ -118,7 +117,7 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         addObject[Setting.NAME] = question.name
         addObject[Setting.OPTION_ARRAY] = question.optionArrayList.map { it.name }
         addObject[Setting.ANSWER] = question.answer
-        addObject[Setting.IS_TYPE] = question.isType
+        addObject[Setting.ID_LEVEL] = question.idLevel
         addObject[Setting.COINS] = question.coins
 
         collection(document = Setting.BALLOT).add(addObject).addOnSuccessListener { success() }

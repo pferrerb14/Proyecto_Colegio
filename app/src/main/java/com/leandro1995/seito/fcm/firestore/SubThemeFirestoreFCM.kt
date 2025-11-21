@@ -23,9 +23,7 @@ class SubThemeFirestoreFCM : FirestoreAmbientFCM() {
             result.forEach {
                 levelArrayList.add(
                     Level(
-                        id = it.id,
-                        name = toString(documentSnapshot = it, field = Setting.NAME),
-                        isType = toBoolean(documentSnapshot = it, field = Setting.IS_TYPE)
+                        id = it.id, name = toString(documentSnapshot = it, field = Setting.NAME)
                     )
                 )
             }

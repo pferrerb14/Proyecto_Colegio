@@ -22,7 +22,7 @@ class LevelFirestoreFCM : FirestoreAmbientFCM() {
                             ), answer = toString(documentSnapshot = it, field = Setting.ANSWER)
                         ),
                         answer = toString(documentSnapshot = it, field = Setting.ANSWER),
-                        isType = toBoolean(documentSnapshot = it, field = Setting.IS_TYPE),
+                        idLevel = toString(documentSnapshot = it, field = Setting.ID_LEVEL),
                         coins = toInt(documentSnapshot = it, field = Setting.COINS)
                     )
                 )

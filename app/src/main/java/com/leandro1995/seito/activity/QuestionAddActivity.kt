@@ -1,6 +1,5 @@
 package com.leandro1995.seito.activity
 
-import android.app.Activity
 import android.content.Intent
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
@@ -65,7 +64,7 @@ class QuestionAddActivity : ActivityAmbient<ActivityQuestionAddBinding>(),
 
     override fun putExtra() {
         Setting.LEVEL_PUT_EXTRA.parcelable<Level>(activity = this)?.let {
-            questionAddViewModel.question.isType = it.isType
+            questionAddViewModel.question.idLevel = it.id
         }
     }
 

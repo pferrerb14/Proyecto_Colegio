@@ -9,7 +9,7 @@ class Question(
     var name: String = "",
     var optionArrayList: ArrayList<Option> = arrayListOf(),
     var answer: String = "",
-    var isType: Boolean = false,
+    var idLevel: String = "",
     var coins: Int = -1
 ) {
     fun deleteFirebase(success: () -> Unit, error: () -> Unit) {
