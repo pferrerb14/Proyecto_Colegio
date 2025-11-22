@@ -3,11 +3,14 @@ package com.leandro1995.seito.activity
 import android.widget.Chronometer
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.adapter.QuestionAnswerAdapter
 import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.util.design.QuestionAnswerUtilDesign
 
 class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() {
+
+    private var questionAnswerAdapter: QuestionAnswerAdapter? = null
 
     override var idLayout: Int = R.layout.activity_question_answer
 
