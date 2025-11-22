@@ -99,6 +99,8 @@
     <string name="add_theme_button">Agregar</string>
     <string name="add_level_button">Agregar Level</string>
     <string name="add_question_button">Crear pregunta</string>
+    <string name="next_button">Siguiente</string>
+    <string name="point_button">100 ptos.</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>

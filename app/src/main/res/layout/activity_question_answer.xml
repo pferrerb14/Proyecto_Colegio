@@ -74,22 +74,31 @@
             android:id="@+id/button_linear"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_32"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
+                style="@style/ButtonCoin"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_10"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/point_button"
+                app:icon="@drawable/ic_coins"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/dimen_10"
+                app:iconTint="@color/yellow_FFC107" />
 
             <Button
+                style="@style/Button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/next_button" />
 
         </LinearLayout>
 
