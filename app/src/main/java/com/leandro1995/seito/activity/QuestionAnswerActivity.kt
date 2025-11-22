@@ -1,21 +1,41 @@
 package com.leandro1995.seito.activity
 
+import android.annotation.SuppressLint
 import android.widget.Chronometer
+import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.adapter.QuestionAnswerAdapter
+import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
+import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.parcelable
+import com.leandro1995.seito.intent.callback.action.QuestionAnswerIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.QuestionAnswerIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.QuestionAnswerIntentActionConfig
+import com.leandro1995.seito.intent.config.event.QuestionAnswerIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.util.design.QuestionAnswerUtilDesign
+import com.leandro1995.seito.viewmodel.QuestionAnswerViewModel
 
-class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() {
+class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
+    QuestionAnswerIntentActionCallBack, QuestionAnswerIntentEventCallBack {
 
+    private var questionArrayList = arrayListOf<Question>()
     private var questionAnswerAdapter: QuestionAnswerAdapter? = null
+    private val questionAnswerViewModel by viewModels<QuestionAnswerViewModel>()
+    private var questionAnswerIntentEventConfig =
+        QuestionAnswerIntentEventConfig(questionAnswerIntentEventCallBack = this)
+    private var questionAnswerIntentActionConfig =
+        QuestionAnswerIntentActionConfig(questionAnswerIntentActionCallBack = this)
 
     override var idLayout: Int = R.layout.activity_question_answer
 
     override fun initView() {
         dataBinding?.apply {
+            questionAnswerViewModel = this@QuestionAnswerActivity.questionAnswerViewModel
             Toolbar(
                 materialToolbar = appBarBlueInclude.toolbar,
                 idTitle = R.string.answer_questions_title,
@@ -25,6 +45,28 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() 
         }
 
         chronometerConfig()
+        questionAdapterConfig()
+    }
+
+    override fun putExtra() {
+        Setting.QUESTION_ARRAY_LIST_PUT_EXTRA.parcelable<ArrayList<Question>>(activity = this)
+            ?.let {
+                questionAnswerViewModel.questionArrayList = it
+            }
+    }
+
+    override fun initEventToAction() {
+        lifecycleScope {
+            questionAnswerViewModel.event.collect { questionAnswerIntentEvent ->
+                questionAnswerIntentEventConfig.initConfig(event = questionAnswerIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            questionAnswerViewModel.action.collect { questionAnswerIntentAction ->
+                questionAnswerIntentActionConfig.initConfig(event = questionAnswerIntentAction)
+            }
+        }
     }
 
     private fun chronometerConfig() {
@@ -36,5 +78,27 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() 
             }
             start()
         }
+    }
+
+    private fun questionAdapterConfig() {
+        questionAnswerAdapter =
+            QuestionAnswerAdapter(fragmentActivity = this, questionArrayList = questionArrayList)
+        dataBinding?.questionViewPager?.adapter = questionAnswerAdapter
+    }
+
+    override fun loading(loading: Loading) {
+
+    }
+
+    override fun startView() {
+        questionAnswerViewModel.button.invoke(QuestionAnswerViewModel.START_VIEW)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun questionArrayList(questionArrayList: ArrayList<Question>) {
+        this.questionArrayList.clear()
+        this.questionArrayList.addAll(questionArrayList)
+
+        questionAnswerAdapter?.notifyDataSetChanged()
     }
 }
