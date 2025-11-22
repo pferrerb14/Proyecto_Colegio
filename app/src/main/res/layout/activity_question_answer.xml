@@ -58,11 +58,12 @@
             app:layout_constraintTop_toBottomOf="@+id/time_skip_linear"
             tools:ignore="UseCompatTextViewDrawableXml" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/question_view_pager"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
             android:layout_marginStart="@dimen/dimen_0"
-            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_0"
             android:layout_marginEnd="@dimen/dimen_0"
             android:layout_marginBottom="@dimen/dimen_0"
             app:layout_constraintBottom_toTopOf="@+id/button_linear"
