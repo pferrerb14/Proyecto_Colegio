@@ -33,26 +33,36 @@
             app:layout_constraintTop_toBottomOf="@+id/app_bar_blue_include">
 
             <Chronometer
+                android:id="@+id/time_chronometer"
+                style="@style/TextBody5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/dimen_16" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/money_text"
+            style="@style/TextBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_0"
-            android:layout_marginEnd="@dimen/dimen_0"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_skip_linear" />
+            android:drawableStart="@drawable/ic_coins"
+            android:drawablePadding="@dimen/dimen_10"
+            android:gravity="center"
+            android:text="@string/available_currency_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time_skip_linear"
+            tools:ignore="UseCompatTextViewDrawableXml" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
             android:layout_marginStart="@dimen/dimen_0"
-            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_16"
             android:layout_marginEnd="@dimen/dimen_0"
             android:layout_marginBottom="@dimen/dimen_0"
             app:layout_constraintBottom_toTopOf="@+id/button_linear"

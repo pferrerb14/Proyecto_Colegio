@@ -1,9 +1,11 @@
 package com.leandro1995.seito.activity
 
+import android.widget.Chronometer
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.util.design.QuestionAnswerUtilDesign
 
 class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() {
 
@@ -17,6 +19,19 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>() 
                 isArrow = true,
                 icArrow = R.drawable.ic_arrow_white
             ).config { finish() }
+        }
+
+        chronometerConfig()
+    }
+
+    private fun chronometerConfig() {
+        dataBinding?.timeChronometer?.apply {
+            onChronometerTickListener = Chronometer.OnChronometerTickListener { chronometer ->
+                chronometer.text = QuestionAnswerUtilDesign.timer(
+                    chronometer = chronometer, timeElapsed = getString(R.string.time_elapsed_text)
+                )
+            }
+            start()
         }
     }
 }

@@ -10,6 +10,8 @@ object Setting {
 
     const val NAME_FILE_DATA_STORE = "seito.pb"
 
+    const val TIME_CHRONOMETER_FORMAT = "%02d:%02d:%02d"
+
     const val CODE_LENGTH = 4
     const val PASSWORD_LENGTH = 6
     const val OPTION_LENGTH = 5
