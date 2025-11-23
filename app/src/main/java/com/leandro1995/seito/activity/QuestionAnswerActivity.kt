@@ -45,7 +45,7 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         }
 
         chronometerConfig()
-        questionAdapterConfig()
+        questionViewPageConfig()
     }
 
     override fun putExtra() {
@@ -80,7 +80,7 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         }
     }
 
-    private fun questionAdapterConfig() {
+    private fun questionViewPageConfig() {
         questionAnswerAdapter =
             QuestionAnswerAdapter(fragmentActivity = this, questionArrayList = questionArrayList)
         dataBinding?.questionViewPager?.adapter = questionAnswerAdapter
