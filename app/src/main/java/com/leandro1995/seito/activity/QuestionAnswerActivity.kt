@@ -83,7 +83,10 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     private fun questionViewPageConfig() {
         questionAnswerAdapter =
             QuestionAnswerAdapter(fragmentActivity = this, questionArrayList = questionArrayList)
-        dataBinding?.questionViewPager?.adapter = questionAnswerAdapter
+        dataBinding?.questionViewPager?.apply {
+            isUserInputEnabled = false
+            adapter = questionAnswerAdapter
+        }
     }
 
     override fun loading(loading: Loading) {
