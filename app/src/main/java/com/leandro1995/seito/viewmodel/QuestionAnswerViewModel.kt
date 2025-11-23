@@ -20,6 +20,10 @@ class QuestionAnswerViewModel :
             PAGE -> {
                 page()
             }
+
+            COIN -> {
+                coin()
+            }
         }
     }
 
@@ -34,8 +38,13 @@ class QuestionAnswerViewModel :
         }
     }
 
+    fun coin() {
+        button.invoke(PAGE)
+    }
+
     companion object {
         const val START_VIEW = 0
         const val PAGE = 1
+        const val COIN = 2
     }
 }

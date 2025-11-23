@@ -95,6 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_10"
                 android:layout_weight="1"
+                android:onClick="@{()-> questionAnswerViewModel.button.invoke(questionAnswerViewModel.COIN)}"
                 android:text="@string/point_button"
                 app:icon="@drawable/ic_coins"
                 app:iconGravity="textStart"
