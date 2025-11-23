@@ -25,7 +25,7 @@ class LevelFirestoreFCM : FirestoreAmbientFCM() {
                             optionArrayList = optionArrayList(
                                 optionArrayString = toArray(
                                     documentSnapshot = it, field = Setting.OPTION_ARRAY
-                                ), answer = toString(documentSnapshot = it, field = Setting.ANSWER)
+                                )
                             ),
                             answer = toString(documentSnapshot = it, field = Setting.ANSWER),
                             idLevel = toString(documentSnapshot = it, field = Setting.ID_LEVEL),
@@ -39,13 +39,11 @@ class LevelFirestoreFCM : FirestoreAmbientFCM() {
         )
     }
 
-    private fun optionArrayList(
-        optionArrayString: Array<String>, answer: String
-    ): ArrayList<Option> {
+    private fun optionArrayList(optionArrayString: Array<String>): ArrayList<Option> {
         val optionArrayList = arrayListOf<Option>()
 
         optionArrayString.forEach {
-            optionArrayList.add(Option(isAnswer = answer == it, it))
+            optionArrayList.add(Option(name = it))
         }
 
         return optionArrayList
