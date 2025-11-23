@@ -11,7 +11,7 @@ class QuestionAnswerAdapter(
 ) : FragmentStateAdapter(fragmentActivity) {
 
     override fun createFragment(position: Int): Fragment {
-        return QuestionOptionFragment()
+        return QuestionOptionFragment.newInstance(question = questionArrayList[position])
     }
 
     override fun getItemCount(): Int {
