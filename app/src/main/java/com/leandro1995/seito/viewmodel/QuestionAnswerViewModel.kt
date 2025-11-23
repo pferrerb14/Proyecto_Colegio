@@ -9,11 +9,16 @@ class QuestionAnswerViewModel :
     ViewModelAmbient<QuestionAnswerIntentAction, QuestionAnswerIntentEvent>() {
 
     var questionArrayList = arrayListOf<Question>()
+    private var position = 0
 
     override fun event(action: Int) {
         when (action) {
             START_VIEW -> {
                 startView()
+            }
+
+            PAGE -> {
+                page()
             }
         }
     }
@@ -22,7 +27,15 @@ class QuestionAnswerViewModel :
         value(action = QuestionAnswerIntentAction(questionArrayList = questionArrayList))
     }
 
+    private fun page() {
+        if (questionArrayList.size != position) {
+            position = position + 1
+            value(action = QuestionAnswerIntentAction(position = position))
+        }
+    }
+
     companion object {
         const val START_VIEW = 0
+        const val PAGE = 1
     }
 }

@@ -12,6 +12,10 @@ class QuestionAnswerIntentActionConfig(private val questionAnswerIntentActionCal
             event.questionArrayList?.let {
                 questionAnswerIntentActionCallBack?.questionArrayList(questionArrayList = it)
             }
+
+            event.position?.let {
+                questionAnswerIntentActionCallBack?.page(position = it)
+            }
         } else {
             questionAnswerIntentActionCallBack?.startView()
         }

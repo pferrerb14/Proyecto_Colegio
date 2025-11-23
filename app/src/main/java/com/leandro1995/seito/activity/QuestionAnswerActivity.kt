@@ -104,4 +104,8 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
 
         questionAnswerAdapter?.notifyDataSetChanged()
     }
+
+    override fun page(position: Int) {
+        dataBinding?.questionViewPager?.setCurrentItem(position,false)
+    }
 }

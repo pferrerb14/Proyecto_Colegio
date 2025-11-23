@@ -107,6 +107,7 @@
                 android:layout_marginStart="@dimen/dimen_10"
                 android:layout_weight="1"
                 android:enabled="false"
+                android:onClick="@{()-> questionAnswerViewModel.button.invoke(questionAnswerViewModel.PAGE)}"
                 android:text="@string/next_button" />
 
         </LinearLayout>
