@@ -7,4 +7,5 @@ interface QuestionAnswerIntentActionCallBack {
     fun startView()
     fun questionArrayList(questionArrayList: ArrayList<Question>)
     fun page(position: Int)
+    fun coin(coin: Int)
 }

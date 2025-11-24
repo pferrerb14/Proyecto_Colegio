@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.adapter.QuestionAnswerAdapter
+import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
@@ -15,9 +16,12 @@ import com.leandro1995.seito.intent.callback.action.QuestionAnswerIntentActionCa
 import com.leandro1995.seito.intent.callback.event.QuestionAnswerIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.QuestionAnswerIntentActionConfig
 import com.leandro1995.seito.intent.config.event.QuestionAnswerIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.util.design.QuestionAnswerUtilDesign
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionAnswerViewModel
 
 class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
@@ -30,6 +34,8 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         QuestionAnswerIntentEventConfig(questionAnswerIntentEventCallBack = this)
     private var questionAnswerIntentActionConfig =
         QuestionAnswerIntentActionConfig(questionAnswerIntentActionCallBack = this)
+
+    private val backGroundCoroutine = BackGroundCoroutine()
 
     override var idLayout: Int = R.layout.activity_question_answer
 
@@ -94,7 +100,12 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     }
 
     override fun startView() {
-        questionAnswerViewModel.button.invoke(QuestionAnswerViewModel.START_VIEW)
+        backGroundCoroutine.start {
+            questionAnswerViewModel.apply {
+                coin = UserProtoDataStoreConfig.getCoins()
+                button.invoke(QuestionAnswerViewModel.START_VIEW)
+            }
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -106,6 +117,14 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     }
 
     override fun page(position: Int) {
-        dataBinding?.questionViewPager?.setCurrentItem(position,false)
+        dataBinding?.questionViewPager?.setCurrentItem(position, false)
+    }
+
+    override fun coin(coin: Int) {
+        dataBinding?.moneyText?.text = getString(R.string.available_currency_text, coin)
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
 }

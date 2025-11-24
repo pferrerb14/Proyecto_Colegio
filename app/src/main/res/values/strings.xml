@@ -76,7 +76,7 @@
     <string name="no_question_text">No hay preguntas disponibles</string>
     <string name="no_question_description_text">Se mostrarán las preguntas que vallas registrando para el balotario</string>
     <string name="time_elapsed_text">Tiempo transcurrido :</string>
-    <string name="available_currency_text">Monedas disponibles : </string>
+    <string name="available_currency_text">Monedas disponibles : %1$d</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -134,6 +134,7 @@
     <string name="not_option_response_message">No ingreso una opción como respuesta</string>
     <string name="question_complete_message">Se registro la pregunta</string>
     <string name="no_question_message">Actualmente no cuenta con preguntas</string>
+    <string name="no_coin_message">No cuenta con los puntos suficientes para canjear</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

@@ -16,6 +16,10 @@ class QuestionAnswerIntentActionConfig(private val questionAnswerIntentActionCal
             event.position?.let {
                 questionAnswerIntentActionCallBack?.page(position = it)
             }
+
+            event.coin?.let {
+                questionAnswerIntentActionCallBack?.coin(coin = it)
+            }
         } else {
             questionAnswerIntentActionCallBack?.startView()
         }

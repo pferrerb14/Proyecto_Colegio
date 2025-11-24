@@ -17,6 +17,10 @@ class QuestionAnswerIntentEventConfig(private val questionAnswerIntentEventCallB
                 )
             }
 
+            is QuestionAnswerIntentEvent.AlertMessage -> {
+                questionAnswerIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

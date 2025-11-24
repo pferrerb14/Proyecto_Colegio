@@ -17,6 +17,8 @@ object Setting {
     const val OPTION_LENGTH = 5
     const val QUESTION_LENGTH = 5
 
+    const val DISCOUNT_CURRENCY = 100
+
     const val TEACHER_BUNDLE = "teacher_bundle"
     const val THEME_BUNDLE = "theme_put_bundle"
     const val ID_COURSE_BUNDLE = "id_course_bundle"
