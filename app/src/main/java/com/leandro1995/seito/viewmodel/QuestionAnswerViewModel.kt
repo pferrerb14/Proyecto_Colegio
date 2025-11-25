@@ -92,6 +92,13 @@ class QuestionAnswerViewModel :
 
     fun questionAnswerRegisterFirebase() {
         student.addAnswerFirebase(questionArrayList = questionArrayList, success = {
+            emit(
+                event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.complete_register_message, isCancelable = false
+                    )
+                )
+            )
             loading()
         }, error = {
             emit(

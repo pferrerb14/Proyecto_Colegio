@@ -6,4 +6,5 @@ import com.leandro1995.seito.model.design.AlertMessage
 interface QuestionAnswerIntentEventCallBack : LoadingIntentCallBackAmbient {
 
     fun alertMessage(alertMessage: AlertMessage)
+    fun completeQuestionMessage(alertMessage: AlertMessage)
 }

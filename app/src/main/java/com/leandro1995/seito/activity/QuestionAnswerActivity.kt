@@ -139,6 +139,10 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
 
+    override fun completeQuestionMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage) { finish() }
+    }
+
     override fun option(option: Option) {
         questionAnswerViewModel.option(option = option)
     }
