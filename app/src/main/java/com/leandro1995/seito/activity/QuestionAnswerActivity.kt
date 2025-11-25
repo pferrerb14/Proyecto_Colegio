@@ -100,7 +100,9 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            questionAnswerViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun startView() {

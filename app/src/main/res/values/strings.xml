@@ -135,6 +135,7 @@
     <string name="question_complete_message">Se registro la pregunta</string>
     <string name="no_question_message">Actualmente no cuenta con preguntas</string>
     <string name="no_coin_message">No cuenta con los puntos suficientes para canjear</string>
+    <string name="no_question_register_message">Hubo problemas con el registro de preguntas</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

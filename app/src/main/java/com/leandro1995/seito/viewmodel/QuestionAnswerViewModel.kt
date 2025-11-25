@@ -1,9 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
+import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.intent.action.QuestionAnswerIntentAction
 import com.leandro1995.seito.intent.event.QuestionAnswerIntentEvent
+import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
@@ -30,6 +32,14 @@ class QuestionAnswerViewModel :
 
             COIN -> {
                 coin()
+            }
+        }
+    }
+
+    override suspend fun service(idService: Int) {
+        when (idService) {
+            QUESTION_ANSWER_REGISTER_FIREBASE -> {
+                questionAnswerRegisterFirebase()
             }
         }
     }
@@ -69,22 +79,46 @@ class QuestionAnswerViewModel :
         )
     }
 
+
     private fun page() {
         if ((questionArrayList.size - 1) != position) {
             position = position + 1
             value(action = QuestionAnswerIntentAction(isEnableNextButton = false))
             value(action = QuestionAnswerIntentAction(position = position))
         } else {
-            student.addAnswerFirebase(
-                questionArrayList = questionArrayList,
-                success = {},
-                error = {})
+            loading(idService = QUESTION_ANSWER_REGISTER_FIREBASE)
         }
+    }
+
+    fun questionAnswerRegisterFirebase() {
+        student.addAnswerFirebase(questionArrayList = questionArrayList, success = {
+            loading()
+        }, error = {
+            emit(
+                event = QuestionAnswerIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_question_register_message
+                    )
+                )
+            )
+            loading()
+        })
+    }
+
+    override fun loading(idService: Int, isDelayDisable: Boolean) {
+        emit(
+            event = QuestionAnswerIntentEvent.Loading(
+                loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
+                    loading = Loading(idService = idService, isDelayDisable = isDelayDisable)
+                )
+            )
+        )
     }
 
     companion object {
         const val START_VIEW = 0
         const val PAGE = 1
         const val COIN = 2
+        private const val QUESTION_ANSWER_REGISTER_FIREBASE = 3
     }
 }
