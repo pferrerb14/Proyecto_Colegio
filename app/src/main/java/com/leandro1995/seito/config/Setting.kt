@@ -35,4 +35,6 @@ object Setting {
     fun levelStringArrayList(context: Context) = arrayListOf(
         context.getString(R.string.previous_level_text), context.getString(R.string.level_text)
     )
+
+    const val DATE_FORMAT = "dd/MM/yyyy"
 }

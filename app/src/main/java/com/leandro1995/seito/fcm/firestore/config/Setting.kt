@@ -18,4 +18,8 @@ object Setting {
     const val BALLOT = "ballot"
     const val OPTION_ARRAY = "option_array"
     const val ANSWER = "answer"
+    const val EXERCISE = "exercise"
+    const val DATE = "date"
+    const val NOTE = "note"
+    const val IS_ANSWER = "is_answer"
 }

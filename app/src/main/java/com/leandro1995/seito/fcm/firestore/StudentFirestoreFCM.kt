@@ -1,12 +1,17 @@
 package com.leandro1995.seito.fcm.firestore
 
+import com.google.firebase.firestore.DocumentReference
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
+import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.util.trustedtime.TrustedTime
 
 class StudentFirestoreFCM : FirestoreAmbientFCM() {
 
-    fun courseVideoArrayList(success: (courseVideoArrayList: ArrayList<Course>) -> Unit, error: () -> Unit) {
+    fun courseVideoArrayList(
+        success: (courseVideoArrayList: ArrayList<Course>) -> Unit, error: () -> Unit
+    ) {
 
         val courseArrayList = arrayListOf<Course>()
 
@@ -23,6 +28,60 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
             success(courseArrayList)
         }.addOnFailureListener {
             error()
+        }
+    }
+
+    fun addAnswerFirebase(
+        note: Double,
+        email: String,
+        document: String,
+        answerArrayList: ArrayList<Answer>,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+        addObject[Setting.NOTE] = note
+        addObject[Setting.DATE] =
+            TrustedTime.date(format = com.leandro1995.seito.config.Setting.DATE_FORMAT)
+
+        collection(document = Setting.ANSWER).document(email).collection(document).add(addObject)
+            .addOnSuccessListener { result ->
+                addAnswerQuestion(
+                    documentReference = result,
+                    answerArrayList = answerArrayList,
+                    success = success,
+                    error = error
+                )
+            }.addOnFailureListener {
+                error()
+            }
+    }
+
+    private fun addAnswerQuestion(
+        documentReference: DocumentReference,
+        answerArrayList: ArrayList<Answer>,
+        position: Int = 0,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+        answerArrayList.getOrNull(position)?.let {
+            addObject.clear()
+            addObject[Setting.IMAGE_URL] = it.imageUrl
+            addObject[Setting.NAME] = it.name
+            addObject[Setting.ANSWER] = it.answer
+            addObject[Setting.IS_ANSWER] = it.isAnswer
+            documentReference.collection(Setting.ANSWER).add(addObject).addOnSuccessListener {
+                addAnswerQuestion(
+                    documentReference = documentReference,
+                    answerArrayList = answerArrayList,
+                    position = position + 1,
+                    success = success,
+                    error = error
+                )
+            }.addOnFailureListener {
+                error()
+            }
+        } ?: run {
+            success()
         }
     }
 }

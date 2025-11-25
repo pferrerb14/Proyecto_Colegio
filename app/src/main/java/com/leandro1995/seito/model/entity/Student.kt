@@ -25,15 +25,36 @@ data class Student(
         StudentFirestoreFCM().courseVideoArrayList(success = success, error = error)
     }
 
-    fun addAnswerFirebase(questionArrayList: ArrayList<Question>) {
-        val point = Setting.NOTE_MAXIMUM / questionArrayList.size
-        var note = 0
+    fun addAnswerFirebase(
+        questionArrayList: ArrayList<Question>, success: () -> Unit, error: () -> Unit
+    ) {
+        val point = (Setting.NOTE_MAXIMUM / questionArrayList.size).toDouble()
+        val answerArrayList = arrayListOf<Answer>()
+        var note = 0.0
 
         questionArrayList.forEach {
             if (it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer) {
                 note = note + point
             }
+
+            answerArrayList.add(
+                Answer(
+                    imageUrl = it.imageUrl,
+                    name = it.name,
+                    answer = it.answer,
+                    isAnswer = it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer
+                )
+            )
         }
+
+        StudentFirestoreFCM().addAnswerFirebase(
+            note = note,
+            email = email,
+            document = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
+            answerArrayList = answerArrayList,
+            success = success,
+            error = error
+        )
     }
 
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword

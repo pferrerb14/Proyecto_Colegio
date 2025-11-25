@@ -15,8 +15,8 @@ class QuestionAnswerViewModel :
 
     var questionArrayList = arrayListOf<Question>()
     var coin = 0
+    val student = Student()
     private var position = 0
-    private val student = Student()
 
     override fun event(action: Int) {
         when (action) {
@@ -75,7 +75,10 @@ class QuestionAnswerViewModel :
             value(action = QuestionAnswerIntentAction(isEnableNextButton = false))
             value(action = QuestionAnswerIntentAction(position = position))
         } else {
-            student.addAnswerFirebase(questionArrayList = questionArrayList)
+            student.addAnswerFirebase(
+                questionArrayList = questionArrayList,
+                success = {},
+                error = {})
         }
     }
 

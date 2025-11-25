@@ -107,6 +107,7 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         backGroundCoroutine.start {
             questionAnswerViewModel.apply {
                 coin = UserProtoDataStoreConfig.getCoins()
+                student.email = UserProtoDataStoreConfig.getEmail()
                 button.invoke(QuestionAnswerViewModel.START_VIEW)
             }
         }
