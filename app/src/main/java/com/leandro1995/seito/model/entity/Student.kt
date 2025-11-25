@@ -1,5 +1,6 @@
 package com.leandro1995.seito.model.entity
 
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.fcm.firestore.StudentFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
 import kotlinx.parcelize.Parcelize
@@ -22,6 +23,17 @@ data class Student(
         success: (courseArrayList: ArrayList<Course>) -> Unit, error: () -> Unit
     ) {
         StudentFirestoreFCM().courseVideoArrayList(success = success, error = error)
+    }
+
+    fun addAnswerFirebase(questionArrayList: ArrayList<Question>) {
+        val point = Setting.NOTE_MAXIMUM / questionArrayList.size
+        var note = 0
+
+        questionArrayList.forEach {
+            if (it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer) {
+                note = note + point
+            }
+        }
     }
 
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword

@@ -7,6 +7,7 @@ import com.leandro1995.seito.intent.event.QuestionAnswerIntentEvent
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class QuestionAnswerViewModel :
@@ -15,6 +16,7 @@ class QuestionAnswerViewModel :
     var questionArrayList = arrayListOf<Question>()
     var coin = 0
     private var position = 0
+    private val student = Student()
 
     override fun event(action: Int) {
         when (action) {
@@ -68,10 +70,12 @@ class QuestionAnswerViewModel :
     }
 
     private fun page() {
-        if (questionArrayList.size != position) {
+        if ((questionArrayList.size - 1) != position) {
             position = position + 1
             value(action = QuestionAnswerIntentAction(isEnableNextButton = false))
             value(action = QuestionAnswerIntentAction(position = position))
+        } else {
+            student.addAnswerFirebase(questionArrayList = questionArrayList)
         }
     }
 
