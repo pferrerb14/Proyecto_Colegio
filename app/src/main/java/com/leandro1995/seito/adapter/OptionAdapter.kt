@@ -6,11 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.adapter.viewholder.OptionViewHolder
 import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
+import com.leandro1995.seito.config.callback.adapter.OptionAdapterCallBack
 import com.leandro1995.seito.databinding.ItemOptionBinding
 import com.leandro1995.seito.model.entity.Option
 
 class OptionAdapter(private val optionArrayList: ArrayList<Option>) :
     RecyclerView.Adapter<OptionViewHolder>(), ListAmbientOnclick {
+
+    var optionAdapterCallBack: OptionAdapterCallBack? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -41,6 +44,7 @@ class OptionAdapter(private val optionArrayList: ArrayList<Option>) :
     override fun onclick(position: Int) {
         optionArrayList.forEach { it.isAnswer = false }
         optionArrayList[position].isAnswer = true
+        optionAdapterCallBack?.option(optionArrayList[position])
         notifyDataSetChanged()
     }
 }

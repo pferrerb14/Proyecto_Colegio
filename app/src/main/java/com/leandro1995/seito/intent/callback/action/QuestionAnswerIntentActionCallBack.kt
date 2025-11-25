@@ -8,4 +8,5 @@ interface QuestionAnswerIntentActionCallBack {
     fun questionArrayList(questionArrayList: ArrayList<Question>)
     fun page(position: Int)
     fun coin(coin: Int)
+    fun isEnableNextButton(isEnable: Boolean)
 }

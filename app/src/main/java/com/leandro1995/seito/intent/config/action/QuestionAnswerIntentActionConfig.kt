@@ -20,6 +20,10 @@ class QuestionAnswerIntentActionConfig(private val questionAnswerIntentActionCal
             event.coin?.let {
                 questionAnswerIntentActionCallBack?.coin(coin = it)
             }
+
+            event.isEnableNextButton?.let {
+                questionAnswerIntentActionCallBack?.isEnableNextButton(isEnable = it)
+            }
         } else {
             questionAnswerIntentActionCallBack?.startView()
         }

@@ -5,10 +5,11 @@ import android.widget.Chronometer
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
-import com.leandro1995.seito.adapter.QuestionAnswerAdapter
+import com.leandro1995.seito.adapter.QuestionOptionAdapter
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
+import com.leandro1995.seito.config.callback.adapter.QuestionOptionAdapterCallBack
 import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.extension.parcelable
@@ -18,6 +19,7 @@ import com.leandro1995.seito.intent.config.action.QuestionAnswerIntentActionConf
 import com.leandro1995.seito.intent.config.event.QuestionAnswerIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.util.design.QuestionAnswerUtilDesign
@@ -25,10 +27,11 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.QuestionAnswerViewModel
 
 class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
-    QuestionAnswerIntentActionCallBack, QuestionAnswerIntentEventCallBack {
+    QuestionAnswerIntentActionCallBack, QuestionAnswerIntentEventCallBack,
+    QuestionOptionAdapterCallBack {
 
     private var questionArrayList = arrayListOf<Question>()
-    private var questionAnswerAdapter: QuestionAnswerAdapter? = null
+    private var questionAnswerAdapter: QuestionOptionAdapter? = null
     private val questionAnswerViewModel by viewModels<QuestionAnswerViewModel>()
     private var questionAnswerIntentEventConfig =
         QuestionAnswerIntentEventConfig(questionAnswerIntentEventCallBack = this)
@@ -87,8 +90,9 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     }
 
     private fun questionViewPageConfig() {
-        questionAnswerAdapter =
-            QuestionAnswerAdapter(fragmentActivity = this, questionArrayList = questionArrayList)
+        questionAnswerAdapter = QuestionOptionAdapter(
+            fragmentActivity = this, questionArrayList = questionArrayList
+        ).apply { questionOptionAdapterCallBack = this@QuestionAnswerActivity }
         dataBinding?.questionViewPager?.apply {
             isUserInputEnabled = false
             adapter = questionAnswerAdapter
@@ -124,7 +128,15 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         dataBinding?.moneyText?.text = getString(R.string.available_currency_text, coin)
     }
 
+    override fun isEnableNextButton(isEnable: Boolean) {
+        dataBinding?.nextButton?.isEnabled = isEnable
+    }
+
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
+    }
+
+    override fun option(option: Option) {
+        questionAnswerViewModel.option(option = option)
     }
 }

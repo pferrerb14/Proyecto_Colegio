@@ -5,6 +5,7 @@ import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.intent.action.QuestionAnswerIntentAction
 import com.leandro1995.seito.intent.event.QuestionAnswerIntentEvent
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -31,6 +32,33 @@ class QuestionAnswerViewModel :
         }
     }
 
+    fun coin() {
+        if (coin >= Setting.DISCOUNT_CURRENCY) {
+            coin = coin - Setting.DISCOUNT_CURRENCY
+            questionArrayList[position].optionArrayList.find { it.name == questionArrayList[position].answer }?.isAnswer =
+                true
+            value(action = QuestionAnswerIntentAction(coin = coin))
+            button.invoke(PAGE)
+        } else {
+            emit(
+                event = QuestionAnswerIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_coin_message
+                    )
+                )
+            )
+        }
+    }
+
+    fun option(option: Option) {
+        questionArrayList[position].optionArrayList.apply {
+            forEach { it.isAnswer = false }
+            find { it.name == option.name }?.isAnswer = true
+        }
+
+        value(action = QuestionAnswerIntentAction(isEnableNextButton = true))
+    }
+
     private fun startView() {
         value(
             action = QuestionAnswerIntentAction(
@@ -42,23 +70,8 @@ class QuestionAnswerViewModel :
     private fun page() {
         if (questionArrayList.size != position) {
             position = position + 1
+            value(action = QuestionAnswerIntentAction(isEnableNextButton = false))
             value(action = QuestionAnswerIntentAction(position = position))
-        }
-    }
-
-    fun coin() {
-        if (coin >= Setting.DISCOUNT_CURRENCY) {
-            coin = coin - Setting.DISCOUNT_CURRENCY
-            value(action = QuestionAnswerIntentAction(coin = coin))
-            button.invoke(PAGE)
-        } else {
-            emit(
-                event = QuestionAnswerIntentEvent.AlertMessage(
-                    alertMessage = AlertMessage(
-                        idMessage = R.string.no_coin_message
-                    )
-                )
-            )
         }
     }
 
