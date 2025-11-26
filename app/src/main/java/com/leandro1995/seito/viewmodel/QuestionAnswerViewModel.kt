@@ -16,7 +16,6 @@ class QuestionAnswerViewModel :
     ViewModelAmbient<QuestionAnswerIntentAction, QuestionAnswerIntentEvent>() {
 
     var questionArrayList = arrayListOf<Question>()
-    var coin = 0
     var timeSkip = ""
     val student = Student()
     private var position = 0
@@ -42,15 +41,19 @@ class QuestionAnswerViewModel :
             QUESTION_ANSWER_REGISTER_FIREBASE -> {
                 questionAnswerRegisterFirebase()
             }
+
+            UPDATE_COIN_FIREBASE -> {
+                updateCoinFirebase()
+            }
         }
     }
 
     fun coin() {
-        if (coin >= Setting.DISCOUNT_CURRENCY) {
-            coin = coin - Setting.DISCOUNT_CURRENCY
+        if (student.coins >= Setting.DISCOUNT_CURRENCY) {
+            student.coins = student.coins - Setting.DISCOUNT_CURRENCY
             questionArrayList[position].optionArrayList.find { it.name == questionArrayList[position].answer }?.isAnswer =
                 true
-            value(action = QuestionAnswerIntentAction(coin = coin))
+            value(action = QuestionAnswerIntentAction(coin = student.coins))
             button.invoke(PAGE)
         } else {
             emit(
@@ -75,11 +78,10 @@ class QuestionAnswerViewModel :
     private fun startView() {
         value(
             action = QuestionAnswerIntentAction(
-                questionArrayList = questionArrayList, coin = coin
+                questionArrayList = questionArrayList, coin = student.coins
             )
         )
     }
-
 
     private fun page() {
         if ((questionArrayList.size - 1) != position) {
@@ -96,14 +98,7 @@ class QuestionAnswerViewModel :
             questionArrayList = questionArrayList,
             timeSkip = timeSkip,
             success = {
-                emit(
-                    event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
-                        alertMessage = AlertMessage(
-                            idMessage = R.string.complete_register_message, isCancelable = false
-                        )
-                    )
-                )
-                loading()
+                loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
             },
             error = {
                 emit(
@@ -115,6 +110,28 @@ class QuestionAnswerViewModel :
                 )
                 loading()
             })
+    }
+
+    private fun updateCoinFirebase() {
+        student.updateCoinFirebase(questionArrayList = questionArrayList, success = { result ->
+            emit(
+                event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.complete_register_message, isCancelable = false
+                    ), updateCoin = result
+                )
+            )
+            loading()
+        }, error = {
+            emit(
+                event = QuestionAnswerIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(
+                        idMessage = R.string.no_question_register_message
+                    )
+                )
+            )
+            loading()
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
@@ -132,5 +149,6 @@ class QuestionAnswerViewModel :
         const val PAGE = 1
         const val COIN = 2
         private const val QUESTION_ANSWER_REGISTER_FIREBASE = 3
+        private const val UPDATE_COIN_FIREBASE = 4
     }
 }

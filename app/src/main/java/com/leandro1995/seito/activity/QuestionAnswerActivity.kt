@@ -109,7 +109,7 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     override fun startView() {
         backGroundCoroutine.start {
             questionAnswerViewModel.apply {
-                coin = UserProtoDataStoreConfig.getCoins()
+                student.coins = UserProtoDataStoreConfig.getCoins()
                 student.email = UserProtoDataStoreConfig.getEmail()
                 button.invoke(QuestionAnswerViewModel.START_VIEW)
             }
@@ -140,8 +140,11 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
 
-    override fun completeQuestionMessage(alertMessage: AlertMessage) {
+    override fun completeQuestionMessage(alertMessage: AlertMessage, updateCoin: Int) {
         dataBinding?.timeChronometer?.stop()
+        backGroundCoroutine.start {
+            UserProtoDataStoreConfig.setCoins(coins = updateCoin)
+        }
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage) { finish() }
     }
 

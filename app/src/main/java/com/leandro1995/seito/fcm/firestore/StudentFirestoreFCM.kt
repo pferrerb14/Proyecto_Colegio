@@ -58,6 +58,15 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
             }
     }
 
+    fun updateCoinFirebase(coin: Int, email: String, success: (Int) -> Unit, error: () -> Unit) {
+        addObject[Setting.COINS] = coin
+        collection(Setting.USERS).document(email).update(addObject).addOnSuccessListener {
+            success(coin)
+        }.addOnFailureListener {
+            error()
+        }
+    }
+
     private fun addAnswerQuestion(
         documentReference: DocumentReference,
         answerArrayList: ArrayList<Answer>,

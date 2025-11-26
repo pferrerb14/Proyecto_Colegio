@@ -9,6 +9,7 @@ sealed class QuestionAnswerIntentEvent {
     data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
         QuestionAnswerIntentEvent()
 
-    data class CompleteQuestionMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
-        QuestionAnswerIntentEvent()
+    data class CompleteQuestionMessage(
+        val alertMessage: com.leandro1995.seito.model.design.AlertMessage, val updateCoin: Int
+    ) : QuestionAnswerIntentEvent()
 }

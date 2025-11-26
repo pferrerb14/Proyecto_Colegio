@@ -61,6 +61,17 @@ data class Student(
         )
     }
 
+    fun updateCoinFirebase(
+        questionArrayList: ArrayList<Question>, success: (Int) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().updateCoinFirebase(
+            coin = calculatePoint(questionArrayList = questionArrayList),
+            email = email,
+            success = success,
+            error = error
+        )
+    }
+
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1
@@ -68,4 +79,16 @@ data class Student(
     fun isAgeRange() = age in 6..18
 
     fun isCoins() = coins == -1
+
+    fun calculatePoint(questionArrayList: ArrayList<Question>): Int {
+        var coinCalculate = 0
+
+        questionArrayList.forEach {
+            if (it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer) {
+                coinCalculate = coinCalculate + Setting.DISCOUNT_CURRENCY
+            }
+        }
+
+        return coinCalculate + coins
+    }
 }
