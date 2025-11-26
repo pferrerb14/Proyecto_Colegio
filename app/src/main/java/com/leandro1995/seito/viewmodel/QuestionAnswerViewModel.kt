@@ -100,6 +100,7 @@ class QuestionAnswerViewModel :
         student.addAnswerFirebase(
             questionArrayList = questionArrayList,
             timeSkip = timeSkip,
+            document = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
             success = {
                 loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
             },

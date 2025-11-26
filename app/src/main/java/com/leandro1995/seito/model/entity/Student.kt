@@ -28,6 +28,7 @@ data class Student(
     fun addAnswerFirebase(
         questionArrayList: ArrayList<Question>,
         timeSkip: String,
+        document: String,
         success: () -> Unit,
         error: () -> Unit
     ) {
@@ -53,7 +54,7 @@ data class Student(
         StudentFirestoreFCM().addAnswerFirebase(
             note = note,
             email = email,
-            document = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
+            document = document,
             answerArrayList = answerArrayList,
             timeSkip = timeSkip,
             success = success,
