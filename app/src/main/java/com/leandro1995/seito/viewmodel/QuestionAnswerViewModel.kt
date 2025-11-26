@@ -51,8 +51,11 @@ class QuestionAnswerViewModel :
     fun coin() {
         if (student.coins >= Setting.DISCOUNT_CURRENCY) {
             student.coins = student.coins - Setting.DISCOUNT_CURRENCY
-            questionArrayList[position].optionArrayList.find { it.name == questionArrayList[position].answer }?.isAnswer =
-                true
+            questionArrayList[position].optionArrayList.find { it.name == questionArrayList[position].answer }
+                ?.let {
+                    it.isAnswer = true
+                    it.isCoin = true
+                }
             value(action = QuestionAnswerIntentAction(coin = student.coins))
             button.invoke(PAGE)
         } else {

@@ -80,11 +80,11 @@ data class Student(
 
     fun isCoins() = coins == -1
 
-    fun calculatePoint(questionArrayList: ArrayList<Question>): Int {
+    private fun calculatePoint(questionArrayList: ArrayList<Question>): Int {
         var coinCalculate = 0
 
         questionArrayList.forEach {
-            if (it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer) {
+            if (it.optionArrayList.find { option -> option.isAnswer && !option.isCoin }?.name == it.answer) {
                 coinCalculate = coinCalculate + Setting.DISCOUNT_CURRENCY
             }
         }
