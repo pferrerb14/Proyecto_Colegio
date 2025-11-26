@@ -23,4 +23,10 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 
+    <fragment
+        android:id="@+id/navigation_exam"
+        android:name="com.leandro1995.seito.fragment.ExamListFragment"
+        android:label="fragment_exam_list"
+        tools:layout="@layout/fragment_exam_list" />
+
 </navigation>
