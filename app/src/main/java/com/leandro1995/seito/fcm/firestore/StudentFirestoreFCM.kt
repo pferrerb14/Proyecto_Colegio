@@ -35,6 +35,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
         note: Double,
         email: String,
         document: String,
+        timeSkip: String,
         answerArrayList: ArrayList<Answer>,
         success: () -> Unit,
         error: () -> Unit
@@ -42,6 +43,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
         addObject[Setting.NOTE] = note
         addObject[Setting.DATE] =
             TrustedTime.date(format = com.leandro1995.seito.config.Setting.DATE_FORMAT)
+        addObject[Setting.TIMER] = timeSkip
 
         collection(document = Setting.ANSWER).document(email).collection(document).add(addObject)
             .addOnSuccessListener { result ->

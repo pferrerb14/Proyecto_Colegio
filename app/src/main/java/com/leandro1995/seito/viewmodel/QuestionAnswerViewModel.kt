@@ -17,6 +17,7 @@ class QuestionAnswerViewModel :
 
     var questionArrayList = arrayListOf<Question>()
     var coin = 0
+    var timeSkip = ""
     val student = Student()
     private var position = 0
 
@@ -91,25 +92,29 @@ class QuestionAnswerViewModel :
     }
 
     fun questionAnswerRegisterFirebase() {
-        student.addAnswerFirebase(questionArrayList = questionArrayList, success = {
-            emit(
-                event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
-                    alertMessage = AlertMessage(
-                        idMessage = R.string.complete_register_message, isCancelable = false
+        student.addAnswerFirebase(
+            questionArrayList = questionArrayList,
+            timeSkip = timeSkip,
+            success = {
+                emit(
+                    event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.complete_register_message, isCancelable = false
+                        )
                     )
                 )
-            )
-            loading()
-        }, error = {
-            emit(
-                event = QuestionAnswerIntentEvent.AlertMessage(
-                    alertMessage = AlertMessage(
-                        idMessage = R.string.no_question_register_message
+                loading()
+            },
+            error = {
+                emit(
+                    event = QuestionAnswerIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.no_question_register_message
+                        )
                     )
                 )
-            )
-            loading()
-        })
+                loading()
+            })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

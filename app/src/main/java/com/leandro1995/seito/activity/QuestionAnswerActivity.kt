@@ -81,9 +81,10 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     private fun chronometerConfig() {
         dataBinding?.timeChronometer?.apply {
             onChronometerTickListener = Chronometer.OnChronometerTickListener { chronometer ->
-                chronometer.text = QuestionAnswerUtilDesign.timer(
-                    chronometer = chronometer, timeElapsed = getString(R.string.time_elapsed_text)
-                )
+                QuestionAnswerUtilDesign.timer(chronometer = chronometer).let {
+                    questionAnswerViewModel.timeSkip = it
+                    chronometer.text = getString(R.string.time_elapsed_text, it)
+                }
             }
             start()
         }
@@ -140,6 +141,7 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
     }
 
     override fun completeQuestionMessage(alertMessage: AlertMessage) {
+        dataBinding?.timeChronometer?.stop()
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage) { finish() }
     }
 

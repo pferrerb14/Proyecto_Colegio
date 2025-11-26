@@ -26,7 +26,10 @@ data class Student(
     }
 
     fun addAnswerFirebase(
-        questionArrayList: ArrayList<Question>, success: () -> Unit, error: () -> Unit
+        questionArrayList: ArrayList<Question>,
+        timeSkip: String,
+        success: () -> Unit,
+        error: () -> Unit
     ) {
         val point = (Setting.NOTE_MAXIMUM / questionArrayList.size).toDouble()
         val answerArrayList = arrayListOf<Answer>()
@@ -52,6 +55,7 @@ data class Student(
             email = email,
             document = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
             answerArrayList = answerArrayList,
+            timeSkip = timeSkip,
             success = success,
             error = error
         )

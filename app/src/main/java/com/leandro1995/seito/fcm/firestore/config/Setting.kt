@@ -22,4 +22,5 @@ object Setting {
     const val DATE = "date"
     const val NOTE = "note"
     const val IS_ANSWER = "is_answer"
+    const val TIMER = "timer"
 }
