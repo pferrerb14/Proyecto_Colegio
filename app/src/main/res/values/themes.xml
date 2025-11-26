@@ -121,7 +121,7 @@
 
     <style name="Button">
         <item name="android:layout_height">@dimen/dimen_50</item>
-        <item name="android:backgroundTint">@color/blue_0066FF</item>
+        <item name="android:backgroundTint">@color/color_button</item>
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>
         <item name="cornerRadius">@dimen/dimen_10</item>
@@ -153,6 +153,12 @@
 
     <style name="ButtonGoOut" parent="Button">
         <item name="android:backgroundTint">@color/red_F92C36</item>
+    </style>
+
+    <style name="ButtonCoin" parent="Button">
+        <item name="android:backgroundTint">@color/yellow_F8F3FD</item>
+        <item name="android:textColor">@color/black_1A1A1A</item>
+        <item name="android:fontFamily">@font/semi_bold</item>
     </style>
 
     <!-- Dialog -->

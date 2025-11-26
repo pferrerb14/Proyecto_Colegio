@@ -10,6 +10,7 @@
     <string name="student_title">Alumnos</string>
     <string name="add_question_title">Agregar pregunta</string>
     <string name="list_question_title">Lista de preguntas</string>
+    <string name="answer_questions_title">Resolver preguntas</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -74,6 +75,8 @@
     <string name="coins_text">Monedas:</string>
     <string name="no_question_text">No hay preguntas disponibles</string>
     <string name="no_question_description_text">Se mostrarán las preguntas que vallas registrando para el balotario</string>
+    <string name="time_elapsed_text">Tiempo transcurrido : %1$s</string>
+    <string name="available_currency_text">Monedas disponibles : %1$d</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -96,6 +99,8 @@
     <string name="add_theme_button">Agregar</string>
     <string name="add_level_button">Agregar Level</string>
     <string name="add_question_button">Crear pregunta</string>
+    <string name="next_button">Siguiente</string>
+    <string name="point_button">100 ptos.</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
@@ -128,6 +133,10 @@
     <string name="not_option_name_message">No ingreso la opción correctamente</string>
     <string name="not_option_response_message">No ingreso una opción como respuesta</string>
     <string name="question_complete_message">Se registro la pregunta</string>
+    <string name="no_question_message">Actualmente no cuenta con preguntas</string>
+    <string name="no_coin_message">No cuenta con los puntos suficientes para canjear</string>
+    <string name="no_question_register_message">Hubo problemas con el registro de preguntas</string>
+    <string name="complete_register_message">Se completaron él envió de preguntas al servicio</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

@@ -1,8 +1,11 @@
 package com.leandro1995.seito.model.entity
 
+import android.os.Parcelable
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.fcm.firestore.QuestionFirestoreFCM
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 class Question(
     val id: String = "",
     var imageUrl: String = "",
@@ -11,7 +14,7 @@ class Question(
     var answer: String = "",
     var idLevel: String = "",
     var coins: Int = -1
-) {
+) : Parcelable {
     fun deleteFirebase(success: () -> Unit, error: () -> Unit) {
         QuestionFirestoreFCM().questionDelete(id = id, success = success, error = error)
     }

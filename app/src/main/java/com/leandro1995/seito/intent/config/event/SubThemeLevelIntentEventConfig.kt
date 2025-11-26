@@ -16,6 +16,14 @@ class SubThemeLevelIntentEventConfig(private val subThemeLevelIntentEventCallBac
                 )
             }
 
+            is SubThemeLevelIntentEvent.AlertMessage -> {
+                subThemeLevelIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
+
+            is SubThemeLevelIntentEvent.QuestionAnswer -> {
+                subThemeLevelIntentEventCallBack?.questionAnswer(questionArrayList = event.questionArrayList)
+            }
+
             null -> {}
         }
     }

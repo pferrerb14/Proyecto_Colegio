@@ -1,5 +1,6 @@
 package com.leandro1995.seito.model.entity
 
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.fcm.firestore.StudentFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
 import kotlinx.parcelize.Parcelize
@@ -24,6 +25,54 @@ data class Student(
         StudentFirestoreFCM().courseVideoArrayList(success = success, error = error)
     }
 
+    fun addAnswerFirebase(
+        questionArrayList: ArrayList<Question>,
+        timeSkip: String,
+        document: String,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+        val point = (Setting.NOTE_MAXIMUM / questionArrayList.size).toDouble()
+        val answerArrayList = arrayListOf<Answer>()
+        var note = 0.0
+
+        questionArrayList.forEach {
+            if (it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer) {
+                note = note + point
+            }
+
+            answerArrayList.add(
+                Answer(
+                    imageUrl = it.imageUrl,
+                    name = it.name,
+                    answer = it.answer,
+                    isAnswer = it.optionArrayList.find { option -> option.isAnswer }?.name == it.answer
+                )
+            )
+        }
+
+        StudentFirestoreFCM().addAnswerFirebase(
+            note = note,
+            email = email,
+            document = document,
+            answerArrayList = answerArrayList,
+            timeSkip = timeSkip,
+            success = success,
+            error = error
+        )
+    }
+
+    fun updateCoinFirebase(
+        questionArrayList: ArrayList<Question>, success: (Int) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().updateCoinFirebase(
+            coin = calculatePoint(questionArrayList = questionArrayList),
+            email = email,
+            success = success,
+            error = error
+        )
+    }
+
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1
@@ -31,4 +80,16 @@ data class Student(
     fun isAgeRange() = age in 6..18
 
     fun isCoins() = coins == -1
+
+    private fun calculatePoint(questionArrayList: ArrayList<Question>): Int {
+        var coinCalculate = 0
+
+        questionArrayList.forEach {
+            if (it.optionArrayList.find { option -> option.isAnswer && !option.isCoin }?.name == it.answer) {
+                coinCalculate = coinCalculate + Setting.DISCOUNT_CURRENCY
+            }
+        }
+
+        return coinCalculate + coins
+    }
 }

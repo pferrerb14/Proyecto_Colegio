@@ -1,5 +1,6 @@
 package com.leandro1995.seito.extension
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -11,8 +12,6 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.app.ComponentActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -26,6 +25,8 @@ import com.leandro1995.seito.UserProtoDataStore
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.protodatastore.serializer.UserProtoDataStoreSerializer
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import java.util.regex.Pattern
 
@@ -112,3 +113,6 @@ fun AppCompatActivity.launcher(success: () -> Unit) =
             success()
         }
     }
+
+@SuppressLint("SimpleDateFormat")
+fun Date.format(format: String): String = SimpleDateFormat(format).format(this)

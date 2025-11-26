@@ -33,6 +33,7 @@
 
     <!-- Yellow -->
     <color name="yellow_F8F3FD">#FFF9DB</color>
+    <color name="yellow_FFC107">#FFC107</color>
 
     <!-- Green -->
     <color name="green_EEFBF3">#EEFBF3</color>
