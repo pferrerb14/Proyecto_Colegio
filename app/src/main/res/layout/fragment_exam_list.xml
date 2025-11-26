@@ -36,6 +36,7 @@
             android:clickable="true"
             android:focusable="true"
             android:importantForAccessibility="no"
+            android:onClick="@{()-> examListViewModel.button.invoke(examListViewModel.EXAM_ADD)}"
             android:src="@drawable/ic_add"
             android:visibility="visible"
             app:backgroundTint="@color/blue_E6F0FF"

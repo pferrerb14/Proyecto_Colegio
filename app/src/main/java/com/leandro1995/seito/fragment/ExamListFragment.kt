@@ -1,7 +1,9 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.ExamAddActivity
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentExamListBinding
 import com.leandro1995.seito.extension.lifecycleScope
@@ -43,5 +45,9 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
 
     override fun loading(loading: Loading) {
 
+    }
+
+    override fun examAdd() {
+        startActivity(Intent(requireContext(), ExamAddActivity::class.java))
     }
 }

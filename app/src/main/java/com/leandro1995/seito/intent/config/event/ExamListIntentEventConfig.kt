@@ -16,6 +16,10 @@ class ExamListIntentEventConfig(private val examListIntentEventCallBack: ExamLis
                 )
             }
 
+            ExamListIntentEvent.ExamAdd -> {
+                examListIntentEventCallBack?.examAdd()
+            }
+
             null -> {}
         }
     }
