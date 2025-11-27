@@ -34,14 +34,16 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
     }
 
     private fun courseFirebase() {
-        teacher.courseFirebaseArrayList(success = {
-
+        teacher.courseFirebaseArrayList(success = { result ->
+            value(action = ExamAddIntentAction(courseArrayList = result))
+            loading()
         }, error = {
             emit(
                 event = ExamAddIntentEvent.AlertMessage(
                     alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
                 )
             )
+            loading()
         })
     }
 

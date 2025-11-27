@@ -9,7 +9,9 @@ class ExamAddIntentActionConfig(private val examAddIntentActionCallBack: ExamAdd
 
     override fun initConfig(event: ExamAddIntentAction?) {
         if (event != null) {
-
+            event.courseArrayList?.let {
+                examAddIntentActionCallBack?.courseArrayList(courseArrayList = it)
+            }
         } else {
             examAddIntentActionCallBack?.startService()
         }

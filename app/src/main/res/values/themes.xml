@@ -162,7 +162,7 @@
     </style>
 
     <style name="Spinner">
-        <item name="android:layout_height">@dimen/dimen_45</item>
+        <item name="android:background">@drawable/background_spinner</item>
     </style>
 
     <!-- Dialog -->

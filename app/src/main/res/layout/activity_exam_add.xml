@@ -50,9 +50,11 @@
                     android:text="@string/course_text" />
 
                 <Spinner
-                    android:id="@+id/course_spinner"
                     style="@style/Spinner"
-                    android:layout_width="match_parent" />
+                    android:id="@+id/course_spinner"
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/dimen_6"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
