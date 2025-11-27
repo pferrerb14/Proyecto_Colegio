@@ -11,6 +11,7 @@
     <string name="add_question_title">Agregar pregunta</string>
     <string name="list_question_title">Lista de preguntas</string>
     <string name="answer_questions_title">Resolver preguntas</string>
+    <string name="create_exam_title">Crear examen</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>

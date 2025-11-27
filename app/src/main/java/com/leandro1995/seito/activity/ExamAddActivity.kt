@@ -12,6 +12,7 @@ import com.leandro1995.seito.intent.callback.event.ExamAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ExamAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamAddIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamAddViewModel
@@ -32,7 +33,15 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
     override var idLayout: Int = R.layout.activity_exam_add
 
     override fun initView() {
-        dataBinding?.examAddViewModel = examAddViewModel
+        dataBinding?.apply {
+            this.examAddViewModel = examAddViewModel
+            Toolbar(
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.create_exam_title,
+                isArrow = true,
+                icArrow = R.drawable.ic_arrow_white
+            ).config { finish() }
+        }
 
         spinnerConfig()
     }
