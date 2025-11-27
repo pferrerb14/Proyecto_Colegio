@@ -5,6 +5,13 @@
     android:id="@+id/main"
     tools:context=".activity.ExamAddActivity">
 
+    <data>
+
+        <variable
+            name="examAddViewModel"
+            type="com.leandro1995.seito.viewmodel.ExamAddViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -44,7 +51,7 @@
 
                 <Spinner
                     android:id="@+id/course_spinner"
-                    style="@style/Spinner" 
+                    style="@style/Spinner"
                     android:layout_width="match_parent" />
 
             </LinearLayout>
