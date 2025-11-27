@@ -29,9 +29,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/register_scroll"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
             android:fillViewport="true"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,11 +52,11 @@
                     android:text="@string/course_text" />
 
                 <Spinner
-                    style="@style/Spinner"
                     android:id="@+id/course_spinner"
+                    style="@style/Spinner"
                     android:layout_width="match_parent"
-                    android:padding="@dimen/dimen_6"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_6" />
 
             </LinearLayout>
 

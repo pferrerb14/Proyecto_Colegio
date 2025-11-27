@@ -1,5 +1,6 @@
 package com.leandro1995.seito.activity
 
+import android.view.View
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ambient.ActivityAmbient
@@ -73,6 +74,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
         this.courseArrayList.clear()
         this.courseArrayList.addAll(courseArrayList)
+        dataBinding?.registerScroll?.visibility = View.VISIBLE
 
         courseAdapter?.notifyDataSetChanged()
     }
