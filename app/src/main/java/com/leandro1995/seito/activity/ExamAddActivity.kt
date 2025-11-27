@@ -10,6 +10,8 @@ import com.leandro1995.seito.intent.callback.action.ExamAddIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ExamAddIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ExamAddIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamAddIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamAddViewModel
 
 class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntentActionCallBack,
@@ -42,6 +44,17 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
     }
 
     override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            examAddViewModel.service(idService = loading.idService)
+        }
+    }
 
+    override fun startService() {
+        examAddViewModel.button.invoke(ExamAddViewModel.COURSE)
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = this, alertMessage = alertMessage, positiveButton = { finish() })
     }
 }

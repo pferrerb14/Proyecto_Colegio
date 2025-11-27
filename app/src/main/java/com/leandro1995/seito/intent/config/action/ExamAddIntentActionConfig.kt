@@ -11,7 +11,7 @@ class ExamAddIntentActionConfig(private val examAddIntentActionCallBack: ExamAdd
         if (event != null) {
 
         } else {
-
+            examAddIntentActionCallBack?.startService()
         }
     }
 }

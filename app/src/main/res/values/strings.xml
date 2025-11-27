@@ -137,6 +137,7 @@
     <string name="no_coin_message">No cuenta con los puntos suficientes para canjear</string>
     <string name="no_question_register_message">Hubo problemas con el registro de preguntas</string>
     <string name="complete_register_message">Se completaron él envió de preguntas al servicio</string>
+    <string name="not_error_service_firebase_message">Hubo un problema con el servicio</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

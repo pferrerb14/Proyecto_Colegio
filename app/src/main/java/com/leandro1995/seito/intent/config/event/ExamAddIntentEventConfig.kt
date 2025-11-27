@@ -9,6 +9,17 @@ class ExamAddIntentEventConfig(private val examAddIntentEventCallBack: ExamAddIn
 
     override fun initConfig(event: ExamAddIntentEvent?) {
         when (event) {
+            is ExamAddIntentEvent.Loading -> {
+                loadingIntentEventAmbient(
+                    loadingIntentEventAmbient = event.loadingIntentEventAmbient,
+                    loadingIntentEventCallBack = examAddIntentEventCallBack
+                )
+            }
+
+            is ExamAddIntentEvent.AlertMessage -> {
+                examAddIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }
