@@ -19,8 +19,8 @@ abstract class FirestoreAmbientFCM {
                         id = it.id, name = toString(documentSnapshot = it, field = Setting.NAME)
                     )
                 )
-                success(courseArrayList)
             }
+            success(courseArrayList)
         }.addOnFailureListener { error() }
     }
 

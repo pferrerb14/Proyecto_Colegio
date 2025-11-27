@@ -79,6 +79,7 @@
     <string name="time_elapsed_text">Tiempo transcurrido : %1$s</string>
     <string name="available_currency_text">Monedas disponibles : %1$d</string>
     <string name="theme_text">Tema:</string>
+    <string name="sub_theme_text">Subtema:</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

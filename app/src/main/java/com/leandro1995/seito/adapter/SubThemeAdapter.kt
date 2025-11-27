@@ -1,4 +1,4 @@
-package com.leandro1995.seito.adapter.viewholder
+package com.leandro1995.seito.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,18 +9,21 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.leandro1995.seito.R
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.SubTheme
+import com.leandro1995.seito.model.entity.Theme
 
-class CourseAdapter(private val context: Context, private val courseArrayList: ArrayList<Course>) :
-    BaseAdapter() {
+class SubThemeAdapter(
+    private val context: Context, private val subThemeArrayList: ArrayList<SubTheme>
+) : BaseAdapter() {
 
     private val inflater = LayoutInflater.from(context)
 
     override fun getCount(): Int {
-        return courseArrayList.size
+        return subThemeArrayList.size
     }
 
     override fun getItem(position: Int): Any? {
-        return courseArrayList[position]
+        return subThemeArrayList[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -32,7 +35,7 @@ class CourseAdapter(private val context: Context, private val courseArrayList: A
         position: Int, convertView: View?, parent: ViewGroup?
     ): View? {
         return inflater.inflate(R.layout.item_spinner, null, false).apply {
-            findViewById<TextView>(R.id.title_text).text = courseArrayList[position].name
+            findViewById<TextView>(R.id.title_text).text = subThemeArrayList[position].name
         }
     }
 }
