@@ -159,9 +159,9 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
             levelArrayList.addAll(result)
             questionArrayList.clear()
             if (levelArrayList.isEmpty()) {
+                value(action = ExamAddIntentAction(questionArrayList = arrayListOf()))
                 loading()
             } else {
-                value(action = ExamAddIntentAction(questionArrayList = arrayListOf()))
                 loading(idService = QUESTION_FIREBASE, isDelayDisable = false)
             }
         }, error = {

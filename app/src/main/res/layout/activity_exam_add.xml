@@ -98,7 +98,12 @@
                 <com.leandro1995.seito.component.list.SelectQuestionVerticalComponentList
                     android:id="@+id/select_question_vertical_component"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_question_description_text"
+                    app:error_title="@string/no_question_text" />
 
             </LinearLayout>
 

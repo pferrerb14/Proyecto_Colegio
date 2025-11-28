@@ -18,7 +18,10 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
 
     override fun onCreateViewList() {
         questionArrayList = arrayListOf()
-        selectQuestionVerticalAdapter = questionArrayList?.let { SelectQuestionVerticalAdapter(it) }
+        selectQuestionVerticalAdapter = questionArrayList?.let {
+            messageErrorVisibility(arrayList = it)
+            SelectQuestionVerticalAdapter(it)
+        }
 
         selectQuestionVerticalAdapter?.let {
             recyclerViewLayout(recyclerViewAdapter = it)
