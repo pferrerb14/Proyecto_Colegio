@@ -80,6 +80,7 @@
     <string name="available_currency_text">Monedas disponibles : %1$d</string>
     <string name="theme_text">Tema:</string>
     <string name="sub_theme_text">Subtema:</string>
+    <string name="list_question_text">Lista de peguntas</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

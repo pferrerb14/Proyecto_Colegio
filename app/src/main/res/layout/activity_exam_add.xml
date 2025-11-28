@@ -88,6 +88,13 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dimen_6" />
 
+                <TextView
+                    style="@style/TextBody5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/list_question_text" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
