@@ -7,10 +7,16 @@ import com.leandro1995.seito.config.callback.adapter.listener.ItemSelectedListen
 class ItemSelectedListener<T>(private val arrayList: ArrayList<T>) :
     AdapterView.OnItemSelectedListener {
 
+    private var isInitialSelect = true
+
     var itemSelectedListenerCallBack: ItemSelectedListenerCallBack<T>? = null
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        itemSelectedListenerCallBack?.item(item = arrayList[position])
+        if (!isInitialSelect) {
+            itemSelectedListenerCallBack?.item(item = arrayList[position])
+        } else {
+            isInitialSelect = false
+        }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
