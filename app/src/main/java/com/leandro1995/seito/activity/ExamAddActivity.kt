@@ -88,7 +88,10 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         this.courseArrayList.add(Course(name = getString(R.string.select_hint)))
         this.courseArrayList.addAll(courseArrayList)
 
-        dataBinding?.registerScroll?.visibility = View.VISIBLE
+        dataBinding?.let {
+            it.registerScroll.visibility = View.VISIBLE
+            it.createButton.visibility = View.VISIBLE
+        }
         courseAdapter?.notifyDataSetChanged()
     }
 
@@ -141,7 +144,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         subThemeItemSelectedListener = ItemSelectedListener(arrayList = suThemeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<SubTheme> {
                 override fun item(item: SubTheme) {
-                    
+
                 }
             }
         }

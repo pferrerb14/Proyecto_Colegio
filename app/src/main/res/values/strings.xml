@@ -105,6 +105,7 @@
     <string name="add_question_button">Crear pregunta</string>
     <string name="next_button">Siguiente</string>
     <string name="point_button">100 ptos.</string>
+    <string name="create_question_button">Crear pregunta</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
