@@ -26,20 +26,17 @@ import com.leandro1995.seito.viewmodel.ExamAddViewModel
 
 class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntentActionCallBack,
     ExamAddIntentEventCallBack {
-
     private val examAddViewModel by viewModels<ExamAddViewModel>()
     private val examAddIntentEventConfig =
         ExamAddIntentEventConfig(examAddIntentEventCallBack = this)
     private val examAddIntentActionConfig =
         ExamAddIntentActionConfig(examAddIntentActionCallBack = this)
-
     private var courseAdapter: CourseAdapter? = null
     private var themeAdapter: ThemeAdapter? = null
     private var subThemeAdapter: SubThemeAdapter? = null
     private var courseItemSelectedListener: ItemSelectedListener<Course>? = null
     private var themeItemSelectedListener: ItemSelectedListener<Theme>? = null
     private var subThemeItemSelectedListener: ItemSelectedListener<SubTheme>? = null
-
     private val courseArrayList = arrayListOf<Course>()
     private val themeArrayList = arrayListOf<Theme>()
     private val suThemeArrayList = arrayListOf<SubTheme>()
@@ -100,6 +97,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         this.themeArrayList.add(Theme(name = getString(R.string.select_hint)))
         this.themeArrayList.addAll(themeArrayList)
 
+        dataBinding?.themeSpinner?.setSelection(0)
         themeAdapter?.notifyDataSetChanged()
     }
 
@@ -108,6 +106,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         this.suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
         this.suThemeArrayList.addAll(subThemeArrayList)
 
+        dataBinding?.subThemeSpinner?.setSelection(0)
         subThemeAdapter?.notifyDataSetChanged()
     }
 
@@ -126,8 +125,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         courseItemSelectedListener = ItemSelectedListener(arrayList = courseArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Course> {
                 override fun item(item: Course) {
-                    examAddViewModel.course = item
-                    examAddViewModel.button.invoke(ExamAddViewModel.THEME)
+                    examAddViewModel.courseSelect(course = item)
                 }
             }
         }
@@ -135,8 +133,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         themeItemSelectedListener = ItemSelectedListener(arrayList = themeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Theme> {
                 override fun item(item: Theme) {
-                    examAddViewModel.theme = item
-                    examAddViewModel.button.invoke(ExamAddViewModel.SUB_THEME)
+                    examAddViewModel.themeSelect(theme = item)
                 }
             }
         }
@@ -144,7 +141,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         subThemeItemSelectedListener = ItemSelectedListener(arrayList = suThemeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<SubTheme> {
                 override fun item(item: SubTheme) {
-
+                    
                 }
             }
         }

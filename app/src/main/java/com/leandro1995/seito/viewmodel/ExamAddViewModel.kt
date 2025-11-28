@@ -13,9 +13,9 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEvent>() {
 
-    var course: Course = Course()
     var theme = Theme()
 
+    private var course: Course = Course()
     private val teacher = Teacher()
 
     override fun event(action: Int) {
@@ -50,6 +50,24 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         }
     }
 
+    fun courseSelect(course: Course) {
+        if (!course.isIdEmpty()) {
+            this.course = course
+            button.invoke(THEME)
+        } else {
+            value(action = ExamAddIntentAction(themeArrayList = arrayListOf()))
+        }
+    }
+
+    fun themeSelect(theme: Theme) {
+        if (!theme.isIdEmpty()) {
+            this.theme = theme
+            button.invoke(SUB_THEME)
+        } else {
+            value(action = ExamAddIntentAction(subThemeArrayList = arrayListOf()))
+        }
+    }
+
     private fun course() {
         loading(idService = COURSE_FIREBASE)
     }
@@ -79,6 +97,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
     private fun themeFirebase() {
         course.themeFirebase(success = { result ->
             value(action = ExamAddIntentAction(themeArrayList = result))
+            loading()
         }, error = {
             emit(
                 event = ExamAddIntentEvent.AlertMessage(
@@ -92,6 +111,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
     private fun subThemeFirebase() {
         theme.subThemeFirebase(idCourse = course.id, success = { result ->
             value(action = ExamAddIntentAction(subThemeArrayList = result))
+            loading()
         }, error = {
             emit(
                 event = ExamAddIntentEvent.AlertMessage(
@@ -114,10 +134,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
     companion object {
         const val COURSE = 0
-        const val THEME = 1
-        const val SUB_THEME = 2
-        private const val COURSE_FIREBASE = 3
-        private const val THEME_FIREBASE = 4
-        private const val SUB_THEME_FIREBASE = 5
+        const val SUB_THEME = 1
+        private const val THEME = 2
+        private const val COURSE_FIREBASE = 4
+        private const val THEME_FIREBASE = 5
+        private const val SUB_THEME_FIREBASE = 6
     }
 }

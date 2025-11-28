@@ -16,4 +16,6 @@ class Theme(val id: String = "", val name: String = "") : Parcelable {
             idCourse = idCourse, id = id, success = success, error = error
         )
     }
+
+    fun isIdEmpty() = id.isEmpty()
 }
