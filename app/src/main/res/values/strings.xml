@@ -91,6 +91,7 @@
     <string name="option_hint">Nombre de la opción</string>
     <string name="question_heading_hint">ejemplo: 1. ¿Cuandos años tienes…?</string>
     <string name="question_coin_hint">ejemplo: 10</string>
+    <string name="select_hint">Selecionar</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>

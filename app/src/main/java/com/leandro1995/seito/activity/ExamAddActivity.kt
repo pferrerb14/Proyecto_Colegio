@@ -57,6 +57,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
             ).config { finish() }
         }
 
+        arrayConfig()
         itemSelectedListener()
         spinnerConfig()
     }
@@ -87,6 +88,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
 
     override fun courseArrayList(courseArrayList: ArrayList<Course>) {
         this.courseArrayList.clear()
+        this.courseArrayList.add(Course(name = getString(R.string.select_hint)))
         this.courseArrayList.addAll(courseArrayList)
 
         dataBinding?.registerScroll?.visibility = View.VISIBLE
@@ -95,14 +97,15 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
 
     override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
         this.themeArrayList.clear()
+        this.themeArrayList.add(Theme(name = getString(R.string.select_hint)))
         this.themeArrayList.addAll(themeArrayList)
 
-        dataBinding?.registerScroll?.visibility = View.VISIBLE
         themeAdapter?.notifyDataSetChanged()
     }
 
     override fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>) {
         this.suThemeArrayList.clear()
+        this.suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
         this.suThemeArrayList.addAll(subThemeArrayList)
 
         subThemeAdapter?.notifyDataSetChanged()
@@ -111,6 +114,12 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(
             context = this, alertMessage = alertMessage, positiveButton = { finish() })
+    }
+
+    private fun arrayConfig() {
+        courseArrayList.add(Course(name = getString(R.string.select_hint)))
+        themeArrayList.add(Theme(name = getString(R.string.select_hint)))
+        suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
     }
 
     private fun itemSelectedListener() {

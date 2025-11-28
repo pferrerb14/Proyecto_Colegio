@@ -65,6 +65,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
     private fun courseFirebase() {
         teacher.courseFirebaseArrayList(success = { result ->
             value(action = ExamAddIntentAction(courseArrayList = result))
+            loading()
         }, error = {
             emit(
                 event = ExamAddIntentEvent.AlertMessage(
@@ -91,7 +92,6 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
     private fun subThemeFirebase() {
         theme.subThemeFirebase(idCourse = course.id, success = { result ->
             value(action = ExamAddIntentAction(subThemeArrayList = result))
-            loading()
         }, error = {
             emit(
                 event = ExamAddIntentEvent.AlertMessage(
