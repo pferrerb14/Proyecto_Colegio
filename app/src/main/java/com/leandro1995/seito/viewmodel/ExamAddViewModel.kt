@@ -181,10 +181,12 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
                 questionFirebase(position + 1)
             }, error = {
                 value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
+                value(action = ExamAddIntentAction())
                 loading()
             })
         } ?: {
             value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
+            value(action = ExamAddIntentAction())
             loading()
         }
     }
