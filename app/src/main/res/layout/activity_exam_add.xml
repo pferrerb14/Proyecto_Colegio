@@ -95,6 +95,11 @@
                     android:layout_marginTop="@dimen/dimen_10"
                     android:text="@string/list_question_text" />
 
+                <com.leandro1995.seito.component.list.SelectQuestionVerticalComponentList
+                    android:id="@+id/select_question_vertical_component"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

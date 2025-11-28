@@ -19,6 +19,7 @@ import com.leandro1995.seito.intent.config.event.ExamAddIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.util.dialog.AppUtilDialog
@@ -113,6 +114,10 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         subThemeAdapter?.notifyDataSetChanged()
     }
 
+    override fun questionArrayList(questionArrayList: ArrayList<Question>) {
+        dataBinding?.selectQuestionVerticalComponent?.setAdapter(arrayList = questionArrayList)
+    }
+
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(
             context = this, alertMessage = alertMessage, positiveButton = { finish() })
@@ -144,7 +149,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         subThemeItemSelectedListener = ItemSelectedListener(arrayList = suThemeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<SubTheme> {
                 override fun item(item: SubTheme) {
-
+                    examAddViewModel.subThemeSelect(subTheme = item)
                 }
             }
         }

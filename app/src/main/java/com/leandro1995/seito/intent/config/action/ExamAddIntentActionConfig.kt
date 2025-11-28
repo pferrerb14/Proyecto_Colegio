@@ -20,6 +20,10 @@ class ExamAddIntentActionConfig(private val examAddIntentActionCallBack: ExamAdd
             event.subThemeArrayList?.let {
                 examAddIntentActionCallBack?.subThemeArrayList(subThemeArrayList = it)
             }
+
+            event.questionArrayList?.let {
+                examAddIntentActionCallBack?.questionArrayList(questionArrayList = it)
+            }
         } else {
             examAddIntentActionCallBack?.startService()
         }

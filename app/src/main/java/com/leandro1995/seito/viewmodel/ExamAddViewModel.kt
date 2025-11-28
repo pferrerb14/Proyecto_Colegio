@@ -7,6 +7,9 @@ import com.leandro1995.seito.intent.event.ExamAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
@@ -17,6 +20,9 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
     private var course: Course = Course()
     private val teacher = Teacher()
+    private var subTheme = SubTheme()
+    private val levelArrayList = arrayListOf<Level>()
+    private val questionArrayList = arrayListOf<Question>()
 
     override fun event(action: Int) {
         when (action) {
@@ -30,6 +36,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
             SUB_THEME -> {
                 subTheme()
+            }
+
+            LEVEL -> {
+                level()
             }
         }
     }
@@ -46,6 +56,14 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
             SUB_THEME_FIREBASE -> {
                 subThemeFirebase()
+            }
+
+            LEVEL_FIREBASE -> {
+                levelFirebase()
+            }
+
+            QUESTION_FIREBASE -> {
+                questionFirebase()
             }
         }
     }
@@ -68,6 +86,15 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         }
     }
 
+    fun subThemeSelect(subTheme: SubTheme) {
+        if (!subTheme.isIdEmpty()) {
+            this.subTheme = subTheme
+            button.invoke(LEVEL)
+        } else {
+            value(action = ExamAddIntentAction(questionArrayList = arrayListOf()))
+        }
+    }
+
     private fun course() {
         loading(idService = COURSE_FIREBASE)
     }
@@ -78,6 +105,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
     private fun subTheme() {
         loading(idService = SUB_THEME_FIREBASE, isDelayDisable = false)
+    }
+
+    private fun level() {
+        loading(idService = LEVEL_FIREBASE, isDelayDisable = false)
     }
 
     private fun courseFirebase() {
@@ -122,6 +153,42 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         })
     }
 
+    private fun levelFirebase() {
+        subTheme.levelFirebase(idCourse = course.id, idTheme = theme.id, success = { result ->
+            levelArrayList.clear()
+            levelArrayList.addAll(result)
+            questionArrayList.clear()
+            if (levelArrayList.isEmpty()) {
+                loading()
+            } else {
+                value(action = ExamAddIntentAction(questionArrayList = arrayListOf()))
+                loading(idService = QUESTION_FIREBASE, isDelayDisable = false)
+            }
+        }, error = {
+            emit(
+                event = ExamAddIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                )
+            )
+            loading()
+        })
+    }
+
+    private fun questionFirebase(position: Int = 0) {
+        levelArrayList.getOrNull(position)?.let {
+            it.questionFirebase(success = { result ->
+                questionArrayList.addAll(result)
+                questionFirebase(position + 1)
+            }, error = {
+                value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
+                loading()
+            })
+        } ?: {
+            value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
+            loading()
+        }
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExamAddIntentEvent.Loading(
@@ -134,10 +201,13 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
     companion object {
         const val COURSE = 0
-        const val SUB_THEME = 1
-        private const val THEME = 2
+        private const val THEME = 1
+        const val SUB_THEME = 2
+        private const val LEVEL = 3
         private const val COURSE_FIREBASE = 4
         private const val THEME_FIREBASE = 5
         private const val SUB_THEME_FIREBASE = 6
+        private const val LEVEL_FIREBASE = 7
+        private const val QUESTION_FIREBASE = 8
     }
 }
