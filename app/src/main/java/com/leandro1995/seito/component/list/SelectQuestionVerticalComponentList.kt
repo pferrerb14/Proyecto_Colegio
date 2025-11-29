@@ -3,12 +3,14 @@ package com.leandro1995.seito.component.list
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import com.leandro1995.seito.component.list.adapter.SelectQuestionVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
+import com.leandro1995.seito.component.list.callback.adapter.SelectQuestionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Question
 
 class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
-    ComponentListAmbient(context, attrs) {
+    ComponentListAmbient(context, attrs), SelectQuestionVerticalAdapterCallBack {
     private var questionArrayList: ArrayList<Question>? = null
     private var selectQuestionVerticalAdapter: SelectQuestionVerticalAdapter? = null
 
@@ -20,7 +22,9 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
         questionArrayList = arrayListOf()
         selectQuestionVerticalAdapter = questionArrayList?.let {
             messageErrorVisibility(arrayList = it)
-            SelectQuestionVerticalAdapter(it)
+            SelectQuestionVerticalAdapter(it).apply {
+                selectQuestionVerticalAdapterCallBack = this@SelectQuestionVerticalComponentList
+            }
         }
 
         selectQuestionVerticalAdapter?.let {
@@ -44,5 +48,9 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
         }
 
         selectQuestionVerticalAdapter?.notifyDataSetChanged()
+    }
+
+    override fun questionSelectArray(questionArrayList: ArrayList<Question>) {
+        Log.e("ENTRAAAAAAA", "${questionArrayList.size}")
     }
 }

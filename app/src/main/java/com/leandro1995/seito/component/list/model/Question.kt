@@ -5,5 +5,6 @@ class Question(
     var id: String = "",
     var name: String = "",
     var answer: String = "",
-    var coins: Int = -1
+    var coins: Int = -1,
+    var isEnable: Boolean = true
 )

@@ -6,5 +6,12 @@ import com.leandro1995.seito.databinding.ItemSelectQuestionVerticalBinding
 
 class SelectQuestionVerticalViewHolder(
     val itemSelectQuestionVerticalBinding: ItemSelectQuestionVerticalBinding,
-    private val listAmbientOnclick: ListAmbientOnclick
-) : RecyclerView.ViewHolder(itemSelectQuestionVerticalBinding.root)
+    private val listAmbientOnclick: ListAmbientOnclick?
+) : RecyclerView.ViewHolder(itemSelectQuestionVerticalBinding.root) {
+
+    init {
+        itemSelectQuestionVerticalBinding.questionCheckBox.setOnClickListener {
+            listAmbientOnclick?.onclick(position = bindingAdapterPosition)
+        }
+    }
+}
