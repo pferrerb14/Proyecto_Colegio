@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.SelectQuestionVerticalViewHolder
 import com.leandro1995.seito.component.list.callback.adapter.SelectQuestionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
+import com.leandro1995.seito.component.list.config.Setting
 import com.leandro1995.seito.component.list.model.Question
 import com.leandro1995.seito.databinding.ItemSelectQuestionVerticalBindingImpl
 
@@ -54,7 +55,7 @@ class SelectQuestionVerticalAdapter(private val questionArrayList: ArrayList<Que
                 if (question.checked) {
                     question.checked = false
                 } else {
-                    (it.filter { question -> question.checked }.size == 5).let { value ->
+                    (it.filter { question -> question.checked }.size == Setting.MAX_QUESTION).let { value ->
                         question.checked = !value
 
                         if (value) {
@@ -66,6 +67,11 @@ class SelectQuestionVerticalAdapter(private val questionArrayList: ArrayList<Que
                 }
             }
         }
+
+        selectQuestionVerticalAdapterCallBack?.questionSelectArray(
+            questionArrayList = ArrayList(
+                questionArrayList.filter { it.checked })
+        )
         notifyDataSetChanged()
     }
 }

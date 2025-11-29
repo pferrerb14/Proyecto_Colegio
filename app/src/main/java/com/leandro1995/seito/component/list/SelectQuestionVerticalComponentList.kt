@@ -51,6 +51,6 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
     }
 
     override fun questionSelectArray(questionArrayList: ArrayList<Question>) {
-        Log.e("ENTRAAAAAAA", "${questionArrayList.size}")
+        
     }
 }
