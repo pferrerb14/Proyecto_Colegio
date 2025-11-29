@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.ThemeVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.ThemeVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.ThemeVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.ThemeVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ThemeVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Theme
 
 class ThemeVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

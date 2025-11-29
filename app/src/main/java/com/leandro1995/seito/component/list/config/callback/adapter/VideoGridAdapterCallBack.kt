@@ -1,4 +1,4 @@
-package com.leandro1995.seito.component.list.callback.adapter
+package com.leandro1995.seito.component.list.config.callback.adapter
 
 interface VideoGridAdapterCallBack {
 

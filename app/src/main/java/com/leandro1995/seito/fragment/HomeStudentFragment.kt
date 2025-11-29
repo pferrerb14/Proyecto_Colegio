@@ -7,8 +7,8 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ThemeListActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
-import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
-import com.leandro1995.seito.component.list.callback.VideoGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.CourseGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentHomeStudentBinding

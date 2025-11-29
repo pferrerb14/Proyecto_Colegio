@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoGridAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.VideoGridComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.VideoGridAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.VideoGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.VideoGridAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
 class VideoGridComponentList(context: Context, attrs: AttributeSet? = null) : ComponentListAmbient(context, attrs),

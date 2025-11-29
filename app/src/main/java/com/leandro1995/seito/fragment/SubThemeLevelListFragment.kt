@@ -5,7 +5,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.QuestionAnswerActivity
-import com.leandro1995.seito.component.list.callback.SubThemeLevelVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.SubThemeLevelVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentSubThemeLevelListBinding

@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.SubThemeVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.SubThemeVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.SubThemeVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.SubThemeVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.SubThemeVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.SubTheme
 
 class SubThemeVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

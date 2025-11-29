@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.QuestionVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.QuestionVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.QuestionVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.QuestionVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.QuestionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Question
 
 class QuestionVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

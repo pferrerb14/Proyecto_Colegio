@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.SelectQuestionVerticalViewHolder
-import com.leandro1995.seito.component.list.callback.adapter.SelectQuestionVerticalAdapterCallBack
-import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
+import com.leandro1995.seito.component.list.config.callback.adapter.SelectQuestionVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.config.Setting
 import com.leandro1995.seito.component.list.model.Question
 import com.leandro1995.seito.databinding.ItemSelectQuestionVerticalBindingImpl

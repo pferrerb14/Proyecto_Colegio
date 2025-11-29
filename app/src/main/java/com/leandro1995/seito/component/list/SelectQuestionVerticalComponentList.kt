@@ -3,10 +3,9 @@ package com.leandro1995.seito.component.list
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import com.leandro1995.seito.component.list.adapter.SelectQuestionVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.adapter.SelectQuestionVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.SelectQuestionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Question
 
 class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

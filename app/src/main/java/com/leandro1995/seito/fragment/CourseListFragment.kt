@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ThemeAddActivity
-import com.leandro1995.seito.component.list.callback.CourseGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.CourseGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentCourseListBinding

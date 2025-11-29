@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.ThemeVerticalViewHolder
-import com.leandro1995.seito.component.list.callback.adapter.ThemeVerticalAdapterCallBack
-import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
+import com.leandro1995.seito.component.list.config.callback.adapter.ThemeVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Theme
 import com.leandro1995.seito.databinding.ItemThemeVerticalBinding
 
