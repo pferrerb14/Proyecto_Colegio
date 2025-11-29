@@ -81,6 +81,7 @@
     <string name="theme_text">Tema:</string>
     <string name="sub_theme_text">Subtema:</string>
     <string name="list_question_text">Lista de peguntas</string>
+    <string name="name_exam_text">Nombre del examen</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -93,6 +94,7 @@
     <string name="question_heading_hint">ejemplo: 1. ¿Cuandos años tienes…?</string>
     <string name="question_coin_hint">ejemplo: 10</string>
     <string name="select_hint">Selecionar</string>
+    <string name="name_exam_hint">Nombbre del examen</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>

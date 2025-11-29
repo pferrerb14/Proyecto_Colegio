@@ -50,6 +50,22 @@
                     style="@style/TextBody5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/name_exam_text" />
+
+                <EditText
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_50"
+                    android:ems="10"
+                    android:hint="@string/name_exam_hint"
+                    android:inputType="text"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    style="@style/TextBody5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
                     android:text="@string/course_text" />
 
                 <Spinner
