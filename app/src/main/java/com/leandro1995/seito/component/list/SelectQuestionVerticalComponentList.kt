@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.SelectQuestionVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
+import com.leandro1995.seito.component.list.config.callback.SelectQuestionVerticalComponentListCallBack
 import com.leandro1995.seito.component.list.config.callback.adapter.SelectQuestionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Question
 
@@ -12,6 +13,9 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
     ComponentListAmbient(context, attrs), SelectQuestionVerticalAdapterCallBack {
     private var questionArrayList: ArrayList<Question>? = null
     private var selectQuestionVerticalAdapter: SelectQuestionVerticalAdapter? = null
+    private var selectQuestionIdArray = arrayListOf<String>()
+    var selectQuestionVerticalComponentListCallBack: SelectQuestionVerticalComponentListCallBack? =
+        null
 
     init {
         onCreateViewList()
@@ -50,6 +54,11 @@ class SelectQuestionVerticalComponentList(context: Context, attrs: AttributeSet?
     }
 
     override fun questionSelectArray(questionArrayList: ArrayList<Question>) {
-        
+        selectQuestionIdArray.clear()
+        questionArrayList.forEach {
+            selectQuestionIdArray.add(it.id)
+        }
+
+        selectQuestionVerticalComponentListCallBack?.questionIdArrayList(questionIdArrayList = selectQuestionIdArray)
     }
 }

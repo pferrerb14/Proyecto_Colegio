@@ -24,6 +24,9 @@ class ExamAddIntentActionConfig(private val examAddIntentActionCallBack: ExamAdd
             event.questionArrayList?.let {
                 examAddIntentActionCallBack?.questionArrayList(questionArrayList = it)
             }
+            event.activateButton?.let {
+                examAddIntentActionCallBack?.activateButton(isEnable = it)
+            }
         } else {
             examAddIntentActionCallBack?.startService()
         }

@@ -2,6 +2,7 @@ package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.intent.action.ExamAddIntentAction
 import com.leandro1995.seito.intent.event.ExamAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
@@ -17,6 +18,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEvent>() {
 
     var theme = Theme()
+    var questionIdArrayList = arrayListOf<String>()
 
     private var course: Course = Course()
     private val teacher = Teacher()
@@ -40,6 +42,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
             LEVEL -> {
                 level()
+            }
+
+            ACTIVATE_BUTTON -> {
+                activateButton()
             }
         }
     }
@@ -93,6 +99,13 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         } else {
             value(action = ExamAddIntentAction(questionArrayList = arrayListOf()))
         }
+    }
+
+    fun questionIdArrayList(questionIdArrayList: ArrayList<String>) {
+        this.questionIdArrayList.clear()
+        this.questionIdArrayList.addAll(questionIdArrayList)
+
+        button.invoke(ACTIVATE_BUTTON)
     }
 
     private fun course() {
@@ -181,14 +194,16 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
                 questionFirebase(position + 1)
             }, error = {
                 value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
-                value(action = ExamAddIntentAction())
                 loading()
             })
         } ?: {
             value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
-            value(action = ExamAddIntentAction())
             loading()
         }
+    }
+
+    private fun activateButton() {
+        value(action = ExamAddIntentAction(activateButton = questionIdArrayList.size == Setting.QUESTION_SELECT_MAX))
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
@@ -211,5 +226,6 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         private const val SUB_THEME_FIREBASE = 6
         private const val LEVEL_FIREBASE = 7
         private const val QUESTION_FIREBASE = 8
+        private const val ACTIVATE_BUTTON = 9
     }
 }

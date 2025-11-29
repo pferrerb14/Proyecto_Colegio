@@ -9,5 +9,6 @@ class ExamAddIntentAction(
     val courseArrayList: ArrayList<Course>? = null,
     val themeArrayList: ArrayList<Theme>? = null,
     val subThemeArrayList: ArrayList<SubTheme>? = null,
-    val questionArrayList: ArrayList<Question>? = null
+    val questionArrayList: ArrayList<Question>? = null,
+    val activateButton: Boolean? = null
 )

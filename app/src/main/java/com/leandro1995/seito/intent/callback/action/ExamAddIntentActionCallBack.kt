@@ -12,4 +12,5 @@ interface ExamAddIntentActionCallBack {
     fun themeArrayList(themeArrayList: ArrayList<Theme>)
     fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>)
     fun questionArrayList(questionArrayList: ArrayList<Question>)
+    fun activateButton(isEnable: Boolean)
 }

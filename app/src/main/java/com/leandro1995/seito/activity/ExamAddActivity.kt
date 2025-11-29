@@ -7,6 +7,7 @@ import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.adapter.CourseAdapter
 import com.leandro1995.seito.adapter.SubThemeAdapter
 import com.leandro1995.seito.adapter.ThemeAdapter
+import com.leandro1995.seito.component.list.config.callback.SelectQuestionVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.callback.adapter.listener.ItemSelectedListenerCallBack
 import com.leandro1995.seito.config.listener.ItemSelectedListener
@@ -26,7 +27,7 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamAddViewModel
 
 class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntentActionCallBack,
-    ExamAddIntentEventCallBack {
+    ExamAddIntentEventCallBack, SelectQuestionVerticalComponentListCallBack {
     private val examAddViewModel by viewModels<ExamAddViewModel>()
     private val examAddIntentEventConfig =
         ExamAddIntentEventConfig(examAddIntentEventCallBack = this)
@@ -54,6 +55,9 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
                 icArrow = R.drawable.ic_arrow_white
             ).config { finish() }
         }
+
+        dataBinding?.selectQuestionVerticalComponent?.selectQuestionVerticalComponentListCallBack =
+            this
 
         arrayConfig()
         itemSelectedListener()
@@ -118,6 +122,10 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
         dataBinding?.selectQuestionVerticalComponent?.setAdapter(arrayList = questionArrayList)
     }
 
+    override fun activateButton(isEnable: Boolean) {
+        dataBinding?.createButton?.isEnabled = isEnable
+    }
+
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(
             context = this, alertMessage = alertMessage, positiveButton = { finish() })
@@ -173,5 +181,9 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
             adapter = subThemeAdapter
             onItemSelectedListener = subThemeItemSelectedListener
         }
+    }
+
+    override fun questionIdArrayList(questionIdArrayList: ArrayList<String>) {
+        examAddViewModel.questionIdArrayList(questionIdArrayList = questionIdArrayList)
     }
 }
