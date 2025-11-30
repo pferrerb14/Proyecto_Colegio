@@ -77,6 +77,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
             QUESTION_FIREBASE -> {
                 questionFirebase()
             }
+
+            EXM_FIREBASE -> {
+                examFirebase()
+            }
         }
     }
 
@@ -208,6 +212,28 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         }
     }
 
+    private fun examFirebase() {
+        teacher.addExamFirebase(
+            exam = exam,
+            questionArrayList = ArrayList(questionArrayList.filter { it.id in questionIdArrayList }),
+            success = {
+                emit(
+                    event = ExamAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.complete_exam_message)
+                    )
+                )
+                loading()
+            },
+            error = {
+                emit(
+                    event = ExamAddIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                    )
+                )
+                loading()
+            })
+    }
+
     private fun activateButton() {
         value(action = ExamAddIntentAction(activateButton = questionIdArrayList.size == Setting.QUESTION_SELECT_MAX))
     }
@@ -223,7 +249,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
             }
 
             else -> {
-
+                loading(idService = EXM_FIREBASE)
             }
         }
     }
@@ -250,5 +276,6 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         private const val LEVEL_FIREBASE = 8
         private const val QUESTION_FIREBASE = 9
         private const val ACTIVATE_BUTTON = 10
+        private const val EXM_FIREBASE = 11
     }
 }
