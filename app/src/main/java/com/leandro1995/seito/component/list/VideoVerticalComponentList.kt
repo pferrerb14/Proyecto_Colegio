@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.VideoVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.VideoVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.VideoVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.VideoVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.VideoVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Course
 
 class VideoVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

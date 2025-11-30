@@ -161,6 +161,10 @@
         <item name="android:fontFamily">@font/semi_bold</item>
     </style>
 
+    <style name="Spinner">
+        <item name="android:background">@drawable/background_spinner</item>
+    </style>
+
     <!-- Dialog -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/blue_0066FF</item>

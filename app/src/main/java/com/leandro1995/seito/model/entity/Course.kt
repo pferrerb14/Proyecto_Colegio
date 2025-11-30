@@ -12,4 +12,6 @@ class Course(
     fun themeFirebase(success: (ArrayList<Theme>) -> Unit, error: () -> Unit) {
         CourseFirestoreFCM().themeArrayList(id = id, success = success, error = error)
     }
+
+    fun isIdEmpty() = id.isEmpty()
 }

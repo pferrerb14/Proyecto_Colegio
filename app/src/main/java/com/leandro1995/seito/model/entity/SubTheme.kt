@@ -21,4 +21,6 @@ class SubTheme(val id: String = "", val name: String = "") : Parcelable {
             error = error
         )
     }
+
+    fun isIdEmpty() = id.isEmpty()
 }

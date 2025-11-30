@@ -11,6 +11,7 @@
     <string name="add_question_title">Agregar pregunta</string>
     <string name="list_question_title">Lista de preguntas</string>
     <string name="answer_questions_title">Resolver preguntas</string>
+    <string name="create_exam_title">Crear examen</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -77,6 +78,10 @@
     <string name="no_question_description_text">Se mostrarán las preguntas que vallas registrando para el balotario</string>
     <string name="time_elapsed_text">Tiempo transcurrido : %1$s</string>
     <string name="available_currency_text">Monedas disponibles : %1$d</string>
+    <string name="theme_text">Tema:</string>
+    <string name="sub_theme_text">Subtema:</string>
+    <string name="list_question_text">Lista de peguntas</string>
+    <string name="name_exam_text">Nombre del examen</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
@@ -88,6 +93,8 @@
     <string name="option_hint">Nombre de la opción</string>
     <string name="question_heading_hint">ejemplo: 1. ¿Cuandos años tienes…?</string>
     <string name="question_coin_hint">ejemplo: 10</string>
+    <string name="select_hint">Selecionar</string>
+    <string name="name_exam_hint">Nombbre del examen</string>
 
     <!-- Button -->
     <string name="get_into_button">Ingresar</string>
@@ -101,6 +108,7 @@
     <string name="add_question_button">Crear pregunta</string>
     <string name="next_button">Siguiente</string>
     <string name="point_button">100 ptos.</string>
+    <string name="create_question_button">Crear pregunta</string>
 
     <!-- Message -->
     <string name="no_empty_fields_message">No ingreso datos en los campos</string>
@@ -137,6 +145,9 @@
     <string name="no_coin_message">No cuenta con los puntos suficientes para canjear</string>
     <string name="no_question_register_message">Hubo problemas con el registro de preguntas</string>
     <string name="complete_register_message">Se completaron él envió de preguntas al servicio</string>
+    <string name="not_error_service_firebase_message">Hubo un problema con el servicio</string>
+    <string name="not_name_exam_message">Registre el nombre del examen</string>
+    <string name="complete_exam_message">Se registro el examen</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>
@@ -146,6 +157,7 @@
     <string name="profile_constant">Perfil</string>
     <string name="courses_constant">Cursos</string>
     <string name="student_constant">Alumnos</string>
+    <string name="exam_constant">Examenes</string>
 
     <!-- Component -->
     <string name="loading_component">Cargando…</string>

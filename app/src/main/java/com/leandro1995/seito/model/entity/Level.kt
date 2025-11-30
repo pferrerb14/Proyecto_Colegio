@@ -12,9 +12,19 @@ class Level(val id: String = "", val name: String = "") : Parcelable {
         success: (questionArrayList: ArrayList<Question>) -> Unit, error: () -> Unit
     ) {
         LevelFirestoreFCM().questionArrayList(
-            idLevel = id,
-            success = { success(ArrayList(it.shuffled().take(Setting.QUESTION_LENGTH))) },
-            error = error
+            idLevel = id, success = success, error = error
         )
+    }
+
+    fun randomQuestionFirebase(
+        success: (questionArrayList: ArrayList<Question>) -> Unit, error: () -> Unit
+    ) {
+        questionFirebase(success = {
+            success(
+                ArrayList(
+                    it.shuffled().take(Setting.QUESTION_LENGTH)
+                )
+            )
+        }, error = error)
     }
 }

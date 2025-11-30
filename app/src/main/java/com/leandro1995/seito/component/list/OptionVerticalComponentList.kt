@@ -5,8 +5,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.OptionVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.callback.OptionVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.callback.adapter.OptionVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.OptionVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.OptionVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Option
 
 class OptionVerticalComponentList(context: Context, attrs: AttributeSet? = null) :

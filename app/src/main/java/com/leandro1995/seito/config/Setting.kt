@@ -16,6 +16,7 @@ object Setting {
     const val PASSWORD_LENGTH = 6
     const val OPTION_LENGTH = 5
     const val QUESTION_LENGTH = 5
+    const val QUESTION_SELECT_MAX = 5
 
     const val DISCOUNT_CURRENCY = 100
     const val NOTE_MAXIMUM = 20

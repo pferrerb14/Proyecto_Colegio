@@ -68,7 +68,7 @@ class SubThemeLevelViewModel :
     }
 
     private fun answerQuestionFirebase() {
-        level.questionFirebase(success = { result ->
+        level.randomQuestionFirebase(success = { result ->
             questionArrayList.clear()
             questionArrayList.addAll(result)
 

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.list.adapter.viewholder.StudentVerticalViewHolder
-import com.leandro1995.seito.component.list.callback.adapter.StudentVerticalAdapterCallBack
-import com.leandro1995.seito.component.list.callback.adapter.ambient.ListAmbientOnclick
+import com.leandro1995.seito.component.list.config.callback.adapter.StudentVerticalAdapterCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Student
 import com.leandro1995.seito.databinding.ItemStudentVerticalBinding
 

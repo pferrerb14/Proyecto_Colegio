@@ -1,0 +1,193 @@
+package com.leandro1995.seito.activity
+
+import android.view.View
+import androidx.activity.viewModels
+import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.ambient.ActivityAmbient
+import com.leandro1995.seito.adapter.CourseAdapter
+import com.leandro1995.seito.adapter.SubThemeAdapter
+import com.leandro1995.seito.adapter.ThemeAdapter
+import com.leandro1995.seito.component.list.config.callback.SelectQuestionVerticalComponentListCallBack
+import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.callback.adapter.listener.ItemSelectedListenerCallBack
+import com.leandro1995.seito.config.listener.ItemSelectedListener
+import com.leandro1995.seito.databinding.ActivityExamAddBinding
+import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.intent.callback.action.ExamAddIntentActionCallBack
+import com.leandro1995.seito.intent.callback.event.ExamAddIntentEventCallBack
+import com.leandro1995.seito.intent.config.action.ExamAddIntentActionConfig
+import com.leandro1995.seito.intent.config.event.ExamAddIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Question
+import com.leandro1995.seito.model.entity.SubTheme
+import com.leandro1995.seito.model.entity.Theme
+import com.leandro1995.seito.util.dialog.AppUtilDialog
+import com.leandro1995.seito.viewmodel.ExamAddViewModel
+
+class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntentActionCallBack,
+    ExamAddIntentEventCallBack, SelectQuestionVerticalComponentListCallBack {
+    private val examAddViewModel by viewModels<ExamAddViewModel>()
+    private val examAddIntentEventConfig =
+        ExamAddIntentEventConfig(examAddIntentEventCallBack = this)
+    private val examAddIntentActionConfig =
+        ExamAddIntentActionConfig(examAddIntentActionCallBack = this)
+    private var courseAdapter: CourseAdapter? = null
+    private var themeAdapter: ThemeAdapter? = null
+    private var subThemeAdapter: SubThemeAdapter? = null
+    private var courseItemSelectedListener: ItemSelectedListener<Course>? = null
+    private var themeItemSelectedListener: ItemSelectedListener<Theme>? = null
+    private var subThemeItemSelectedListener: ItemSelectedListener<SubTheme>? = null
+    private val courseArrayList = arrayListOf<Course>()
+    private val themeArrayList = arrayListOf<Theme>()
+    private val suThemeArrayList = arrayListOf<SubTheme>()
+
+    override var idLayout: Int = R.layout.activity_exam_add
+
+    override fun initView() {
+        dataBinding?.apply {
+            this.examAddViewModel = this@ExamAddActivity.examAddViewModel
+            Toolbar(
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.create_exam_title,
+                isArrow = true,
+                icArrow = R.drawable.ic_arrow_white
+            ).config { finish() }
+        }
+
+        dataBinding?.selectQuestionVerticalComponent?.selectQuestionVerticalComponentListCallBack =
+            this
+
+        arrayConfig()
+        itemSelectedListener()
+        spinnerConfig()
+    }
+
+    override fun initEventToAction() {
+        lifecycleScope {
+            examAddViewModel.event.collect { examAddIntentEvent ->
+                examAddIntentEventConfig.initConfig(event = examAddIntentEvent)
+            }
+        }
+
+        lifecycleScope {
+            examAddViewModel.action.collect { examAddIntentAction ->
+                examAddIntentActionConfig.initConfig(event = examAddIntentAction)
+            }
+        }
+    }
+
+    override fun loading(loading: Loading) {
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            examAddViewModel.service(idService = loading.idService)
+        }
+    }
+
+    override fun startService() {
+        examAddViewModel.button.invoke(ExamAddViewModel.COURSE)
+    }
+
+    override fun courseArrayList(courseArrayList: ArrayList<Course>) {
+        this.courseArrayList.clear()
+        this.courseArrayList.add(Course(name = getString(R.string.select_hint)))
+        this.courseArrayList.addAll(courseArrayList)
+
+        dataBinding?.let {
+            it.registerScroll.visibility = View.VISIBLE
+            it.createButton.visibility = View.VISIBLE
+        }
+        courseAdapter?.notifyDataSetChanged()
+    }
+
+    override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+        this.themeArrayList.clear()
+        this.themeArrayList.add(Theme(name = getString(R.string.select_hint)))
+        this.themeArrayList.addAll(themeArrayList)
+
+        dataBinding?.themeSpinner?.setSelection(0)
+        themeAdapter?.notifyDataSetChanged()
+    }
+
+    override fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>) {
+        this.suThemeArrayList.clear()
+        this.suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
+        this.suThemeArrayList.addAll(subThemeArrayList)
+
+        dataBinding?.subThemeSpinner?.setSelection(0)
+        subThemeAdapter?.notifyDataSetChanged()
+    }
+
+    override fun questionArrayList(questionArrayList: ArrayList<Question>) {
+        dataBinding?.selectQuestionVerticalComponent?.setAdapter(arrayList = questionArrayList)
+    }
+
+    override fun activateButton(isEnable: Boolean) {
+        dataBinding?.createButton?.isEnabled = isEnable
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(
+            context = this, alertMessage = alertMessage, positiveButton = { finish() })
+    }
+
+    override fun registerAlertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
+    }
+
+    private fun arrayConfig() {
+        courseArrayList.add(Course(name = getString(R.string.select_hint)))
+        themeArrayList.add(Theme(name = getString(R.string.select_hint)))
+        suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
+    }
+
+    private fun itemSelectedListener() {
+        courseItemSelectedListener = ItemSelectedListener(arrayList = courseArrayList).apply {
+            itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Course> {
+                override fun item(item: Course) {
+                    examAddViewModel.courseSelect(course = item)
+                }
+            }
+        }
+
+        themeItemSelectedListener = ItemSelectedListener(arrayList = themeArrayList).apply {
+            itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Theme> {
+                override fun item(item: Theme) {
+                    examAddViewModel.themeSelect(theme = item)
+                }
+            }
+        }
+
+        subThemeItemSelectedListener = ItemSelectedListener(arrayList = suThemeArrayList).apply {
+            itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<SubTheme> {
+                override fun item(item: SubTheme) {
+                    examAddViewModel.subThemeSelect(subTheme = item)
+                }
+            }
+        }
+    }
+
+    private fun spinnerConfig() {
+        courseAdapter = CourseAdapter(context = this, courseArrayList = courseArrayList)
+        dataBinding?.courseSpinner?.apply {
+            adapter = courseAdapter
+            onItemSelectedListener = courseItemSelectedListener
+        }
+
+        themeAdapter = ThemeAdapter(context = this, themeArrayList = themeArrayList)
+        dataBinding?.themeSpinner?.apply {
+            adapter = themeAdapter
+            onItemSelectedListener = themeItemSelectedListener
+        }
+
+        subThemeAdapter = SubThemeAdapter(context = this, subThemeArrayList = suThemeArrayList)
+        dataBinding?.subThemeSpinner?.apply {
+            adapter = subThemeAdapter
+            onItemSelectedListener = subThemeItemSelectedListener
+        }
+    }
+
+    override fun questionIdArrayList(questionIdArrayList: ArrayList<String>) {
+        examAddViewModel.questionIdArrayList(questionIdArrayList = questionIdArrayList)
+    }
+}

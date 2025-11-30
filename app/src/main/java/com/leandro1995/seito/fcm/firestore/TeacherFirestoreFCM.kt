@@ -1,8 +1,10 @@
 package com.leandro1995.seito.fcm.firestore
 
+import com.google.firebase.firestore.DocumentReference
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.fcm.firestore.util.RouteCollection
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.model.entity.Teacher
@@ -122,5 +124,51 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
 
         collection(document = Setting.BALLOT).add(addObject).addOnSuccessListener { success() }
             .addOnFailureListener { error() }
+    }
+
+    fun examAdd(
+        exam: Exam, questionArrayList: ArrayList<Question>, success: () -> Unit, error: () -> Unit
+    ) {
+        addObject[Setting.NAME] = exam.name
+        collection(document = Setting.EXAM).add(addObject).addOnSuccessListener {
+            examQuestionAdd(
+                questionArrayList = questionArrayList,
+                documentReference = it,
+                success = success,
+                error = error
+            )
+        }.addOnFailureListener {
+            error()
+        }
+    }
+
+    private fun examQuestionAdd(
+        questionArrayList: ArrayList<Question>,
+        documentReference: DocumentReference,
+        position: Int = 0,
+        success: () -> Unit,
+        error: () -> Unit
+    ) {
+        questionArrayList.getOrNull(position)?.let { question ->
+            addObject.clear()
+            addObject[Setting.IMAGE_URL] = question.imageUrl
+            addObject[Setting.NAME] = question.name
+            addObject[Setting.OPTION_ARRAY] = question.optionArrayList.map { it.name }
+            addObject[Setting.ANSWER] = question.answer
+            addObject[Setting.ID_LEVEL] = question.idLevel
+            addObject[Setting.COINS] = question.coins
+
+            documentReference.collection(Setting.QUESTION).add(addObject).addOnSuccessListener {
+                examQuestionAdd(
+                    questionArrayList = questionArrayList,
+                    documentReference = documentReference,
+                    position = position + 1,
+                    success = success,
+                    error = error
+                )
+            }.addOnFailureListener { error() }
+        } ?: run {
+            success()
+        }
     }
 }

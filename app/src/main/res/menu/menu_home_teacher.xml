@@ -12,6 +12,11 @@
         android:title="@string/courses_constant" />
 
     <item
+        android:id="@+id/navigation_exam"
+        android:icon="@drawable/ic_exam"
+        android:title="@string/exam_constant" />
+
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_user_black"
         android:title="@string/profile_constant" />

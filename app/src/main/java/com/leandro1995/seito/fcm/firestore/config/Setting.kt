@@ -23,4 +23,6 @@ object Setting {
     const val NOTE = "note"
     const val IS_ANSWER = "is_answer"
     const val TIMER = "timer"
+    const val EXAM = "exam"
+    const val QUESTION = "question"
 }
