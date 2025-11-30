@@ -8,6 +8,7 @@ import com.leandro1995.seito.intent.event.ExamAddIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Level
 import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.SubTheme
@@ -18,6 +19,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEvent>() {
 
     var theme = Theme()
+    var exam = Exam()
     var questionIdArrayList = arrayListOf<String>()
 
     private var course: Course = Course()
@@ -46,6 +48,10 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
 
             ACTIVATE_BUTTON -> {
                 activateButton()
+            }
+
+            EXM_VALIDATION -> {
+                examValidation()
             }
         }
     }
@@ -206,6 +212,22 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         value(action = ExamAddIntentAction(activateButton = questionIdArrayList.size == Setting.QUESTION_SELECT_MAX))
     }
 
+    private fun examValidation() {
+        when {
+            exam.isNameEmpty() -> {
+                emit(
+                    event = ExamAddIntentEvent.RegisterAlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_name_exam_message)
+                    )
+                )
+            }
+
+            else -> {
+
+            }
+        }
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExamAddIntentEvent.Loading(
@@ -220,12 +242,13 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
         const val COURSE = 0
         private const val THEME = 1
         const val SUB_THEME = 2
-        private const val LEVEL = 3
-        private const val COURSE_FIREBASE = 4
-        private const val THEME_FIREBASE = 5
-        private const val SUB_THEME_FIREBASE = 6
-        private const val LEVEL_FIREBASE = 7
-        private const val QUESTION_FIREBASE = 8
-        private const val ACTIVATE_BUTTON = 9
+        const val EXM_VALIDATION = 3
+        private const val LEVEL = 4
+        private const val COURSE_FIREBASE = 5
+        private const val THEME_FIREBASE = 6
+        private const val SUB_THEME_FIREBASE = 7
+        private const val LEVEL_FIREBASE = 8
+        private const val QUESTION_FIREBASE = 9
+        private const val ACTIVATE_BUTTON = 10
     }
 }

@@ -6,4 +6,5 @@ import com.leandro1995.seito.model.design.AlertMessage
 interface ExamAddIntentEventCallBack : LoadingIntentCallBackAmbient {
 
     fun alertMessage(alertMessage: AlertMessage)
+    fun registerAlertMessage(alertMessage: AlertMessage)
 }

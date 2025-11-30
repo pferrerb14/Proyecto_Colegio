@@ -47,7 +47,7 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
 
     override fun initView() {
         dataBinding?.apply {
-            this.examAddViewModel = examAddViewModel
+            this.examAddViewModel = this@ExamAddActivity.examAddViewModel
             Toolbar(
                 materialToolbar = appBarBlueInclude.toolbar,
                 idTitle = R.string.create_exam_title,
@@ -129,6 +129,10 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(
             context = this, alertMessage = alertMessage, positiveButton = { finish() })
+    }
+
+    override fun registerAlertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
     }
 
     private fun arrayConfig() {

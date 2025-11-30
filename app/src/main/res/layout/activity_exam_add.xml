@@ -59,6 +59,7 @@
                     android:ems="10"
                     android:hint="@string/name_exam_hint"
                     android:inputType="text"
+                    android:text="@={examAddViewModel.exam.name}"
                     tools:ignore="Autofill,LabelFor" />
 
                 <TextView
@@ -133,6 +134,7 @@
             android:layout_marginEnd="@dimen/dimen_16"
             android:layout_marginBottom="@dimen/dimen_24"
             android:enabled="false"
+            android:onClick="@{()-> examAddViewModel.button.invoke(examAddViewModel.EXM_VALIDATION)}"
             android:text="@string/create_question_button"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

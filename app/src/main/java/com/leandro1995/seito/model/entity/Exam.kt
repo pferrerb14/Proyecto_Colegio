@@ -4,4 +4,6 @@ class Exam(
     val id: String = "",
     var name: String = "",
     var questionArrayList: ArrayList<Question> = arrayListOf()
-)
+) {
+    fun isNameEmpty() = name.isEmpty()
+}
