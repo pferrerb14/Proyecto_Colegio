@@ -12,6 +12,7 @@ import com.leandro1995.seito.intent.callback.action.ExamListIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ExamListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ExamListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamListIntentEventConfig
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.viewmodel.ExamListViewModel
 
 class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListIntentActionCallBack,
@@ -26,7 +27,14 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
     override var idLayout: Int = R.layout.fragment_exam_list
 
     override fun initView() {
-        dataBinding?.examListViewModel = examListViewModel
+        dataBinding?.apply {
+            examListViewModel = this@ExamListFragment.examListViewModel
+            Toolbar(
+                materialToolbar = appBarBlueInclude.toolbar,
+                idTitle = R.string.list_exam_title,
+                icArrow = R.drawable.ic_arrow_white
+            ).config()
+        }
     }
 
     override fun initEventToAction() {
