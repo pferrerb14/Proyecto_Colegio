@@ -1,15 +1,18 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.ExamListIntentAction
 import com.leandro1995.seito.intent.event.ExamListIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class ExamListViewModel : ViewModelAmbient<ExamListIntentAction, ExamListIntentEvent>() {
 
     private val teacher = Teacher()
+    var idExam = ""
 
     override fun event(action: Int) {
         when (action) {
@@ -20,6 +23,10 @@ class ExamListViewModel : ViewModelAmbient<ExamListIntentAction, ExamListIntentE
             EXAM_LIST -> {
                 examList()
             }
+
+            EXAM_DELETE -> {
+                examDelete()
+            }
         }
     }
 
@@ -27,6 +34,10 @@ class ExamListViewModel : ViewModelAmbient<ExamListIntentAction, ExamListIntentE
         when (idService) {
             EXAM_FIREBASE -> {
                 examFirebase()
+            }
+
+            EXAM_DELETE_FIREBASE -> {
+                examDeleteFirebase()
             }
         }
     }
@@ -39,12 +50,29 @@ class ExamListViewModel : ViewModelAmbient<ExamListIntentAction, ExamListIntentE
         loading(idService = EXAM_FIREBASE)
     }
 
+    private fun examDelete() {
+        loading(idService = EXAM_DELETE_FIREBASE)
+    }
+
     private fun examFirebase() {
         teacher.examFirebaseArrayList(success = { result ->
             value(action = ExamListIntentAction(examArrayList = result))
             loading()
         }, error = {
             value(action = ExamListIntentAction(examArrayList = arrayListOf()))
+            loading()
+        })
+    }
+
+    private fun examDeleteFirebase() {
+        teacher.deleteExamFirebase(idExam = idExam, success = {
+            loading(idService = EXAM_FIREBASE, isDelayDisable = false)
+        }, error = {
+            emit(
+                event = ExamListIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                )
+            )
             loading()
         })
     }
@@ -62,6 +90,8 @@ class ExamListViewModel : ViewModelAmbient<ExamListIntentAction, ExamListIntentE
     companion object {
         const val EXAM_ADD = 0
         const val EXAM_LIST = 1
-        private const val EXAM_FIREBASE = 2
+        const val EXAM_DELETE = 2
+        private const val EXAM_FIREBASE = 3
+        private const val EXAM_DELETE_FIREBASE = 4
     }
 }

@@ -7,4 +7,7 @@ sealed class ExamListIntentEvent {
         ExamListIntentEvent()
 
     data object ExamAdd : ExamListIntentEvent()
+
+    data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        ExamListIntentEvent()
 }

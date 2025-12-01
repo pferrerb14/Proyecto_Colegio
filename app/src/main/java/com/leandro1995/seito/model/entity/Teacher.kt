@@ -93,6 +93,10 @@ data class Teacher(
         TeacherFirestoreFCM().examArrayList(success = success, error = error)
     }
 
+    fun deleteExamFirebase(idExam: String, success: () -> Unit, error: () -> Unit) {
+        TeacherFirestoreFCM().examDelete(idExam = idExam, success = success, error = error)
+    }
+
     fun isCode() = code.isEmpty()
 
     fun isCodeLength(length: Int) = code.length == length

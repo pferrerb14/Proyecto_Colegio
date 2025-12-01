@@ -159,6 +159,11 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         }
     }
 
+    fun examDelete(idExam: String, success: () -> Unit, error: () -> Unit) {
+        collection(document = Setting.EXAM).document(idExam).delete()
+            .addOnSuccessListener { success() }.addOnFailureListener { error() }
+    }
+
     private fun examQuestionAdd(
         questionArrayList: ArrayList<Question>,
         documentReference: DocumentReference,
