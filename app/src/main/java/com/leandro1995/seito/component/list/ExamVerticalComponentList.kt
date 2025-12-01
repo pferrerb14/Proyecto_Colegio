@@ -38,9 +38,10 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     @SuppressLint("NotifyDataSetChanged")
     override fun setAdapter(arrayList: ArrayList<*>) {
         messageErrorVisibility(arrayList = arrayList)
+        examArrayList?.clear()
 
         arrayList.forEach {
-            (it as Exam).let { exam ->
+            (it as com.leandro1995.seito.model.entity.Exam).let { exam ->
                 examArrayList?.add(Exam(name = exam.name, id = exam.id))
             }
         }

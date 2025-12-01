@@ -1,6 +1,7 @@
 package com.leandro1995.seito.fragment
 
 import android.content.Intent
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ExamAddActivity
@@ -13,6 +14,7 @@ import com.leandro1995.seito.intent.callback.event.ExamListIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.ExamListIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamListIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.viewmodel.ExamListViewModel
 
 class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListIntentActionCallBack,
@@ -52,10 +54,23 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            examListViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun examAdd() {
         startActivity(Intent(requireContext(), ExamAddActivity::class.java))
+    }
+
+    override fun startService() {
+        examListViewModel.button.invoke(ExamListViewModel.EXAM_LIST)
+    }
+
+    override fun examArrayList(examArrayList: ArrayList<Exam>) {
+        dataBinding?.exmAddFloatingActionButton?.post {
+            dataBinding?.exmAddFloatingActionButton?.visibility = View.VISIBLE
+        }
+        dataBinding?.examVerticalComponentList?.setAdapter(arrayList = examArrayList)
     }
 }

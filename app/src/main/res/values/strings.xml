@@ -83,6 +83,8 @@
     <string name="sub_theme_text">Subtema:</string>
     <string name="list_question_text">Lista de peguntas</string>
     <string name="name_exam_text">Nombre del examen</string>
+    <string name="not_exam_text">No ingreso ni un examen</string>
+    <string name="not_exam_sub_text">Ingrese los exámenes con los balotarios que agregaron</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

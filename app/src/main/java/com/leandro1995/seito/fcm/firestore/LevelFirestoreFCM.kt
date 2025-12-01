@@ -2,7 +2,6 @@ package com.leandro1995.seito.fcm.firestore
 
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
-import com.leandro1995.seito.model.entity.Option
 import com.leandro1995.seito.model.entity.Question
 
 class LevelFirestoreFCM : FirestoreAmbientFCM() {
@@ -37,15 +36,5 @@ class LevelFirestoreFCM : FirestoreAmbientFCM() {
             },
             error = error
         )
-    }
-
-    private fun optionArrayList(optionArrayString: Array<String>): ArrayList<Option> {
-        val optionArrayList = arrayListOf<Option>()
-
-        optionArrayString.forEach {
-            optionArrayList.add(Option(name = it))
-        }
-
-        return optionArrayList
     }
 }
