@@ -9,7 +9,7 @@ import com.leandro1995.seito.component.list.config.callback.ExamDeleteVerticalCo
 import com.leandro1995.seito.component.list.config.callback.adapter.ExamDeleteVerticalCallBack
 import com.leandro1995.seito.component.list.model.Exam
 
-class ExamDeleteDeleteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
+class ExamDeleteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     ComponentListAmbient(context, attrs), ExamDeleteVerticalCallBack {
 
     private var examArrayList: ArrayList<Exam>? = null
@@ -26,7 +26,7 @@ class ExamDeleteDeleteVerticalComponentList(context: Context, attrs: AttributeSe
         examArrayList = arrayListOf()
         examDeleteVerticalAdapter = examArrayList?.let {
             ExamDeleteVerticalAdapter(examArrayList = it).apply {
-                examDeleteVerticalCallBack = this@ExamDeleteDeleteVerticalComponentList
+                examDeleteVerticalCallBack = this@ExamDeleteVerticalComponentList
             }
         }
 

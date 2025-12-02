@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.leandro1995.seito.component.list.ExamDeleteDeleteVerticalComponentList
+        <com.leandro1995.seito.component.list.ExamDeleteVerticalComponentList
             android:id="@+id/exam_vertical_component_list"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"
