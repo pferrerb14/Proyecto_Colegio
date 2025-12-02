@@ -3,20 +3,20 @@ package com.leandro1995.seito.component.list
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import com.leandro1995.seito.component.list.adapter.ExamVerticalAdapter
+import com.leandro1995.seito.component.list.adapter.ExamDeleteVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
-import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalCallBack
+import com.leandro1995.seito.component.list.config.callback.ExamDeleteVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ExamDeleteVerticalCallBack
 import com.leandro1995.seito.component.list.model.Exam
 
-class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
-    ComponentListAmbient(context, attrs), ExamVerticalCallBack {
+class ExamDeleteDeleteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
+    ComponentListAmbient(context, attrs), ExamDeleteVerticalCallBack {
 
     private var examArrayList: ArrayList<Exam>? = null
 
-    private var examVerticalAdapter: ExamVerticalAdapter? = null
+    private var examDeleteVerticalAdapter: ExamDeleteVerticalAdapter? = null
 
-    var examVerticalComponentListCallBack: ExamVerticalComponentListCallBack? = null
+    var examDeleteVerticalComponentListCallBack: ExamDeleteVerticalComponentListCallBack? = null
 
     init {
         onCreateViewList()
@@ -24,13 +24,13 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
 
     override fun onCreateViewList() {
         examArrayList = arrayListOf()
-        examVerticalAdapter = examArrayList?.let {
-            ExamVerticalAdapter(examArrayList = it).apply {
-                examVerticalCallBack = this@ExamVerticalComponentList
+        examDeleteVerticalAdapter = examArrayList?.let {
+            ExamDeleteVerticalAdapter(examArrayList = it).apply {
+                examDeleteVerticalCallBack = this@ExamDeleteDeleteVerticalComponentList
             }
         }
 
-        examVerticalAdapter?.let {
+        examDeleteVerticalAdapter?.let {
             recyclerViewLayout(recyclerViewAdapter = it)
         }
     }
@@ -46,10 +46,10 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
             }
         }
 
-        examVerticalAdapter?.notifyDataSetChanged()
+        examDeleteVerticalAdapter?.notifyDataSetChanged()
     }
 
     override fun idExam(id: String) {
-        examVerticalComponentListCallBack?.idExam(id = id)
+        examDeleteVerticalComponentListCallBack?.idExam(id = id)
     }
 }

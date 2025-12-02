@@ -3,21 +3,21 @@ package com.leandro1995.seito.component.list.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.leandro1995.seito.component.list.adapter.viewholder.ExamVerticalViewHolder
-import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalCallBack
+import com.leandro1995.seito.component.list.adapter.viewholder.ExamDeleteVerticalViewHolder
+import com.leandro1995.seito.component.list.config.callback.adapter.ExamDeleteVerticalCallBack
 import com.leandro1995.seito.component.list.config.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Exam
 import com.leandro1995.seito.databinding.ItemExamVerticalBinding
 
-class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
-    RecyclerView.Adapter<ExamVerticalViewHolder>(), ListAmbientOnclick {
+class ExamDeleteVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
+    RecyclerView.Adapter<ExamDeleteVerticalViewHolder>(), ListAmbientOnclick {
 
-    var examVerticalCallBack: ExamVerticalCallBack? = null
+    var examDeleteVerticalCallBack: ExamDeleteVerticalCallBack? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
-    ): ExamVerticalViewHolder {
-        return ExamVerticalViewHolder(
+    ): ExamDeleteVerticalViewHolder {
+        return ExamDeleteVerticalViewHolder(
             itemExamVerticalBinding = ItemExamVerticalBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             ), listAmbientOnclick = this
@@ -25,7 +25,7 @@ class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
     }
 
     override fun onBindViewHolder(
-        holder: ExamVerticalViewHolder, position: Int
+        holder: ExamDeleteVerticalViewHolder, position: Int
     ) {
         holder.itemExamVerticalBinding.apply {
             examText.text = examArrayList[position].name
@@ -37,6 +37,6 @@ class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
     }
 
     override fun onclick(position: Int) {
-        examVerticalCallBack?.idExam(id = examArrayList[position].id)
+        examDeleteVerticalCallBack?.idExam(id = examArrayList[position].id)
     }
 }
