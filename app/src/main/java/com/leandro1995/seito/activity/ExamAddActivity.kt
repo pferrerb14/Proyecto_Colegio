@@ -1,5 +1,6 @@
 package com.leandro1995.seito.activity
 
+import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
 import com.leandro1995.seito.R
@@ -133,6 +134,13 @@ class ExamAddActivity : ActivityAmbient<ActivityExamAddBinding>(), ExamAddIntent
 
     override fun registerAlertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage)
+    }
+
+    override fun completeMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = this, alertMessage = alertMessage) {
+            setResult(RESULT_OK, Intent())
+            finish()
+        }
     }
 
     private fun arrayConfig() {

@@ -7,4 +7,5 @@ interface ExamAddIntentEventCallBack : LoadingIntentCallBackAmbient {
 
     fun alertMessage(alertMessage: AlertMessage)
     fun registerAlertMessage(alertMessage: AlertMessage)
+    fun completeMessage(alertMessage: AlertMessage)
 }

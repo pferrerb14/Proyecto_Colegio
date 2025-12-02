@@ -218,7 +218,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
             questionArrayList = ArrayList(questionArrayList.filter { it.id in questionIdArrayList }),
             success = {
                 emit(
-                    event = ExamAddIntentEvent.AlertMessage(
+                    event = ExamAddIntentEvent.CompleteMessage(
                         alertMessage = AlertMessage(idMessage = R.string.complete_exam_message)
                     )
                 )

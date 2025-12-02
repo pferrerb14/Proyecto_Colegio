@@ -9,6 +9,9 @@ sealed class ExamAddIntentEvent {
     data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
         ExamAddIntentEvent()
 
+    data class CompleteMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        ExamAddIntentEvent()
+
     data class RegisterAlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
         ExamAddIntentEvent()
 }

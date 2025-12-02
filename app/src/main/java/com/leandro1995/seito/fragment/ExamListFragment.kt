@@ -8,6 +8,7 @@ import com.leandro1995.seito.activity.ExamAddActivity
 import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentExamListBinding
+import com.leandro1995.seito.extension.launcher
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.ExamListIntentActionCallBack
@@ -28,6 +29,10 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
         ExamListIntentEventConfig(examListIntentEventCallBack = this)
     private val examListIntentActionConfig =
         ExamListIntentActionConfig(examListIntentActionCallBack = this)
+
+    private val launcher = launcher {
+        examListViewModel.button.invoke(ExamListViewModel.EXAM_LIST)
+    }
 
     override var idLayout: Int = R.layout.fragment_exam_list
 
@@ -65,7 +70,7 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
     }
 
     override fun examAdd() {
-        startActivity(Intent(requireContext(), ExamAddActivity::class.java))
+        launcher.launch(Intent(requireContext(), ExamAddActivity::class.java))
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
