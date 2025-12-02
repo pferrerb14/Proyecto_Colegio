@@ -60,6 +60,7 @@
     <string name="no_student_available_description_text">Los alumnos aparecerán aquí cuando se registren en el sistema</string>
     <string name="no_option_available_description_text">Ingrese las opciones de la pregunta que desea registrar</string>
     <string name="course_text">Curso:</string>
+    <string name="exam_text">Examen:</string>
     <string name="register_topic_text">Registre su tema</string>
     <string name="register_option_text">Registre una opción</string>
     <string name="previous_level_text">Nivel previo al inicio</string>

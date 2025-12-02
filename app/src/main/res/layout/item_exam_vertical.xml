@@ -8,9 +8,12 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/exam_material_card_view"
             android:layout_width="@dimen/dimen_0"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen_120"
+            android:layout_marginStart="@dimen/dimen_0"
             android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
             android:layout_marginBottom="@dimen/dimen_0"
             app:cardBackgroundColor="@color/white_FFFFFF"
             app:cardCornerRadius="@dimen/dimen_10"
@@ -25,25 +28,51 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_16"
-                tools:ignore="UseCompoundDrawables">
+                tools:ignore="DisableBaselineAlignment">
 
-                <TextView
-                    android:id="@+id/exam_text"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_60"
+                        android:layout_height="@dimen/dimen_60"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_medal"
+                        tools:ignore="ContentDescription" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="@dimen/dimen_0"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center|left"
+                    android:layout_marginStart="@dimen/dimen_15"
+                    android:layout_marginEnd="@dimen/dimen_15"
                     android:layout_weight="1"
-                    tools:ignore="InefficientWeight" />
+                    android:gravity="center|left"
+                    android:orientation="vertical"
+                    tools:ignore="InefficientWeight,RtlHardcoded,UselessParent">
 
-                <ImageView
-                    android:id="@+id/exam_remove_image"
-                    android:layout_width="@dimen/dimen_20"
-                    android:layout_height="@dimen/dimen_20"
-                    android:layout_marginStart="@dimen/dimen_10"
-                    app:srcCompat="@drawable/ic_delete"
-                    tools:ignore="ContentDescription" />
+                    <TextView
+                        style="@style/TextBody12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exam_text" />
+
+                    <TextView
+                        android:id="@+id/title_text"
+                        style="@style/TextBody3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
