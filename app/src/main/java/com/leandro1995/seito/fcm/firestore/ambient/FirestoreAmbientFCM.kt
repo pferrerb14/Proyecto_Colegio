@@ -6,6 +6,7 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.getField
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Option
 
 abstract class FirestoreAmbientFCM {
     private val firestore = Firebase.firestore
@@ -41,6 +42,16 @@ abstract class FirestoreAmbientFCM {
             }.addOnFailureListener {
                 error()
             }
+    }
+
+    protected fun optionArrayList(optionArrayString: Array<String>): ArrayList<Option> {
+        val optionArrayList = arrayListOf<Option>()
+
+        optionArrayString.forEach {
+            optionArrayList.add(Option(name = it))
+        }
+
+        return optionArrayList
     }
 
     protected fun collection(document: String) = firestore.collection(document)

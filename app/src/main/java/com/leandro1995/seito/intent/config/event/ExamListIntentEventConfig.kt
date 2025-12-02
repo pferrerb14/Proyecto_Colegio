@@ -20,6 +20,10 @@ class ExamListIntentEventConfig(private val examListIntentEventCallBack: ExamLis
                 examListIntentEventCallBack?.examAdd()
             }
 
+            is ExamListIntentEvent.AlertMessage -> {
+                examListIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

@@ -18,6 +18,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStore
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -108,6 +109,13 @@ fun visible(isVisible: Boolean) = if (!isVisible) {
 }
 
 fun AppCompatActivity.launcher(success: () -> Unit) =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            success()
+        }
+    }
+
+fun Fragment.launcher(success: () -> Unit) =
     registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             success()

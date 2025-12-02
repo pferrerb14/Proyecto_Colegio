@@ -24,6 +24,10 @@ class ExamAddIntentEventConfig(private val examAddIntentEventCallBack: ExamAddIn
                 examAddIntentEventCallBack?.registerAlertMessage(alertMessage = event.alertMessage)
             }
 
+            is ExamAddIntentEvent.CompleteMessage -> {
+                examAddIntentEventCallBack?.completeMessage(alertMessage = event.alertMessage)
+            }
+
             null -> {}
         }
     }

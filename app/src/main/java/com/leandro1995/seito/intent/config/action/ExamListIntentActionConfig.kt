@@ -9,9 +9,11 @@ class ExamListIntentActionConfig(private val examListIntentActionCallBack: ExamL
 
     override fun initConfig(event: ExamListIntentAction?) {
         if (event != null) {
-
+            event.examArrayList?.let {
+                examListIntentActionCallBack?.examArrayList(examArrayList = it)
+            }
         } else {
-
+            examListIntentActionCallBack?.startService()
         }
     }
 }
