@@ -107,7 +107,18 @@ class QuestionAnswerViewModel :
                 com.leandro1995.seito.fcm.firestore.config.Setting.EXAM
             },
             success = {
-                loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
+                if (isTypeAnswerQuestion) {
+                    loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
+                } else {
+                    emit(
+                        event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
+                            alertMessage = AlertMessage(
+                                idMessage = R.string.complete_register_message, isCancelable = false
+                            ), updateCoin = student.coins
+                        )
+                    )
+                    loading()
+                }
             },
             error = {
                 emit(
