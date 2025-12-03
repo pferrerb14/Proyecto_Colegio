@@ -240,7 +240,7 @@
                     android:drawableLeft="@drawable/ic_grid_course"
                     android:drawablePadding="@dimen/dimen_10"
                     android:gravity="center|left"
-                    android:text="@string/areas_study_text"
+                    android:text="@string/exam_area_text"
                     android:visibility="gone"
                     tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
 
@@ -252,8 +252,8 @@
                     android:visibility="gone"
                     app:error_color="@color/green_EEFBF3"
                     app:error_image="@drawable/ic_grid_course_hint"
-                    app:error_sub_title="@string/no_course_available_description_text"
-                    app:error_title="@string/no_course_available_text" />
+                    app:error_sub_title="@string/no_exam_available_description_text"
+                    app:error_title="@string/no_exam_available_text" />
 
             </LinearLayout>
 
