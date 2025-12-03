@@ -1,6 +1,7 @@
 package com.leandro1995.seito.fcm.firestore.util
 
 import com.leandro1995.seito.fcm.firestore.config.Setting
+import com.leandro1995.seito.model.entity.Exam
 
 object RouteCollection {
 
@@ -14,6 +15,8 @@ object RouteCollection {
             idCourse = idCourse, idTheme = idTheme
         )
     }/${idSubTeme}/${idCourse}_${SUB_THEME}_${LEVEL}"
+
+    fun examRute(idExam: String) = "${Setting.EXAM}/${idExam}/${Setting.QUESTION}"
 
     private const val THEME = "THEME"
     private const val SUB_THEME = "SUB_THEME"

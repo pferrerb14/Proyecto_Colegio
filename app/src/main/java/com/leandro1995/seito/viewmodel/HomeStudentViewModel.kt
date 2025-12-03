@@ -12,6 +12,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStudentIntentEvent>() {
 
     private val student = Student()
+    private var exam = Exam()
     private val courseVideoArrayList = arrayListOf<Course>()
     private val courseArrayList = arrayListOf<Course>()
     private val examArrayList = arrayListOf<Exam>()
@@ -29,6 +30,10 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             VIDEO_DETAIL -> {
                 videoDetail()
             }
+
+            EXAM_SELECT -> {
+                examSelect()
+            }
         }
     }
 
@@ -45,6 +50,10 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             EXAM_FIREBASE -> {
                 examFirebase()
             }
+
+            EXAM_SELECT_FIREBASE -> {
+                examSelectFirebase()
+            }
         }
     }
 
@@ -52,6 +61,11 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         student.name = name
         student.lastName = lastName
         student.teacher.name = nameTeacher
+    }
+
+    fun exam(exam: Exam) {
+        this.exam = exam
+        button.invoke(EXAM_SELECT)
     }
 
     private fun getProtoDataStore() {
@@ -115,6 +129,19 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         loading()
     }
 
+    private fun examSelect() {
+        loading(idService = EXAM_SELECT_FIREBASE)
+    }
+
+    private fun examSelectFirebase() {
+        exam.questionFirebaseArrayList(success = {
+            emit(event = HomeStudentIntentEvent.QuestionAnswer(questionArrayList = it))
+            loading()
+        }, error = {
+            errorFirebase()
+        })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = HomeStudentIntentEvent.Loading(
@@ -129,8 +156,10 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         const val GET_PROTO_DATA_STORE = 0
         const val COURSE_LIST = 1
         const val VIDEO_DETAIL = 2
-        const val COURSE_VIDEO_FIREBASE = 3
-        const val COURSE_FIREBASE = 4
-        const val EXAM_FIREBASE = 5
+        const val EXAM_SELECT = 3
+        private const val COURSE_VIDEO_FIREBASE = 4
+        private const val COURSE_FIREBASE = 5
+        private const val EXAM_FIREBASE = 6
+        private const val EXAM_SELECT_FIREBASE = 7
     }
 }

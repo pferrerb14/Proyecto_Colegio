@@ -20,6 +20,10 @@ class HomeStudentIntentEventConfig(private val homeStudentIntentEventCallBack: H
                 homeStudentIntentEventCallBack?.videoDetail(courseArrayList = event.courseArrayList)
             }
 
+            is HomeStudentIntentEvent.QuestionAnswer -> {
+                homeStudentIntentEventCallBack?.questionAnswer(questionArrayList = event.questionArrayList)
+            }
+
             null -> {}
         }
     }

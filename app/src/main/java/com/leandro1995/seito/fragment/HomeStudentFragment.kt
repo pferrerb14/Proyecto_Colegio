@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.QuestionAnswerActivity
 import com.leandro1995.seito.activity.ThemeListActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
@@ -24,6 +25,7 @@ import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Exam
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeStudentViewModel
@@ -132,7 +134,7 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
             setAdapter(arrayList = examArrayList)
             examVerticalComponentListCallBack = object : ExamVerticalComponentListCallBack {
                 override fun exam(exam: Exam) {
-
+                    homeStudentViewModel.exam(exam = exam)
                 }
             }
         }
@@ -141,6 +143,12 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
     override fun videoDetail(courseArrayList: ArrayList<Course>) {
         startActivity(Intent(requireContext(), VideoDetailActivity::class.java).apply {
             putExtra(Setting.COURSE_ARRAY_LIST_PUT_EXTRA, courseArrayList)
+        })
+    }
+
+    override fun questionAnswer(questionArrayList: ArrayList<Question>) {
+        startActivity(Intent(requireContext(), QuestionAnswerActivity::class.java).apply {
+            putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
         })
     }
 }
