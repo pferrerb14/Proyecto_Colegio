@@ -6,6 +6,7 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.getField
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Option
 
 abstract class FirestoreAmbientFCM {
@@ -23,6 +24,23 @@ abstract class FirestoreAmbientFCM {
             }
             success(courseArrayList)
         }.addOnFailureListener { error() }
+    }
+
+    fun examArrayList(success: (ArrayList<Exam>) -> Unit, error: () -> Unit) {
+        collection(document = Setting.EXAM).get().addOnSuccessListener {
+            val examArrayList = arrayListOf<Exam>()
+            it.forEach { result ->
+                examArrayList.add(
+                    Exam(
+                        id = result.id,
+                        name = toString(documentSnapshot = result, field = Setting.NAME)
+                    )
+                )
+            }
+            success(examArrayList)
+        }.addOnFailureListener {
+            error()
+        }
     }
 
     protected fun whereEqualTo(

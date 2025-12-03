@@ -8,6 +8,7 @@ import com.leandro1995.seito.activity.ThemeListActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.config.callback.CourseGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
 import com.leandro1995.seito.component.list.config.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
@@ -22,6 +23,7 @@ import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBac
 import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.HomeStudentViewModel
@@ -117,6 +119,20 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
                     startActivity(Intent(requireContext(), ThemeListActivity::class.java).apply {
                         putExtra(Setting.COURSE_PUT_EXTRA, course)
                     })
+                }
+            }
+        }
+    }
+
+    override fun examArrayList(examArrayList: ArrayList<Exam>) {
+        dataBinding?.headerExamText?.visibility = View.VISIBLE
+
+        dataBinding?.examVerticalComponentList?.apply {
+            visibility = View.VISIBLE
+            setAdapter(arrayList = examArrayList)
+            examVerticalComponentListCallBack = object : ExamVerticalComponentListCallBack {
+                override fun exam(exam: Exam) {
+
                 }
             }
         }

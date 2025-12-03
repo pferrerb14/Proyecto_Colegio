@@ -5,6 +5,7 @@ import com.leandro1995.seito.intent.action.HomeStudentIntentAction
 import com.leandro1995.seito.intent.event.HomeStudentIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
@@ -13,6 +14,7 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
     private val student = Student()
     private val courseVideoArrayList = arrayListOf<Course>()
     private val courseArrayList = arrayListOf<Course>()
+    private val examArrayList = arrayListOf<Exam>()
 
     override fun event(action: Int) {
         when (action) {
@@ -38,6 +40,10 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
 
             COURSE_FIREBASE -> {
                 courseFirebase()
+            }
+
+            EXAM_FIREBASE -> {
+                examFirebase()
             }
         }
     }
@@ -74,9 +80,21 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         student.courseFirebaseArrayList(success = { response ->
             courseArrayList.clear()
             courseArrayList.addAll(response)
+            loading(idService = EXAM_FIREBASE, isDelayDisable = false)
+        }, error = {
+            errorFirebase()
+        })
+    }
+
+    private fun examFirebase() {
+        student.examFirebaseArrayList(success = { response ->
+            examArrayList.clear()
+            examArrayList.addAll(response)
             value(
                 action = HomeStudentIntentAction(
-                    courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
+                    courseVideoArrayList = courseVideoArrayList,
+                    courseArrayList = courseArrayList,
+                    examArrayList = examArrayList
                 )
             )
             loading()
@@ -88,6 +106,7 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
     private fun errorFirebase() {
         courseVideoArrayList.clear()
         courseArrayList.clear()
+        examArrayList.clear()
         value(
             action = HomeStudentIntentAction(
                 courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
@@ -112,5 +131,6 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         const val VIDEO_DETAIL = 2
         const val COURSE_VIDEO_FIREBASE = 3
         const val COURSE_FIREBASE = 4
+        const val EXAM_FIREBASE = 5
     }
 }

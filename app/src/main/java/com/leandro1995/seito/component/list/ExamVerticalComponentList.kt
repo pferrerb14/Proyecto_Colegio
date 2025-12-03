@@ -14,7 +14,7 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
 
     private var examArrayList: ArrayList<Exam>? = null
     private var examVerticalAdapter: ExamVerticalAdapter? = null
-    private var examVerticalComponentListCallBack: ExamVerticalComponentListCallBack? = null
+    var examVerticalComponentListCallBack: ExamVerticalComponentListCallBack? = null
 
     init {
         onCreateViewList()
@@ -22,7 +22,11 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
 
     override fun onCreateViewList() {
         examArrayList = arrayListOf()
-        examVerticalAdapter = examArrayList?.let { ExamVerticalAdapter(it) }
+        examVerticalAdapter = examArrayList?.let {
+            ExamVerticalAdapter(it).apply {
+                examDeleteVerticalCallBack = this@ExamVerticalComponentList
+            }
+        }
 
         examVerticalAdapter?.let {
             recyclerViewLayout(recyclerViewAdapter = it)
@@ -44,6 +48,10 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     }
 
     override fun exam(exam: Exam) {
-        examVerticalComponentListCallBack?.exam(exam = exam)
+        examVerticalComponentListCallBack?.exam(
+            exam = com.leandro1995.seito.model.entity.Exam(
+                id = exam.id, name = exam.name
+            )
+        )
     }
 }
