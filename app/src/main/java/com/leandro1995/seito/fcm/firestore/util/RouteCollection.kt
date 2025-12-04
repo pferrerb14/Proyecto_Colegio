@@ -18,6 +18,8 @@ object RouteCollection {
 
     fun examRute(idExam: String) = "${Setting.EXAM}/${idExam}/${Setting.QUESTION}"
 
+    fun answerRute(email: String) = "${Setting.ANSWER}/${email}/${Setting.EXAM}"
+
     private const val THEME = "THEME"
     private const val SUB_THEME = "SUB_THEME"
     private const val LEVEL = "LEVEL"

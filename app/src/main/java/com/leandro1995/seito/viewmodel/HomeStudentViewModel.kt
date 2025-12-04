@@ -1,9 +1,11 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.HomeStudentIntentAction
 import com.leandro1995.seito.intent.event.HomeStudentIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Student
@@ -34,6 +36,10 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             EXAM_SELECT -> {
                 examSelect()
             }
+
+            EXAM_EXIST -> {
+                examExist()
+            }
         }
     }
 
@@ -54,18 +60,23 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             EXAM_SELECT_FIREBASE -> {
                 examSelectFirebase()
             }
+
+            EXAM_EXIST_FIREBASE -> {
+                examExistFirebase()
+            }
         }
     }
 
-    fun protoDataStore(name: String, lastName: String, nameTeacher: String) {
+    fun protoDataStore(name: String, lastName: String, nameTeacher: String, email: String) {
         student.name = name
         student.lastName = lastName
         student.teacher.name = nameTeacher
+        student.email = email
     }
 
     fun exam(exam: Exam) {
         this.exam = exam
-        button.invoke(EXAM_SELECT)
+        button.invoke(EXAM_EXIST)
     }
 
     private fun getProtoDataStore() {
@@ -142,6 +153,29 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         })
     }
 
+    private fun examExist() {
+        loading(idService = EXAM_EXIST_FIREBASE)
+    }
+
+    private fun examExistFirebase() {
+        student.examExistsFirebase(idExam = exam.id, success = {
+            if (it) {
+                emit(
+                    event = HomeStudentIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.exam_exist_message
+                        )
+                    )
+                )
+                loading()
+            } else {
+                button.invoke(EXAM_SELECT)
+            }
+        }, error = {
+            button.invoke(EXAM_SELECT)
+        })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = HomeStudentIntentEvent.Loading(
@@ -157,9 +191,11 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         const val COURSE_LIST = 1
         const val VIDEO_DETAIL = 2
         const val EXAM_SELECT = 3
-        private const val COURSE_VIDEO_FIREBASE = 4
-        private const val COURSE_FIREBASE = 5
-        private const val EXAM_FIREBASE = 6
-        private const val EXAM_SELECT_FIREBASE = 7
+        private const val EXAM_EXIST = 4
+        private const val COURSE_VIDEO_FIREBASE = 5
+        private const val COURSE_FIREBASE = 6
+        private const val EXAM_FIREBASE = 7
+        private const val EXAM_SELECT_FIREBASE = 8
+        private const val EXAM_EXIST_FIREBASE = 9
     }
 }

@@ -75,6 +75,14 @@ data class Student(
         )
     }
 
+    fun examExistsFirebase(
+        idExam: String, success: (Boolean) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().examExistsFirebase(
+            idExam = idExam, email = email, success = success, error = error
+        )
+    }
+
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1

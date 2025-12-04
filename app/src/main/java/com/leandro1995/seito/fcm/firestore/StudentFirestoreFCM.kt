@@ -1,8 +1,11 @@
 package com.leandro1995.seito.fcm.firestore
 
+import android.util.Log
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.logger.Logger
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
+import com.leandro1995.seito.fcm.firestore.util.RouteCollection
 import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.util.trustedtime.TrustedTime
@@ -67,6 +70,20 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
         }.addOnFailureListener {
             error()
         }
+    }
+
+    fun examExistsFirebase(
+        idExam: String, email: String, success: (Boolean) -> Unit, error: () -> Unit
+    ) {
+        whereEqualTo(
+            document = RouteCollection.answerRute(email = email),
+            field = Setting.ID_GROUP,
+            value = idExam,
+            success = { result ->
+                success(!result.isEmpty())
+            },
+            error = error
+        )
     }
 
     private fun addAnswerQuestion(

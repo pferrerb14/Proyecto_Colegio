@@ -11,4 +11,7 @@ sealed class HomeStudentIntentEvent {
     data class VideoDetail(val courseArrayList: ArrayList<Course>) : HomeStudentIntentEvent()
 
     data class QuestionAnswer(val questionArrayList: ArrayList<Question>) : HomeStudentIntentEvent()
+
+    data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        HomeStudentIntentEvent()
 }

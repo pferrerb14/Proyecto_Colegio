@@ -155,6 +155,7 @@
     <string name="not_error_service_firebase_message">Hubo un problema con el servicio</string>
     <string name="not_name_exam_message">Registre el nombre del examen</string>
     <string name="complete_exam_message">Se registro el examen</string>
+    <string name="exam_exist_message">Ya se realizó el examen</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

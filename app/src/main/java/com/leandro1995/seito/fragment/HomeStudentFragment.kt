@@ -23,11 +23,13 @@ import com.leandro1995.seito.intent.callback.action.HomeStudentIntentActionCallB
 import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.HomeStudentViewModel
 
 class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
@@ -74,7 +76,10 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
         backGroundCoroutine.start {
             UserProtoDataStoreConfig.apply {
                 homeStudentViewModel.protoDataStore(
-                    name = getName(), lastName = getLastName(), nameTeacher = getNameTeacher()
+                    name = getName(),
+                    lastName = getLastName(),
+                    nameTeacher = getNameTeacher(),
+                    email = getEmail()
                 )
             }
 
@@ -152,5 +157,9 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
             putExtra(Setting.GROUP_ID_PUT_EXTRA, homeStudentViewModel.exam.id)
             putExtra(Setting.TYPE_ANSWER_QUESTION_PUT_EXTRA, false)
         })
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
     }
 }
