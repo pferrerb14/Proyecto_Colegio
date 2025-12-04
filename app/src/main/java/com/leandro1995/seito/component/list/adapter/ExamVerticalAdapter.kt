@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.component.list.adapter.viewholder.ExamVerticalViewHolder
-import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.config.callback.adapter.ambient.ListAmbientOnclick
 import com.leandro1995.seito.component.list.model.Exam
 import com.leandro1995.seito.databinding.ItemExamVerticalBinding
@@ -12,14 +12,16 @@ import com.leandro1995.seito.databinding.ItemExamVerticalBinding
 class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
     RecyclerView.Adapter<ExamVerticalViewHolder>(), ListAmbientOnclick {
 
-    var examVerticalCallBack: ExamVerticalCallBack? = null
+    var examDeleteVerticalCallBack: ExamVerticalAdapterCallBack? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): ExamVerticalViewHolder {
         return ExamVerticalViewHolder(
             itemExamVerticalBinding = ItemExamVerticalBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
+                LayoutInflater.from(
+                    parent.context
+                ), parent, false
             ), listAmbientOnclick = this
         )
     }
@@ -28,7 +30,7 @@ class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
         holder: ExamVerticalViewHolder, position: Int
     ) {
         holder.itemExamVerticalBinding.apply {
-            examText.text = examArrayList[position].name
+            titleText.text = examArrayList[position].name
         }
     }
 
@@ -37,6 +39,6 @@ class ExamVerticalAdapter(private val examArrayList: ArrayList<Exam>) :
     }
 
     override fun onclick(position: Int) {
-        examVerticalCallBack?.idExam(id = examArrayList[position].id)
+        examDeleteVerticalCallBack?.exam(exam = examArrayList[position])
     }
 }

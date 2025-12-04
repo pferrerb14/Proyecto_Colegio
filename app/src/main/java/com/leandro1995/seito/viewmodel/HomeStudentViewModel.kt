@@ -1,18 +1,23 @@
 package com.leandro1995.seito.viewmodel
 
+import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.HomeStudentIntentAction
 import com.leandro1995.seito.intent.event.HomeStudentIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStudentIntentEvent>() {
 
     private val student = Student()
+    var exam = Exam()
     private val courseVideoArrayList = arrayListOf<Course>()
     private val courseArrayList = arrayListOf<Course>()
+    private val examArrayList = arrayListOf<Exam>()
 
     override fun event(action: Int) {
         when (action) {
@@ -27,6 +32,14 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             VIDEO_DETAIL -> {
                 videoDetail()
             }
+
+            EXAM_SELECT -> {
+                examSelect()
+            }
+
+            EXAM_EXIST -> {
+                examExist()
+            }
         }
     }
 
@@ -39,13 +52,31 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
             COURSE_FIREBASE -> {
                 courseFirebase()
             }
+
+            EXAM_FIREBASE -> {
+                examFirebase()
+            }
+
+            EXAM_SELECT_FIREBASE -> {
+                examSelectFirebase()
+            }
+
+            EXAM_EXIST_FIREBASE -> {
+                examExistFirebase()
+            }
         }
     }
 
-    fun protoDataStore(name: String, lastName: String, nameTeacher: String) {
+    fun protoDataStore(name: String, lastName: String, nameTeacher: String, email: String) {
         student.name = name
         student.lastName = lastName
         student.teacher.name = nameTeacher
+        student.email = email
+    }
+
+    fun exam(exam: Exam) {
+        this.exam = exam
+        button.invoke(EXAM_EXIST)
     }
 
     private fun getProtoDataStore() {
@@ -74,9 +105,21 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         student.courseFirebaseArrayList(success = { response ->
             courseArrayList.clear()
             courseArrayList.addAll(response)
+            loading(idService = EXAM_FIREBASE, isDelayDisable = false)
+        }, error = {
+            errorFirebase()
+        })
+    }
+
+    private fun examFirebase() {
+        student.examFirebaseArrayList(success = { response ->
+            examArrayList.clear()
+            examArrayList.addAll(response)
             value(
                 action = HomeStudentIntentAction(
-                    courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
+                    courseVideoArrayList = courseVideoArrayList,
+                    courseArrayList = courseArrayList,
+                    examArrayList = examArrayList
                 )
             )
             loading()
@@ -88,12 +131,49 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
     private fun errorFirebase() {
         courseVideoArrayList.clear()
         courseArrayList.clear()
+        examArrayList.clear()
         value(
             action = HomeStudentIntentAction(
                 courseVideoArrayList = courseVideoArrayList, courseArrayList = courseArrayList
             )
         )
         loading()
+    }
+
+    private fun examSelect() {
+        loading(idService = EXAM_SELECT_FIREBASE)
+    }
+
+    private fun examSelectFirebase() {
+        exam.questionFirebaseArrayList(success = {
+            emit(event = HomeStudentIntentEvent.QuestionAnswer(questionArrayList = it))
+            loading()
+        }, error = {
+            errorFirebase()
+        })
+    }
+
+    private fun examExist() {
+        loading(idService = EXAM_EXIST_FIREBASE)
+    }
+
+    private fun examExistFirebase() {
+        student.examExistsFirebase(idExam = exam.id, success = {
+            if (it) {
+                emit(
+                    event = HomeStudentIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(
+                            idMessage = R.string.exam_exist_message
+                        )
+                    )
+                )
+                loading()
+            } else {
+                button.invoke(EXAM_SELECT)
+            }
+        }, error = {
+            button.invoke(EXAM_SELECT)
+        })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
@@ -110,7 +190,12 @@ class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStude
         const val GET_PROTO_DATA_STORE = 0
         const val COURSE_LIST = 1
         const val VIDEO_DETAIL = 2
-        const val COURSE_VIDEO_FIREBASE = 3
-        const val COURSE_FIREBASE = 4
+        const val EXAM_SELECT = 3
+        private const val EXAM_EXIST = 4
+        private const val COURSE_VIDEO_FIREBASE = 5
+        private const val COURSE_FIREBASE = 6
+        private const val EXAM_FIREBASE = 7
+        private const val EXAM_SELECT_FIREBASE = 8
+        private const val EXAM_EXIST_FIREBASE = 9
     }
 }

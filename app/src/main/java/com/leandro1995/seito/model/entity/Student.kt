@@ -26,6 +26,7 @@ data class Student(
     }
 
     fun addAnswerFirebase(
+        idGroup: String,
         questionArrayList: ArrayList<Question>,
         timeSkip: String,
         document: String,
@@ -52,6 +53,7 @@ data class Student(
         }
 
         StudentFirestoreFCM().addAnswerFirebase(
+            idGroup = idGroup,
             note = note,
             email = email,
             document = document,
@@ -70,6 +72,14 @@ data class Student(
             email = email,
             success = success,
             error = error
+        )
+    }
+
+    fun examExistsFirebase(
+        idExam: String, success: (Boolean) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().examExistsFirebase(
+            idExam = idExam, email = email, success = success, error = error
         )
     }
 

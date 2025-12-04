@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.activity.ExamAddActivity
-import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.ExamDeleteVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentExamListBinding
 import com.leandro1995.seito.extension.launcher
@@ -21,8 +21,8 @@ import com.leandro1995.seito.model.entity.Exam
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamListViewModel
 
-class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListIntentActionCallBack,
-    ExamListIntentEventCallBack, ExamVerticalComponentListCallBack {
+class ExamDeleteListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListIntentActionCallBack,
+    ExamListIntentEventCallBack, ExamDeleteVerticalComponentListCallBack {
 
     private val examListViewModel by viewModels<ExamListViewModel>()
     private val examListIntentEventConfig =
@@ -38,14 +38,14 @@ class ExamListFragment : FragmentAmbient<FragmentExamListBinding>(), ExamListInt
 
     override fun initView() {
         dataBinding?.apply {
-            examListViewModel = this@ExamListFragment.examListViewModel
+            examListViewModel = this@ExamDeleteListFragment.examListViewModel
             Toolbar(
                 materialToolbar = appBarBlueInclude.toolbar,
                 idTitle = R.string.list_exam_title,
                 icArrow = R.drawable.ic_arrow_white
             ).config()
 
-            examVerticalComponentList.examVerticalComponentListCallBack = this@ExamListFragment
+            examVerticalComponentList.examDeleteVerticalComponentListCallBack = this@ExamDeleteListFragment
         }
     }
 

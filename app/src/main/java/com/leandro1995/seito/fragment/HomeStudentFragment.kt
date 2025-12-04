@@ -4,10 +4,12 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.QuestionAnswerActivity
 import com.leandro1995.seito.activity.ThemeListActivity
 import com.leandro1995.seito.activity.VideoDetailActivity
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.list.config.callback.CourseGridComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
 import com.leandro1995.seito.component.list.config.callback.VideoGridComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
@@ -21,9 +23,13 @@ import com.leandro1995.seito.intent.callback.action.HomeStudentIntentActionCallB
 import com.leandro1995.seito.intent.callback.event.HomeStudentIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.HomeStudentIntentActionConfig
 import com.leandro1995.seito.intent.config.event.HomeStudentIntentEventConfig
+import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Exam
+import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
+import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.HomeStudentViewModel
 
 class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
@@ -70,7 +76,10 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
         backGroundCoroutine.start {
             UserProtoDataStoreConfig.apply {
                 homeStudentViewModel.protoDataStore(
-                    name = getName(), lastName = getLastName(), nameTeacher = getNameTeacher()
+                    name = getName(),
+                    lastName = getLastName(),
+                    nameTeacher = getNameTeacher(),
+                    email = getEmail()
                 )
             }
 
@@ -122,9 +131,35 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
         }
     }
 
+    override fun examArrayList(examArrayList: ArrayList<Exam>) {
+        dataBinding?.headerExamText?.visibility = View.VISIBLE
+
+        dataBinding?.examVerticalComponentList?.apply {
+            visibility = View.VISIBLE
+            setAdapter(arrayList = examArrayList)
+            examVerticalComponentListCallBack = object : ExamVerticalComponentListCallBack {
+                override fun exam(exam: Exam) {
+                    homeStudentViewModel.exam(exam = exam)
+                }
+            }
+        }
+    }
+
     override fun videoDetail(courseArrayList: ArrayList<Course>) {
         startActivity(Intent(requireContext(), VideoDetailActivity::class.java).apply {
             putExtra(Setting.COURSE_ARRAY_LIST_PUT_EXTRA, courseArrayList)
         })
+    }
+
+    override fun questionAnswer(questionArrayList: ArrayList<Question>) {
+        startActivity(Intent(requireContext(), QuestionAnswerActivity::class.java).apply {
+            putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
+            putExtra(Setting.GROUP_ID_PUT_EXTRA, homeStudentViewModel.exam.id)
+            putExtra(Setting.TYPE_ANSWER_QUESTION_PUT_EXTRA, false)
+        })
+    }
+
+    override fun alertMessage(alertMessage: AlertMessage) {
+        AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
     }
 }

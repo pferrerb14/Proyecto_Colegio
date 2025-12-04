@@ -16,7 +16,9 @@ class QuestionAnswerViewModel :
     ViewModelAmbient<QuestionAnswerIntentAction, QuestionAnswerIntentEvent>() {
 
     var questionArrayList = arrayListOf<Question>()
+    var isTypeAnswerQuestion = false
     var timeSkip = ""
+    var idGroup = ""
     val student = Student()
     private var position = 0
 
@@ -98,11 +100,27 @@ class QuestionAnswerViewModel :
 
     fun questionAnswerRegisterFirebase() {
         student.addAnswerFirebase(
+            idGroup = idGroup,
             questionArrayList = questionArrayList,
             timeSkip = timeSkip,
-            document = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
+            document = if (isTypeAnswerQuestion) {
+                com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE
+            } else {
+                com.leandro1995.seito.fcm.firestore.config.Setting.EXAM
+            },
             success = {
-                loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
+                if (isTypeAnswerQuestion) {
+                    loading(idService = UPDATE_COIN_FIREBASE, isDelayDisable = false)
+                } else {
+                    emit(
+                        event = QuestionAnswerIntentEvent.CompleteQuestionMessage(
+                            alertMessage = AlertMessage(
+                                idMessage = R.string.complete_register_message, isCancelable = false
+                            ), updateCoin = student.coins
+                        )
+                    )
+                    loading()
+                }
             },
             error = {
                 emit(

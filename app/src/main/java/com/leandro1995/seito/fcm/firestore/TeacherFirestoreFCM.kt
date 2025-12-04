@@ -142,23 +142,6 @@ class TeacherFirestoreFCM : FirestoreAmbientFCM() {
         }
     }
 
-    fun examArrayList(success: (ArrayList<Exam>) -> Unit, error: () -> Unit) {
-        collection(document = Setting.EXAM).get().addOnSuccessListener {
-            val examArrayList = arrayListOf<Exam>()
-            it.forEach { result ->
-                examArrayList.add(
-                    Exam(
-                        id = result.id,
-                        name = toString(documentSnapshot = result, field = Setting.NAME)
-                    )
-                )
-            }
-            success(examArrayList)
-        }.addOnFailureListener {
-            error()
-        }
-    }
-
     fun examDelete(idExam: String, success: () -> Unit, error: () -> Unit) {
         collection(document = Setting.EXAM).document(idExam).delete()
             .addOnSuccessListener { success() }.addOnFailureListener { error() }

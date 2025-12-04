@@ -5,12 +5,13 @@ import com.leandro1995.seito.component.list.config.callback.adapter.ambient.List
 import com.leandro1995.seito.databinding.ItemExamVerticalBinding
 
 class ExamVerticalViewHolder(
-    val itemExamVerticalBinding: ItemExamVerticalBinding, val listAmbientOnclick: ListAmbientOnclick
+    val itemExamVerticalBinding: ItemExamVerticalBinding,
+    private val listAmbientOnclick: ListAmbientOnclick
 ) : RecyclerView.ViewHolder(itemExamVerticalBinding.root) {
 
     init {
-        itemExamVerticalBinding.examRemoveImage.setOnClickListener {
-            listAmbientOnclick.onclick(position = bindingAdapterPosition)
+        itemExamVerticalBinding.examMaterialCardView.setOnClickListener {
+            listAmbientOnclick.onclick(bindingAdapterPosition)
         }
     }
 }

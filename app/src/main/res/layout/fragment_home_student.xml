@@ -219,7 +219,6 @@
                     android:visibility="gone"
                     tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
 
-
                 <com.leandro1995.seito.component.list.CourseGridComponentList
                     android:id="@+id/course_grid_list"
                     android:layout_width="match_parent"
@@ -230,6 +229,31 @@
                     app:error_image="@drawable/ic_grid_course_hint"
                     app:error_sub_title="@string/no_course_available_description_text"
                     app:error_title="@string/no_course_available_text" />
+
+                <TextView
+                    android:id="@+id/header_exam_text"
+                    style="@style/TextBody2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:drawableLeft="@drawable/ic_grid_course"
+                    android:drawablePadding="@dimen/dimen_10"
+                    android:gravity="center|left"
+                    android:text="@string/exam_area_text"
+                    android:visibility="gone"
+                    tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+                <com.leandro1995.seito.component.list.ExamVerticalComponentList
+                    android:id="@+id/exam_vertical_component_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:visibility="gone"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_exam_available_description_text"
+                    app:error_title="@string/no_exam_available_text" />
 
             </LinearLayout>
 

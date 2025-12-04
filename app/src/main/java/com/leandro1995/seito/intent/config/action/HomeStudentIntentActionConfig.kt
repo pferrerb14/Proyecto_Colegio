@@ -20,6 +20,10 @@ class HomeStudentIntentActionConfig(private val homeStudentIntentActionCallBack:
             event.courseArrayList?.let {
                 homeStudentIntentActionCallBack?.courseArrayList(courseArrayList = it)
             }
+
+            event.examArrayList?.let {
+                homeStudentIntentActionCallBack?.examArrayList(examArrayList = it)
+            }
         } else {
             homeStudentIntentActionCallBack?.getProtoDataStore()
         }

@@ -89,10 +89,6 @@ data class Teacher(
         )
     }
 
-    fun examFirebaseArrayList(success: (ArrayList<Exam>) -> Unit, error: () -> Unit) {
-        TeacherFirestoreFCM().examArrayList(success = success, error = error)
-    }
-
     fun deleteExamFirebase(idExam: String, success: () -> Unit, error: () -> Unit) {
         TeacherFirestoreFCM().examDelete(idExam = idExam, success = success, error = error)
     }

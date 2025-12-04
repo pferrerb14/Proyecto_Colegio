@@ -25,4 +25,5 @@ object Setting {
     const val TIMER = "timer"
     const val EXAM = "exam"
     const val QUESTION = "question"
+    const val ID_GROUP = "id_group"
 }

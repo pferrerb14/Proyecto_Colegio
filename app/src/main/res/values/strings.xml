@@ -50,16 +50,20 @@
     <string name="name_teacher_text">Prof. %1$s</string>
     <string name="video_play_text">Videos Educativos</string>
     <string name="areas_study_text">Áreas de Estudio</string>
+    <string name="exam_area_text">Áreas de Examenes</string>
     <string name="view_all_text">Ver todos</string>
     <string name="no_video_available_text">No hay videos disponibles</string>
     <string name="no_student_available_text">No hay alumnos disponibles</string>
     <string name="no_course_available_text">No hay áreas disponibles</string>
     <string name="no_option_available_text">Agregar opciónes</string>
+    <string name="no_exam_available_text">No hay examenes disponibles</string>
     <string name="no_video_available_description_text">Los videos educativos aparecerán aquí cuando estén disponibles</string>
     <string name="no_course_available_description_text">Las áreas de estudio aparecerán cuando se asignen</string>
     <string name="no_student_available_description_text">Los alumnos aparecerán aquí cuando se registren en el sistema</string>
     <string name="no_option_available_description_text">Ingrese las opciones de la pregunta que desea registrar</string>
+    <string name="no_exam_available_description_text">Los examenes aparecerán aquí cuando se registren en el sistema</string>
     <string name="course_text">Curso:</string>
+    <string name="exam_text">Examen:</string>
     <string name="register_topic_text">Registre su tema</string>
     <string name="register_option_text">Registre una opción</string>
     <string name="previous_level_text">Nivel previo al inicio</string>
@@ -151,6 +155,7 @@
     <string name="not_error_service_firebase_message">Hubo un problema con el servicio</string>
     <string name="not_name_exam_message">Registre el nombre del examen</string>
     <string name="complete_exam_message">Se registro el examen</string>
+    <string name="exam_exist_message">Ya se realizó el examen</string>
 
     <!-- Constant  APP -->
     <string name="male_constant">Masculino</string>

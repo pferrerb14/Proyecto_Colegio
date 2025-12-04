@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.ExamListFragment">
+    tools:context=".fragment.ExamDeleteListFragment">
 
     <data>
 
@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.leandro1995.seito.component.list.ExamVerticalComponentList
+        <com.leandro1995.seito.component.list.ExamDeleteVerticalComponentList
             android:id="@+id/exam_vertical_component_list"
             android:layout_width="@dimen/dimen_0"
             android:layout_height="@dimen/dimen_0"

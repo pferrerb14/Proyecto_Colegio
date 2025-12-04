@@ -6,16 +6,14 @@ import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.ExamVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
 import com.leandro1995.seito.component.list.config.callback.ExamVerticalComponentListCallBack
-import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.ExamVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Exam
 
 class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
-    ComponentListAmbient(context, attrs), ExamVerticalCallBack {
+    ComponentListAmbient(context, attrs), ExamVerticalAdapterCallBack {
 
     private var examArrayList: ArrayList<Exam>? = null
-
     private var examVerticalAdapter: ExamVerticalAdapter? = null
-
     var examVerticalComponentListCallBack: ExamVerticalComponentListCallBack? = null
 
     init {
@@ -25,8 +23,8 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     override fun onCreateViewList() {
         examArrayList = arrayListOf()
         examVerticalAdapter = examArrayList?.let {
-            ExamVerticalAdapter(examArrayList = it).apply {
-                examVerticalCallBack = this@ExamVerticalComponentList
+            ExamVerticalAdapter(it).apply {
+                examDeleteVerticalCallBack = this@ExamVerticalComponentList
             }
         }
 
@@ -38,18 +36,22 @@ class ExamVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     @SuppressLint("NotifyDataSetChanged")
     override fun setAdapter(arrayList: ArrayList<*>) {
         messageErrorVisibility(arrayList = arrayList)
-        examArrayList?.clear()
 
+        examArrayList?.clear()
         arrayList.forEach {
             (it as com.leandro1995.seito.model.entity.Exam).let { exam ->
-                examArrayList?.add(Exam(name = exam.name, id = exam.id))
+                examArrayList?.add(Exam(id = exam.id, name = exam.name))
             }
         }
 
         examVerticalAdapter?.notifyDataSetChanged()
     }
 
-    override fun idExam(id: String) {
-        examVerticalComponentListCallBack?.idExam(id = id)
+    override fun exam(exam: Exam) {
+        examVerticalComponentListCallBack?.exam(
+            exam = com.leandro1995.seito.model.entity.Exam(
+                id = exam.id, name = exam.name
+            )
+        )
     }
 }
