@@ -106,6 +106,7 @@ class SubThemeLevelListFragment : FragmentAmbient<FragmentSubThemeLevelListBindi
     override fun questionAnswer(questionArrayList: ArrayList<Question>) {
         startActivity(Intent(requireContext(), QuestionAnswerActivity::class.java).apply {
             putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
+            putExtra(Setting.GROUP_ID_PUT_EXTRA, subThemeLevelViewModel.level.id)
             putExtra(Setting.TYPE_ANSWER_QUESTION_PUT_EXTRA, true)
         })
     }

@@ -149,6 +149,7 @@ class HomeStudentFragment : FragmentAmbient<FragmentHomeStudentBinding>(),
     override fun questionAnswer(questionArrayList: ArrayList<Question>) {
         startActivity(Intent(requireContext(), QuestionAnswerActivity::class.java).apply {
             putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
+            putExtra(Setting.GROUP_ID_PUT_EXTRA, homeStudentViewModel.exam.id)
             putExtra(Setting.TYPE_ANSWER_QUESTION_PUT_EXTRA, false)
         })
     }

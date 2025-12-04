@@ -12,7 +12,7 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class HomeStudentViewModel : ViewModelAmbient<HomeStudentIntentAction, HomeStudentIntentEvent>() {
 
     private val student = Student()
-    private var exam = Exam()
+    var exam = Exam()
     private val courseVideoArrayList = arrayListOf<Course>()
     private val courseArrayList = arrayListOf<Course>()
     private val examArrayList = arrayListOf<Exam>()

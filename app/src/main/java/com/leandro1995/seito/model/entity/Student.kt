@@ -26,6 +26,7 @@ data class Student(
     }
 
     fun addAnswerFirebase(
+        idGroup: String,
         questionArrayList: ArrayList<Question>,
         timeSkip: String,
         document: String,
@@ -52,6 +53,7 @@ data class Student(
         }
 
         StudentFirestoreFCM().addAnswerFirebase(
+            idGroup = idGroup,
             note = note,
             email = email,
             document = document,

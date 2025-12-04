@@ -83,6 +83,8 @@ inline fun <reified T> String.parcelable(activity: Activity): T? =
 
 fun String.boolean(activity: Activity): Boolean = activity.intent.getBooleanExtra(this, false)
 
+fun String.string(activity: Activity): String? = activity.intent.getStringExtra(this)
+
 fun String.capsSentences(): String {
     val splitArray =
         this.lowercase(Locale.getDefault()).split(" ".toRegex()).dropLastWhile { it.isEmpty() }

@@ -32,6 +32,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
     }
 
     fun addAnswerFirebase(
+        idGroup: String,
         note: Double,
         email: String,
         document: String,
@@ -44,6 +45,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
         addObject[Setting.DATE] =
             TrustedTime.date(format = com.leandro1995.seito.config.Setting.DATE_FORMAT)
         addObject[Setting.TIMER] = timeSkip
+        addObject[Setting.ID_GROUP] = idGroup
 
         collection(document = Setting.ANSWER).document(email).collection(document).add(addObject)
             .addOnSuccessListener { result ->

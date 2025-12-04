@@ -18,6 +18,7 @@ class QuestionAnswerViewModel :
     var questionArrayList = arrayListOf<Question>()
     var isTypeAnswerQuestion = false
     var timeSkip = ""
+    var idGroup = ""
     val student = Student()
     private var position = 0
 
@@ -99,6 +100,7 @@ class QuestionAnswerViewModel :
 
     fun questionAnswerRegisterFirebase() {
         student.addAnswerFirebase(
+            idGroup = idGroup,
             questionArrayList = questionArrayList,
             timeSkip = timeSkip,
             document = if (isTypeAnswerQuestion) {
