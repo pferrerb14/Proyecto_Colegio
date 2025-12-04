@@ -14,6 +14,7 @@ import com.leandro1995.seito.databinding.ActivityQuestionAnswerBinding
 import com.leandro1995.seito.extension.boolean
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.extension.parcelable
+import com.leandro1995.seito.extension.visible
 import com.leandro1995.seito.intent.callback.action.QuestionAnswerIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.QuestionAnswerIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.QuestionAnswerIntentActionConfig
@@ -67,6 +68,11 @@ class QuestionAnswerActivity : ActivityAmbient<ActivityQuestionAnswerBinding>(),
         Setting.TYPE_ANSWER_QUESTION_PUT_EXTRA.boolean(activity = this).let {
             questionAnswerViewModel.isTypeAnswerQuestion = it
         }
+
+        dataBinding?.moneyText?.visibility =
+            visible(isVisible = !questionAnswerViewModel.isTypeAnswerQuestion)
+        dataBinding?.coinButton?.visibility =
+            visible(isVisible = !questionAnswerViewModel.isTypeAnswerQuestion)
     }
 
     override fun initEventToAction() {
