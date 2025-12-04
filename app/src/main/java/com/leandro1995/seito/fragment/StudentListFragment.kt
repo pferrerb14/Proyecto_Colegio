@@ -1,9 +1,12 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.StudentPerformanceActivity
 import com.leandro1995.seito.component.list.config.callback.StudentVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentStudentListBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
@@ -69,6 +72,8 @@ class StudentListFragment : FragmentAmbient<FragmentStudentListBinding>(),
     }
 
     override fun student(student: Student) {
-
+        startActivity(Intent(requireContext(), StudentPerformanceActivity::class.java).apply {
+            putExtra(Setting.EMAIL_PUT_EXTRA, student.email)
+        })
     }
 }
