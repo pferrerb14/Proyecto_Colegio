@@ -87,7 +87,7 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         themeItemSelectedListener = ItemSelectedListener(arrayList = themeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Theme> {
                 override fun item(item: Theme) {
-
+                    exerciseGraphicViewModel.themeSelect(theme = item)
                 }
             }
         }
@@ -147,6 +147,15 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
         dataBinding?.themeSpinner?.setSelection(0)
         themeAdapter?.notifyDataSetChanged()
+    }
+
+    override fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>) {
+        this.suThemeArrayList.clear()
+        this.suThemeArrayList.add(SubTheme(name = getString(R.string.select_hint)))
+        this.suThemeArrayList.addAll(subThemeArrayList)
+
+        dataBinding?.subThemeSpinner?.setSelection(0)
+        subThemeAdapter?.notifyDataSetChanged()
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
