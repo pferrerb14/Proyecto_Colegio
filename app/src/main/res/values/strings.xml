@@ -89,6 +89,8 @@
     <string name="name_exam_text">Nombre del examen</string>
     <string name="not_exam_text">No ingreso ni un examen</string>
     <string name="not_exam_sub_text">Ingrese los exámenes con los balotarios que agregaron</string>
+    <string name="exercises_tab_text">Ejercicios</string>
+    <string name="exam_tab_text">Exámenes</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
