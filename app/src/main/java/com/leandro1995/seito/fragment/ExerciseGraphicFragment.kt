@@ -49,6 +49,7 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
 
     override fun initView() {
+        dataBinding?.exerciseGraphicViewModel = exerciseGraphicViewModel
         arrayConfig()
         itemSelectedListener()
         spinnerConfig()
@@ -78,7 +79,7 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         courseItemSelectedListener = ItemSelectedListener(arrayList = courseArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<Course> {
                 override fun item(item: Course) {
-
+                    exerciseGraphicViewModel.courseSelect(course = item)
                 }
             }
         }
@@ -137,6 +138,15 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         this.courseArrayList.addAll(courseArrayList)
 
         courseAdapter?.notifyDataSetChanged()
+    }
+
+    override fun themeArrayList(themeArrayList: ArrayList<Theme>) {
+        this.themeArrayList.clear()
+        this.themeArrayList.add(Theme(name = getString(R.string.select_hint)))
+        this.themeArrayList.addAll(themeArrayList)
+
+        dataBinding?.themeSpinner?.setSelection(0)
+        themeAdapter?.notifyDataSetChanged()
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {

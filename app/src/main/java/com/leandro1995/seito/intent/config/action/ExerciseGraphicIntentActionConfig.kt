@@ -12,6 +12,10 @@ class ExerciseGraphicIntentActionConfig(private val exerciseGraphicIntentActionC
             event.courseArrayList?.let {
                 exerciseGraphicIntentActionCallBack?.courseArrayList(courseArrayList = it)
             }
+
+            event.themeArrayList?.let {
+                exerciseGraphicIntentActionCallBack?.themeArrayList(themeArrayList = it)
+            }
         } else {
             exerciseGraphicIntentActionCallBack?.startService()
         }
