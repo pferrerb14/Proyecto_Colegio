@@ -13,6 +13,7 @@
     <string name="answer_questions_title">Resolver preguntas</string>
     <string name="create_exam_title">Crear examen</string>
     <string name="list_exam_title">Lista de examenes</string>
+    <string name="student_statistics_title">Estadísticas de avance</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
