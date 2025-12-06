@@ -84,6 +84,14 @@
                     app:message_error="@string/note_value_text"
                     app:title_graphic="@string/previous_level_text" />
 
+              <com.leandro1995.seito.component.graphic.PieGraphicComponent
+                    android:id="@+id/note_two_pie_graphic_component"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    app:message_error="@string/note_value_text"
+                    app:title_graphic="@string/level_text" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

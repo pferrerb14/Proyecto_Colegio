@@ -177,7 +177,14 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
     }
 
     override fun noteLeveTwoArrayList(noteArrayList: ArrayList<Note>) {
-
+        dataBinding?.noteTwoPieGraphicComponent?.graphic(
+            pieEntryArrayList = ExerciseGraphicUtilDesign.totalPromise(
+                context = requireContext(), noteArrayList = noteArrayList
+            ), titleCenter = getString(
+                R.string.average_value_text,
+                ExerciseGraphicUtilDesign.promise(noteArrayList = noteArrayList)
+            )
+        )
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
