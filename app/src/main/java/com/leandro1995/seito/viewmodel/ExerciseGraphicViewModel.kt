@@ -2,13 +2,14 @@ package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
-import com.leandro1995.seito.intent.action.ExamAddIntentAction
 import com.leandro1995.seito.intent.action.ExerciseGraphicIntentAction
-import com.leandro1995.seito.intent.event.ExamAddIntentEvent
 import com.leandro1995.seito.intent.event.ExerciseGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Student
+import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Teacher
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
@@ -16,9 +17,12 @@ import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 class ExerciseGraphicViewModel :
     ViewModelAmbient<ExerciseGraphicIntentAction, ExerciseGraphicIntentEvent>() {
 
+    var student = Student()
     private val teacher = Teacher()
     private var course: Course = Course()
     private var theme = Theme()
+    private var subTheme = SubTheme()
+    private var levelArrayList = arrayListOf<Level>()
 
     override fun event(action: Int) {
         when (action) {
@@ -32,6 +36,10 @@ class ExerciseGraphicViewModel :
 
             SUB_THEME -> {
                 subTheme()
+            }
+
+            LEVEL -> {
+                level()
             }
         }
     }
@@ -48,6 +56,14 @@ class ExerciseGraphicViewModel :
 
             SUB_THEME_FIREBASE -> {
                 subThemeFirebase()
+            }
+
+            LEVEL_FIREBASE -> {
+                levelFirebase()
+            }
+
+            EXERCISE_FIREBASE -> {
+                exerciseFirebase()
             }
         }
     }
@@ -70,6 +86,19 @@ class ExerciseGraphicViewModel :
         }
     }
 
+    fun subThemeSelect(subTheme: SubTheme) {
+        if (!subTheme.isIdEmpty()) {
+            this.subTheme = subTheme
+            button.invoke(LEVEL)
+        } else {
+            value(
+                action = ExerciseGraphicIntentAction(
+                    noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                )
+            )
+        }
+    }
+
     private fun subTheme() {
         loading(idService = SUB_THEME_FIREBASE, isDelayDisable = false)
     }
@@ -80,6 +109,10 @@ class ExerciseGraphicViewModel :
 
     private fun theme() {
         loading(idService = THEME_FIREBASE, isDelayDisable = false)
+    }
+
+    private fun level() {
+        loading(idService = LEVEL_FIREBASE, isDelayDisable = false)
     }
 
     private fun courseFirebase() {
@@ -124,6 +157,66 @@ class ExerciseGraphicViewModel :
         })
     }
 
+    private fun levelFirebase() {
+        subTheme.levelFirebase(idCourse = course.id, idTheme = theme.id, success = { result ->
+            levelArrayList.clear()
+            levelArrayList.addAll(result)
+
+            if (levelArrayList.isEmpty()) {
+                value(
+                    action = ExerciseGraphicIntentAction(
+                        noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                    )
+                )
+            } else {
+                loading(idService = EXERCISE_FIREBASE, isDelayDisable = false)
+            }
+        }, error = {
+            emit(
+                event = ExerciseGraphicIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                )
+            )
+            loading()
+        })
+    }
+
+    private fun exerciseFirebase() {
+        student.noteFirebaseArrayList(
+            idCollection = com.leandro1995.seito.fcm.firestore.config.Setting.EXERCISE,
+            success = { result ->
+                if (result.isEmpty()) {
+                    value(
+                        action = ExerciseGraphicIntentAction(
+                            noteLeveOneArrayList = arrayListOf(),
+                            noteLeveTwoArrayList = arrayListOf()
+                        )
+                    )
+                } else {
+                    result.groupBy { it.idGroup }.let { noteGroup ->
+                        value(
+                            action = ExerciseGraphicIntentAction(
+                                noteLeveOneArrayList = ArrayList(
+                                    noteGroup[levelArrayList.getOrNull(0)?.id] ?: arrayListOf()
+                                ), noteLeveTwoArrayList = ArrayList(
+                                    noteGroup[levelArrayList.getOrNull(1)?.id] ?: arrayListOf()
+                                )
+                            )
+                        )
+                    }
+                }
+                loading()
+            },
+            error = {
+                value(
+                    action = ExerciseGraphicIntentAction(
+                        noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                    )
+                )
+                loading()
+            })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExerciseGraphicIntentEvent.Loading(
@@ -138,8 +231,11 @@ class ExerciseGraphicViewModel :
         const val COURSE = 0
         private const val THEME = 1
         const val SUB_THEME = 2
-        private const val COURSE_FIREBASE = 3
-        private const val THEME_FIREBASE = 4
-        private const val SUB_THEME_FIREBASE = 5
+        const val LEVEL = 3
+        private const val COURSE_FIREBASE = 4
+        private const val THEME_FIREBASE = 5
+        private const val SUB_THEME_FIREBASE = 6
+        private const val LEVEL_FIREBASE = 7
+        private const val EXERCISE_FIREBASE = 8
     }
 }

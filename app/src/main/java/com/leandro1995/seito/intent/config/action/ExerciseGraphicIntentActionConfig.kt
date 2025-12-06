@@ -16,8 +16,17 @@ class ExerciseGraphicIntentActionConfig(private val exerciseGraphicIntentActionC
             event.themeArrayList?.let {
                 exerciseGraphicIntentActionCallBack?.themeArrayList(themeArrayList = it)
             }
+
             event.subThemeArrayList?.let {
                 exerciseGraphicIntentActionCallBack?.subThemeArrayList(subThemeArrayList = it)
+            }
+
+            event.noteLeveOneArrayList?.let {
+                exerciseGraphicIntentActionCallBack?.noteLeveOneArrayList(noteArrayList = it)
+            }
+
+            event.noteLeveTwoArrayList?.let {
+                exerciseGraphicIntentActionCallBack?.noteLeveTwoArrayList(noteArrayList = it)
             }
         } else {
             exerciseGraphicIntentActionCallBack?.startService()

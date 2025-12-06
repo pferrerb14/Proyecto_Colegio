@@ -1,16 +1,17 @@
 package com.leandro1995.seito.fragment
 
-import android.view.View
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.adapter.CourseAdapter
 import com.leandro1995.seito.adapter.SubThemeAdapter
 import com.leandro1995.seito.adapter.ThemeAdapter
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.config.callback.adapter.listener.ItemSelectedListenerCallBack
 import com.leandro1995.seito.config.listener.ItemSelectedListener
 import com.leandro1995.seito.databinding.FragmentExerciseGraphicBinding
 import com.leandro1995.seito.extension.lifecycleScope
+import com.leandro1995.seito.extension.string
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
 import com.leandro1995.seito.intent.callback.action.ExerciseGraphicIntentActionCallBack
 import com.leandro1995.seito.intent.callback.event.ExerciseGraphicIntentEventCallBack
@@ -18,6 +19,7 @@ import com.leandro1995.seito.intent.config.action.ExerciseGraphicIntentActionCon
 import com.leandro1995.seito.intent.config.event.ExerciseGraphicIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
 import com.leandro1995.seito.util.dialog.AppUtilDialog
@@ -47,7 +49,6 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
     override var idLayout: Int = R.layout.fragment_exercise_graphic
 
-
     override fun initView() {
         dataBinding?.exerciseGraphicViewModel = exerciseGraphicViewModel
         arrayConfig()
@@ -67,6 +68,11 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
                 exerciseGraphicIntentActionConfig.initConfig(event = exerciseGraphicIntentAction)
             }
         }
+    }
+
+    override fun putExtra() {
+        exerciseGraphicViewModel.student.email =
+            Setting.EMAIL_PUT_EXTRA.string(activity = requireActivity()).orEmpty()
     }
 
     private fun arrayConfig() {
@@ -95,7 +101,7 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         subThemeItemSelectedListener = ItemSelectedListener(arrayList = suThemeArrayList).apply {
             itemSelectedListenerCallBack = object : ItemSelectedListenerCallBack<SubTheme> {
                 override fun item(item: SubTheme) {
-
+                    exerciseGraphicViewModel.subThemeSelect(subTheme = item)
                 }
             }
         }
@@ -156,6 +162,14 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
         dataBinding?.subThemeSpinner?.setSelection(0)
         subThemeAdapter?.notifyDataSetChanged()
+    }
+
+    override fun noteLeveOneArrayList(noteArrayList: ArrayList<Note>) {
+
+    }
+
+    override fun noteLeveTwoArrayList(noteArrayList: ArrayList<Note>) {
+
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
