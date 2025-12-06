@@ -7,6 +7,7 @@
     <color name="blue_E6F0FF">#E6F0FF</color>
     <color name="blue_EDF4FD">#EDF4FD</color>
     <color name="blue_EDF3FD">#EDF3FD</color>
+    <color name="blue_6EC5FF">#6EC5FF</color>
 
     <!-- White -->
     <color name="white_FFFFFF">#FFFFFF</color>
@@ -27,6 +28,7 @@
 
     <!-- Red -->
     <color name="red_F92C36">#F92C36</color>
+    <color name="red_FF9CA3">#FF9CA3</color>
 
     <!-- Purple -->
     <color name="purple_F8F3FD">#F8F3FD</color>
@@ -34,9 +36,17 @@
     <!-- Yellow -->
     <color name="yellow_F8F3FD">#FFF9DB</color>
     <color name="yellow_FFC107">#FFC107</color>
+    <color name="yellow_FFE89A">#FFE89A</color>
 
     <!-- Green -->
     <color name="green_EEFBF3">#EEFBF3</color>
+    <color name="green_9EE6B8">#9EE6B8</color>
+
+    <!--- Orange -->
+    <color name="orange_FFC9A3">#FFC9A3</color>
+
+    <!-- Purple -->
+    <color name="purple_D7C5FF">#D7C5FF</color>
 
     <!-- Opacity -->
     <!-- White -->

@@ -92,6 +92,10 @@
     <string name="not_exam_sub_text">Ingrese los exámenes con los balotarios que agregaron</string>
     <string name="exercises_tab_text">Ejercicios</string>
     <string name="exam_tab_text">Exámenes</string>
+    <string name="average_text">Promedio</string>
+    <string name="remaining_tab_text">Restante</string>
+    <string name="average_value_text">Promedio:\n%1$.1f</string>
+    <string name="note_value_text">No se encontró notas correspondientes</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

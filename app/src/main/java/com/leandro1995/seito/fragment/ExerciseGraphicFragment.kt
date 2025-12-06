@@ -167,8 +167,11 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
     override fun noteLeveOneArrayList(noteArrayList: ArrayList<Note>) {
         dataBinding?.noteOnePieGraphicComponent?.graphic(
-            pieEntryArrayList = arrayListOf(
-                ExerciseGraphicUtilDesign.totalPromise(noteArrayList = noteArrayList)
+            pieEntryArrayList = ExerciseGraphicUtilDesign.totalPromise(
+                context = requireContext(), noteArrayList = noteArrayList
+            ), titleCenter = getString(
+                R.string.average_value_text,
+                ExerciseGraphicUtilDesign.promise(noteArrayList = noteArrayList)
             )
         )
     }
