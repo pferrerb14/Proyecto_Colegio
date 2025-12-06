@@ -22,6 +22,7 @@ import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
+import com.leandro1995.seito.util.design.ExerciseGraphicUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExerciseGraphicViewModel
 
@@ -165,7 +166,11 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
     }
 
     override fun noteLeveOneArrayList(noteArrayList: ArrayList<Note>) {
-
+        dataBinding?.noteOnePieGraphicComponent?.graphic(
+            pieEntryArrayList = arrayListOf(
+                ExerciseGraphicUtilDesign.totalPromise(noteArrayList = noteArrayList)
+            )
+        )
     }
 
     override fun noteLeveTwoArrayList(noteArrayList: ArrayList<Note>) {

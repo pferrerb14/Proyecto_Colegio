@@ -76,6 +76,12 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dimen_6" />
 
+                <com.leandro1995.seito.component.graphic.PieGraphicComponent
+                    android:id="@+id/note_one_pie_graphic_component"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
