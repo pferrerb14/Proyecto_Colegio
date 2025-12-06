@@ -1,3 +1,5 @@
 package com.leandro1995.seito.intent.action
 
-class ExamGraphicIntentAction
+import com.leandro1995.seito.model.entity.Note
+
+class ExamGraphicIntentAction(val noteArrayList: ArrayList<Note>? = null)

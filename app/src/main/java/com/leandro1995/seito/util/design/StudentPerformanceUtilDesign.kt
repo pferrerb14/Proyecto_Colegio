@@ -6,7 +6,7 @@ import com.leandro1995.seito.R
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.model.entity.Note
 
-class ExerciseGraphicUtilDesign {
+class StudentPerformanceUtilDesign {
 
     companion object {
 

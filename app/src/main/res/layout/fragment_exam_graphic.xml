@@ -36,7 +36,9 @@
                 <com.leandro1995.seito.component.graphic.PieGraphicComponent
                     android:id="@+id/exam_pie_graphic_component"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:message_error="@string/note_value_text"
+                    app:title_graphic="@string/exam_graphic_text" />
 
             </LinearLayout>
 

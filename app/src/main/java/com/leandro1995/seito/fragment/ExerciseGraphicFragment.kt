@@ -22,7 +22,7 @@ import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Theme
-import com.leandro1995.seito.util.design.ExerciseGraphicUtilDesign
+import com.leandro1995.seito.util.design.StudentPerformanceUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExerciseGraphicViewModel
 
@@ -167,27 +167,31 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
 
     override fun noteLeveOneArrayList(noteArrayList: ArrayList<Note>) {
         dataBinding?.noteOnePieGraphicComponent?.graphic(
-            pieEntryArrayList = ExerciseGraphicUtilDesign.totalPromise(
+            pieEntryArrayList = StudentPerformanceUtilDesign.totalPromise(
                 context = requireContext(), noteArrayList = noteArrayList
             ), titleCenter = getString(
                 R.string.average_value_text,
-                ExerciseGraphicUtilDesign.promise(noteArrayList = noteArrayList)
+                StudentPerformanceUtilDesign.promise(noteArrayList = noteArrayList)
             )
         )
     }
 
     override fun noteLeveTwoArrayList(noteArrayList: ArrayList<Note>) {
         dataBinding?.noteTwoPieGraphicComponent?.graphic(
-            pieEntryArrayList = ExerciseGraphicUtilDesign.totalPromise(
+            pieEntryArrayList = StudentPerformanceUtilDesign.totalPromise(
                 context = requireContext(), noteArrayList = noteArrayList
             ), titleCenter = getString(
                 R.string.average_value_text,
-                ExerciseGraphicUtilDesign.promise(noteArrayList = noteArrayList)
+                StudentPerformanceUtilDesign.promise(noteArrayList = noteArrayList)
             )
         )
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
-        AppUtilDialog.dialogMaterialDesign(context = requireContext(), alertMessage = alertMessage)
+        AppUtilDialog.dialogMaterialDesign(
+            context = requireContext(), alertMessage = alertMessage
+        ) {
+            requireActivity().finish()
+        }
     }
 }

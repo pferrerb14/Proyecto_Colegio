@@ -1,6 +1,5 @@
 package com.leandro1995.seito.intent.config.event
 
-import com.leandro1995.seito.intent.callback.event.ExamAddIntentEventCallBack
 import com.leandro1995.seito.intent.callback.event.ExamGraphicIntentEventCallBack
 import com.leandro1995.seito.intent.config.ambient.IntentConfigAmbient
 import com.leandro1995.seito.intent.event.ExamGraphicIntentEvent
@@ -17,8 +16,11 @@ class ExamGraphicIntentEventConfig(private val examGraphicIntentEventCallBack: E
                 )
             }
 
-            null -> {}
+            is ExamGraphicIntentEvent.AlertMessage -> {
+                examGraphicIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
+            }
 
+            null -> {}
         }
     }
 }

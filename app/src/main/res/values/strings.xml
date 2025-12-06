@@ -96,6 +96,7 @@
     <string name="remaining_tab_text">Restante</string>
     <string name="average_value_text">Promedio:\n%1$.1f</string>
     <string name="note_value_text">No se encontró notas correspondientes</string>
+    <string name="exam_graphic_text">Exámenes realizados en el periodo</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
