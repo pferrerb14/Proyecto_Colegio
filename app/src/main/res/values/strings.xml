@@ -97,6 +97,9 @@
     <string name="average_value_text">Promedio:\n%1$.1f</string>
     <string name="note_value_text">No se encontró notas correspondientes</string>
     <string name="exam_graphic_text">Exámenes realizados en el periodo</string>
+    <string name="date_completed_text">Fecha realizada : %1$s</string>
+    <string name="approximate_time_text">Tiempo aproximado : %1$s</string>
+    <string name="test_score_text">Nota de la prueba : %1$.1f</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>
