@@ -10,5 +10,6 @@ class ExerciseGraphicIntentAction(
     val themeArrayList: ArrayList<Theme>? = null,
     val subThemeArrayList: ArrayList<SubTheme>? = null,
     val noteLeveOneArrayList: ArrayList<Note>? = null,
-    val noteLeveTwoArrayList: ArrayList<Note>? = null
+    val noteLeveTwoArrayList: ArrayList<Note>? = null,
+    val noteArrayList: ArrayList<Note>? = null
 )

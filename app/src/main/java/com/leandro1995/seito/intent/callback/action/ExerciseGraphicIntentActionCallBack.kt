@@ -13,4 +13,5 @@ interface ExerciseGraphicIntentActionCallBack {
     fun subThemeArrayList(subThemeArrayList: ArrayList<SubTheme>)
     fun noteLeveOneArrayList(noteArrayList: ArrayList<Note>)
     fun noteLeveTwoArrayList(noteArrayList: ArrayList<Note>)
+    fun noteArrayList(noteArrayList: ArrayList<Note>)
 }

@@ -24,6 +24,7 @@ class NoteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     override fun onCreateViewList() {
         noteArrayList = arrayListOf()
         noteVerticalAdapter = noteArrayList?.let {
+            messageErrorVisibility(arrayList = it)
             NoteVerticalAdapter(context = context, noteArrayList = it).apply {
                 noteVerticalAdapterCallBack = this@NoteVerticalComponentList
             }

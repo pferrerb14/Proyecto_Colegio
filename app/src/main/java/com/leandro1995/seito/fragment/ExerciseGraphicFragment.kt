@@ -187,6 +187,10 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         )
     }
 
+    override fun noteArrayList(noteArrayList: ArrayList<Note>) {
+        dataBinding?.noteVerticalComponentList?.setAdapter(arrayList = noteArrayList)
+    }
+
     override fun alertMessage(alertMessage: AlertMessage) {
         AppUtilDialog.dialogMaterialDesign(
             context = requireContext(), alertMessage = alertMessage

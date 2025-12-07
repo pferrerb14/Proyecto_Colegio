@@ -93,7 +93,9 @@ class ExerciseGraphicViewModel :
         } else {
             value(
                 action = ExerciseGraphicIntentAction(
-                    noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                    noteLeveOneArrayList = arrayListOf(),
+                    noteLeveTwoArrayList = arrayListOf(),
+                    noteArrayList = arrayListOf()
                 )
             )
         }
@@ -165,7 +167,9 @@ class ExerciseGraphicViewModel :
             if (levelArrayList.isEmpty()) {
                 value(
                     action = ExerciseGraphicIntentAction(
-                        noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                        noteLeveOneArrayList = arrayListOf(),
+                        noteLeveTwoArrayList = arrayListOf(),
+                        noteArrayList = arrayListOf()
                     )
                 )
             } else {
@@ -189,7 +193,8 @@ class ExerciseGraphicViewModel :
                     value(
                         action = ExerciseGraphicIntentAction(
                             noteLeveOneArrayList = arrayListOf(),
-                            noteLeveTwoArrayList = arrayListOf()
+                            noteLeveTwoArrayList = arrayListOf(),
+                            noteArrayList = arrayListOf()
                         )
                     )
                 } else {
@@ -198,9 +203,11 @@ class ExerciseGraphicViewModel :
                             action = ExerciseGraphicIntentAction(
                                 noteLeveOneArrayList = ArrayList(
                                     noteGroup[levelArrayList.getOrNull(0)?.id] ?: arrayListOf()
-                                ), noteLeveTwoArrayList = ArrayList(
+                                ),
+                                noteLeveTwoArrayList = ArrayList(
                                     noteGroup[levelArrayList.getOrNull(1)?.id] ?: arrayListOf()
-                                )
+                                ),
+                                noteArrayList = ArrayList(result.filter { note -> note.idGroup in levelArrayList.map { it.id } })
                             )
                         )
                     }
@@ -210,7 +217,9 @@ class ExerciseGraphicViewModel :
             error = {
                 value(
                     action = ExerciseGraphicIntentAction(
-                        noteLeveOneArrayList = arrayListOf(), noteLeveTwoArrayList = arrayListOf()
+                        noteLeveOneArrayList = arrayListOf(),
+                        noteLeveTwoArrayList = arrayListOf(),
+                        noteArrayList = arrayListOf()
                     )
                 )
                 loading()

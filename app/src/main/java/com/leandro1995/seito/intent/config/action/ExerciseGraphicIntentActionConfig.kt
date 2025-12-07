@@ -28,6 +28,10 @@ class ExerciseGraphicIntentActionConfig(private val exerciseGraphicIntentActionC
             event.noteLeveTwoArrayList?.let {
                 exerciseGraphicIntentActionCallBack?.noteLeveTwoArrayList(noteArrayList = it)
             }
+
+            event.noteArrayList?.let {
+                exerciseGraphicIntentActionCallBack?.noteArrayList(noteArrayList = it)
+            }
         } else {
             exerciseGraphicIntentActionCallBack?.startService()
         }
