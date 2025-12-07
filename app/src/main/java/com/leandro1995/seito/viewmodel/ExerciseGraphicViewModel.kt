@@ -8,6 +8,7 @@ import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Teacher
@@ -23,6 +24,7 @@ class ExerciseGraphicViewModel :
     private var theme = Theme()
     private var subTheme = SubTheme()
     private var levelArrayList = arrayListOf<Level>()
+    private var note = Note()
 
     override fun event(action: Int) {
         when (action) {
@@ -99,6 +101,11 @@ class ExerciseGraphicViewModel :
                 )
             )
         }
+    }
+
+    fun noteSelect(note: Note) {
+        this.note = note
+        emit(event = ExerciseGraphicIntentEvent.NoteDetail(note = note))
     }
 
     private fun subTheme() {

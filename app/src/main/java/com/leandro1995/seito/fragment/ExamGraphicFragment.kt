@@ -1,7 +1,10 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.NoteDetailActivity
+import com.leandro1995.seito.component.list.config.callback.NoteVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentExamGraphicBinding
@@ -19,7 +22,8 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamGraphicViewModel
 
 class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
-    ExamGraphicIntentEventCallBack, ExamGraphicIntentActionCallBack {
+    ExamGraphicIntentEventCallBack, ExamGraphicIntentActionCallBack,
+    NoteVerticalComponentListCallBack {
 
     private val examGraphicViewModel by viewModels<ExamGraphicViewModel>()
 
@@ -31,7 +35,10 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
     override var idLayout: Int = R.layout.fragment_exam_graphic
 
     override fun initView() {
-        dataBinding?.examGraphicViewModel = examGraphicViewModel
+        dataBinding?.apply {
+            examGraphicViewModel = this@ExamGraphicFragment.examGraphicViewModel
+            noteVerticalComponentList.noteVerticalComponentListCallBack = this@ExamGraphicFragment
+        }
     }
 
     override fun initEventToAction() {
@@ -82,5 +89,13 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
         ) {
             requireActivity().finish()
         }
+    }
+
+    override fun noteDetail(note: Note) {
+        startActivity(Intent(requireContext(), NoteDetailActivity::class.java))
+    }
+
+    override fun note(note: Note) {
+        examGraphicViewModel.noteSelect(note = note)
     }
 }

@@ -1,10 +1,13 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.NoteDetailActivity
 import com.leandro1995.seito.adapter.CourseAdapter
 import com.leandro1995.seito.adapter.SubThemeAdapter
 import com.leandro1995.seito.adapter.ThemeAdapter
+import com.leandro1995.seito.component.list.config.callback.NoteVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.config.callback.adapter.listener.ItemSelectedListenerCallBack
@@ -27,7 +30,8 @@ import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExerciseGraphicViewModel
 
 class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(),
-    ExerciseGraphicIntentActionCallBack, ExerciseGraphicIntentEventCallBack {
+    ExerciseGraphicIntentActionCallBack, ExerciseGraphicIntentEventCallBack,
+    NoteVerticalComponentListCallBack {
 
     private val exerciseGraphicViewModel by viewModels<ExerciseGraphicViewModel>()
 
@@ -51,7 +55,11 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
     override var idLayout: Int = R.layout.fragment_exercise_graphic
 
     override fun initView() {
-        dataBinding?.exerciseGraphicViewModel = exerciseGraphicViewModel
+        dataBinding?.apply {
+            exerciseGraphicViewModel = exerciseGraphicViewModel
+            noteVerticalComponentList.noteVerticalComponentListCallBack =
+                this@ExerciseGraphicFragment
+        }
         arrayConfig()
         itemSelectedListener()
         spinnerConfig()
@@ -197,5 +205,13 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         ) {
             requireActivity().finish()
         }
+    }
+
+    override fun noteDetail(note: Note) {
+        startActivity(Intent(requireContext(), NoteDetailActivity::class.java))
+    }
+
+    override fun note(note: Note) {
+        exerciseGraphicViewModel.noteSelect(note = note)
     }
 }

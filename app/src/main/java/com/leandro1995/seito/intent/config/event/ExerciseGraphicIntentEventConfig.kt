@@ -20,6 +20,10 @@ class ExerciseGraphicIntentEventConfig(private val exerciseGraphicIntentEventCal
                 exerciseGraphicIntentEventCallBack?.alertMessage(alertMessage = event.alertMessage)
             }
 
+            is ExerciseGraphicIntentEvent.NoteDetail -> {
+                exerciseGraphicIntentEventCallBack?.noteDetail(note = event.note)
+            }
+
             null -> {}
         }
     }
