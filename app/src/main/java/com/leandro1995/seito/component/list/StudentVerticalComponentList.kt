@@ -5,13 +5,17 @@ import android.content.Context
 import android.util.AttributeSet
 import com.leandro1995.seito.component.list.adapter.StudentVerticalAdapter
 import com.leandro1995.seito.component.list.ambient.ComponentListAmbient
+import com.leandro1995.seito.component.list.config.callback.StudentVerticalComponentListCallBack
+import com.leandro1995.seito.component.list.config.callback.adapter.StudentVerticalAdapterCallBack
 import com.leandro1995.seito.component.list.model.Student
 
 class StudentVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
-    ComponentListAmbient(context, attrs) {
+    ComponentListAmbient(context, attrs), StudentVerticalAdapterCallBack {
 
     private var studentArrayList: ArrayList<Student>? = null
     private var studentVerticalAdapter: StudentVerticalAdapter? = null
+
+    var studentVerticalComponentListCallBack: StudentVerticalComponentListCallBack? = null
 
     init {
         onCreateViewList()
@@ -20,7 +24,9 @@ class StudentVerticalComponentList(context: Context, attrs: AttributeSet? = null
     override fun onCreateViewList() {
         studentArrayList = arrayListOf()
         studentVerticalAdapter = studentArrayList?.let {
-            StudentVerticalAdapter(context = context, studentArrayList = it)
+            StudentVerticalAdapter(context = context, studentArrayList = it).apply {
+                studentVerticalAdapterCallBack = this@StudentVerticalComponentList
+            }
         }
 
         studentVerticalAdapter?.let {
@@ -51,5 +57,18 @@ class StudentVerticalComponentList(context: Context, attrs: AttributeSet? = null
         }
 
         studentVerticalAdapter?.notifyDataSetChanged()
+    }
+
+    override fun student(student: Student) {
+        studentVerticalComponentListCallBack?.student(student = com.leandro1995.seito.model.entity.Student(
+            name = student.name,
+            lastName = student.lastName,
+            email = student.email,
+            age = student.age,
+            sex = student.sex,
+            password = student.password,
+            teacher = student.teacher,
+            coins = student.coins
+        ))
     }
 }

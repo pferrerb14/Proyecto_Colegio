@@ -78,6 +78,7 @@ dependencies {
     implementation(libs.github.pinview)
     implementation(libs.github.permissionx)
     implementation(libs.github.fresco)
+    implementation(libs.github.mpandroidchart)
     implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)

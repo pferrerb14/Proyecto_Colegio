@@ -1,13 +1,12 @@
 package com.leandro1995.seito.fcm.firestore
 
-import android.util.Log
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.logger.Logger
 import com.leandro1995.seito.fcm.firestore.ambient.FirestoreAmbientFCM
 import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.fcm.firestore.util.RouteCollection
 import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Course
+import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.util.trustedtime.TrustedTime
 
 class StudentFirestoreFCM : FirestoreAmbientFCM() {
@@ -84,6 +83,28 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
             },
             error = error
         )
+    }
+
+    fun noteArrayList(
+        email: String, idCollection: String, success: (ArrayList<Note>) -> Unit, error: () -> Unit
+    ) {
+        collection(document = "${Setting.ANSWER}/${email}/${idCollection}").get()
+            .addOnSuccessListener { result ->
+                val noteArrayList = arrayListOf<Note>()
+
+                result.forEach {
+                    noteArrayList.add(
+                        Note(
+                            date = toString(documentSnapshot = it, field = Setting.DATE),
+                            idGroup = toString(documentSnapshot = it, field = Setting.ID_GROUP),
+                            note = toInt(documentSnapshot = it, field = Setting.NOTE).toDouble(),
+                            timer = toString(documentSnapshot = it, field = Setting.TIMER)
+                        )
+                    )
+                }
+
+                success(noteArrayList)
+            }.addOnFailureListener { error() }
     }
 
     private fun addAnswerQuestion(

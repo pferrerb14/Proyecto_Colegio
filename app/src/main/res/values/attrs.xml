@@ -7,4 +7,9 @@
         <attr name="error_sub_title" format="string" />
         <attr name="error_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="PieGraphicComponent">
+        <attr name="title_graphic" format="string" />
+        <attr name="message_error" format="string" />
+    </declare-styleable>
 </resources>

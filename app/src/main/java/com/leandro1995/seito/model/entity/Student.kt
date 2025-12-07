@@ -83,6 +83,14 @@ data class Student(
         )
     }
 
+    fun noteFirebaseArrayList(
+        idCollection: String, success: (ArrayList<Note>) -> Unit, error: () -> Unit
+    ) {
+        StudentFirestoreFCM().noteArrayList(
+            email = email, idCollection = idCollection, success = success, error = error
+        )
+    }
+
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
 
     fun isEmptyAge() = age == -1
