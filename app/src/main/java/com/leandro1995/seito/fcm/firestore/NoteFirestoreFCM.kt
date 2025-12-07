@@ -7,8 +7,8 @@ import com.leandro1995.seito.model.entity.Question
 class NoteFirestoreFCM : FirestoreAmbientFCM() {
 
     fun questionArrayList(
-        route: String, success: (ArrayList<Question>) -> Unit, error: () -> Unit
+        idNote: String, success: (ArrayList<Question>) -> Unit, error: () -> Unit
     ) {
-        Log.e("ENTRAAAAA", "${route} <------------------ LLEGO")
+        Log.e("ENTRAAAAA", "${idNote} <------------------ LLEGO")
     }
 }
