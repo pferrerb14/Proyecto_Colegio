@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Seito"
         tools:ignore="DataExtractionRules">
         <activity
+            android:name=".activity.NoteDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.StudentPerformanceActivity"
             android:exported="false" />
         <activity
