@@ -1,5 +1,6 @@
 package com.leandro1995.seito.viewmodel
 
+import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.fcm.firestore.config.Setting
@@ -38,8 +39,7 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
 
     fun noteSelect(note: Note) {
         this.note = note
-        loading(idService = QUESTION_FIREBASE, false)
-        //emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
+        loading(idService = QUESTION_FIREBASE)
     }
 
     private fun exam() {
@@ -61,17 +61,25 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
     }
 
     private fun questionFirebase() {
-        note.questionFirebaseArrayList(success = { result ->
-            emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
-            loading()
-        }, error = {
-            emit(
-                event = ExamGraphicIntentEvent.AlertMessage(
-                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+        note.questionFirebaseArrayList(
+            email = student.email,
+            idCollection = Setting.EXAM,
+            success = { result ->
+                emit(
+                    event = ExamGraphicIntentEvent.NoteDetail(
+                        note = note, questionArrayList = result
+                    )
                 )
-            )
-            loading()
-        })
+                loading()
+            },
+            error = {
+                emit(
+                    event = ExamGraphicIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                    )
+                )
+                loading()
+            })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {

@@ -1,9 +1,10 @@
 package com.leandro1995.seito.viewmodel
 
+import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.intent.action.ExerciseGraphicIntentAction
-import com.leandro1995.seito.intent.event.ExamGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ExerciseGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
@@ -110,7 +111,7 @@ class ExerciseGraphicViewModel :
 
     fun noteSelect(note: Note) {
         this.note = note
-        loading(idService = QUESTION_FIREBASE, isDelayDisable = false)
+        loading(idService = QUESTION_FIREBASE)
     }
 
     private fun subTheme() {
@@ -239,17 +240,25 @@ class ExerciseGraphicViewModel :
     }
 
     private fun questionFirebase() {
-        note.questionFirebaseArrayList(success = { result ->
-            //emit(event = ExerciseGraphicIntentEvent.NoteDetail(note = note))
-            loading()
-        }, error = {
-            emit(
-                event = ExerciseGraphicIntentEvent.AlertMessage(
-                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+        note.questionFirebaseArrayList(
+            email = student.email,
+            idCollection = Setting.EXERCISE,
+            success = { result ->
+                emit(
+                    event = ExerciseGraphicIntentEvent.NoteDetail(
+                        note = note, questionArrayList = result
+                    )
                 )
-            )
-            loading()
-        })
+                loading()
+            },
+            error = {
+                emit(
+                    event = ExerciseGraphicIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                    )
+                )
+                loading()
+            })
     }
 
     override fun loading(idService: Int, isDelayDisable: Boolean) {
