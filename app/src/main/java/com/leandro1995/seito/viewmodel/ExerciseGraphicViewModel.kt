@@ -3,6 +3,7 @@ package com.leandro1995.seito.viewmodel
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.intent.action.ExerciseGraphicIntentAction
+import com.leandro1995.seito.intent.event.ExamGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ExerciseGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
@@ -67,6 +68,10 @@ class ExerciseGraphicViewModel :
             EXERCISE_FIREBASE -> {
                 exerciseFirebase()
             }
+
+            QUESTION_FIREBASE -> {
+                questionFirebase()
+            }
         }
     }
 
@@ -105,7 +110,7 @@ class ExerciseGraphicViewModel :
 
     fun noteSelect(note: Note) {
         this.note = note
-        emit(event = ExerciseGraphicIntentEvent.NoteDetail(note = note))
+        loading(idService = QUESTION_FIREBASE, isDelayDisable = false)
     }
 
     private fun subTheme() {
@@ -233,6 +238,20 @@ class ExerciseGraphicViewModel :
             })
     }
 
+    private fun questionFirebase() {
+        note.questionFirebaseArrayList(success = { result ->
+            //emit(event = ExerciseGraphicIntentEvent.NoteDetail(note = note))
+            loading()
+        }, error = {
+            emit(
+                event = ExerciseGraphicIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                )
+            )
+            loading()
+        })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExerciseGraphicIntentEvent.Loading(
@@ -253,5 +272,6 @@ class ExerciseGraphicViewModel :
         private const val SUB_THEME_FIREBASE = 6
         private const val LEVEL_FIREBASE = 7
         private const val EXERCISE_FIREBASE = 8
+        private const val QUESTION_FIREBASE = 9
     }
 }

@@ -95,6 +95,7 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
                 result.forEach {
                     noteArrayList.add(
                         Note(
+                            id = it.id,
                             date = toString(documentSnapshot = it, field = Setting.DATE),
                             idGroup = toString(documentSnapshot = it, field = Setting.ID_GROUP),
                             note = toInt(documentSnapshot = it, field = Setting.NOTE).toDouble(),

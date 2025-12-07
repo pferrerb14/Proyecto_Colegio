@@ -29,12 +29,17 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
             EXAM_FIREBASE -> {
                 examFirebase()
             }
+
+            QUESTION_FIREBASE -> {
+                questionFirebase()
+            }
         }
     }
 
     fun noteSelect(note: Note) {
         this.note = note
-        emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
+        loading(idService = QUESTION_FIREBASE, false)
+        //emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
     }
 
     private fun exam() {
@@ -44,6 +49,20 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
     private fun examFirebase() {
         student.noteFirebaseArrayList(idCollection = Setting.EXAM, success = { result ->
             value(action = ExamGraphicIntentAction(noteArrayList = result))
+            loading()
+        }, error = {
+            emit(
+                event = ExamGraphicIntentEvent.AlertMessage(
+                    alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                )
+            )
+            loading()
+        })
+    }
+
+    private fun questionFirebase() {
+        note.questionFirebaseArrayList(success = { result ->
+            emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
             loading()
         }, error = {
             emit(
@@ -70,5 +89,6 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
     companion object {
         const val EXAM = 0
         private const val EXAM_FIREBASE = 1
+        private const val QUESTION_FIREBASE = 2
     }
 }
