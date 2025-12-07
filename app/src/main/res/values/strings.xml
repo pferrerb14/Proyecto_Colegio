@@ -103,6 +103,7 @@
     <string name="approximate_time_text">Tiempo aproximado : %1$s</string>
     <string name="test_score_text">Nota de la prueba : %1$.1f</string>
     <string name="exercise_list_text">Lista de ejercicios resuelta</string>
+    <string name="exam_list_text">Lista de exámenes resuelta</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

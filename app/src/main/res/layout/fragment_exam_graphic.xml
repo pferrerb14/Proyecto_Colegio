@@ -31,7 +31,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_16">
 
                 <com.leandro1995.seito.component.graphic.PieGraphicComponent
                     android:id="@+id/exam_pie_graphic_component"
@@ -39,6 +40,23 @@
                     android:layout_height="wrap_content"
                     app:message_error="@string/note_value_text"
                     app:title_graphic="@string/exam_graphic_text" />
+
+                <TextView
+                    style="@style/TextBody13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_15"
+                    android:text="@string/exam_list_text" />
+
+                <com.leandro1995.seito.component.list.NoteVerticalComponentList
+                    android:id="@+id/note_vertical_component_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_exam_available_description_text"
+                    app:error_title="@string/no_exam_available_text" />
 
             </LinearLayout>
 

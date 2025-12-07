@@ -72,6 +72,8 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
                 context = requireContext(), noteArrayList = noteArrayList
             )
         )
+
+        dataBinding?.noteVerticalComponentList?.setAdapter(arrayList = noteArrayList)
     }
 
     override fun alertMessage(alertMessage: AlertMessage) {
