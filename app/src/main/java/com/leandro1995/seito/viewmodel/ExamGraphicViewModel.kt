@@ -62,7 +62,7 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
 
     private fun questionFirebase() {
         note.questionFirebaseArrayList(success = { result ->
-            emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
+            //emit(event = ExamGraphicIntentEvent.NoteDetail(note = note))
             loading()
         }, error = {
             emit(

@@ -88,24 +88,25 @@ class StudentFirestoreFCM : FirestoreAmbientFCM() {
     fun noteArrayList(
         email: String, idCollection: String, success: (ArrayList<Note>) -> Unit, error: () -> Unit
     ) {
-        collection(document = "${Setting.ANSWER}/${email}/${idCollection}").get()
-            .addOnSuccessListener { result ->
-                val noteArrayList = arrayListOf<Note>()
+        val routeCollection = "${Setting.ANSWER}/${email}/${idCollection}"
 
-                result.forEach {
-                    noteArrayList.add(
-                        Note(
-                            id = it.id,
-                            date = toString(documentSnapshot = it, field = Setting.DATE),
-                            idGroup = toString(documentSnapshot = it, field = Setting.ID_GROUP),
-                            note = toInt(documentSnapshot = it, field = Setting.NOTE).toDouble(),
-                            timer = toString(documentSnapshot = it, field = Setting.TIMER)
-                        )
+        collection(document = routeCollection).get().addOnSuccessListener { result ->
+            val noteArrayList = arrayListOf<Note>()
+
+            result.forEach {
+                noteArrayList.add(
+                    Note(
+                        route = "${routeCollection}/${it.id}",
+                        date = toString(documentSnapshot = it, field = Setting.DATE),
+                        idGroup = toString(documentSnapshot = it, field = Setting.ID_GROUP),
+                        note = toInt(documentSnapshot = it, field = Setting.NOTE).toDouble(),
+                        timer = toString(documentSnapshot = it, field = Setting.TIMER)
                     )
-                }
+                )
+            }
 
-                success(noteArrayList)
-            }.addOnFailureListener { error() }
+            success(noteArrayList)
+        }.addOnFailureListener { error() }
     }
 
     private fun addAnswerQuestion(

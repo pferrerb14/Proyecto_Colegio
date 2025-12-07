@@ -44,7 +44,7 @@ class NoteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
             (it as com.leandro1995.seito.model.entity.Note).let { note ->
                 noteArrayList?.add(
                     Note(
-                        id = note.id,
+                        route = note.route,
                         date = note.date,
                         idGroup = note.idGroup,
                         note = note.note,
@@ -60,7 +60,7 @@ class NoteVerticalComponentList(context: Context, attrs: AttributeSet? = null) :
     override fun note(note: Note) {
         noteVerticalComponentListCallBack?.note(
             note = com.leandro1995.seito.model.entity.Note(
-                id = note.id,
+                route = note.route,
                 date = note.date,
                 idGroup = note.idGroup,
                 note = note.note,
