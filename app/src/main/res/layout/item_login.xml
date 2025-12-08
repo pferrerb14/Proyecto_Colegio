@@ -27,13 +27,13 @@
                 android:orientation="vertical"
                 android:padding="@dimen/dimen_10">
 
-                <TextView
-                    android:id="@+id/user_text"
-                    style="@style/TextBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="............."
-                    tools:ignore="RtlHardcoded" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dimen_30"
+                    android:scaleType="centerCrop"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/lottie_loading_chat" />
 
             </LinearLayout>
 
