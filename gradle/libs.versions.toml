@@ -23,6 +23,7 @@ playServicesAuth = "21.4.0"
 playServicesTime = "16.0.1"
 protobufJavalite = "4.26.0"
 protobufJavalitePlugin = "0.9.5"
+retrofit = "3.0.0"
 turbine = "1.2.1"
 googleServices = "4.4.4"
 googFirebaselePerf = "2.0.1"
@@ -78,6 +79,7 @@ github-pinview = { module = "io.github.chaosleung:pinview", version.ref = "pinvi
 github-permissionx = { module = "com.guolindev.permissionx:permissionx", version.ref = "permissionx" }
 github-fresco = { module = "com.facebook.fresco:fresco", version.ref = "fresco" }
 github-mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
+github-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
