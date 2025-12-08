@@ -20,6 +20,8 @@ object Setting {
     const val DISCOUNT_CURRENCY = 100
     const val NOTE_MAXIMUM = 20
     const val ANSWER_CHAT = 0
+    const val USER_CHAT = 1
+    const val LOADING_CHAT = 2
 
     const val TEACHER_BUNDLE = "teacher_bundle"
     const val THEME_BUNDLE = "theme_put_bundle"

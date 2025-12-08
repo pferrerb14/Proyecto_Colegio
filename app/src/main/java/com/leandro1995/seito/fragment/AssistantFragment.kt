@@ -4,6 +4,7 @@ import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentAssistantBinding
 import com.leandro1995.seito.extension.lifecycleScope
 import com.leandro1995.seito.fragment.ambient.FragmentAmbient
@@ -70,10 +71,13 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
     }
 
     override fun fullName(fullName: String) {
-        assistantViewModel.addItem(message = getString(R.string.assistant_text, fullName))
+        assistantViewModel.addItem(
+            message = getString(R.string.assistant_text, fullName), type = Setting.ANSWER_CHAT
+        )
     }
 
     override fun chatArrayList(chatArrayList: ArrayList<Chat>) {
+        dataBinding?.chatEditText?.setText("")
         this.chatArrayList.clear()
         this.chatArrayList.addAll(chatArrayList)
     }
