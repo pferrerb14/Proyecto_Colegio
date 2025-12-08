@@ -22,7 +22,7 @@ class ExamGraphicIntentEventConfig(private val examGraphicIntentEventCallBack: E
 
             is ExamGraphicIntentEvent.NoteDetail -> {
                 examGraphicIntentEventCallBack?.noteDetail(
-                    note = event.note, questionArrayList = event.questionArrayList
+                    note = event.note, answerArrayList = event.answerArrayList
                 )
             }
 

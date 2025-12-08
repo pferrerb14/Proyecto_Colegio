@@ -32,6 +32,7 @@ object Setting {
     const val COURSE_PUT_EXTRA = "course_put_extra"
     const val LEVEL_PUT_EXTRA = "level_put_extra"
     const val QUESTION_ARRAY_LIST_PUT_EXTRA = "question_array_list_put_extra"
+    const val ANSWER_ARRAY_LIST_PUT_EXTRA = "answer_array_list_put_extra"
     const val TYPE_ANSWER_QUESTION_PUT_EXTRA = "type_answer_question_put_extra"
     const val GROUP_ID_PUT_EXTRA = "group_id_put_extra"
     const val EMAIL_PUT_EXTRA = "email_put_extra"

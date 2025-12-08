@@ -16,8 +16,8 @@ import com.leandro1995.seito.intent.callback.event.ExamGraphicIntentEventCallBac
 import com.leandro1995.seito.intent.config.action.ExamGraphicIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamGraphicIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Note
-import com.leandro1995.seito.model.entity.Question
 import com.leandro1995.seito.util.design.StudentPerformanceUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamGraphicViewModel
@@ -92,10 +92,10 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
         }
     }
 
-    override fun noteDetail(note: Note, questionArrayList: ArrayList<Question>) {
+    override fun noteDetail(note: Note, answerArrayList: ArrayList<Answer>) {
         startActivity(Intent(requireContext(), NoteDetailActivity::class.java).apply {
             putExtra(Setting.NOTE_PUT_EXTRA, note)
-            putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
+            putExtra(Setting.ANSWER_ARRAY_LIST_PUT_EXTRA, answerArrayList)
         })
     }
 

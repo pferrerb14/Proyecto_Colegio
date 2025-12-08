@@ -1,6 +1,5 @@
 package com.leandro1995.seito.viewmodel
 
-import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.fcm.firestore.config.Setting
@@ -240,13 +239,13 @@ class ExerciseGraphicViewModel :
     }
 
     private fun questionFirebase() {
-        note.questionFirebaseArrayList(
+        note.answerFirebaseArrayList(
             email = student.email,
             idCollection = Setting.EXERCISE,
             success = { result ->
                 emit(
                     event = ExerciseGraphicIntentEvent.NoteDetail(
-                        note = note, questionArrayList = result
+                        note = note, answerArrayList = result
                     )
                 )
                 loading()

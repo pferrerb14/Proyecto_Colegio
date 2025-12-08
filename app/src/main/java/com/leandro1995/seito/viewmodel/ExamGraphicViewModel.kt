@@ -1,6 +1,5 @@
 package com.leandro1995.seito.viewmodel
 
-import android.util.Log
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.fcm.firestore.config.Setting
@@ -61,13 +60,13 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
     }
 
     private fun questionFirebase() {
-        note.questionFirebaseArrayList(
+        note.answerFirebaseArrayList(
             email = student.email,
             idCollection = Setting.EXAM,
             success = { result ->
                 emit(
                     event = ExamGraphicIntentEvent.NoteDetail(
-                        note = note, questionArrayList = result
+                        note = note, answerArrayList = result
                     )
                 )
                 loading()

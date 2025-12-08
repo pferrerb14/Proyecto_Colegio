@@ -22,7 +22,7 @@ class ExerciseGraphicIntentEventConfig(private val exerciseGraphicIntentEventCal
 
             is ExerciseGraphicIntentEvent.NoteDetail -> {
                 exerciseGraphicIntentEventCallBack?.noteDetail(
-                    note = event.note, questionArrayList = event.questionArrayList
+                    note = event.note, answerArrayList = event.answerArrayList
                 )
             }
 

@@ -21,6 +21,7 @@ import com.leandro1995.seito.intent.callback.event.ExerciseGraphicIntentEventCal
 import com.leandro1995.seito.intent.config.action.ExerciseGraphicIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExerciseGraphicIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.Question
@@ -208,10 +209,10 @@ class ExerciseGraphicFragment : FragmentAmbient<FragmentExerciseGraphicBinding>(
         }
     }
 
-    override fun noteDetail(note: Note, questionArrayList: ArrayList<Question>) {
+    override fun noteDetail(note: Note, answerArrayList: ArrayList<Answer>) {
         startActivity(Intent(requireContext(), NoteDetailActivity::class.java).apply {
             putExtra(Setting.NOTE_PUT_EXTRA, note)
-            putExtra(Setting.QUESTION_ARRAY_LIST_PUT_EXTRA, questionArrayList)
+            putExtra(Setting.ANSWER_ARRAY_LIST_PUT_EXTRA, answerArrayList)
         })
     }
 

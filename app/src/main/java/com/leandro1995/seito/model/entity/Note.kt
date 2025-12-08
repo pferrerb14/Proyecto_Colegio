@@ -12,13 +12,13 @@ class Note(
     var note: Double = -1.0,
     var timer: String = ""
 ) : Parcelable {
-    fun questionFirebaseArrayList(
+    fun answerFirebaseArrayList(
         email: String,
         idCollection: String,
-        success: (ArrayList<Question>) -> Unit,
+        success: (ArrayList<Answer>) -> Unit,
         error: () -> Unit
     ) {
-        NoteFirestoreFCM().questionArrayList(
+        NoteFirestoreFCM().answerArrayList(
             email = email,
             idCollection = idCollection,
             idNote = id,

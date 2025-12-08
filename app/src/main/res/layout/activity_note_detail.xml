@@ -40,17 +40,20 @@
                 android:padding="@dimen/dimen_16">
 
                 <TextView
+                    android:id="@+id/date_text"
                     style="@style/TextBody6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/timer_text"
                     style="@style/TextBody6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10" />
 
                 <TextView
+                    android:id="@+id/note_text"
                     style="@style/TextBody6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -62,6 +65,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:text="@string/answer_text" />
+
+                <com.leandro1995.seito.component.list.AnswerVerticalComponentList
+                    android:id="@+id/answer_vertical_component_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:error_color="@color/green_EEFBF3"
+                    app:error_image="@drawable/ic_grid_course_hint"
+                    app:error_sub_title="@string/no_answer_available_description_text"
+                    app:error_title="@string/no_answer_available_text" />
 
             </LinearLayout>
 
