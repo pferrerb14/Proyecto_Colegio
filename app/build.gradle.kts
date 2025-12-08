@@ -22,8 +22,8 @@ android {
         applicationId = "com.leandro1995.seito"
         minSdk = 23
         targetSdk = 36
-        versionCode = 9
-        versionName = "1.0.8"
+        versionCode = 10
+        versionName = "1.0.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,6 +34,10 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+            buildConfigField("String", "URL_BASE", project.property("API_URL_RELEASE") as String)
+        }
+        debug {
+            buildConfigField("String", "URL_BASE", project.property("API_URL_DEBUG") as String)
         }
     }
     compileOptions {
@@ -79,6 +83,8 @@ dependencies {
     implementation(libs.github.permissionx)
     implementation(libs.github.fresco)
     implementation(libs.github.mpandroidchart)
+    implementation(libs.github.retrofit)
+    implementation(libs.github.retrofit.gson)
     implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)

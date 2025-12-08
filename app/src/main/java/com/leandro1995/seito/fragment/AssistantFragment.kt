@@ -63,7 +63,9 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
     }
 
     override fun loading(loading: Loading) {
-
+        dataBinding?.loadingComponent?.startService(loading = loading) {
+            assistantViewModel.service(idService = loading.idService)
+        }
     }
 
     override fun startList() {
