@@ -34,6 +34,10 @@ android {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
+            buildConfigField("String", "URL_BASE", project.property("API_URL_RELEASE") as String)
+        }
+        debug {
+            buildConfigField("String", "URL_BASE", project.property("API_URL_DEBUG") as String)
         }
     }
     compileOptions {
