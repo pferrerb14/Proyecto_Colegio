@@ -3,7 +3,6 @@ package com.leandro1995.seito.fragment
 import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.R
 import com.leandro1995.seito.adapter.AssistantAdapter
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
