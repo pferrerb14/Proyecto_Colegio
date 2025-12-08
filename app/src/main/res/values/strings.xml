@@ -15,6 +15,7 @@
     <string name="list_exam_title">Lista de examenes</string>
     <string name="student_statistics_title">Estadísticas de avance</string>
     <string name="answer_title">Respuesta</string>
+    <string name="assistant_title">Asistente de apoyo </string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
@@ -111,6 +112,7 @@
     <string name="incorrect_text">La repuesta es : Incorrecta</string>
     <string name="question_item_text">Nombre de la pregunta : %1$s</string>
     <string name="answer_item_text">Repuesta del alumno : %1$s</string>
+    <string name="assistant_text">Hola %1$s!, estas preparado para consultar que tema necesitas ayuda</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

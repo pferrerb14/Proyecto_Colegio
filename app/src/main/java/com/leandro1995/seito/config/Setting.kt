@@ -17,9 +17,11 @@ object Setting {
     const val OPTION_LENGTH = 5
     const val QUESTION_LENGTH = 5
     const val QUESTION_SELECT_MAX = 5
-
     const val DISCOUNT_CURRENCY = 100
     const val NOTE_MAXIMUM = 20
+    const val ANSWER_CHAT = 0
+    const val USER_CHAT = 1
+    const val LOADING_CHAT = 2
 
     const val TEACHER_BUNDLE = "teacher_bundle"
     const val THEME_BUNDLE = "theme_put_bundle"

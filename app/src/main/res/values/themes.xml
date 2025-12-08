@@ -109,6 +109,12 @@
         <item name="android:textColor">@color/blue_0066FF</item>
     </style>
 
+    <style name="TextBody14">
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/white_FFFFFF</item>
+    </style>
+
     <style name="LinkBody">
         <item name="android:fontFamily">@font/regular</item>
         <item name="android:textSize">@dimen/text_15</item>

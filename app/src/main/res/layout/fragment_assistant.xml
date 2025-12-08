@@ -1,15 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_E3E5E9"
     tools:context=".fragment.AssistantFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <data>
 
-</FrameLayout>
+        <variable
+            name="assistantViewModel"
+            type="com.leandro1995.seito.viewmodel.AssistantViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/app_bar_blue_include"
+            layout="@layout/app_bar_blue"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/assistant_recycler_view"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="@dimen/dimen_0"
+            android:layout_marginStart="@dimen/dimen_0"
+            android:layout_marginTop="@dimen/dimen_0"
+            android:layout_marginEnd="@dimen/dimen_0"
+            android:layout_marginBottom="@dimen/dimen_16"
+            app:layout_constraintBottom_toTopOf="@+id/chat_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar_blue_include" />
+
+        <EditText
+            android:id="@+id/chat_edit_text"
+            style="@style/EditText"
+            android:layout_width="@dimen/dimen_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:ems="10"
+            android:gravity="top|start"
+            android:imeOptions="flagNoEnterAction"
+            android:inputType="textMultiLine"
+            android:maxLines="8"
+            android:minLines="3"
+            android:padding="@dimen/dimen_10"
+            android:text="@={assistantViewModel.message}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="Autofill,LabelFor" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:clickable="true"
+            android:onClick="@{()-> assistantViewModel.button.invoke(assistantViewModel.ITEM_ADD)}"
+            android:src="@drawable/ic_send"
+            app:backgroundTint="@color/blue_0066FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white_FFFFFF"
+            tools:ignore="ContentDescription,KeyboardInaccessibleWidget" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
