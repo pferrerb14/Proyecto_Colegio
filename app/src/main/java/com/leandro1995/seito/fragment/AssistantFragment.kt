@@ -1,18 +1,17 @@
 package com.leandro1995.seito.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.leandro1995.seito.R
+import com.leandro1995.seito.databinding.FragmentAssistantBinding
+import com.leandro1995.seito.fragment.ambient.FragmentAmbient
+import com.leandro1995.seito.model.design.Toolbar
 
-class AssistantFragment : Fragment() {
+class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override var idLayout: Int = R.layout.fragment_assistant
 
-        return inflater.inflate(R.layout.fragment_assistant, container, false)
+    override fun initView() {
+        dataBinding?.appBarBlueInclude?.toolbar?.let {
+            Toolbar(materialToolbar = it, idTitle = R.string.assistant_title).config()
+        }
     }
 }
