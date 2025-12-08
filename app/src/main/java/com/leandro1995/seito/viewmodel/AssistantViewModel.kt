@@ -35,7 +35,7 @@ class AssistantViewModel : ViewModelAmbient<AssistantIntentAction, AssistantInte
         }
     }
 
-    fun addItem(message: String, type: Int) {
+    fun addItem(message: String = "", type: Int) {
         chatArrayList.add(Chat(message = message, type = type))
         value(action = AssistantIntentAction(chatArrayList = chatArrayList))
     }
@@ -50,14 +50,18 @@ class AssistantViewModel : ViewModelAmbient<AssistantIntentAction, AssistantInte
     }
 
     private suspend fun solutionService() {
+        addItem(type = Setting.LOADING_CHAT)
         student.solutionService(problemText = message, callback = { result ->
+            chatArrayList.removeAt(chatArrayList.size - 1)
             addItem(
                 message = result.joinToString("\n") { "${it.description}\n${it.operation}\n${it.result}" },
                 type = Setting.ANSWER_CHAT
             )
             loading()
         }, error = {
-
+            chatArrayList.removeAt(chatArrayList.size - 1)
+            value(action = AssistantIntentAction(chatArrayList = chatArrayList))
+            loading()
         })
     }
 
