@@ -1,7 +1,11 @@
 package com.leandro1995.seito.fragment
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.leandro1995.seito.R
+import com.leandro1995.seito.adapter.AssistantAdapter
 import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
@@ -15,6 +19,7 @@ import com.leandro1995.seito.intent.config.event.AssistantIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Chat
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
+import com.leandro1995.seito.util.design.AssistantUtilDesign
 import com.leandro1995.seito.viewmodel.AssistantViewModel
 
 class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), AssistantIntentEventCallBack,
@@ -29,6 +34,8 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
     private val backGroundCoroutine = BackGroundCoroutine()
     private val chatArrayList = arrayListOf<Chat>()
 
+    private var assistantAdapter: AssistantAdapter? = null
+
     override var idLayout: Int = R.layout.fragment_assistant
 
     override fun initView() {
@@ -39,6 +46,7 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
                 Toolbar(materialToolbar = it, idTitle = R.string.assistant_title).config()
             }
         }
+        assistantAdapter()
     }
 
     override fun initEventToAction() {
@@ -76,9 +84,28 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun chatArrayList(chatArrayList: ArrayList<Chat>) {
         dataBinding?.chatEditText?.setText("")
         this.chatArrayList.clear()
         this.chatArrayList.addAll(chatArrayList)
+
+        assistantAdapter?.notifyDataSetChanged()
+
+        AssistantUtilDesign.insertLastChatItem(
+            recyclerView = dataBinding?.assistantRecyclerView,
+            itemCount = assistantAdapter?.itemCount
+        )
+    }
+
+    private fun assistantAdapter() {
+        assistantAdapter = AssistantAdapter(chatArrayList = chatArrayList)
+
+        dataBinding?.assistantRecyclerView?.apply {
+            layoutManager = LinearLayoutManager(requireContext()).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
+            adapter = assistantAdapter
+        }
     }
 }
