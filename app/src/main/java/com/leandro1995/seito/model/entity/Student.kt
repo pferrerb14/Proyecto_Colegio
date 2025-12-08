@@ -3,7 +3,9 @@ package com.leandro1995.seito.model.entity
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.fcm.firestore.StudentFirestoreFCM
 import com.leandro1995.seito.model.entity.ambient.User
+import com.leandro1995.seito.retrofit.service.GetService
 import kotlinx.parcelize.Parcelize
+import okhttp3.Callback
 
 @Parcelize
 data class Student(
@@ -89,6 +91,12 @@ data class Student(
         StudentFirestoreFCM().noteArrayList(
             email = email, idCollection = idCollection, success = success, error = error
         )
+    }
+
+    suspend fun solutionService(
+        problemText: String, callback: (ArrayList<Solution>) -> Unit, error: () -> Unit
+    ) {
+        GetService.getSolution(problemText = problemText, callBack = callback, error = error)
     }
 
     fun isEqualPassword(confirmPassword: String) = password == confirmPassword
