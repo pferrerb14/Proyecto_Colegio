@@ -5,12 +5,24 @@ import com.leandro1995.seito.activity.ambient.ActivityAmbient
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.ActivityNoteDetailBinding
 import com.leandro1995.seito.extension.parcelable
+import com.leandro1995.seito.model.design.Toolbar
 import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Note
 
 class NoteDetailActivity : ActivityAmbient<ActivityNoteDetailBinding>() {
 
     override var idLayout: Int = R.layout.activity_note_detail
+
+    override fun initView() {
+        dataBinding?.appBarBlueInclude?.toolbar?.let {
+            Toolbar(
+                materialToolbar = it,
+                idTitle = R.string.answer_title,
+                isArrow = true,
+                icArrow = R.drawable.ic_arrow_white
+            ).config { finish() }
+        }
+    }
 
     override fun putExtra() {
         Setting.NOTE_PUT_EXTRA.parcelable<Note>(activity = this)?.let {

@@ -14,6 +14,7 @@
     <string name="create_exam_title">Crear examen</string>
     <string name="list_exam_title">Lista de examenes</string>
     <string name="student_statistics_title">Estadísticas de avance</string>
+    <string name="answer_title">Respuesta</string>
 
     <!-- Text -->
     <string name="school_text">COLEGIO CHICLAYO</string>
