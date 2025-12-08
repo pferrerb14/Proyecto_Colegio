@@ -12,6 +12,7 @@ import com.leandro1995.seito.intent.callback.event.AssistantIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.AssistantIntentActionConfig
 import com.leandro1995.seito.intent.config.event.AssistantIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.model.entity.Chat
 import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.AssistantViewModel
 
@@ -25,6 +26,7 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
         AssistantIntentActionConfig(assistantIntentActionCallBack = this)
 
     private val backGroundCoroutine = BackGroundCoroutine()
+    private val chatArrayList = arrayListOf<Chat>()
 
     override var idLayout: Int = R.layout.fragment_assistant
 
@@ -68,6 +70,11 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
     }
 
     override fun fullName(fullName: String) {
+        assistantViewModel.addItem(message = getString(R.string.assistant_text, fullName))
+    }
 
+    override fun chatArrayList(chatArrayList: ArrayList<Chat>) {
+        this.chatArrayList.clear()
+        this.chatArrayList.addAll(chatArrayList)
     }
 }

@@ -1,3 +1,7 @@
 package com.leandro1995.seito.intent.action
 
-class AssistantIntentAction(val fullName: String? = null)
+import com.leandro1995.seito.model.entity.Chat
+
+class AssistantIntentAction(
+    val fullName: String? = null, val chatArrayList: ArrayList<Chat>? = null
+)

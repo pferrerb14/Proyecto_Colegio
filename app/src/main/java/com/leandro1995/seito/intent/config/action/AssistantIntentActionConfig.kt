@@ -12,6 +12,10 @@ class AssistantIntentActionConfig(private val assistantIntentActionCallBack: Ass
             event.fullName?.let {
                 assistantIntentActionCallBack?.fullName(fullName = it)
             }
+
+            event.chatArrayList?.let {
+                assistantIntentActionCallBack?.chatArrayList(chatArrayList = it)
+            }
         } else {
             assistantIntentActionCallBack?.startList()
         }
