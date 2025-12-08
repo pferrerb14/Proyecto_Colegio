@@ -1,6 +1,8 @@
 package com.leandro1995.seito.intent.event
 
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
+import com.leandro1995.seito.model.entity.Answer
+import com.leandro1995.seito.model.entity.Note
 
 sealed class ExerciseGraphicIntentEvent {
 
@@ -8,5 +10,8 @@ sealed class ExerciseGraphicIntentEvent {
         ExerciseGraphicIntentEvent()
 
     data class AlertMessage(val alertMessage: com.leandro1995.seito.model.design.AlertMessage) :
+        ExerciseGraphicIntentEvent()
+
+    data class NoteDetail(val note: Note, val answerArrayList: ArrayList<Answer>) :
         ExerciseGraphicIntentEvent()
 }

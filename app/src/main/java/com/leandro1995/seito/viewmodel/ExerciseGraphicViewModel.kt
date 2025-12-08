@@ -2,12 +2,14 @@ package com.leandro1995.seito.viewmodel
 
 import com.leandro1995.seito.R
 import com.leandro1995.seito.component.model.Loading
+import com.leandro1995.seito.fcm.firestore.config.Setting
 import com.leandro1995.seito.intent.action.ExerciseGraphicIntentAction
 import com.leandro1995.seito.intent.event.ExerciseGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
 import com.leandro1995.seito.model.entity.Course
 import com.leandro1995.seito.model.entity.Level
+import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.model.entity.SubTheme
 import com.leandro1995.seito.model.entity.Teacher
@@ -23,6 +25,7 @@ class ExerciseGraphicViewModel :
     private var theme = Theme()
     private var subTheme = SubTheme()
     private var levelArrayList = arrayListOf<Level>()
+    private var note = Note()
 
     override fun event(action: Int) {
         when (action) {
@@ -65,6 +68,10 @@ class ExerciseGraphicViewModel :
             EXERCISE_FIREBASE -> {
                 exerciseFirebase()
             }
+
+            QUESTION_FIREBASE -> {
+                questionFirebase()
+            }
         }
     }
 
@@ -99,6 +106,11 @@ class ExerciseGraphicViewModel :
                 )
             )
         }
+    }
+
+    fun noteSelect(note: Note) {
+        this.note = note
+        loading(idService = QUESTION_FIREBASE)
     }
 
     private fun subTheme() {
@@ -226,6 +238,28 @@ class ExerciseGraphicViewModel :
             })
     }
 
+    private fun questionFirebase() {
+        note.answerFirebaseArrayList(
+            email = student.email,
+            idCollection = Setting.EXERCISE,
+            success = { result ->
+                emit(
+                    event = ExerciseGraphicIntentEvent.NoteDetail(
+                        note = note, answerArrayList = result
+                    )
+                )
+                loading()
+            },
+            error = {
+                emit(
+                    event = ExerciseGraphicIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                    )
+                )
+                loading()
+            })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExerciseGraphicIntentEvent.Loading(
@@ -246,5 +280,6 @@ class ExerciseGraphicViewModel :
         private const val SUB_THEME_FIREBASE = 6
         private const val LEVEL_FIREBASE = 7
         private const val EXERCISE_FIREBASE = 8
+        private const val QUESTION_FIREBASE = 9
     }
 }

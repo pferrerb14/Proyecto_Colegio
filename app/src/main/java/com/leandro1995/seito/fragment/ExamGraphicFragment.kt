@@ -1,7 +1,10 @@
 package com.leandro1995.seito.fragment
 
+import android.content.Intent
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.activity.NoteDetailActivity
+import com.leandro1995.seito.component.list.config.callback.NoteVerticalComponentListCallBack
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.config.Setting
 import com.leandro1995.seito.databinding.FragmentExamGraphicBinding
@@ -13,13 +16,15 @@ import com.leandro1995.seito.intent.callback.event.ExamGraphicIntentEventCallBac
 import com.leandro1995.seito.intent.config.action.ExamGraphicIntentActionConfig
 import com.leandro1995.seito.intent.config.event.ExamGraphicIntentEventConfig
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Answer
 import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.util.design.StudentPerformanceUtilDesign
 import com.leandro1995.seito.util.dialog.AppUtilDialog
 import com.leandro1995.seito.viewmodel.ExamGraphicViewModel
 
 class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
-    ExamGraphicIntentEventCallBack, ExamGraphicIntentActionCallBack {
+    ExamGraphicIntentEventCallBack, ExamGraphicIntentActionCallBack,
+    NoteVerticalComponentListCallBack {
 
     private val examGraphicViewModel by viewModels<ExamGraphicViewModel>()
 
@@ -31,7 +36,10 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
     override var idLayout: Int = R.layout.fragment_exam_graphic
 
     override fun initView() {
-        dataBinding?.examGraphicViewModel = examGraphicViewModel
+        dataBinding?.apply {
+            examGraphicViewModel = this@ExamGraphicFragment.examGraphicViewModel
+            noteVerticalComponentList.noteVerticalComponentListCallBack = this@ExamGraphicFragment
+        }
     }
 
     override fun initEventToAction() {
@@ -82,5 +90,16 @@ class ExamGraphicFragment : FragmentAmbient<FragmentExamGraphicBinding>(),
         ) {
             requireActivity().finish()
         }
+    }
+
+    override fun noteDetail(note: Note, answerArrayList: ArrayList<Answer>) {
+        startActivity(Intent(requireContext(), NoteDetailActivity::class.java).apply {
+            putExtra(Setting.NOTE_PUT_EXTRA, note)
+            putExtra(Setting.ANSWER_ARRAY_LIST_PUT_EXTRA, answerArrayList)
+        })
+    }
+
+    override fun note(note: Note) {
+        examGraphicViewModel.noteSelect(note = note)
     }
 }

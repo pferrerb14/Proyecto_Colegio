@@ -7,12 +7,14 @@ import com.leandro1995.seito.intent.action.ExamGraphicIntentAction
 import com.leandro1995.seito.intent.event.ExamGraphicIntentEvent
 import com.leandro1995.seito.intent.event.ambient.LoadingIntentEventAmbient
 import com.leandro1995.seito.model.design.AlertMessage
+import com.leandro1995.seito.model.entity.Note
 import com.leandro1995.seito.model.entity.Student
 import com.leandro1995.seito.viewmodel.ambient.ViewModelAmbient
 
 class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraphicIntentEvent>() {
 
     val student = Student()
+    private var note = Note()
 
     override fun event(action: Int) {
         when (action) {
@@ -27,7 +29,16 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
             EXAM_FIREBASE -> {
                 examFirebase()
             }
+
+            QUESTION_FIREBASE -> {
+                questionFirebase()
+            }
         }
+    }
+
+    fun noteSelect(note: Note) {
+        this.note = note
+        loading(idService = QUESTION_FIREBASE)
     }
 
     private fun exam() {
@@ -48,6 +59,28 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
         })
     }
 
+    private fun questionFirebase() {
+        note.answerFirebaseArrayList(
+            email = student.email,
+            idCollection = Setting.EXAM,
+            success = { result ->
+                emit(
+                    event = ExamGraphicIntentEvent.NoteDetail(
+                        note = note, answerArrayList = result
+                    )
+                )
+                loading()
+            },
+            error = {
+                emit(
+                    event = ExamGraphicIntentEvent.AlertMessage(
+                        alertMessage = AlertMessage(idMessage = R.string.not_error_service_firebase_message)
+                    )
+                )
+                loading()
+            })
+    }
+
     override fun loading(idService: Int, isDelayDisable: Boolean) {
         emit(
             event = ExamGraphicIntentEvent.Loading(
@@ -63,5 +96,6 @@ class ExamGraphicViewModel : ViewModelAmbient<ExamGraphicIntentAction, ExamGraph
     companion object {
         const val EXAM = 0
         private const val EXAM_FIREBASE = 1
+        private const val QUESTION_FIREBASE = 2
     }
 }
