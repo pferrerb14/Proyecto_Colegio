@@ -84,6 +84,7 @@ dependencies {
     implementation(libs.github.fresco)
     implementation(libs.github.mpandroidchart)
     implementation(libs.github.retrofit)
+    implementation(libs.github.retrofit.gson)
     implementation(libs.protobuf.javalite)
     testImplementation(libs.junit)
     testImplementation(libs.turbine)

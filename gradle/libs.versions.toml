@@ -80,6 +80,7 @@ github-permissionx = { module = "com.guolindev.permissionx:permissionx", version
 github-fresco = { module = "com.facebook.fresco:fresco", version.ref = "fresco" }
 github-mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 github-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+github-retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
