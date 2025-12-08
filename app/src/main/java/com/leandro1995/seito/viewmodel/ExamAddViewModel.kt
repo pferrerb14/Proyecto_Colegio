@@ -206,7 +206,7 @@ class ExamAddViewModel : ViewModelAmbient<ExamAddIntentAction, ExamAddIntentEven
                 value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
                 loading()
             })
-        } ?: {
+        } ?: run {
             value(action = ExamAddIntentAction(questionArrayList = questionArrayList))
             loading()
         }
