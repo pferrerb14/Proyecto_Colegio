@@ -30,7 +30,7 @@ class LoadingComponent(context: Context, attrs: AttributeSet? = null) :
         hideKeyboard()
         if (loading.idService != -1) {
             if (NetworkUtil(context = context).isInternetAvailable()) {
-                visibility(isVisible = true)
+                visibility(isVisible = loading.isVisible)
                 backGroundCoroutine.apply {
                     isDelayDisable = loading.isDelayDisable
                 }.start {

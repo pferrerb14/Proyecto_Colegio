@@ -69,7 +69,11 @@ class AssistantViewModel : ViewModelAmbient<AssistantIntentAction, AssistantInte
         emit(
             event = AssistantIntentEvent.Loading(
                 loadingIntentEventAmbient = LoadingIntentEventAmbient.Loading(
-                    loading = Loading(idService = idService, isDelayDisable = isDelayDisable)
+                    loading = Loading(
+                        idService = idService,
+                        isDelayDisable = isDelayDisable,
+                        isVisible = false
+                    )
                 )
             )
         )
