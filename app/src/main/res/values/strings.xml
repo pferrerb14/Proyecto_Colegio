@@ -112,6 +112,7 @@
     <string name="incorrect_text">La repuesta es : Incorrecta</string>
     <string name="question_item_text">Nombre de la pregunta : %1$s</string>
     <string name="answer_item_text">Repuesta del alumno : %1$s</string>
+    <string name="assistant_text">Hola %1$s!, estas preparado para consultar que tema necesitas ayuda</string>
 
     <!-- Hint -->
     <string name="enter_your_name_hint">Introduce tu nombre</string>

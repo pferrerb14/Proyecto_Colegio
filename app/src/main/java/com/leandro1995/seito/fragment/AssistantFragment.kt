@@ -2,6 +2,7 @@ package com.leandro1995.seito.fragment
 
 import androidx.fragment.app.viewModels
 import com.leandro1995.seito.R
+import com.leandro1995.seito.background.coroutine.BackGroundCoroutine
 import com.leandro1995.seito.component.model.Loading
 import com.leandro1995.seito.databinding.FragmentAssistantBinding
 import com.leandro1995.seito.extension.lifecycleScope
@@ -11,6 +12,7 @@ import com.leandro1995.seito.intent.callback.event.AssistantIntentEventCallBack
 import com.leandro1995.seito.intent.config.action.AssistantIntentActionConfig
 import com.leandro1995.seito.intent.config.event.AssistantIntentEventConfig
 import com.leandro1995.seito.model.design.Toolbar
+import com.leandro1995.seito.protodatastore.config.UserProtoDataStoreConfig
 import com.leandro1995.seito.viewmodel.AssistantViewModel
 
 class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), AssistantIntentEventCallBack,
@@ -21,6 +23,8 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
         AssistantIntentEventConfig(assistantIntentEventCallBack = this)
     private val assistantIntentActionConfig =
         AssistantIntentActionConfig(assistantIntentActionCallBack = this)
+
+    private val backGroundCoroutine = BackGroundCoroutine()
 
     override var idLayout: Int = R.layout.fragment_assistant
 
@@ -49,6 +53,21 @@ class AssistantFragment : FragmentAmbient<FragmentAssistantBinding>(), Assistant
     }
 
     override fun loading(loading: Loading) {
+
+    }
+
+    override fun startList() {
+        backGroundCoroutine.start {
+            assistantViewModel.student.apply {
+                name = UserProtoDataStoreConfig.getName()
+                lastName = UserProtoDataStoreConfig.getLastName()
+            }
+
+            assistantViewModel.button.invoke(AssistantViewModel.ITEM_ONE_ADD)
+        }
+    }
+
+    override fun fullName(fullName: String) {
 
     }
 }
