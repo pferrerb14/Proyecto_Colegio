@@ -33,6 +33,7 @@ class OptionAdapter(private val optionArrayList: ArrayList<Option>) :
         holder.itemOptionBinding.apply {
             optionRadioButton.text = optionArrayList[position].name
             optionRadioButton.isChecked = optionArrayList[position].isAnswer
+            git
         }
     }
 
